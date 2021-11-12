@@ -1,0 +1,74 @@
+@import './components/modals/editeurmodals.scss';
+.editeur-page {
+  padding: 0;
+  .xbutton {
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .xbutton :hover {
+    color: brown;
+  }
+  .plusbutton {
+    color: #24a2a7;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  .plusbutton:hover {
+    color: rgb(53, 92, 92);
+  }
+  .editeur-header {
+    width: 100%;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .leftside {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .rightside {
+      display: flex;
+      justify-content: space-between;
+      justify-content: end;
+      align-items: center;
+    }
+  }
+  .editeur-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .leftside {
+      .leftheader {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .leftside-container {
+        background: linear-gradient(180deg, #010131 0%, #02aaaa 100%);
+        padding: 15px;
+      }
+    }
+    .rightside {
+      display: flex;
+      padding: 10px;
+      justify-content: space-between;
+      .rightcontainer {
+        width: 100%;
+        .rightheader {
+          padding: 10px;
+          display: flex;
+          h4 {
+            margin-right: 10px;
+          }
+        }
+        .etapescontainer {
+          background: linear-gradient(180deg, #010131 0%, #02aaaa 100%);
+          height: 300px;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

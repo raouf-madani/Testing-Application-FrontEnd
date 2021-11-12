@@ -3,18 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "next": "11.1.2",
+    "@auth0/nextjs-auth0": "^0.11.0",
+    "antd": "^4.16.13",
+    "array-move": "^4.0.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "chart.js": "2.6.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "dotenv-webpack": "^1.7.0",
+    "express": "^4.17.1",
+    "moment": "^2.25.3",
+    "next": "^11.1.2",
+    "next-routes": "^1.4.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2"
+    "react-chartjs-2": "2.1.0",
+    "react-datepicker": "^2.16.0",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^5.7.2",
+    "react-resize-detector": "^4.2.3",
+    "react-sortable-hoc": "^2.0.0",
+    "react-table": "^7.7.0",
+    "react-toastify": "^7.0.4",
+    "react-typed": "^1.2.0",
+    "reactstrap": "^8.4.1",
+    "sass": "^1.26.5",
+    "swr": "^0.2.0",
+    "tslib": "^2.3.1"
   }
 }

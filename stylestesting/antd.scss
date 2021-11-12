@@ -1,0 +1,50 @@
+@import '~antd/dist/antd.css';
+.ant-table .ant-table-thead > tr > th {
+  background-color: #074577;
+  color: white;
+}
+.ant-table-tbody > tr.ant-table-row > td {
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: rgba(247, 247, 247, 0.85);
+  font-weight: 500;
+}
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: #026186;
+}
+.ant-table-pagination-right {
+  justify-content: center;
+}
+.ant-table-tbody > tr > td {
+  color: white;
+}
+.ant-table-tbody > tr:hover {
+  background-color: #027d86;
+}
+.ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title {
+  color: white;
+}
+.ant-steps-item-wait
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title {
+  color: rgba(182, 174, 174, 0.45);
+}
+.ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title {
+  color: rgba(248, 242, 242, 0.85);
+}

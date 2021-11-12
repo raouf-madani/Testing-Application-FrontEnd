@@ -1,0 +1,96 @@
+.historique-page {
+  .leftside {
+    .modellist {
+      text-align: center;
+      max-height: 30vh;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      Table {
+        margin-bottom: -10px;
+        color: white;
+      }
+      Table thead th,
+      Table tbody th td {
+        padding: 15px;
+        border: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      Table thead {
+        background-color: #171761;
+        color: white;
+        position: sticky;
+        top: -1px;
+        margin-top: 50px;
+      }
+      Table tbody td {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      }
+      Table tbody tr:hover {
+        color: white;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(180deg, #000028 0%, #009999 100%);
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-image: linear-gradient(180deg, #222269 0%, #91e7e7 100%);
+    }
+  }
+  .rightside {
+    .essailist {
+      overflow-x: scroll;
+      overflow-y: scroll;
+      max-height: 60vh;
+      margin-bottom: 10px;
+      Table {
+        background-color: linear-gradient(180deg, #000028 0%, #009999 100%);
+        margin-bottom: -10px;
+        color: white;
+      }
+      Table thead th,
+      Table tbody th td {
+        padding: 15px;
+        border: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      tbody tr {
+        border-bottom: 1px solid rgb(221, 209, 209);
+      }
+      Table thead {
+        background-color: #171761;
+        color: white;
+        position: sticky;
+        top: -1px;
+      }
+      Table tfoot {
+        background-color: #174961;
+        color: white;
+        position: sticky;
+        top: -1px;
+        margin-top: 50px;
+      }
+      Table tbody tr:hover {
+        color: white;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(180deg, #000028 0%, #009999 100%);
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-image: linear-gradient(180deg, #222269 0%, #91e7e7 100%);
+    }
+    ::-webkit-scrollbar-corner {
+      visibility: hidden;
+    }
+  }
+}

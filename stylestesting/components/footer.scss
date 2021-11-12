@@ -1,0 +1,22 @@
+.Footer-paneltesting {
+ padding: 15px;
+ width: 100%;
+ color: antiquewhite;
+ background-image: linear-gradient(180deg, #000028 0%, #009999 100%);
+ text-align: center;
+ border-top: #f5f8f8 2px solid;
+}
+.se {
+ &-siemens {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: rgb(38, 155, 135);
+ }
+ &-energy {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: rgb(67, 20, 82);
+ }
+}

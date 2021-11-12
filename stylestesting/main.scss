@@ -1,0 +1,108 @@
+//components
+@import './components/header';
+@import './components/footer';
+@import './rapports';
+@import './historique';
+@import './editeur';
+@import './antd';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', 'Helvetica' !important;
+}
+
+.base-page {
+  color: white;
+  background: linear-gradient(180deg, #000028 0%, #009999 100%);
+}
+.page-header-title {
+  font-weight: bold;
+  display: inline-block;
+}
+.container {
+  padding: 2%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.Homemain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+.description {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: rgb(191, 201, 201);
+  font-size: large;
+}
+.card {
+  margin: 1rem;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(90deg, #446960 0%, #348181 100%);
+  justify-content: center;
+  width: 38%;
+  height: 200px;
+}
+
+.Clickable {
+  cursor: pointer;
+}
+.self-typed {
+  font-size: 31px;
+  color: wheat;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.flex-div {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  .Dropdown {
+    margin: 5px;
+    width: 120px;
+  }
+}
+.block-div {
+  background: #003e68;
+  display: block;
+}
+.steps-content {
+  min-height: 410px;
+  margin-top: 16px;
+  padding-top: 20px;
+  text-align: center;
+  background-color: #588081;
+  color: black;
+  border: 1px dashed #e9e9e9;
+  border-radius: 2px;
+}
+
+.steps-action {
+  margin-top: 24px;
+  color: #000028;
+  display: flex;
+  justify-content: end;
+}
+[data-theme='dark'] .steps-content {
+  margin-top: 16px;
+  border: 1px dashed #303030;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.65);
+  padding-top: 80px;
+}
