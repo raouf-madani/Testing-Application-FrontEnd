@@ -15,7 +15,7 @@ import {
   SearchOutlined,
   EditOutlined,
 } from '@ant-design/icons';
-import {Modal, ModalHeader, ModalBody} from 'reactstrap';
+import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 const originData = [];
 
@@ -228,7 +228,6 @@ const EditableTable = () => {
     if (!col.editable) {
       return col;
     }
-
     return {
       ...col,
       onCell: record => ({
@@ -253,7 +252,6 @@ const EditableTable = () => {
       });
     resetadding();
   };
-
   return (
     <div>
       <Button
@@ -295,6 +293,9 @@ const EditableTable = () => {
             data={data}
           />
         </ModalBody>
+        {/* <ModalFooter>
+          <Button>submit</Button>
+        </ModalFooter> */}
       </Modal>
     </div>
   );

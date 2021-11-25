@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Input, Button, Select, DatePicker, Space} from 'antd';
 
-export default function TemperatureForm() {
+export default function TemperatureForm({UpdateData}) {
   return (
     <div>
       <Form.Item
@@ -13,7 +13,7 @@ export default function TemperatureForm() {
             message: 'Temperature est Requis',
           },
         ]}>
-        <Input />
+        <Input onChange={e => UpdateData('temperature', e.target.value)} />
       </Form.Item>
     </div>
   );

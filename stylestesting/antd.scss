@@ -1,4 +1,7 @@
 @import '~antd/dist/antd.css';
+.ant-table {
+  background: none;
+}
 .ant-table .ant-table-thead > tr > th {
   background-color: #074577;
   color: white;
@@ -30,7 +33,7 @@ h6 {
 .ant-table-tbody > tr:hover {
   background-color: #027d86;
 }
-.ant-steps-item-process
+#newtest.ant-steps-item-process
   > .ant-steps-item-container
   > .ant-steps-item-content
   > .ant-steps-item-title {

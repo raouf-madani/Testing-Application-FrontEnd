@@ -16,9 +16,11 @@ function index() {
       <div
         style={{
           backgroundColor: 'white',
+          maxWidth: '390px',
+          display: 'flex',
           alignItems: 'center',
           padding: '40px 20px',
-          borderRadius: '2%',
+          borderRadius: '5px',
           marginTop: '50px',
           height: '300px',
         }}>
