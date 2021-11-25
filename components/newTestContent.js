@@ -1,36 +1,81 @@
 import React from 'react';
-import TemperatureForm from '@/components/forms/newtest/temperature';
+import {Alert} from 'antd';
+// import TemperatureForm from '@/components/forms/newtest/temperature';
 import BornesForm from '@/components/forms/newtest/Bornes';
 import Ratio_PolariteForm from '@/components/forms/newtest/Ratio_Polarite';
 import InduitForm from '@/components/forms/newtest/Induit';
-import HinotForm from '@/components/forms/newtest/Hinot';
+import HipotForm from '@/components/forms/newtest/Hipot';
 import Perte_a_ChargeForm from '@/components/forms/newtest/Perte_a_charge';
 import Perte_a_VideForm from '@/components/forms/newtest/Perte_a_vide';
+import Decharges_Partielles from '@/components/forms/newtest/Decharges_Partielles';
 import GravureForm from '@/components/forms/newtest/Gravure';
 import SignatureForm from '@/components/forms/newtest/Signature';
 
-function newTestContent({etapeName, UpdateData}) {
+function newTestContent({etapeName, UpdateData, miseenplaceok}) {
+  const NewTestHome = () => {
+    return miseenplaceok === true ? (
+      <Alert
+        message="Prét a Tester!"
+        description="Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo"
+        type="success"
+        showIcon
+      />
+    ) : (
+      <Alert
+        message="Mise en place du produit"
+        description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
+        type="info"
+        showIcon
+      />
+    );
+  };
+
   switch (etapeName) {
-    case 'Temperature':
-      return <TemperatureForm />;
+    case 'newtest':
+      return <NewTestHome />;
     case 'Placer Borne':
-      return <BornesForm />;
+      return (
+        <BornesForm UpdateData={UpdateData} miseenplaceok={miseenplaceok} />
+      );
     case 'Ratio/Polarite':
-      return <Ratio_PolariteForm />;
+      return (
+        <Ratio_PolariteForm
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+        />
+      );
     case 'Induit':
-      return <InduitForm />;
-    case 'Hinot':
-      return <HinotForm />;
+      return (
+        <InduitForm UpdateData={UpdateData} miseenplaceok={miseenplaceok} />
+      );
+    case 'Hipot':
+      return (
+        <HipotForm UpdateData={UpdateData} miseenplaceok={miseenplaceok} />
+      );
     case 'Pertes a Vide':
-      return <Perte_a_VideForm />;
+      return (
+        <Perte_a_VideForm
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+        />
+      );
     case 'Pertes a Charge':
-      return <Perte_a_ChargeForm />;
+      return (
+        <Perte_a_ChargeForm
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+        />
+      );
     case 'Gravure':
-      return <GravureForm />;
+      return <GravureForm UpdateData={UpdateData} />;
+
+    case 'Décharges Partielles':
+      return <Decharges_Partielles UpdateData={UpdateData} />;
+
     case 'Signature':
-      return <SignatureForm />;
+      return <SignatureForm UpdateData={UpdateData} />;
     default:
-      return <TemperatureForm />;
+      return null;
   }
 }
 

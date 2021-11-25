@@ -1,19 +1,132 @@
 import React, {useState} from 'react';
 import {Form, Input, Button, Select, DatePicker, Space} from 'antd';
 
-export default function Ratio_Polarite() {
+export default function Ratio_Polarite({UpdateData, miseenplaceok}) {
   return (
     <div>
-      <Form.Item
-        name="Ratio_Polarite"
-        label="Ratio_Polarite"
-        rules={[
-          {
-            required: true,
-            message: 'Ratio  est Requis',
-          },
-        ]}>
-        <Input />
+      {!miseenplaceok && (
+        <div>
+          <Form.Item label="Volts Apluiqés" style={{marginBottom: 0}}>
+            <Form.Item
+              name="Volts_Apluiqés_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Input
+                placeholder="Position 1"
+                onChange={e => UpdateData('Volts_apluiqés_P1', e.target.value)}
+              />
+            </Form.Item>
+            <Form.Item
+              name="Volts_Apluiqés_P2"
+              style={{
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                margin: '0 8px',
+              }}>
+              <Input
+                placeholder="Position 2"
+                onChange={e => UpdateData('Volts_apluiqés_P2', e.target.value)}
+              />
+            </Form.Item>
+          </Form.Item>
+          <Form.Item label="Volts HT" style={{marginBottom: 0}}>
+            <Form.Item
+              name="Volts_HT_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Input
+                placeholder="Position 1"
+                onChange={e => UpdateData('Volts_ht_P1', e.target.value)}
+              />
+            </Form.Item>
+            <Form.Item
+              name="Volts_HT_P2"
+              style={{
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                margin: '0 8px',
+              }}>
+              <Input
+                placeholder="Position 2"
+                onChange={e => UpdateData('Volts_ht_P2', e.target.value)}
+              />
+            </Form.Item>
+          </Form.Item>
+          <Form.Item label="Polarité Volts" style={{marginBottom: 0}}>
+            <Form.Item
+              name="Polarité_Volts_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Input
+                placeholder="Position 1"
+                onChange={e => UpdateData('Polarite_volts_P1', e.target.value)}
+              />
+            </Form.Item>
+            <Form.Item
+              name="Polarité_Volts_P2"
+              style={{
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                margin: '0 8px',
+              }}>
+              <Input
+                placeholder="Position 2"
+                onChange={e => UpdateData('Polarite_volts_P2', e.target.value)}
+              />
+            </Form.Item>
+          </Form.Item>
+        </div>
+      )}
+
+      <Form.Item label="Volts HT Mesuré" style={{marginBottom: 0}}>
+        <Form.Item
+          name="Volts_HT_Mesuré_P1"
+          rules={[{required: true, message: 'Champ Requis'}]}
+          style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+          <Input
+            placeholder="Position 1"
+            onChange={e => UpdateData('Volts_ht_mesuré_P1', e.target.value)}
+          />
+        </Form.Item>
+        <Form.Item
+          name="Volts_HT_Mesuré_P2"
+          style={{
+            display: 'inline-block',
+            width: 'calc(50% - 8px)',
+            margin: '0 8px',
+          }}>
+          <Input
+            placeholder="Position 2"
+            onChange={e => UpdateData('Volts_ht_mesuré_P2', e.target.value)}
+          />
+        </Form.Item>
+      </Form.Item>
+      <Form.Item label="Polarité V Mesuré" style={{marginBottom: 0}}>
+        <Form.Item
+          name="Polarité_V_Mesuré_P1"
+          rules={[{required: true, message: 'Champ Requis'}]}
+          style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+          <Input
+            placeholder="Position 1"
+            onChange={e =>
+              UpdateData('Polarite_volts_Mesure_P1', e.target.value)
+            }
+          />
+        </Form.Item>
+        <Form.Item
+          name="Polarité_V_Mesuré_P2"
+          style={{
+            display: 'inline-block',
+            width: 'calc(50% - 8px)',
+            margin: '0 8px',
+          }}>
+          <Input
+            placeholder="Position 2"
+            onChange={e =>
+              UpdateData('Polarite_volts_Mesure_P2', e.target.value)
+            }
+          />
+        </Form.Item>
       </Form.Item>
     </div>
   );
