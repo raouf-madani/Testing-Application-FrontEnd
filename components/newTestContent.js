@@ -8,12 +8,11 @@ import HipotForm from '@/components/forms/newtest/Hipot';
 import Perte_a_ChargeForm from '@/components/forms/newtest/Perte_a_charge';
 import Perte_a_VideForm from '@/components/forms/newtest/Perte_a_vide';
 import Decharges_Partielles from '@/components/forms/newtest/Decharges_Partielles';
-import GravureForm from '@/components/forms/newtest/Gravure';
 import SignatureForm from '@/components/forms/newtest/Signature';
 
 function newTestContent({etapeName, UpdateData, miseenplaceok}) {
   const NewTestHome = () => {
-    return miseenplaceok === true ? (
+    return miseenplaceok.state === true ? (
       <Alert
         message="Prét a Tester!"
         description="Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo"
@@ -66,11 +65,14 @@ function newTestContent({etapeName, UpdateData, miseenplaceok}) {
           miseenplaceok={miseenplaceok}
         />
       );
-    case 'Gravure':
-      return <GravureForm UpdateData={UpdateData} />;
 
     case 'Décharges Partielles':
-      return <Decharges_Partielles UpdateData={UpdateData} />;
+      return (
+        <Decharges_Partielles
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+        />
+      );
 
     case 'Signature':
       return <SignatureForm UpdateData={UpdateData} />;
