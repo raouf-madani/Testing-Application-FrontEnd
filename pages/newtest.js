@@ -68,11 +68,6 @@ const steps = [
   },
 
   {
-    title: 'Gravure',
-    content: 'Gravure',
-  },
-
-  {
     title: 'Signature',
     content: 'Signature',
   },
@@ -114,131 +109,129 @@ const Newtest = () => {
       Réactance_ske17_P2: '',
     },
     Perte_a_vide: {
-      multiplicateur_volts_P1: 1,
-      Multiplicateur_amperes_P1: 3,
-      Perte_table_P1: 3,
-      riv_P1: 5,
-      Pertes_mesurés_P1: 9,
-      Courant_excitation_mesurés_P1: 5,
+      multiplicateur_volts_P1: '',
+      Multiplicateur_amperes_P1: '',
+      Perte_table_P1: '',
+      riv_P1: '',
+      Pertes_mesurés_P1: '',
+      Courant_excitation_mesurés_P1: '',
       //Position 2
-      multiplicateur_volts_P2: 13,
-      Multiplicateur_amperes_P2: 3,
-      Perte_table_P2: 5,
-      riv_P2: 5,
-      Pertes_mesurés_P2: 9,
-      Courant_excitation_mesurés_P2: 5,
+      multiplicateur_volts_P2: '',
+      Multiplicateur_amperes_P2: '',
+      Perte_table_P2: '',
+      riv_P2: '',
+      Pertes_mesurés_P2: '',
+      Courant_excitation_mesurés_P2: '',
     },
     Perte_a_charge: {
       //Position 1
-      Multiplicateur_volts_charge_P1: 'volta1',
-      Multiplicateur_amperes_charge_P1: 'ampere1',
-      Perte_table_charge_P1: 'table1',
-      Courant_de_correction_P1: 'correction1',
-      Perte_table_totale_P1: 'tabletotal1',
-      Courant_appliquié_transfo_P1: 'transfo1',
-      Courant_appliqué_appareil_P1: 'appareil1',
-      No_cavalier_P1: 'nocavalier1',
-      Perte_cavalier_P1: 'pertecavalier1',
-      Resistance_ht_P1: 11,
-      Resistance_bt_P1: 21,
-      Perte_charge_mesuré_P1: 'chargemesure1',
-      Impédance_mesuré_P1: 'impedance1',
+      Multiplicateur_volts_charge_P1: '',
+      Multiplicateur_amperes_charge_P1: '',
+      Perte_table_charge_P1: '',
+      Courant_de_correction_P1: '',
+      Perte_table_totale_P1: '',
+      Courant_appliquié_transfo_P1: '',
+      Courant_appliqué_appareil_P1: '',
+      No_cavalier_P1: '',
+      Perte_cavalier_P1: '',
+      Resistance_ht_P1: '',
+      Resistance_bt_P1: '',
+      Perte_charge_mesuré_P1: '',
+      Impédance_mesuré_P1: '',
       //Position 2
-      Multiplicateur_volts_charge_P2: '2',
-      Multiplicateur_amperes_charge_P2: '3',
-      Perte_table_charge_P2: 'd',
-      Courant_de_correction_P2: 'd',
-      Perte_table_totale_P2: 'd',
-      Courant_appliquié_transfo_P2: 'sds',
-      Courant_appliqué_appareil_P2: 'd',
-      No_cavalier_P2: 'ds',
-      Perte_cavalier_P2: 'ds',
-      Resistance_ht_P2: 22,
-      Resistance_bt_P2: 22,
-      Perte_charge_mesuré_P2: 'd',
-      Impédance_mesuré_P2: 'd',
+      Multiplicateur_volts_charge_P2: '',
+      Multiplicateur_amperes_charge_P2: '',
+      Perte_table_charge_P2: '',
+      Courant_de_correction_P2: '',
+      Perte_table_totale_P2: '',
+      Courant_appliquié_transfo_P2: '',
+      Courant_appliqué_appareil_P2: '',
+      No_cavalier_P2: '',
+      Perte_cavalier_P2: '',
+      Resistance_ht_P2: '',
+      Resistance_bt_P2: '',
+      Perte_charge_mesuré_P2: '',
+      Impédance_mesuré_P2: '',
     },
     type: '3phases',
   });
   const initial_testform_values = {
-    //bornes initial data
-    Borne_Rouge: Finaldata.Bornes.Borne_rouge,
-    Borne_Verte: Finaldata.Bornes.Borne_verte,
-    Borne_Jaune: Finaldata.Bornes.Borne_jaune,
-    //ratio initial data P1
-    Volts_Apluiqés_P1: Finaldata.Ratio.Volts_apluiqés_P1,
-    Volts_HT_P1: Finaldata.Ratio.Volts_ht_P1,
-    Polarité_Volts_P1: Finaldata.Ratio.Polarite_volts_P1,
-    Volts_HT_Mesuré_P1: Finaldata.Ratio.Volts_ht_mesuré_P1,
-    Polarité_V_Mesuré_P1: Finaldata.Ratio.Polarite_volts_Mesure_P1,
-    //ratio initial data P2
-    Volts_Apluiqés_P2: Finaldata.Ratio.Volts_apluiqés_P2,
-    Volts_HT_P2: Finaldata.Ratio.Volts_ht_P2,
-    Polarité_Volts_P2: Finaldata.Ratio.Polarite_volts_P2,
-    Volts_HT_Mesuré_P2: Finaldata.Ratio.Volts_ht_mesuré_P2,
-    Polarité_V_Mesuré_P2: Finaldata.Ratio.Polarite_volts_Mesure_P2,
-    //Induit data P1
-    Fréquence_Genératrice_P1: Finaldata.Induit.Fréquence_genératrice_P1,
-    Réactance_SKE77_P1: Finaldata.Induit.Réactance_ske77_P1,
-    Réactance_SKE17_P1: Finaldata.Induit.Réactance_ske17_P1,
-    //Induit data P2
-    Fréquence_Genératrice_P2: Finaldata.Induit.Fréquence_genératrice_P2,
-    Réactance_SKE77_P2: Finaldata.Induit.Réactance_ske77_P2,
-    Réactance_SKE17_P2: Finaldata.Induit.Réactance_ske17_P2,
-    //Perte a vide P1
-    multiplicateur_Volts_P1: Finaldata.Perte_a_vide.multiplicateur_volts_P1,
-    Multiplicateur_Amprers_P1: Finaldata.Perte_a_vide.Multiplicateur_amperes_P1,
-    Perte_Table_P1: Finaldata.Perte_a_vide.Perte_table_P1,
-    Riv_P1: Finaldata.Perte_a_vide.riv_P1,
-    Pertes_Mesurés_P1: Finaldata.Perte_a_vide.Pertes_mesurés_P1,
-    Courant_Excitation_Mesurés_P1:
-      Finaldata.Perte_a_vide.Courant_excitation_mesurés_P1,
-    // Perte a vide P2
-    multiplicateur_Volts_P2: Finaldata.Perte_a_vide.multiplicateur_volts_P2,
-    Multiplicateur_Amprers_P2: Finaldata.Perte_a_vide.Multiplicateur_amperes_P2,
-    Perte_Table_P2: Finaldata.Perte_a_vide.Perte_table_P2,
-    Riv_P2: Finaldata.Perte_a_vide.riv_P2,
-    Pertes_Mesurés_P2: Finaldata.Perte_a_vide.Pertes_mesurés_P2,
-    Courant_Excitation_Mesurés_P2:
-      Finaldata.Perte_a_vide.Courant_excitation_mesurés_P2,
-    // Perte a Charge P1
-
-    Multiplicateur_Volts_Charge_P1:
-      Finaldata.Perte_a_charge.Multiplicateur_volts_charge_P1,
-    Muliplicateur_Amperes_Charge_P1:
-      Finaldata.Perte_a_charge.Multiplicateur_amperes_charge_P1,
-    Perte_Table_Charge_P1: Finaldata.Perte_a_charge.Perte_table_charge_P1,
-    Courant_de_Correction_P1: Finaldata.Perte_a_charge.Courant_de_correction_P1,
-    Perte_Table_Totale_P1: Finaldata.Perte_a_charge.Perte_table_totale_P1,
-    Courant_Appliquié_Transfo_P1:
-      Finaldata.Perte_a_charge.Courant_appliquié_transfo_P1,
-    Courant_Appliqué_Appareil_P1:
-      Finaldata.Perte_a_charge.Courant_appliqué_appareil_P1,
-    No_Cavalier_P1: Finaldata.Perte_a_charge.No_cavalier_P1,
-    Perte_Cavalier_P1: Finaldata.Perte_a_charge.Perte_cavalier_P1,
-    Resistance_HT_P1: Finaldata.Perte_a_charge.Resistance_ht_P1,
-    Resistance_BT_P1: Finaldata.Perte_a_charge.Resistance_bt_P1,
-    Perte_Charge_Mesuré_P1: Finaldata.Perte_a_charge.Perte_charge_mesuré_P1,
-    Impédance_Mesuré_P1: Finaldata.Perte_a_charge.Impédance_mesuré_P1,
-    // Perte a Charge P2
-
-    Multiplicateur_Volts_Charge_P2:
-      Finaldata.Perte_a_charge.Multiplicateur_volts_charge_P2,
-    Muliplicateur_Amperes_Charge_P2:
-      Finaldata.Perte_a_charge.Multiplicateur_amperes_charge_P2,
-    Perte_Table_Charge_P2: Finaldata.Perte_a_charge.Perte_table_charge_P2,
-    Courant_de_Correction_P2: Finaldata.Perte_a_charge.Courant_de_correction_P2,
-    Perte_Table_Totale_P2: Finaldata.Perte_a_charge.Perte_table_totale_P2,
-    Courant_Appliquié_Transfo_P2:
-      Finaldata.Perte_a_charge.Courant_appliquié_transfo_P2,
-    Courant_Appliqué_Appareil_P2:
-      Finaldata.Perte_a_charge.Courant_appliqué_appareil_P2,
-    No_Cavalier_P2: Finaldata.Perte_a_charge.No_cavalier_P2,
-    Resistance_HT_P2: Finaldata.Perte_a_charge.Resistance_ht_P2,
-    Resistance_BT_P2: Finaldata.Perte_a_charge.Resistance_bt_P2,
-    Perte_Cavalier_P2: Finaldata.Perte_a_charge.Perte_cavalier_P2,
-    Perte_Charge_Mesuré_P2: Finaldata.Perte_a_charge.Perte_charge_mesuré_P2,
-    Impédance_Mesuré_P2: Finaldata.Perte_a_charge.Impédance_mesuré_P2,
+    // //bornes initial data
+    // Borne_Rouge: Finaldata.Bornes.Borne_rouge,
+    // Borne_Verte: Finaldata.Bornes.Borne_verte,
+    // Borne_Jaune: Finaldata.Bornes.Borne_jaune,
+    // //ratio initial data P1
+    // Volts_Apluiqés_P1: Finaldata.Ratio.Volts_apluiqés_P1,
+    // Volts_HT_P1: Finaldata.Ratio.Volts_ht_P1,
+    // Polarité_Volts_P1: Finaldata.Ratio.Polarite_volts_P1,
+    // Volts_HT_Mesuré_P1: Finaldata.Ratio.Volts_ht_mesuré_P1,
+    // Polarité_V_Mesuré_P1: Finaldata.Ratio.Polarite_volts_Mesure_P1,
+    // //ratio initial data P2
+    // Volts_Apluiqés_P2: Finaldata.Ratio.Volts_apluiqés_P2,
+    // Volts_HT_P2: Finaldata.Ratio.Volts_ht_P2,
+    // Polarité_Volts_P2: Finaldata.Ratio.Polarite_volts_P2,
+    // Volts_HT_Mesuré_P2: Finaldata.Ratio.Volts_ht_mesuré_P2,
+    // Polarité_V_Mesuré_P2: Finaldata.Ratio.Polarite_volts_Mesure_P2,
+    // //Induit data P1
+    // Fréquence_Genératrice_P1: Finaldata.Induit.Fréquence_genératrice_P1,
+    // Réactance_SKE77_P1: Finaldata.Induit.Réactance_ske77_P1,
+    // Réactance_SKE17_P1: Finaldata.Induit.Réactance_ske17_P1,
+    // //Induit data P2
+    // Fréquence_Genératrice_P2: Finaldata.Induit.Fréquence_genératrice_P2,
+    // Réactance_SKE77_P2: Finaldata.Induit.Réactance_ske77_P2,
+    // Réactance_SKE17_P2: Finaldata.Induit.Réactance_ske17_P2,
+    // //Perte a vide P1
+    // multiplicateur_Volts_P1: Finaldata.Perte_a_vide.multiplicateur_volts_P1,
+    // Multiplicateur_Amprers_P1: Finaldata.Perte_a_vide.Multiplicateur_amperes_P1,
+    // Perte_Table_P1: Finaldata.Perte_a_vide.Perte_table_P1,
+    // Riv_P1: Finaldata.Perte_a_vide.riv_P1,
+    // Pertes_Mesurés_P1: Finaldata.Perte_a_vide.Pertes_mesurés_P1,
+    // Courant_Excitation_Mesurés_P1:
+    //   Finaldata.Perte_a_vide.Courant_excitation_mesurés_P1,
+    // // Perte a vide P2
+    // multiplicateur_Volts_P2: Finaldata.Perte_a_vide.multiplicateur_volts_P2,
+    // Multiplicateur_Amprers_P2: Finaldata.Perte_a_vide.Multiplicateur_amperes_P2,
+    // Perte_Table_P2: Finaldata.Perte_a_vide.Perte_table_P2,
+    // Riv_P2: Finaldata.Perte_a_vide.riv_P2,
+    // Pertes_Mesurés_P2: Finaldata.Perte_a_vide.Pertes_mesurés_P2,
+    // Courant_Excitation_Mesurés_P2:
+    //   Finaldata.Perte_a_vide.Courant_excitation_mesurés_P2,
+    // // Perte a Charge P1
+    // Multiplicateur_Volts_Charge_P1:
+    //   Finaldata.Perte_a_charge.Multiplicateur_volts_charge_P1,
+    // Muliplicateur_Amperes_Charge_P1:
+    //   Finaldata.Perte_a_charge.Multiplicateur_amperes_charge_P1,
+    // Perte_Table_Charge_P1: Finaldata.Perte_a_charge.Perte_table_charge_P1,
+    // Courant_de_Correction_P1: Finaldata.Perte_a_charge.Courant_de_correction_P1,
+    // Perte_Table_Totale_P1: Finaldata.Perte_a_charge.Perte_table_totale_P1,
+    // Courant_Appliquié_Transfo_P1:
+    //   Finaldata.Perte_a_charge.Courant_appliquié_transfo_P1,
+    // Courant_Appliqué_Appareil_P1:
+    //   Finaldata.Perte_a_charge.Courant_appliqué_appareil_P1,
+    // No_Cavalier_P1: Finaldata.Perte_a_charge.No_cavalier_P1,
+    // Perte_Cavalier_P1: Finaldata.Perte_a_charge.Perte_cavalier_P1,
+    // Resistance_HT_P1: Finaldata.Perte_a_charge.Resistance_ht_P1,
+    // Resistance_BT_P1: Finaldata.Perte_a_charge.Resistance_bt_P1,
+    // Perte_Charge_Mesuré_P1: Finaldata.Perte_a_charge.Perte_charge_mesuré_P1,
+    // Impédance_Mesuré_P1: Finaldata.Perte_a_charge.Impédance_mesuré_P1,
+    // // Perte a Charge P2
+    // Multiplicateur_Volts_Charge_P2:
+    //   Finaldata.Perte_a_charge.Multiplicateur_volts_charge_P2,
+    // Muliplicateur_Amperes_Charge_P2:
+    //   Finaldata.Perte_a_charge.Multiplicateur_amperes_charge_P2,
+    // Perte_Table_Charge_P2: Finaldata.Perte_a_charge.Perte_table_charge_P2,
+    // Courant_de_Correction_P2: Finaldata.Perte_a_charge.Courant_de_correction_P2,
+    // Perte_Table_Totale_P2: Finaldata.Perte_a_charge.Perte_table_totale_P2,
+    // Courant_Appliquié_Transfo_P2:
+    //   Finaldata.Perte_a_charge.Courant_appliquié_transfo_P2,
+    // Courant_Appliqué_Appareil_P2:
+    //   Finaldata.Perte_a_charge.Courant_appliqué_appareil_P2,
+    // No_Cavalier_P2: Finaldata.Perte_a_charge.No_cavalier_P2,
+    // Resistance_HT_P2: Finaldata.Perte_a_charge.Resistance_ht_P2,
+    // Resistance_BT_P2: Finaldata.Perte_a_charge.Resistance_bt_P2,
+    // Perte_Cavalier_P2: Finaldata.Perte_a_charge.Perte_cavalier_P2,
+    // Perte_Charge_Mesuré_P2: Finaldata.Perte_a_charge.Perte_charge_mesuré_P2,
+    // Impédance_Mesuré_P2: Finaldata.Perte_a_charge.Impédance_mesuré_P2,
   };
   //
   const [mise_page_data, setmise_page_data] = useState({
@@ -297,7 +290,7 @@ const Newtest = () => {
       No_cavalier_P2: 24,
       Perte_cavalier_P2: 26,
     },
-    state: true,
+    state: false,
   });
   const initial_mise_placefrom_values = {
     //bornes initial data
@@ -372,7 +365,7 @@ const Newtest = () => {
   };
 
   const [Commandes, setModels] = useState([
-    {id: '1', numcommand: 'CP20136', numproduit: 'Produit1'},
+    {id: '1', numcommand: 'CP20134', numproduit: 'Produit1'},
     {id: '2', numcommand: 'CP20135', numproduit: 'Produit2'},
     {id: '3', numcommand: 'CP20136', numproduit: 'Produit3'},
     {id: '4', numcommand: 'CP20137', numproduit: 'Produit4'},
@@ -515,7 +508,7 @@ const Newtest = () => {
     });
   };
   const next = () => {
-    if (current < 9) {
+    if (current < 8) {
       setCurrent(current + 1);
     } else {
       message.success('Test Finit!');
@@ -695,7 +688,7 @@ const Newtest = () => {
                       <EtapeContent
                         UpdateData={UpdateData}
                         etapeName={steps[current].content}
-                        miseenplaceok={mise_page_data.state}
+                        miseenplaceok={mise_page_data}
                         Finaldata={Finaldata}
                       />
                     </div>
@@ -729,7 +722,7 @@ const Newtest = () => {
               </Row>
             </div>
           ) : (
-            <div>model not found</div>
+            <div>Commande not found</div>
           )}
           <HistoriqueModal
             noCommande={noCommande}
