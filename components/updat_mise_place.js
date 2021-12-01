@@ -40,7 +40,6 @@ function newTestContent() {
           <Input />
         </Form.Item>
       </TabPane>
-      ///////////////////////////////////////////////////
       <TabPane tab="Ratio/Polarite" key="2">
         <Form.Item label="Volts Apluiqés" style={{marginBottom: 0}}>
           <Form.Item
@@ -112,7 +111,6 @@ function newTestContent() {
           </Form.Item>
         </Form.Item>
       </TabPane>
-      ///////////////////////////////////////////////////
       <TabPane tab="Induit" key="3">
         <Form.Item label="Fréquence Genératrice" style={{marginBottom: 0}}>
           <Form.Item
@@ -188,7 +186,6 @@ function newTestContent() {
           </Form.Item>
         </Form.Item>
       </TabPane>
-      ///////////////
       <TabPane tab="Perte a Vide" key="5">
         <Form.Item label="Multiplicateur Volts" style={{marginBottom: 0}}>
           <Form.Item
@@ -291,7 +288,6 @@ function newTestContent() {
           </Form.Item>
         </Form.Item>
       </TabPane>
-      ///////////////////////////
       <TabPane tab="Perte a Charge" key="6">
         <Form.Item label="Muliplicateur Volts" style={{marginBottom: 0}}>
           <Form.Item
