@@ -1,4 +1,4 @@
-import '@/stylestesting/main.scss';
+import '@/styles/main.scss';
 //import "@/styles/components/header.scss";
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';

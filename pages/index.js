@@ -81,7 +81,11 @@ export default function Home() {
                       </a>
                     </Link>
                     <div>
-                      <Modalnewtest modal={modal} toggle={toggle} />
+                      <Modalnewtest
+                        modal={modal}
+                        toggle={toggle}
+                        direction="#"
+                      />
                     </div>
                     <Modal
                       toggle={toggle1}

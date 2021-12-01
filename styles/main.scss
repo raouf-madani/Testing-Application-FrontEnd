@@ -1,0 +1,46 @@
+// Components
+@import './components/header';
+@import './components/modals/editeurmodals';
+@import './components/footer';
+@import './antd';
+
+// Pages
+@import './index';
+@import './historique';
+@import './newtest';
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', 'Helvetica' !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.base-page {
+  color: white;
+  background: linear-gradient(180deg, #000028 0%, #009999 100%);
+}
+
+.container {
+  padding: 2%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.absolute {
+  position: absolute;
+}
+.flex-div {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.block-div {
+  background: #003e68;
+  display: block;
+}
