@@ -188,10 +188,6 @@ function newTestContent() {
           </Form.Item>
         </Form.Item>
       </TabPane>
-      /////////////////
-      <TabPane tab="Hipot" key="4">
-        TENSION APPLIQUÉ BASSE TENSION :6557 TENSION APPLIQUÉ HAUTE TENSION :758
-      </TabPane>
       ///////////////
       <TabPane tab="Perte a Vide" key="5">
         <Form.Item label="Multiplicateur Volts" style={{marginBottom: 0}}>

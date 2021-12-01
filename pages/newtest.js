@@ -3,9 +3,9 @@ import Head from 'next/head';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
 import EtapeContent from '@/components/newTestContent';
-
 import Updat_mise_place_modal from '@/components/updat_mise_place';
 import HistoriqueModal from '@/components/modals/historique/historiquemodal';
+import Modalnewtest from '@/components/modals/newtest/scanmodal';
 import withAuth from '@/hoc/withAuth';
 import {useGetUser} from '@/actions/user';
 import {useRouter} from 'next/router';
@@ -19,8 +19,6 @@ import {
   Form,
   Card,
   Collapse,
-  Input,
-  Tabs,
   Modal,
   Alert,
   InputNumber,
@@ -75,7 +73,7 @@ const steps = [
 
 const Newtest = () => {
   const {data, loading} = useGetUser();
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(7);
   const [form] = Form.useForm();
   const [historiquemodal, sethistoriqueModal] = useState(false);
   const router = useRouter();
@@ -108,6 +106,7 @@ const Newtest = () => {
       Réactance_ske77_P2: '',
       Réactance_ske17_P2: '',
     },
+    Hipot: {},
     Perte_a_vide: {
       multiplicateur_volts_P1: '',
       Multiplicateur_amperes_P1: '',
@@ -152,6 +151,10 @@ const Newtest = () => {
       Resistance_bt_P2: '',
       Perte_charge_mesuré_P2: '',
       Impédance_mesuré_P2: '',
+    },
+    Decharges_Partielles: {
+      Tension_applique_ht_17: '',
+      Tension_applique_ht_15: '',
     },
     type: '3phases',
   });
@@ -234,134 +237,149 @@ const Newtest = () => {
     // Impédance_Mesuré_P2: Finaldata.Perte_a_charge.Impédance_mesuré_P2,
   };
   //
-  const [mise_page_data, setmise_page_data] = useState({
-    Bornes: {Borne_jaune: 12, Borne_rouge: 13, Borne_verte: 14},
+  const [mise_data, setmise_data] = useState({
+    Bornes: {Borne_jaune: 14, Borne_rouge: 15, Borne_verte: 16},
     Ratio: {
       //Position 1
       Volts_apluiqés_P1: 1,
-      Volts_ht_P1: 6,
-      Polarité_volts_P1: 6,
+      Volts_ht_P1: 1,
+      Polarité_volts_P1: 1,
       //Position 2
-      Volts_apluiqés_P2: 1,
-      Volts_ht_P2: 6,
-      Polarité_volts_P2: 6,
+      Volts_apluiqés_P2: 2,
+      Volts_ht_P2: 2,
+      Polarité_volts_P2: 2,
     },
     Induit: {
-      // Position 1
-      Fruequence_generatrice_P1: 10,
-      Réactance_ske77_P1: 77,
-      Réactance_ske17_P1: 17,
-      // Position 2
-      Fruequence_generatrice_P2: 12,
-      Réactance_ske77_P2: 17,
-      Réactance_ske17_P2: 37,
+      //Position 1
+      Fréquence_genératrice_P1: 2,
+      Réactance_ske77_P1: 2,
+      Réactance_ske17_P1: 2,
+      //Position 2
+      Fréquence_genératrice_P2: 2,
+      Réactance_ske77_P2: 2,
+      Réactance_ske17_P2: 2,
     },
     Perte_a_Vide: {
-      //Position 1
-      Multiplicateur_volts_P1: 10,
-      Multiplicateur_amprers_P1: 12,
-      Perte_table_P1: 1,
-      riv_P1: 9,
+      multiplicateur_volts_P1: 2,
+      Multiplicateur_amperes_P1: 2,
+      Perte_table_P1: 2,
+      riv_P1: 2,
       //Position 2
-      Multiplicateur_volts_P2: 10,
-      Multiplicateur_amprers_P2: 12,
-      Perte_table_P2: 1,
-      riv_P2: 9,
+      multiplicateur_volts_P2: 2,
+      Multiplicateur_amperes_P2: 2,
+      Perte_table_P2: 2,
+      riv_P2: 2,
     },
     Perte_a_Charge: {
       //Position 1
-      Multiplicateur_volts_P1: 2,
-      Muliplicateur_amperes_P1: 2,
-      Perte_table_P1: 2,
+      Multiplicateur_volts_charge_P1: 2,
+      Multiplicateur_amperes_charge_P1: 2,
+      Perte_table_charge_P1: 2,
       Courant_de_correction_P1: 2,
       Perte_table_totale_P1: 2,
       Courant_appliquié_transfo_P1: 2,
       Courant_appliqué_appareil_P1: 2,
       No_cavalier_P1: 2,
       Perte_cavalier_P1: 2,
+      Resistance_ht_P1: 2,
+      Resistance_bt_P1: 2,
       //Position 2
-      Multiplicateur_volts_P2: 24,
-      Muliplicateur_amperes_P2: 24,
-      Perte_table_P2: 24,
-      Courant_de_correction_P2: 24,
-      Perte_table_totale_P2: 24,
-      Courant_appliquié_transfo_P2: 22,
-      Courant_appliqué_appareil_P2: 21,
-      No_cavalier_P2: 24,
-      Perte_cavalier_P2: 26,
+      Multiplicateur_volts_charge_P2: 2,
+      Multiplicateur_amperes_charge_P2: 2,
+      Perte_table_charge_P2: 2,
+      Courant_de_correction_P2: 2,
+      Perte_table_totale_P2: 2,
+      Courant_appliquié_transfo_P2: 2,
+      Courant_appliqué_appareil_P2: 2,
+      No_cavalier_P2: 2,
+      Perte_cavalier_P2: 2,
+      Resistance_ht_P2: 2,
+      Resistance_bt_P2: 2,
+    },
+    Decharges_Partielles: {
+      Tension_applique_ht_17: 2,
+      Tension_applique_ht_15: 2,
+      Valeur_dp_15s: 2,
+      Valeur_dp_30s: 2,
+      Valeur_dp_45s: 2,
+      Valeur_dp_60s: 2,
+
+      Valeur_dp_75s: 2,
+      Valeur_dp_90s: 2,
+      Valeur_dp_105s: 2,
+      Valeur_dp_120s: 2,
+
+      Valeur_dp_135s: 2,
+      Valeur_dp_150s: 2,
+      Valeur_dp_165s: 2,
+      Valeur_dp_180s: 2,
     },
     state: false,
   });
   const initial_mise_placefrom_values = {
     //bornes initial data
-    Borne_Rouge: mise_page_data.Bornes.Borne_rouge,
-    Borne_Verte: mise_page_data.Bornes.Borne_verte,
-    Borne_Jaune: mise_page_data.Bornes.Borne_jaune,
+    Borne_Rouge: mise_data.Bornes.Borne_rouge,
+    Borne_Verte: mise_data.Bornes.Borne_verte,
+    Borne_Jaune: mise_data.Bornes.Borne_jaune,
     //ratio initial data
     //P1
-    Volts_Apluiqés_P1: mise_page_data.Ratio.Volts_apluiqés_P1,
-    Volts_HT_P1: mise_page_data.Ratio.Volts_ht_P1,
-    Polarité_Volts_P1: mise_page_data.Ratio.Polarité_volts_P1,
+    Volts_Apluiqés_P1: mise_data.Ratio.Volts_apluiqés_P1,
+    Volts_HT_P1: mise_data.Ratio.Volts_ht_P1,
+    Polarité_Volts_P1: mise_data.Ratio.Polarité_volts_P1,
     //P2
-    Volts_Apluiqés_P2: mise_page_data.Ratio.Volts_apluiqés_P2,
-    Volts_HT_P2: mise_page_data.Ratio.Volts_ht_P2,
-    Polarité_Volts_P2: mise_page_data.Ratio.Polarité_volts_P2,
+    Volts_Apluiqés_P2: mise_data.Ratio.Volts_apluiqés_P2,
+    Volts_HT_P2: mise_data.Ratio.Volts_ht_P2,
+    Polarité_Volts_P2: mise_data.Ratio.Polarité_volts_P2,
 
     // Induit
     //P1
-    Fréquence_Genératrice_P1: mise_page_data.Induit.Fruequence_generatrice_P1,
-    Réactance_SKE77_P1: mise_page_data.Induit.Réactance_ske77_P1,
-    Réactance_SKE17_P1: mise_page_data.Induit.Réactance_ske77_P1,
+    Fréquence_Genératrice_P1: mise_data.Induit.Fréquence_genératrice_P1,
+    Réactance_SKE77_P1: mise_data.Induit.Réactance_ske77_P1,
+    Réactance_SKE17_P1: mise_data.Induit.Réactance_ske17_P1,
     //P2
-    Fréquence_Genératrice_P2: mise_page_data.Induit.Fruequence_generatrice_P2,
-    Réactance_SKE77_P2: mise_page_data.Induit.Réactance_ske77_P2,
-    Réactance_SKE17_P2: mise_page_data.Induit.Réactance_ske77_P2,
+    Fréquence_Genératrice_P2: mise_data.Induit.Fréquence_genératrice_P2,
+    Réactance_SKE77_P2: mise_data.Induit.Réactance_ske77_P2,
+    Réactance_SKE17_P2: mise_data.Induit.Réactance_ske17_P2,
     // Perte a vide
     //P1
-    Multiplicateur_Volts_P1:
-      mise_page_data.Perte_a_Vide.Multiplicateur_volts_P1,
-    Multiplicateur_Amprers_P1:
-      mise_page_data.Perte_a_Vide.Multiplicateur_amprers_P1,
-    Perte_Table_P1: mise_page_data.Perte_a_Vide.Perte_table_P1,
-    Riv_P1: mise_page_data.Perte_a_Vide.riv_P1,
+    Multiplicateur_Volts_P1: mise_data.Perte_a_Vide.multiplicateur_volts_P1,
+    Multiplicateur_Amprers_P1: mise_data.Perte_a_Vide.Multiplicateur_amperes_P1,
+    Perte_Table_P1: mise_data.Perte_a_Vide.Perte_table_P1,
+    Riv_P1: mise_data.Perte_a_Vide.riv_P1,
     //P2
-    Multiplicateur_Volts_P2:
-      mise_page_data.Perte_a_Vide.Multiplicateur_volts_P2,
-    Multiplicateur_Amprers_P2:
-      mise_page_data.Perte_a_Vide.Multiplicateur_amprers_P2,
-    Perte_Table_P2: mise_page_data.Perte_a_Vide.Perte_table_P2,
-    Riv_P2: mise_page_data.Perte_a_Vide.riv_P2,
+    Multiplicateur_Volts_P2: mise_data.Perte_a_Vide.multiplicateur_volts_P2,
+    Multiplicateur_Amprers_P2: mise_data.Perte_a_Vide.Multiplicateur_amperes_P2,
+    Perte_Table_P2: mise_data.Perte_a_Vide.Perte_table_P2,
+    Riv_P2: mise_data.Perte_a_Vide.riv_P2,
     // Perte a Charge
     //P1
     Multiplicateur_Volts_Charge_P1:
-      mise_page_data.Perte_a_Charge.Multiplicateur_volts_P1,
+      mise_data.Perte_a_Charge.Multiplicateur_volts_charge_P1,
     Muliplicateur_Amperes_Charge_P1:
-      mise_page_data.Perte_a_Charge.Muliplicateur_amperes_P1,
-    Perte_Table__Charge_P1: mise_page_data.Perte_a_Charge.Perte_table_P1,
-    Courant_de_Correction_P1:
-      mise_page_data.Perte_a_Charge.Courant_de_correction_P1,
-    Perte_Table_Totale_P1: mise_page_data.Perte_a_Charge.Perte_table_totale_P1,
+      mise_data.Perte_a_Charge.Multiplicateur_amperes_charge_P1,
+    Perte_Table__Charge_P1: mise_data.Perte_a_Charge.Perte_table_charge_P1,
+    Courant_de_Correction_P1: mise_data.Perte_a_Charge.Courant_de_correction_P1,
+    Perte_Table_Totale_P1: mise_data.Perte_a_Charge.Perte_table_totale_P1,
     Courant_Appliquié_Transfo_P1:
-      mise_page_data.Perte_a_Charge.Courant_appliquié_transfo_P1,
+      mise_data.Perte_a_Charge.Courant_appliquié_transfo_P1,
     Courant_Appliqué_Appareil_P1:
-      mise_page_data.Perte_a_Charge.Courant_appliqué_appareil_P1,
-    No_Cavalier_P1: mise_page_data.Perte_a_Charge.No_cavalier_P1,
-    Perte_Cavalier_P1: mise_page_data.Perte_a_Charge.Perte_cavalier_P1,
+      mise_data.Perte_a_Charge.Courant_appliqué_appareil_P1,
+    No_Cavalier_P1: mise_data.Perte_a_Charge.No_cavalier_P1,
+    Perte_Cavalier_P1: mise_data.Perte_a_Charge.Perte_cavalier_P1,
     //P2
     Multiplicateur_Volts_Charge_P2:
-      mise_page_data.Perte_a_Charge.Multiplicateur_volts_P2,
+      mise_data.Perte_a_Charge.Multiplicateur_volts_charge_P2,
     Muliplicateur_Amperes_Charge_P2:
-      mise_page_data.Perte_a_Charge.Muliplicateur_amperes_P2,
-    Perte_Table__Charge_P2: mise_page_data.Perte_a_Charge.Perte_table_P2,
-    Courant_de_Correction_P2:
-      mise_page_data.Perte_a_Charge.Courant_de_correction_P2,
-    Perte_Table_Totale_P2: mise_page_data.Perte_a_Charge.Perte_table_totale_P2,
+      mise_data.Perte_a_Charge.Multiplicateur_amperes_charge_P2,
+    Perte_Table__Charge_P2: mise_data.Perte_a_Charge.Perte_table_charge_P2,
+    Courant_de_Correction_P2: mise_data.Perte_a_Charge.Courant_de_correction_P2,
+    Perte_Table_Totale_P2: mise_data.Perte_a_Charge.Perte_table_totale_P2,
     Courant_Appliquié_Transfo_P2:
-      mise_page_data.Perte_a_Charge.Courant_appliquié_transfo_P2,
+      mise_data.Perte_a_Charge.Courant_appliquié_transfo_P2,
     Courant_Appliqué_Appareil_P2:
-      mise_page_data.Perte_a_Charge.Courant_appliqué_appareil_P2,
-    No_Cavalier_P2: mise_page_data.Perte_a_Charge.No_cavalier_P2,
-    Perte_Cavalier_P2: mise_page_data.Perte_a_Charge.Perte_cavalier_P2,
+      mise_data.Perte_a_Charge.Courant_appliqué_appareil_P2,
+    No_Cavalier_P2: mise_data.Perte_a_Charge.No_cavalier_P2,
+    Perte_Cavalier_P2: mise_data.Perte_a_Charge.Perte_cavalier_P2,
   };
 
   const [Commandes, setModels] = useState([
@@ -375,7 +393,7 @@ const Newtest = () => {
     {id: '8', numcommand: 'CP20141', numproduit: 'Produit8'},
     {id: '9', numcommand: 'CP20142', numproduit: 'Produit9'},
   ]);
-
+  const [modal, setmodal] = useState(false);
   const Haut = () => {
     const [miseenplacemodal, setmiseenplacemodal] = useState(false);
 
@@ -385,20 +403,23 @@ const Newtest = () => {
       setmiseenplacemodal(false);
       form.resetFields();
     };
-
+    const handleSubmit = () => {
+      setmiseenplacemodal(false);
+      form.resetFields();
+    };
     return (
       <Collapse
-        defaultActiveKey={['0']}
+        defaultActiveKey={['1']}
         style={
-          mise_page_data.state == true
+          mise_data.state == true
             ? {background: 'linear-gradient(90deg, #446960 0%, #348181 100%)'}
             : {}
         }>
         <Panel
-          header="Detaille de la Commande"
           key="1"
+          header="Detaille de la Commande"
           extra={
-            mise_page_data.state == true ? (
+            mise_data.state == true ? (
               <CheckOutlined style={{color: '#00ffff', fontSize: '20px'}} />
             ) : (
               <Alert
@@ -412,7 +433,7 @@ const Newtest = () => {
             )
           }>
           <div className="flex-div" style={{justifyContent: 'center'}}>
-            {mise_page_data.state == true && (
+            {mise_data.state == true && (
               <Button
                 onClick={() => setmiseenplacemodal(true)}
                 type="link"
@@ -427,7 +448,7 @@ const Newtest = () => {
             centered
             onCancel={handleCancel}
             visible={miseenplacemodal}
-            width={600}
+            width={500}
             footer={[
               <Button form="mise_en_placeform" type="primary" htmlType="submit">
                 Enregistrer
@@ -440,9 +461,10 @@ const Newtest = () => {
               </Button>,
             ]}>
             <Form
+              action="/"
               id="mise_en_placeform"
               form={form}
-              onFinish={handleCancel}
+              onFinish={handleSubmit}
               layout="vertical"
               initialValues={initial_mise_placefrom_values}>
               <Updat_mise_place_modal />
@@ -484,7 +506,7 @@ const Newtest = () => {
             </Card>
           </div>
         </Panel>
-        <Row className="flex-div" style={{padding: '15px'}}>
+        <div className="flex-div" style={{padding: '15px'}}>
           <Col flex={4}>
             <span> Temps : 12 + 15 MIN </span>
           </Col>
@@ -498,12 +520,12 @@ const Newtest = () => {
               />
             </Space>
           </Col>
-        </Row>
+        </div>
       </Collapse>
     );
   };
   const UpdatemiseData = (type, newData) => {
-    setmise_page_data(data => {
+    setmise_data(data => {
       return {...data, [type]: newData};
     });
   };
@@ -511,9 +533,10 @@ const Newtest = () => {
     if (current < 8) {
       setCurrent(current + 1);
     } else {
-      message.success('Test Finit!');
       UpdatemiseData('state', true);
       form.resetFields();
+      setmodal(!modal);
+      message.success('Test Finit!');
       console.log(Finaldata);
     }
   };
@@ -673,7 +696,12 @@ const Newtest = () => {
                 <Col flex={1}>
                   <Steps size="small" current={current} direction="vertical">
                     {steps.map(item => (
-                      <Step id="newtest" key={item.title} title={item.title} />
+                      <Step
+                        key={item.title}
+                        id="newtest"
+                        key={item.title}
+                        title={item.title}
+                      />
                     ))}
                   </Steps>
                 </Col>
@@ -681,18 +709,20 @@ const Newtest = () => {
                   <Form
                     form={form}
                     layout="vertical"
-                    name="control-ref"
+                    name="results_form"
                     onFinish={next}
                     initialValues={initial_testform_values}>
                     <div className="steps-content">
                       <EtapeContent
                         UpdateData={UpdateData}
                         etapeName={steps[current].content}
-                        miseenplaceok={mise_page_data}
+                        miseenplaceok={mise_data}
                         Finaldata={Finaldata}
                       />
                     </div>
-                    <div className="steps-action">
+                    <div
+                      className="steps-action"
+                      style={{display: 'flex', justifyContent: 'end'}}>
                       <Form.Item>
                         {current > 0 && (
                           <Button
@@ -714,10 +744,11 @@ const Newtest = () => {
                       </Form.Item>
                     </div>
                   </Form>
-                  {Finaldata.Perte_a_charge.Resistance_ht_P2}
-                  {Finaldata.Bornes.Borne_rouge}
-                  {Finaldata.Bornes.Borne_verte}
-                  {Finaldata.Bornes.Borne_jaune}
+                  <Modalnewtest
+                    modal={modal}
+                    toggle={() => setmodal(!modal)}
+                    direction="/"
+                  />
                 </Col>
               </Row>
             </div>

@@ -1,0 +1,16 @@
+.modalContainer {
+  min-width: 420px;
+  border: none;
+  .modalHeader {
+    background: linear-gradient(180deg, #171761 0%, #009999 100%);
+    color: white;
+  }
+  .modalBody {
+    background: linear-gradient(180deg, #171761 0%, #009999 100%);
+    color: white;
+  }
+  .modalFooter {
+    background: #009999;
+    color: white;
+  }
+}

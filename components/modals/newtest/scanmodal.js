@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -11,15 +10,18 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
+import {Button} from 'antd';
 
 const ModalExample = props => {
-  const {modal, toggle, className} = props;
+  const {modal, toggle, direction} = props;
 
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle}>
         <Form action="/newtest">
-          <ModalHeader>Scanner</ModalHeader>
+          <ModalHeader>
+            <h4 style={{color: 'black'}}> Scanner</h4>
+          </ModalHeader>
           <ModalBody>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
               <Col sm={10}>
@@ -38,7 +40,7 @@ const ModalExample = props => {
             <Button color="info" type="submit">
               Commencer le Test
             </Button>{' '}
-            <Button color="secondary" onClick={toggle}>
+            <Button href={direction} color="secondary" onClick={toggle}>
               Cancel
             </Button>
           </ModalFooter>
