@@ -450,10 +450,15 @@ const Newtest = () => {
             visible={miseenplacemodal}
             width={500}
             footer={[
-              <Button form="mise_en_placeform" type="primary" htmlType="submit">
+              <Button
+                key="1"
+                form="mise_en_placeform"
+                type="primary"
+                htmlType="submit">
                 Enregistrer
               </Button>,
               <Button
+                key="2"
                 form="mise_en_placeform"
                 style={{margin: '0 8px'}}
                 onClick={handleCancel}>
@@ -511,7 +516,7 @@ const Newtest = () => {
             <span> Temps : 12 + 15 MIN </span>
           </Col>
           <Col flex={1}>
-            <Space>Temperature Affectée : ""</Space>
+            <Space>Temperature Affectée : </Space>
             <Space>
               Temperature Non Affectée :{' '}
               <InputNumber
@@ -696,12 +701,7 @@ const Newtest = () => {
                 <Col flex={1}>
                   <Steps size="small" current={current} direction="vertical">
                     {steps.map(item => (
-                      <Step
-                        key={item.title}
-                        id="newtest"
-                        key={item.title}
-                        title={item.title}
-                      />
+                      <Step key={item.title} id="newtest" title={item.title} />
                     ))}
                   </Steps>
                 </Col>

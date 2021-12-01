@@ -29,26 +29,18 @@ export default function Home() {
               <Basepage className="base-page">
                 <main className="Homemain">
                   <div>
-                    <h1>Bienvenue dans l'Application d'essai</h1>
+                    <h1>Bienvenue dans l&apos;Application d&apos;essai</h1>
                     <p className="description">
-                      Le menu vous permets d'acceder a plusieurs
+                      Le menu vous permets d&apos;acceder a plusieurs
                       fonctionnalites. Vous pouvez lancer un nouvel essai en
-                      appuyant sur "Nouveau Test". Afin de consulter d'anciens
-                      essais effectues. Vous pouvez lancer un nouvel essai en
-                      appuyant sur "Nouveau Test". Afin de consulter d'anciens
-                      essais effectues Afin de consulter d'anciens essais
-                      effectues. Vous pouvez lancer un nouvel essai en appuyant
-                      sur "Nouveau Test". Afin de consulter d'anciens essais
-                      effectues Afin de consulter d'anciens essais effectues.
-                      Vous pouvez lancer un nouvel essai en appuyant sur
-                      "Nouveau Test". Afin de consulter d'anciens essais
-                      effectues Afin de consulter d'anciens essais effectues.
-                      Vous pouvez lancer un nouvel essai en appuyant sur
-                      "Nouveau Test". Afin de consulter d'anciens essais
-                      effectues Afin de consulter d'anciens essais effectues.
-                      Vous pouvez lancer un nouvel essai en appuyant sur
-                      "Nouveau Test". Afin de consulter d'anciens essais
-                      effectues
+                      appuyant sur &apos;Nouveau Test&apos;. Afin de consulter
+                      d&apos;anciens essais effectues. Vous pouvez lancer un
+                      nouvel essai en appuyant sur &apos;Nouveau Test&apos;.
+                      Afin de consulter d&apos;anciens essais effectues Afin de
+                      consulter d&apos;anciens essais effectues. Vous pouvez
+                      lancer un nouvel essai en appuyant sur &apos;Nouveau
+                      Test&apos;. Afin de consulter d&apos;anciens essais
+                      effectues Afin de consulter
                     </p>
                   </div>
                   <div className="grid">
@@ -63,7 +55,7 @@ export default function Home() {
                       <>
                         <Link href="/editeur">
                           <a className={`nav-link port-navbar-link card`}>
-                            <h2>Editeur d'etape</h2>
+                            <h2>Editeur d&apos;etape</h2>
                           </a>
                         </Link>
                       </>

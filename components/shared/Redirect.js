@@ -10,7 +10,7 @@ const Redirect = ({to, ssr}) => {
     } else {
       router.push(to);
     }
-  }, []);
+  });
 
   return null;
 };

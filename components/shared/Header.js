@@ -104,7 +104,7 @@ const Header = ({user, loading, classNameheader}) => {
         </NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavbarText>Application d'essai</NavbarText>
+            <NavbarText>Application d&apos;essai</NavbarText>
           </NavItem>
         </Nav>
         <NavbarToggler onClick={toggle} />
