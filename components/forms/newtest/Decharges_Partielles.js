@@ -3,147 +3,123 @@ import {Form, Input, Space, Button, Row} from 'antd';
 import {PlusOutlined, MinusCircleOutlined} from '@ant-design/icons';
 
 export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
-  //const [chance, setchance] = useState(0);
-  let chance = 0;
+  const [stopaddrow, setstopaddrow] = useState(false);
   return (
     <div>
-      <Row style={{justifyContent: 'center'}}>
-        <Form.Item
-          name=" TENSION APPLIQUÉ HAUTE TENSION 1.7pu (V)"
-          label=" Tension appliqué haute tension 1.7pu (V)"
-          style={{marginBottom: 5, width: '27%'}}
-          rules={[
-            {
-              required: true,
-              message: 'Champ Requis',
-            },
-          ]}>
-          <Input onChange={e => UpdateData('Borne_rouge', e.target.value)} />
-        </Form.Item>
+      <Row style={{justifyContent: 'center', marginBottom: '20px'}}>
+        <h3>Decharges Partielles</h3>
       </Row>
-      <Row style={{justifyContent: 'center'}}>
-        <Form.Item
-          name=" TENSION APPLIQUÉ HAUTE TENSION 1.5pu (V)"
-          label=" Tension appliqué haute tension 1.5pu (V)"
-          style={{marginBottom: 5, width: '27%'}}
-          rules={[
-            {
-              required: true,
-              message: 'Champ Requis',
-            },
-          ]}>
-          <Input onChange={e => UpdateData('Borne_verte', e.target.value)} />
-        </Form.Item>
-      </Row>
-      <Row style={{justifyContent: 'center'}}>
-        <Form.Item
-          label="15s"
-          name="15s"
-          style={{width: '10%', marginRight: '5px'}}
-          rules={[{required: true, message: 'Missing price'}]}>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="30s"
-          name="30s"
-          style={{width: '10%', marginRight: '5px'}}
-          rules={[{required: true, message: 'Missing price'}]}>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="45s"
-          name="45s"
-          style={{width: '10%', marginRight: '5px'}}
-          rules={[{required: true, message: 'Missing price'}]}>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="60s"
-          name="60s"
-          style={{width: '10%', marginRight: '5px'}}
-          rules={[{required: true, message: 'Missing price'}]}>
-          <Input />
-        </Form.Item>
-      </Row>
-      {chance > 0 && (
+      <div
+        style={{
+          background: '#24717400',
+          padding: '5px',
+          boxShadow: '0 0 15px #00806e',
+        }}>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="75s"
-            name="75s"
-            style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="90s"
-            name="90s"
-            style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="105s"
-            name="105s"
-            style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="120s"
-            name="120s"
-            style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
-          </Form.Item>
+            name=" TENSION APPLIQUÉ HAUTE TENSION 1.7pu (V)"
+            label=" Tension appliqué haute tension 1.7pu (V)"
+            style={{marginBottom: 5}}></Form.Item>
         </Row>
-      )}
-      {chance > 1 && (
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="135s"
-            name="135s"
+            name=" TENSION APPLIQUÉ HAUTE TENSION 1.5pu (V)"
+            label=" Tension appliqué haute tension 1.5pu (V)"
+            style={{marginBottom: 5}}></Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item
             style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
+            label="15 Sec"
+            name="15"
+            rules={[{required: true, message: 'Champ Requis'}]}>
+            <Input placeholder="10 Sec" />
           </Form.Item>
           <Form.Item
-            label="150s"
-            name="150s"
             style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
+            label="30 Sec"
+            name="30"
+            rules={[{required: true, message: 'Champ Requis'}]}>
+            <Input placeholder="30 Sec" />
           </Form.Item>
           <Form.Item
-            label="165s"
-            name="165s"
             style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
+            label="45 Sec"
+            name="45"
+            rules={[{required: true, message: 'Champ Requis'}]}>
+            <Input placeholder="45 Sec" />
           </Form.Item>
           <Form.Item
-            label="180s"
-            name="180s"
             style={{width: '10%', marginRight: '5px'}}
-            rules={[{required: true, message: 'Missing price'}]}>
-            <Input />
+            label="60 Sec"
+            name="60"
+            rules={[{required: true, message: 'Champ Requis'}]}>
+            <Input placeholder="60 Sec" />
           </Form.Item>
         </Row>
-      )}
+        <Form.List name="" style={{width: '50%'}}>
+          {(fields, {add, remove}) => (
+            <>
+              {fields.map(({key, name, fieldKey, ...restField}) => (
+                <Row style={{justifyContent: 'center'}}>
+                  <Form.Item
+                    {...restField}
+                    style={{width: '10%', marginRight: '5px'}}
+                    label={[name == 0 ? '75 Sec' : '135 Sec']}
+                    name={[name, name == 0 ? '75' : '135']}
+                    fieldKey={[fieldKey, 's']}
+                    rules={[{required: true, message: 'Champ Requis'}]}>
+                    <Input placeholder={name == 0 ? '75 Sec' : '135 Sec'} />
+                  </Form.Item>
+                  <Form.Item
+                    {...restField}
+                    style={{width: '10%', marginRight: '5px'}}
+                    label={[name == 0 ? '90 Sec' : '150 Sec']}
+                    name={[name, name == 0 ? '90' : '150']}
+                    fieldKey={[fieldKey, 's']}
+                    rules={[{required: true, message: 'Champ Requis'}]}>
+                    <Input placeholder={[name == 0 ? '90 Sec' : '150 Sec']} />
+                  </Form.Item>
+                  <Form.Item
+                    {...restField}
+                    style={{width: '10%', marginRight: '5px'}}
+                    label={[name == 0 ? '105 Sec' : '165 Sec']}
+                    name={[name, name == 0 ? '105' : '165']}
+                    fieldKey={[fieldKey, 's']}
+                    rules={[{required: true, message: 'Champ Requis'}]}>
+                    <Input placeholder={[name == 0 ? '105 Sec' : '165 Sec']} />
+                  </Form.Item>
+                  <Form.Item
+                    {...restField}
+                    style={{width: '10%', marginRight: '5px'}}
+                    label={[name == 0 ? '120 Sec' : '180 Sec']}
+                    name={[name, name == 0 ? '120' : '180']}
+                    fieldKey={[fieldKey, 's']}
+                    rules={[{required: true, message: 'Champ Requis'}]}>
+                    <Input placeholder={[name == 0 ? '120 Sec' : '180 Sec']} />
+                  </Form.Item>
+                  <MinusCircleOutlined onClick={() => remove(name)} />
 
-      <Row style={{justifyContent: 'center'}}>
-        <Form.Item style={{marginBottom: 5, width: '30%'}}>
-          <Button
-            type="dashed"
-            block
-            icon={chance > 1 ? <PlusOutlined /> : <PlusOutlined />}
-            onClick={() => {
-              chance = chance + 1;
-            }}>
-            Add sights
-          </Button>
-        </Form.Item>
-      </Row>
-      {chance}
+                  {name < 1 ? setstopaddrow(false) : setstopaddrow(true)}
+                </Row>
+              ))}
+              {!stopaddrow && (
+                <Row style={{justifyContent: 'center'}}>
+                  <Form.Item>
+                    <Button
+                      type="dashed"
+                      onClick={() => add()}
+                      block
+                      icon={<PlusOutlined />}>
+                      Add field
+                    </Button>
+                  </Form.Item>
+                </Row>
+              )}
+            </>
+          )}
+        </Form.List>
+      </div>
     </div>
   );
 }

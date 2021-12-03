@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
@@ -21,8 +21,10 @@ import {
   Collapse,
   Modal,
   Alert,
+  Input,
   InputNumber,
   Space,
+  Tag,
 } from 'antd';
 import {CheckOutlined} from '@ant-design/icons';
 import Marquee from 'react-fast-marquee';
@@ -56,8 +58,16 @@ const steps = [
     content: 'Pertes a Vide',
   },
   {
+    title: 'RIV ',
+    content: 'RIV',
+  },
+  {
     title: 'Pertes a Charge',
     content: 'Pertes a Charge',
+  },
+  {
+    title: 'Facteur de dissipation',
+    content: 'Facteur de dissipation',
   },
 
   {
@@ -73,9 +83,11 @@ const steps = [
 
 const Newtest = () => {
   const {data, loading} = useGetUser();
-  const [current, setCurrent] = useState(7);
+  const [current, setCurrent] = useState(0);
   const [form] = Form.useForm();
   const [historiquemodal, sethistoriqueModal] = useState(false);
+  const [temperature_affected, settemperature_affected] = useState('');
+  const [temperature_noaffected, settemperature_noaffected] = useState(5);
   const router = useRouter();
   const noCommande = router.query.numerocommande;
 
@@ -238,7 +250,7 @@ const Newtest = () => {
   };
   //
   const [mise_data, setmise_data] = useState({
-    Bornes: {Borne_jaune: 14, Borne_rouge: 15, Borne_verte: 16},
+    Bornes: {Borne_jaune: 1000, Borne_rouge: 600, Borne_verte: 150},
     Ratio: {
       //Position 1
       Volts_apluiqés_P1: 1,
@@ -314,7 +326,7 @@ const Newtest = () => {
       Valeur_dp_165s: 2,
       Valeur_dp_180s: 2,
     },
-    state: false,
+    state: true,
   });
   const initial_mise_placefrom_values = {
     //bornes initial data
@@ -511,20 +523,54 @@ const Newtest = () => {
             </Card>
           </div>
         </Panel>
-        <div className="flex-div" style={{padding: '15px'}}>
-          <Col flex={4}>
-            <span> Temps : 12 + 15 MIN </span>
-          </Col>
-          <Col flex={1}>
-            <Space>Temperature Affectée : </Space>
-            <Space>
-              Temperature Non Affectée :{' '}
-              <InputNumber
-                defaultValue={0}
-                formatter={value => ` ${value}°C`}
-              />
-            </Space>
-          </Col>
+        <div>
+          <Row
+            align="middle"
+            justify="space-around"
+            style={{padding: '5px 10px', background: 'white'}}>
+            <Col span={5}>
+              <span>
+                {' '}
+                Temps : {mise_data.state == false ? 12 + 15 : 12} MIN{' '}
+              </span>
+            </Col>
+            {mise_data.state == true && (
+              <Col span={7}>
+                <Space>
+                  Bornes :{' '}
+                  <Tag color="rgb(207 231 12)">
+                    {mise_data.Bornes.Borne_jaune}
+                  </Tag>
+                  <Tag color="#f50">{mise_data.Bornes.Borne_rouge}</Tag>
+                  <Tag color="#87d068">{mise_data.Bornes.Borne_verte}</Tag>
+                </Space>
+              </Col>
+            )}
+
+            <Col span={12} flex>
+              <Row justify="end">
+                <Space style={{marginRight: '10px'}}>
+                  Temperature Affectée :
+                  {temperature_affected == '' ? (
+                    <Button
+                      size="small"
+                      onClick={() => {
+                        settemperature_affected(temperature_noaffected);
+                      }}>
+                      Affecter
+                    </Button>
+                  ) : (
+                    <Tag color="blue">{` ${temperature_affected}°C`}</Tag>
+                  )}
+                </Space>
+
+                <Space>
+                  Temperature Non Affectée :
+                  <InputNumber formatter={value => ` ${value}°C`} />
+                </Space>
+              </Row>
+            </Col>
+          </Row>
         </div>
       </Collapse>
     );
@@ -534,8 +580,18 @@ const Newtest = () => {
       return {...data, [type]: newData};
     });
   };
+  useEffect(() => {
+    const filter = () => {
+      if (mise_data.state == true) {
+        return (steps = steps.filter(
+          step => !step.content.includes('Placer Borne')
+        ));
+      }
+    };
+    filter();
+  }, []);
   const next = () => {
-    if (current < 8) {
+    if (current < steps.length - 1) {
       setCurrent(current + 1);
     } else {
       UpdatemiseData('state', true);
