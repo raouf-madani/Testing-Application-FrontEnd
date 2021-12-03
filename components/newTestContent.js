@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Alert} from 'antd';
 // import TemperatureForm from '@/components/forms/newtest/temperature';
 import BornesForm from '@/components/forms/newtest/Bornes';
 import Ratio_PolariteForm from '@/components/forms/newtest/Ratio_Polarite';
 import InduitForm from '@/components/forms/newtest/Induit';
 import HipotForm from '@/components/forms/newtest/Hipot';
-import Perte_a_ChargeForm from '@/components/forms/newtest/Perte_a_charge';
 import Perte_a_VideForm from '@/components/forms/newtest/Perte_a_vide';
-import Decharges_Partielles from '@/components/forms/newtest/Decharges_Partielles';
+import RivForm from '@/components/forms/newtest/RIV_Form';
+import Perte_a_ChargeForm from '@/components/forms/newtest/Perte_a_charge';
+import Facteur_DissipationForm from '@/components/forms/newtest/Facteur_dissipation';
+import Decharges_PartiellesForm from '@/components/forms/newtest/Decharges_Partielles';
 import SignatureForm from '@/components/forms/newtest/Signature';
 
 function newTestContent({etapeName, UpdateData, miseenplaceok}) {
+  const [chance, setchance] = useState(0);
   const NewTestHome = () => {
     return miseenplaceok.state === true ? (
       <Alert
@@ -58,6 +61,8 @@ function newTestContent({etapeName, UpdateData, miseenplaceok}) {
           miseenplaceok={miseenplaceok}
         />
       );
+    case 'RIV':
+      return <RivForm UpdateData={UpdateData} />;
     case 'Pertes a Charge':
       return (
         <Perte_a_ChargeForm
@@ -65,12 +70,16 @@ function newTestContent({etapeName, UpdateData, miseenplaceok}) {
           miseenplaceok={miseenplaceok}
         />
       );
+    case 'Facteur de dissipation':
+      return <Facteur_DissipationForm />;
 
     case 'Décharges Partielles':
       return (
-        <Decharges_Partielles
+        <Decharges_PartiellesForm
           UpdateData={UpdateData}
           miseenplaceok={miseenplaceok}
+          chance={chance}
+          setchance={setchance}
         />
       );
 

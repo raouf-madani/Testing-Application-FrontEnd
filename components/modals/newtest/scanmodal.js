@@ -10,7 +10,7 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
-import {Button} from 'antd';
+import {Button} from 'reactstrap';
 
 const ModalExample = props => {
   const {modal, toggle, direction} = props;
@@ -37,10 +37,10 @@ const ModalExample = props => {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="info" type="submit">
+            <Button color="info" outline type="submit">
               Commencer le Test
             </Button>{' '}
-            <Button href={direction} color="secondary" onClick={toggle}>
+            <Button href={direction} color="danger" outline onClick={toggle}>
               Cancel
             </Button>
           </ModalFooter>
