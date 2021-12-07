@@ -1,18 +1,27 @@
 import React, {useState} from 'react';
-import {Form, Input, Button, Select, Card, Space, Radio, Row, Col} from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Select,
+  Card,
+  Space,
+  Radio,
+  Row,
+  Col,
+  Divider,
+} from 'antd';
 
 export default function Bornes({UpdateData, miseenplaceok}) {
   return (
-    <div>
-      <Row style={{justifyContent: 'center', marginBottom: '20px'}}>
+    <div className="Containertest">
+      <Divider
+        dashed
+        orientation="left"
+        style={{color: '#34b1ab', marginBottom: '40px'}}>
         <h3>Placement des Bornes</h3>
-      </Row>
-      <div
-        style={{
-          background: '#24717400',
-          padding: '10px',
-          boxShadow: '0 0 15px #00806e',
-        }}>
+      </Divider>
+      <div>
         <Row style={{justifyContent: 'space-around'}}>
           <Col>
             <Card title="Borne Rouge" bordered={false} style={{width: '200px'}}>

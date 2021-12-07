@@ -51,3 +51,16 @@ h6 {
   > .ant-steps-item-title {
   color: rgba(248, 242, 242, 0.85);
 }
+
+.ant-tag {
+  display: flex;
+  align-items: center;
+}
+.ant-form-item-label > label {
+  color: #2125299e;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: #28ad10;
+  top: -3.5px;
+}

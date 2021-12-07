@@ -1,18 +1,16 @@
 import React, {useState} from 'react';
-import {Form, Input, Row} from 'antd';
+import {Form, Input, Row, Divider} from 'antd';
 
 export default function Perte_a_vide({UpdateData, miseenplaceok}) {
   return (
-    <div>
-      <Row style={{justifyContent: 'center', marginBottom: '10px'}}>
+    <div className="Containertest">
+      <Divider
+        dashed
+        orientation="left"
+        style={{color: '#34b1ab', marginBottom: '40px'}}>
         <h3>Perte A Vide</h3>
-      </Row>
-      <div
-        style={{
-          background: '#24717400',
-          padding: '10px',
-          boxShadow: '0 0 15px #00806e',
-        }}>
+      </Divider>
+      <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item style={{marginBottom: 0, width: '60%'}}>
             <Form.Item

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo, useMemo} from 'react';
 import Head from 'next/head';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
@@ -26,7 +26,7 @@ import {
   Space,
   Tag,
 } from 'antd';
-import {CheckOutlined} from '@ant-design/icons';
+import {CheckOutlined, CloseCircleOutlined} from '@ant-design/icons';
 import Marquee from 'react-fast-marquee';
 
 const {Panel} = Collapse;
@@ -86,13 +86,11 @@ const Newtest = () => {
   const [current, setCurrent] = useState(0);
   const [form] = Form.useForm();
   const [historiquemodal, sethistoriqueModal] = useState(false);
-  const [temperature_affected, settemperature_affected] = useState('');
-  const [temperature_noaffected, settemperature_noaffected] = useState(5);
   const router = useRouter();
   const noCommande = router.query.numerocommande;
 
   const [Finaldata, setFinaldata] = useState({
-    temperature: '',
+    temperature_affected: null,
     Bornes: {Borne_jaune: '', Borne_rouge: '', Borne_verte: ''},
     Ratio: {
       //Position 1
@@ -170,84 +168,7 @@ const Newtest = () => {
     },
     type: '3phases',
   });
-  const initial_testform_values = {
-    // //bornes initial data
-    // Borne_Rouge: Finaldata.Bornes.Borne_rouge,
-    // Borne_Verte: Finaldata.Bornes.Borne_verte,
-    // Borne_Jaune: Finaldata.Bornes.Borne_jaune,
-    // //ratio initial data P1
-    // Volts_Apluiqés_P1: Finaldata.Ratio.Volts_apluiqés_P1,
-    // Volts_HT_P1: Finaldata.Ratio.Volts_ht_P1,
-    // Polarité_Volts_P1: Finaldata.Ratio.Polarite_volts_P1,
-    // Volts_HT_Mesuré_P1: Finaldata.Ratio.Volts_ht_mesuré_P1,
-    // Polarité_V_Mesuré_P1: Finaldata.Ratio.Polarite_volts_Mesure_P1,
-    // //ratio initial data P2
-    // Volts_Apluiqés_P2: Finaldata.Ratio.Volts_apluiqés_P2,
-    // Volts_HT_P2: Finaldata.Ratio.Volts_ht_P2,
-    // Polarité_Volts_P2: Finaldata.Ratio.Polarite_volts_P2,
-    // Volts_HT_Mesuré_P2: Finaldata.Ratio.Volts_ht_mesuré_P2,
-    // Polarité_V_Mesuré_P2: Finaldata.Ratio.Polarite_volts_Mesure_P2,
-    // //Induit data P1
-    // Fréquence_Genératrice_P1: Finaldata.Induit.Fréquence_genératrice_P1,
-    // Réactance_SKE77_P1: Finaldata.Induit.Réactance_ske77_P1,
-    // Réactance_SKE17_P1: Finaldata.Induit.Réactance_ske17_P1,
-    // //Induit data P2
-    // Fréquence_Genératrice_P2: Finaldata.Induit.Fréquence_genératrice_P2,
-    // Réactance_SKE77_P2: Finaldata.Induit.Réactance_ske77_P2,
-    // Réactance_SKE17_P2: Finaldata.Induit.Réactance_ske17_P2,
-    // //Perte a vide P1
-    // multiplicateur_Volts_P1: Finaldata.Perte_a_vide.multiplicateur_volts_P1,
-    // Multiplicateur_Amprers_P1: Finaldata.Perte_a_vide.Multiplicateur_amperes_P1,
-    // Perte_Table_P1: Finaldata.Perte_a_vide.Perte_table_P1,
-    // Riv_P1: Finaldata.Perte_a_vide.riv_P1,
-    // Pertes_Mesurés_P1: Finaldata.Perte_a_vide.Pertes_mesurés_P1,
-    // Courant_Excitation_Mesurés_P1:
-    //   Finaldata.Perte_a_vide.Courant_excitation_mesurés_P1,
-    // // Perte a vide P2
-    // multiplicateur_Volts_P2: Finaldata.Perte_a_vide.multiplicateur_volts_P2,
-    // Multiplicateur_Amprers_P2: Finaldata.Perte_a_vide.Multiplicateur_amperes_P2,
-    // Perte_Table_P2: Finaldata.Perte_a_vide.Perte_table_P2,
-    // Riv_P2: Finaldata.Perte_a_vide.riv_P2,
-    // Pertes_Mesurés_P2: Finaldata.Perte_a_vide.Pertes_mesurés_P2,
-    // Courant_Excitation_Mesurés_P2:
-    //   Finaldata.Perte_a_vide.Courant_excitation_mesurés_P2,
-    // // Perte a Charge P1
-    // Multiplicateur_Volts_Charge_P1:
-    //   Finaldata.Perte_a_charge.Multiplicateur_volts_charge_P1,
-    // Muliplicateur_Amperes_Charge_P1:
-    //   Finaldata.Perte_a_charge.Multiplicateur_amperes_charge_P1,
-    // Perte_Table_Charge_P1: Finaldata.Perte_a_charge.Perte_table_charge_P1,
-    // Courant_de_Correction_P1: Finaldata.Perte_a_charge.Courant_de_correction_P1,
-    // Perte_Table_Totale_P1: Finaldata.Perte_a_charge.Perte_table_totale_P1,
-    // Courant_Appliquié_Transfo_P1:
-    //   Finaldata.Perte_a_charge.Courant_appliquié_transfo_P1,
-    // Courant_Appliqué_Appareil_P1:
-    //   Finaldata.Perte_a_charge.Courant_appliqué_appareil_P1,
-    // No_Cavalier_P1: Finaldata.Perte_a_charge.No_cavalier_P1,
-    // Perte_Cavalier_P1: Finaldata.Perte_a_charge.Perte_cavalier_P1,
-    // Resistance_HT_P1: Finaldata.Perte_a_charge.Resistance_ht_P1,
-    // Resistance_BT_P1: Finaldata.Perte_a_charge.Resistance_bt_P1,
-    // Perte_Charge_Mesuré_P1: Finaldata.Perte_a_charge.Perte_charge_mesuré_P1,
-    // Impédance_Mesuré_P1: Finaldata.Perte_a_charge.Impédance_mesuré_P1,
-    // // Perte a Charge P2
-    // Multiplicateur_Volts_Charge_P2:
-    //   Finaldata.Perte_a_charge.Multiplicateur_volts_charge_P2,
-    // Muliplicateur_Amperes_Charge_P2:
-    //   Finaldata.Perte_a_charge.Multiplicateur_amperes_charge_P2,
-    // Perte_Table_Charge_P2: Finaldata.Perte_a_charge.Perte_table_charge_P2,
-    // Courant_de_Correction_P2: Finaldata.Perte_a_charge.Courant_de_correction_P2,
-    // Perte_Table_Totale_P2: Finaldata.Perte_a_charge.Perte_table_totale_P2,
-    // Courant_Appliquié_Transfo_P2:
-    //   Finaldata.Perte_a_charge.Courant_appliquié_transfo_P2,
-    // Courant_Appliqué_Appareil_P2:
-    //   Finaldata.Perte_a_charge.Courant_appliqué_appareil_P2,
-    // No_Cavalier_P2: Finaldata.Perte_a_charge.No_cavalier_P2,
-    // Resistance_HT_P2: Finaldata.Perte_a_charge.Resistance_ht_P2,
-    // Resistance_BT_P2: Finaldata.Perte_a_charge.Resistance_bt_P2,
-    // Perte_Cavalier_P2: Finaldata.Perte_a_charge.Perte_cavalier_P2,
-    // Perte_Charge_Mesuré_P2: Finaldata.Perte_a_charge.Perte_charge_mesuré_P2,
-    // Impédance_Mesuré_P2: Finaldata.Perte_a_charge.Impédance_mesuré_P2,
-  };
+  const initial_testform_values = {};
   //
   const [mise_data, setmise_data] = useState({
     Bornes: {Borne_jaune: 1000, Borne_rouge: 600, Borne_verte: 150},
@@ -406,8 +327,9 @@ const Newtest = () => {
     {id: '9', numcommand: 'CP20142', numproduit: 'Produit9'},
   ]);
   const [modal, setmodal] = useState(false);
-  const Haut = () => {
+  const Haut = ({UpdateData}) => {
     const [miseenplacemodal, setmiseenplacemodal] = useState(false);
+    const [temperature_noaffected, settemperature_noaffected] = useState(null);
 
     const [form] = Form.useForm();
 
@@ -419,9 +341,13 @@ const Newtest = () => {
       setmiseenplacemodal(false);
       form.resetFields();
     };
+    console.log('Haut rundered');
     return (
       <Collapse
-        defaultActiveKey={['1']}
+        defaultActiveKey="1"
+        onChange={key => {
+          console.log(key);
+        }}
         style={
           mise_data.state == true
             ? {background: 'linear-gradient(90deg, #446960 0%, #348181 100%)'}
@@ -444,7 +370,7 @@ const Newtest = () => {
               />
             )
           }>
-          <div className="flex-div" style={{justifyContent: 'center'}}>
+          <Row className="flex-div" style={{justifyContent: 'center'}}>
             {mise_data.state == true && (
               <Button
                 onClick={() => setmiseenplacemodal(true)}
@@ -453,14 +379,15 @@ const Newtest = () => {
                 Mise En Place Du Produit
               </Button>
             )}
-          </div>
-
+          </Row>
           <Modal
             title="Modifier la Mise en place"
             centered
             onCancel={handleCancel}
+            maskClosable={false}
             visible={miseenplacemodal}
-            width={500}
+            width={520}
+            forceRender={true}
             footer={[
               <Button
                 key="1"
@@ -478,7 +405,6 @@ const Newtest = () => {
               </Button>,
             ]}>
             <Form
-              action="/"
               id="mise_en_placeform"
               form={form}
               onFinish={handleSubmit}
@@ -487,57 +413,63 @@ const Newtest = () => {
               <Updat_mise_place_modal />
             </Form>
           </Modal>
+          <Row justify="space-between">
+            <Col key="1" lg={{span: 6}}>
+              <Divider plain>Informations du Model</Divider>
+              <div
+                style={{
+                  padding: '10px',
+                  background: '#d4e9e9',
+                  border: '1px solid black',
+                }}>
+                <Row>Model : 1AE654</Row>
+                <Row>Type : 1Phases</Row>
+                <Row>
+                  Temps de Test: {mise_data.state == false ? 12 + 15 : 12} MIN
+                </Row>
+              </div>
+            </Col>
+            <Divider type="vertical" />
+            <Col key="2" lg={{span: 9}}>
+              <Divider plain>Information de Commande</Divider>
+              <div
+                className="flex-div"
+                style={{
+                  justifyContent: 'space-between',
+                  padding: '10px',
+                  background: '#d4e9e9',
+                  border: '1px solid black',
+                }}>
+                <div>
+                  <Row>#Mo : CP20135</Row>
+                  <Row>Numero de serie : 05</Row>
+                  <Row>Quantity : 4/23</Row>
+                </div>
+                <Divider type="vertical" plain />
 
-          <div className="flex-div" style={{justifyContent: 'space-between'}}>
-            <Card
-              title="Model : 1AE654"
-              extra="Type : 1Phases"
-              style={{width: 300, backgroundColor: '#eee'}}>
-              <div
-                className="flex-div"
-                style={{justifyContent: 'space-between'}}>
-                <p>Temps : 12:00</p>
-                <p>ecoule : 7:00</p>
+                <div>
+                  <Row>Kva : 10</Row>
+                  <Row>Voltage HT : 12470Grdy/7200v</Row>
+                  <Row>Voltage BT : 120/240v</Row>
+                </div>
               </div>
-            </Card>
-            <Card
-              title="Detaille Du Produit"
-              extra={<a href="#">Informations Detaille</a>}
-              style={{width: 400, backgroundColor: '#eee'}}>
-              <div
-                className="flex-div"
-                style={{justifyContent: 'space-between'}}>
-                <p>#Mo : {noCommande}</p>
-                <p>Kva : 10 </p>
-              </div>
-              <div className="flex-div" style={{justifyContent: 'left'}}>
-                <p>Numero de serie : 05 </p>
-                <p>Voltage HT : 12470Grdy/7200v </p>
-              </div>
-              <div
-                className="flex-div"
-                style={{justifyContent: 'space-between'}}>
-                <p>Quantity : 4/23</p>
-                <p>Voltage BT : 120/240v </p>
-              </div>
-            </Card>
-          </div>
+            </Col>
+          </Row>
         </Panel>
-        <div>
+        <div key="2">
           <Row
             align="middle"
-            justify="space-around"
+            justify="space-between"
             style={{padding: '5px 10px', background: 'white'}}>
-            <Col span={5}>
-              <span>
-                {' '}
-                Temps : {mise_data.state == false ? 12 + 15 : 12} MIN{' '}
-              </span>
+            <Col lg={{span: 5}}>
+              <Space>
+                Temps ecoule: {mise_data.state == false ? 12 + 15 : 12} MIN
+              </Space>
             </Col>
             {mise_data.state == true && (
-              <Col span={7}>
+              <Col>
                 <Space>
-                  Bornes :{' '}
+                  Bornes :
                   <Tag color="rgb(207 231 12)">
                     {mise_data.Bornes.Borne_jaune}
                   </Tag>
@@ -547,26 +479,41 @@ const Newtest = () => {
               </Col>
             )}
 
-            <Col span={12} flex>
+            <Col lg={{span: 12}} flex>
               <Row justify="end">
                 <Space style={{marginRight: '10px'}}>
                   Temperature Affectée :
-                  {temperature_affected == '' ? (
+                  {Finaldata.temperature_affected == null ? (
                     <Button
                       size="small"
+                      disabled={temperature_noaffected == null ? true : false}
                       onClick={() => {
-                        settemperature_affected(temperature_noaffected);
+                        UpdateData(
+                          'temperature_affected',
+                          temperature_noaffected
+                        );
+                        settemperature_noaffected(null);
                       }}>
                       Affecter
                     </Button>
                   ) : (
-                    <Tag color="blue">{` ${temperature_affected}°C`}</Tag>
+                    <Tag
+                      color="blue"
+                      closable
+                      onClose={() => UpdateData('temperature_affected', null)}>
+                      {` ${Finaldata.temperature_affected}°C`}
+                    </Tag>
                   )}
                 </Space>
 
                 <Space>
                   Temperature Non Affectée :
-                  <InputNumber formatter={value => ` ${value}°C`} />
+                  <InputNumber
+                    size="small"
+                    style={{width: '60px'}}
+                    onChange={settemperature_noaffected}
+                    value={temperature_noaffected}
+                  />
                 </Space>
               </Row>
             </Col>
@@ -575,42 +522,17 @@ const Newtest = () => {
       </Collapse>
     );
   };
-  const UpdatemiseData = (type, newData) => {
-    setmise_data(data => {
-      return {...data, [type]: newData};
-    });
-  };
-  useEffect(() => {
-    const filter = () => {
-      if (mise_data.state == true) {
-        return (steps = steps.filter(
-          step => !step.content.includes('Placer Borne')
-        ));
-      }
-    };
-    filter();
-  }, []);
-  const next = () => {
-    if (current < steps.length - 1) {
-      setCurrent(current + 1);
-    } else {
-      UpdatemiseData('state', true);
-      form.resetFields();
-      setmodal(!modal);
-      message.success('Test Finit!');
-      console.log(Finaldata);
-    }
-  };
 
-  const prev = () => {
-    setCurrent(current - 1);
-  };
-  const annuler = () => {
-    setCurrent(current - 1);
-    form.resetFields();
-  };
   const UpdateData = (type, newData) => {
     switch (type) {
+      //Temperature
+      case 'temperature_affected':
+        setFinaldata(data => {
+          return {
+            ...data,
+            [type]: newData,
+          };
+        });
       //Bornes
       case 'Borne_rouge':
       case 'Borne_verte':
@@ -732,6 +654,56 @@ const Newtest = () => {
         return null;
     }
   };
+  const UpdatemiseData = (type, newData) => {
+    setmise_data(data => {
+      return {...data, [type]: newData};
+    });
+  };
+  useEffect(() => {
+    const filter = () => {
+      if (mise_data.state == true) {
+        return (steps = steps.filter(
+          step => !step.content.includes('Placer Borne')
+        ));
+      }
+    };
+    filter();
+  }, []);
+  const next = () => {
+    if (current == 0 && mise_data.state == true) {
+      console.log('begin the work');
+      //Bornes
+      UpdateData('Borne_rouge', mise_data.Bornes.Borne_rouge);
+      UpdateData('Borne_verte', mise_data.Bornes.Borne_verte);
+      UpdateData('Borne_jaune', mise_data.Bornes.Borne_jaune);
+      //Ratio_Polarite
+      UpdateData('Volts_apluiqés_P1', mise_data.Ratio.Volts_apluiqés_P1);
+      UpdateData('Volts_apluiqés_P2', mise_data.Ratio.Volts_apluiqés_P2);
+      UpdateData('Volts_ht_P1', mise_data.Ratio.Volts_ht_P1);
+      UpdateData('Volts_ht_P2', mise_data.Ratio.Volts_ht_P2);
+      UpdateData('Polarite_volts_P1', mise_data.Ratio.Polarité_volts_P1);
+      UpdateData('Polarite_volts_P2', mise_data.Ratio.Polarité_volts_P2);
+
+      setCurrent(current + 1);
+    } else if (current < steps.length - 1) {
+      setCurrent(current + 1);
+    } else {
+      UpdatemiseData('state', true);
+      form.resetFields();
+      setmodal(!modal);
+      message.success('Test Finit!');
+      console.log(Finaldata);
+    }
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+  const annuler = () => {
+    setCurrent(current - 1);
+    form.resetFields();
+  };
+
   var foundcommande = false;
   for (var i = 0; i < Commandes.length; i++) {
     if (Commandes[i].numcommand == noCommande) {
@@ -749,19 +721,19 @@ const Newtest = () => {
         <Basepage className="base-page">
           {foundcommande ? (
             <div>
-              <Haut />
+              <Haut UpdateData={UpdateData} />
               <Divider dashed orientation="left" style={{color: 'white'}}>
                 Étapes de Test
               </Divider>
               <Row>
-                <Col flex={1}>
+                <Col key="steps" span={6}>
                   <Steps size="small" current={current} direction="vertical">
                     {steps.map(item => (
                       <Step key={item.title} id="newtest" title={item.title} />
                     ))}
                   </Steps>
                 </Col>
-                <Col flex={4}>
+                <Col key="content" span={18}>
                   <Form
                     form={form}
                     layout="vertical"

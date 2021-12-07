@@ -17,7 +17,7 @@ const ModalExample = props => {
 
   return (
     <div>
-      <Modal isOpen={modal} toggle={toggle}>
+      <Modal isOpen={modal} toggle={toggle} backdrop="static">
         <Form action="/newtest">
           <ModalHeader>
             <h4 style={{color: 'black'}}> Scanner</h4>

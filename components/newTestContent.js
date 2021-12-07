@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Alert} from 'antd';
-// import TemperatureForm from '@/components/forms/newtest/temperature';
 import BornesForm from '@/components/forms/newtest/Bornes';
 import Ratio_PolariteForm from '@/components/forms/newtest/Ratio_Polarite';
 import InduitForm from '@/components/forms/newtest/Induit';
