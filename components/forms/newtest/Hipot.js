@@ -1,18 +1,25 @@
 import React, {useState} from 'react';
-import {Form, Input, Radio, Select, DatePicker, Space, Row} from 'antd';
+import {
+  Form,
+  Input,
+  Radio,
+  Select,
+  DatePicker,
+  Space,
+  Row,
+  Divider,
+} from 'antd';
 
 export default function Hipot({miseenplaceok}) {
   return (
-    <div>
-      <Row style={{justifyContent: 'center', marginBottom: '10px'}}>
-        <h3>Hipot</h3>
-      </Row>
-      <div
-        style={{
-          background: '#24717400',
-          padding: '5px',
-          boxShadow: '0 0 15px #00806e',
-        }}>
+    <div className="Containertest">
+      <Divider
+        dashed
+        orientation="left"
+        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        <h3>Hipot</h3>{' '}
+      </Divider>
+      <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item style={{marginBottom: 0, width: '60%'}}>
             <Form.Item

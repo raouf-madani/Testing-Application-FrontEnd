@@ -4,7 +4,6 @@
   padding: 40px;
   text-align: center;
   background-color: #0a8d8f;
-  color: black;
   border: 1px dashed #e9e9e9;
   border-radius: 2px;
   box-shadow: inset 1px 1px 150px #4a1664;
@@ -14,10 +13,10 @@
   margin-top: 24px;
   color: #000028;
 }
-// [data-theme='dark'] .steps-content {
-//   margin-top: 16px;
-//   border: 1px dashed #303030;
-//   background-color: rgba(255, 255, 255, 0.04);
-//   color: rgba(255, 255, 255, 0.65);
-//   padding-top: 80px;
-// }
+.Containertest {
+  min-height: 380px;
+  background: #24717400;
+  padding: 10px;
+  box-shadow: 0 0 15px #00806e;
+  display: inline-flexbox;
+}

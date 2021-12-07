@@ -1,51 +1,43 @@
 import React, {useState} from 'react';
-import {Form, Input, Radio, Button, Row, List} from 'antd';
+import {Form, Input, Radio, Button, Row, List, Divider} from 'antd';
 
 export default function Induit({UpdateData, miseenplaceok}) {
   return (
-    <div>
-      <Row
-        style={{
-          justifyContent: 'center',
-          marginBottom: '10px',
-        }}>
-        <h3>Induit</h3>
-      </Row>
-      <div
-        style={{
-          background: '#24717400',
-          padding: '5px',
-          boxShadow: '0 0 15px #00806e',
-        }}>
+    <div className="Containertest">
+      <Divider
+        dashed
+        orientation="left"
+        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        <h3>Induit</h3>{' '}
+      </Divider>
+      <div>
+        <Row
+          style={{
+            justifyContent: 'center',
+          }}>
+          <Form.Item
+            style={{
+              width: '60%',
+              marginBottom: '5px',
+            }}>
+            <Form.Item
+              name="tension applique 1"
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              Tension applique position1 : 20V
+            </Form.Item>
+            <Form.Item
+              name="tension applique 2"
+              style={{
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                margin: '0 8px',
+              }}>
+              Tension applique position2 : 20V
+            </Form.Item>
+          </Form.Item>
+        </Row>
         {!miseenplaceok.state && (
           <div>
-            {' '}
-            <Row
-              style={{
-                justifyContent: 'center',
-              }}>
-              <Form.Item
-                style={{
-                  width: '60%',
-                  marginBottom: '5px',
-                  borderBottom: '1px solid green',
-                }}>
-                <Form.Item
-                  name="tension applique 1"
-                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  Tension applique position1 : 20V
-                </Form.Item>
-                <Form.Item
-                  name="tension applique 2"
-                  style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
-                    margin: '0 8px',
-                  }}>
-                  Tension applique position2 : 20V
-                </Form.Item>
-              </Form.Item>
-            </Row>
             <Row
               style={{
                 justifyContent: 'center',

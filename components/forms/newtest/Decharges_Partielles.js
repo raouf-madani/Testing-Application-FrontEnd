@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
-import {Form, Input, Space, Button, Row} from 'antd';
+import {Form, Input, Space, Button, Row, Divider} from 'antd';
 import {PlusOutlined, MinusCircleOutlined} from '@ant-design/icons';
 
 export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
   const [stopaddrow, setstopaddrow] = useState(false);
   return (
-    <div>
-      <Row style={{justifyContent: 'center', marginBottom: '20px'}}>
+    <div className="Containertest">
+      <Divider
+        dashed
+        orientation="left"
+        style={{color: '#34b1ab', marginBottom: '40px'}}>
         <h3>Decharges Partielles</h3>
-      </Row>
-      <div
-        style={{
-          background: '#24717400',
-          padding: '5px',
-          boxShadow: '0 0 15px #00806e',
-        }}>
+      </Divider>
+      <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             name=" TENSION APPLIQUÉ HAUTE TENSION 1.7pu (V)"
