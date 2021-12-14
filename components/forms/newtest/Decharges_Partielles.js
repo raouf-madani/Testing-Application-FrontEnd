@@ -14,19 +14,28 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            name=" TENSION APPLIQUÉ HAUTE TENSION 1.7pu (V)"
-            label=" Tension appliqué haute tension 1.7pu (V)"
-            style={{marginBottom: 5}}></Form.Item>
+          <Form.Item>
+            <Form.Item
+              key="1.7pu"
+              className="show_item"
+              style={{width: '100%'}}>
+              TENSION APPLIQUÉ HAUTE TENSION 1.7pu (V)
+            </Form.Item>
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item>
+            <Form.Item
+              key="1.5pu"
+              className="show_item"
+              style={{width: '100%'}}>
+              TENSION APPLIQUÉ HAUTE TENSION 1.5pu (V)
+            </Form.Item>
+          </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            name=" TENSION APPLIQUÉ HAUTE TENSION 1.5pu (V)"
-            label=" Tension appliqué haute tension 1.5pu (V)"
-            style={{marginBottom: 5}}></Form.Item>
-        </Row>
-        <Row style={{justifyContent: 'center'}}>
-          <Form.Item
+            key="15_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="15 Sec"
             name="15"
@@ -34,6 +43,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             <Input placeholder="10 Sec" />
           </Form.Item>
           <Form.Item
+            key="30_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="30 Sec"
             name="30"
@@ -41,6 +51,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             <Input placeholder="30 Sec" />
           </Form.Item>
           <Form.Item
+            key="45_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="45 Sec"
             name="45"
@@ -48,6 +59,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             <Input placeholder="45 Sec" />
           </Form.Item>
           <Form.Item
+            key="60_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="60 Sec"
             name="60"
@@ -62,6 +74,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                 <Row style={{justifyContent: 'center'}}>
                   <Form.Item
                     {...restField}
+                    key={[name == 0 ? '75_Sec' : '135_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '75 Sec' : '135 Sec']}
                     name={[name, name == 0 ? '75' : '135']}
@@ -71,6 +84,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                   </Form.Item>
                   <Form.Item
                     {...restField}
+                    key={[name == 0 ? '90_Sec' : '150_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '90 Sec' : '150 Sec']}
                     name={[name, name == 0 ? '90' : '150']}
@@ -80,6 +94,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                   </Form.Item>
                   <Form.Item
                     {...restField}
+                    key={[name == 0 ? '105_Sec' : '165_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '105 Sec' : '165 Sec']}
                     name={[name, name == 0 ? '105' : '165']}
@@ -89,6 +104,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                   </Form.Item>
                   <Form.Item
                     {...restField}
+                    key={[name == 0 ? '120_Sec' : '180_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '120 Sec' : '180 Sec']}
                     name={[name, name == 0 ? '120' : '180']}
@@ -103,7 +119,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
               ))}
               {!stopaddrow && (
                 <Row style={{justifyContent: 'center'}}>
-                  <Form.Item>
+                  <Form.Item key="Add_Button" name="buttons">
                     <Button
                       type="dashed"
                       onClick={() => add()}

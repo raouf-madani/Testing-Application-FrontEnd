@@ -20,7 +20,7 @@ const ModalExample = props => {
       <Modal isOpen={modal} toggle={toggle} backdrop="static">
         <Form action="/newtest">
           <ModalHeader>
-            <h4 style={{color: 'black'}}> Scanner</h4>
+            <div style={{color: 'black'}}> Scanner</div>
           </ModalHeader>
           <ModalBody>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">

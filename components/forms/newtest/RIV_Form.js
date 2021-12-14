@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Input, Button, Select, DatePicker, Row, Divider} from 'antd';
 
-export default function RIV({UpdateData}) {
+export default function RIV({UpdateData, setFinaldata}) {
   return (
     <div className="Containertest">
       <Divider
@@ -19,7 +19,9 @@ export default function RIV({UpdateData}) {
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
                 placeholder="Position 1"
-                onChange={e => UpdateData('riv_P1', e.target.value)}
+                onChange={e =>
+                  UpdateData('riv_P1', e.target.value, setFinaldata)
+                }
               />
             </Form.Item>
             <Form.Item
@@ -31,7 +33,9 @@ export default function RIV({UpdateData}) {
               }}>
               <Input
                 placeholder="Position 2"
-                onChange={e => UpdateData('riv_P2', e.target.value)}
+                onChange={e =>
+                  UpdateData('riv_P2', e.target.value, setFinaldata)
+                }
               />
             </Form.Item>
           </Form.Item>

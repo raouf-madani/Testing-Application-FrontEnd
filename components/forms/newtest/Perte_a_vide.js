@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import {Form, Input, Row, Divider} from 'antd';
 
-export default function Perte_a_vide({UpdateData, miseenplaceok}) {
+export default function Perte_a_vide({
+  UpdateData,
+  miseenplaceok,
+  setFinaldata,
+}) {
   return (
     <div className="Containertest">
       <Divider
@@ -12,17 +16,13 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item style={{marginBottom: 0, width: '60%'}}>
-            <Form.Item
-              name="tension applique 1"
-              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+          <Form.Item style={{marginBottom: 0, width: '70%'}}>
+            <Form.Item className="show_item">
               Tension applique position1 : 20V
             </Form.Item>
             <Form.Item
-              name="tension applique 2"
+              className="show_item"
               style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
                 margin: '0 8px',
               }}>
               Tension applique position2 : 20V
@@ -42,7 +42,11 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('multiplicateur_volts_P1', e.target.value)
+                      UpdateData(
+                        'multiplicateur_volts_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -56,7 +60,11 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('multiplicateur_volts_P2', e.target.value)
+                      UpdateData(
+                        'multiplicateur_volts_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -73,7 +81,11 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Multiplicateur_amperes_P1', e.target.value)
+                      UpdateData(
+                        'Multiplicateur_amperes_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -87,7 +99,11 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Multiplicateur_amperes_P2', e.target.value)
+                      UpdateData(
+                        'Multiplicateur_amperes_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -103,7 +119,9 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     placeholder="Position 1"
-                    onChange={e => UpdateData('Perte_table_P1', e.target.value)}
+                    onChange={e =>
+                      UpdateData('Perte_table_P1', e.target.value, setFinaldata)
+                    }
                   />
                 </Form.Item>
                 <Form.Item
@@ -115,7 +133,9 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
                   }}>
                   <Input
                     placeholder="Position 2"
-                    onChange={e => UpdateData('Perte_table_P2', e.target.value)}
+                    onChange={e =>
+                      UpdateData('Perte_table_P2', e.target.value, setFinaldata)
+                    }
                   />
                 </Form.Item>
               </Form.Item>
@@ -132,7 +152,9 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
                 placeholder="Position 1"
-                onChange={e => UpdateData('Pertes_mesurés_P1', e.target.value)}
+                onChange={e =>
+                  UpdateData('Pertes_mesurés_P1', e.target.value, setFinaldata)
+                }
               />
             </Form.Item>
             <Form.Item
@@ -144,7 +166,9 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
               }}>
               <Input
                 placeholder="Position 2"
-                onChange={e => UpdateData('Pertes_mesurés_P1', e.target.value)}
+                onChange={e =>
+                  UpdateData('Pertes_mesurés_P1', e.target.value, setFinaldata)
+                }
               />
             </Form.Item>
           </Form.Item>
@@ -160,7 +184,11 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
               <Input
                 placeholder="Position 1"
                 onChange={e =>
-                  UpdateData('Courant_excitation_mesurés_P1', e.target.value)
+                  UpdateData(
+                    'Courant_excitation_mesurés_P1',
+                    e.target.value,
+                    setFinaldata
+                  )
                 }
               />
             </Form.Item>
@@ -174,7 +202,11 @@ export default function Perte_a_vide({UpdateData, miseenplaceok}) {
               <Input
                 placeholder="Position 2"
                 onChange={e =>
-                  UpdateData('Courant_excitation_mesurés_P2', e.target.value)
+                  UpdateData(
+                    'Courant_excitation_mesurés_P2',
+                    e.target.value,
+                    setFinaldata
+                  )
                 }
               />
             </Form.Item>

@@ -1,7 +1,12 @@
 import React, {useState} from 'react';
-import {Form, Input, Radio, Button, Row, List, Divider} from 'antd';
+import {Form, Input, Radio, Row, Divider} from 'antd';
 
-export default function Induit({UpdateData, miseenplaceok}) {
+export default function Induit({
+  UpdateData,
+  miseenplaceok,
+  setFinaldata,
+  error,
+}) {
   return (
     <div className="Containertest">
       <Divider
@@ -17,19 +22,15 @@ export default function Induit({UpdateData, miseenplaceok}) {
           }}>
           <Form.Item
             style={{
-              width: '60%',
+              width: '70%',
               marginBottom: '5px',
             }}>
-            <Form.Item
-              name="tension applique 1"
-              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+            <Form.Item className="show_item">
               Tension applique position1 : 20V
             </Form.Item>
             <Form.Item
-              name="tension applique 2"
+              className="show_item"
               style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
                 margin: '0 8px',
               }}>
               Tension applique position2 : 20V
@@ -52,7 +53,11 @@ export default function Induit({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Fréquence_genératrice_P1', e.target.value)
+                      UpdateData(
+                        'Fréquence_genératrice_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -66,7 +71,11 @@ export default function Induit({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Fréquence_genératrice_P2', e.target.value)
+                      UpdateData(
+                        'Fréquence_genératrice_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -83,7 +92,11 @@ export default function Induit({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Réactance_ske77_P1', e.target.value)
+                      UpdateData(
+                        'Réactance_ske77_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -97,7 +110,11 @@ export default function Induit({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Réactance_ske77_P2', e.target.value)
+                      UpdateData(
+                        'Réactance_ske77_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -114,7 +131,11 @@ export default function Induit({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Réactance_ske17_P1', e.target.value)
+                      UpdateData(
+                        'Réactance_ske17_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -128,7 +149,11 @@ export default function Induit({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Réactance_ske17_P2', e.target.value)
+                      UpdateData(
+                        'Réactance_ske17_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -143,8 +168,17 @@ export default function Induit({UpdateData, miseenplaceok}) {
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Radio.Group buttonStyle="solid">
-                <Radio.Button value={true}>Test reussit</Radio.Button>
-                <Radio.Button value={false}>Test echoue</Radio.Button>
+                <Radio.Button style={{margin: '5px'}} value="reussit">
+                  reussit
+                </Radio.Button>
+                <Radio.Button
+                  style={{margin: '5px'}}
+                  onClick={() => {
+                    error('Le Test de Induit Position 1 est echoué...');
+                  }}
+                  value="echoue">
+                  echoue
+                </Radio.Button>
               </Radio.Group>
             </Form.Item>
             <Form.Item
@@ -155,8 +189,17 @@ export default function Induit({UpdateData, miseenplaceok}) {
                 margin: '0 8px',
               }}>
               <Radio.Group buttonStyle="solid">
-                <Radio.Button value={true}>Test reussit </Radio.Button>
-                <Radio.Button value={false}>Test echoue</Radio.Button>
+                <Radio.Button style={{margin: '5px'}} value={true}>
+                  reussit{' '}
+                </Radio.Button>
+                <Radio.Button
+                  onClick={() => {
+                    error('Le Test de Induit Position 2 est echoué...');
+                  }}
+                  style={{margin: '5px'}}
+                  value={false}>
+                  echoue
+                </Radio.Button>
               </Radio.Group>
             </Form.Item>
           </Form.Item>

@@ -11,7 +11,13 @@ import Facteur_DissipationForm from '@/components/forms/newtest/Facteur_dissipat
 import Decharges_PartiellesForm from '@/components/forms/newtest/Decharges_Partielles';
 import SignatureForm from '@/components/forms/newtest/Signature';
 
-function newTestContent({etapeName, UpdateData, miseenplaceok}) {
+function newTestContent({
+  etapeName,
+  UpdateData,
+  miseenplaceok,
+  setFinaldata,
+  error,
+}) {
   const [chance, setchance] = useState(0);
   const NewTestHome = () => {
     return miseenplaceok.state === true ? (
@@ -36,37 +42,54 @@ function newTestContent({etapeName, UpdateData, miseenplaceok}) {
       return <NewTestHome />;
     case 'Placer Borne':
       return (
-        <BornesForm UpdateData={UpdateData} miseenplaceok={miseenplaceok} />
+        <BornesForm
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+          setFinaldata={setFinaldata}
+        />
       );
     case 'Ratio/Polarite':
       return (
         <Ratio_PolariteForm
           UpdateData={UpdateData}
           miseenplaceok={miseenplaceok}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Induit':
       return (
-        <InduitForm UpdateData={UpdateData} miseenplaceok={miseenplaceok} />
+        <InduitForm
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+          setFinaldata={setFinaldata}
+          error={error}
+        />
       );
     case 'Hipot':
       return (
-        <HipotForm UpdateData={UpdateData} miseenplaceok={miseenplaceok} />
+        <HipotForm
+          UpdateData={UpdateData}
+          miseenplaceok={miseenplaceok}
+          setFinaldata={setFinaldata}
+          error={error}
+        />
       );
     case 'Pertes a Vide':
       return (
         <Perte_a_VideForm
           UpdateData={UpdateData}
           miseenplaceok={miseenplaceok}
+          setFinaldata={setFinaldata}
         />
       );
     case 'RIV':
-      return <RivForm UpdateData={UpdateData} />;
+      return <RivForm UpdateData={UpdateData} setFinaldata={setFinaldata} />;
     case 'Pertes a Charge':
       return (
         <Perte_a_ChargeForm
           UpdateData={UpdateData}
           miseenplaceok={miseenplaceok}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Facteur de dissipation':
@@ -79,11 +102,14 @@ function newTestContent({etapeName, UpdateData, miseenplaceok}) {
           miseenplaceok={miseenplaceok}
           chance={chance}
           setchance={setchance}
+          setFinaldata={setFinaldata}
         />
       );
 
     case 'Signature':
-      return <SignatureForm UpdateData={UpdateData} />;
+      return (
+        <SignatureForm UpdateData={UpdateData} setFinaldata={setFinaldata} />
+      );
     default:
       return null;
   }

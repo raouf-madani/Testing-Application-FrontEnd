@@ -1,7 +1,11 @@
 import React from 'react';
 import {Form, Input, Row, Divider} from 'antd';
 
-export default function Perte_a_charge({UpdateData, miseenplaceok}) {
+export default function Perte_a_charge({
+  UpdateData,
+  miseenplaceok,
+  setFinaldata,
+}) {
   return (
     <div className="Containertest">
       <Divider
@@ -15,24 +19,15 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
           <Form.Item
             style={{
               marginBottom: 0,
-              width: '60%',
+              width: '70%',
             }}>
-            <Form.Item
-              name="Courant_Appliqué_Appareil_P1"
-              style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
-                borderBottom: '1px solid green',
-              }}>
+            <Form.Item className="show_item">
               Courant Appliqué Appareil P1 : 20
             </Form.Item>
             <Form.Item
-              name="Courant_Appliqué_Appareil_P2"
+              className="show_item"
               style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
                 margin: '0 8px',
-                borderBottom: '1px solid green',
               }}>
               Courant Appliqué Appareil P2 : 20
             </Form.Item>
@@ -53,7 +48,8 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                     onChange={e =>
                       UpdateData(
                         'Multiplicateur_volts_charge_P1',
-                        e.target.value
+                        e.target.value,
+                        setFinaldata
                       )
                     }
                   />
@@ -70,7 +66,8 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                     onChange={e =>
                       UpdateData(
                         'Multiplicateur_volts_charge_P2',
-                        e.target.value
+                        e.target.value,
+                        setFinaldata
                       )
                     }
                   />
@@ -90,7 +87,8 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                     onChange={e =>
                       UpdateData(
                         'Multiplicateur_amperes_charge_P1',
-                        e.target.value
+                        e.target.value,
+                        setFinaldata
                       )
                     }
                   />
@@ -107,7 +105,8 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                     onChange={e =>
                       UpdateData(
                         'Multiplicateur_amperes_charge_P2',
-                        e.target.value
+                        e.target.value,
+                        setFinaldata
                       )
                     }
                   />
@@ -125,7 +124,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Perte_table_charge_P1', e.target.value)
+                      UpdateData(
+                        'Perte_table_charge_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -139,7 +142,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Perte_table_charge_P2', e.target.value)
+                      UpdateData(
+                        'Perte_table_charge_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -156,7 +163,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Courant_de_correction_P1', e.target.value)
+                      UpdateData(
+                        'Courant_de_correction_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -170,30 +181,25 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Courant_de_correction_P2', e.target.value)
+                      UpdateData(
+                        'Courant_de_correction_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Form.Item style={{marginBottom: 0, width: '60%'}}>
-                <Form.Item
-                  name="Perte_Table_Totale_P1"
-                  style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
-                    borderBottom: '1px solid green',
-                  }}>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
                   Pertes table totales P1 (W) : 20 W
                 </Form.Item>
                 <Form.Item
-                  name="Perte_Table_Totale_P2"
+                  className="show_item"
                   style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
                     margin: '0 8px',
-                    borderBottom: '1px solid green',
                   }}>
                   Pertes table totales P2 (W) : 20 W
                 </Form.Item>
@@ -210,7 +216,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Courant_appliquié_transfo_P1', e.target.value)
+                      UpdateData(
+                        'Courant_appliquié_transfo_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -224,30 +234,25 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Courant_appliquié_transfo_P2', e.target.value)
+                      UpdateData(
+                        'Courant_appliquié_transfo_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Form.Item style={{marginBottom: 0, width: '60%'}}>
-                <Form.Item
-                  name="Courant_Appliqué_Appareil_P1"
-                  style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
-                    borderBottom: '1px solid green',
-                  }}>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
                   Courant Appliqué P1 (Appareil) : 20
                 </Form.Item>
                 <Form.Item
-                  name="Courant_Appliqué_Appareil_P2"
+                  className="show_item"
                   style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
                     margin: '0 8px',
-                    borderBottom: '1px solid green',
                   }}>
                   Courant Appliqué P2 (Appareil) : 20
                 </Form.Item>
@@ -263,7 +268,9 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     placeholder="Position 1"
-                    onChange={e => UpdateData('No_cavalier_P1', e.target.value)}
+                    onChange={e =>
+                      UpdateData('No_cavalier_P1', e.target.value, setFinaldata)
+                    }
                   />
                 </Form.Item>
                 <Form.Item
@@ -275,7 +282,9 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   }}>
                   <Input
                     placeholder="Position 2"
-                    onChange={e => UpdateData('No_cavalier_P2', e.target.value)}
+                    onChange={e =>
+                      UpdateData('No_cavalier_P2', e.target.value, setFinaldata)
+                    }
                   />
                 </Form.Item>
               </Form.Item>
@@ -291,7 +300,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Perte_cavalier_P1', e.target.value)
+                      UpdateData(
+                        'Perte_cavalier_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -305,7 +318,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Perte_cavalier_P2', e.target.value)
+                      UpdateData(
+                        'Perte_cavalier_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -322,7 +339,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Resistance_ht_P1', e.target.value)
+                      UpdateData(
+                        'Resistance_ht_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -336,7 +357,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Resistance_ht_P2', e.target.value)
+                      UpdateData(
+                        'Resistance_ht_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -353,7 +378,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 1"
                     onChange={e =>
-                      UpdateData('Resistance_bt_P1', e.target.value)
+                      UpdateData(
+                        'Resistance_bt_P1',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -367,7 +396,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
                   <Input
                     placeholder="Position 2"
                     onChange={e =>
-                      UpdateData('Resistance_bt_P2', e.target.value)
+                      UpdateData(
+                        'Resistance_bt_P2',
+                        e.target.value,
+                        setFinaldata
+                      )
                     }
                   />
                 </Form.Item>
@@ -386,7 +419,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
               <Input
                 placeholder="Position 1"
                 onChange={e =>
-                  UpdateData('Perte_charge_mesuré_P1', e.target.value)
+                  UpdateData(
+                    'Perte_charge_mesuré_P1',
+                    e.target.value,
+                    setFinaldata
+                  )
                 }
               />
             </Form.Item>
@@ -400,7 +437,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
               <Input
                 placeholder="Position 2"
                 onChange={e =>
-                  UpdateData('Perte_charge_mesuré_P2', e.target.value)
+                  UpdateData(
+                    'Perte_charge_mesuré_P2',
+                    e.target.value,
+                    setFinaldata
+                  )
                 }
               />
             </Form.Item>
@@ -417,7 +458,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
               <Input
                 placeholder="Position 1"
                 onChange={e =>
-                  UpdateData('Impédance_mesuré_P1', e.target.value)
+                  UpdateData(
+                    'Impédance_mesuré_P1',
+                    e.target.value,
+                    setFinaldata
+                  )
                 }
               />
             </Form.Item>
@@ -431,7 +476,11 @@ export default function Perte_a_charge({UpdateData, miseenplaceok}) {
               <Input
                 placeholder="Position 2"
                 onChange={e =>
-                  UpdateData('Impédance_mesuré_P2', e.target.value)
+                  UpdateData(
+                    'Impédance_mesuré_P2',
+                    e.target.value,
+                    setFinaldata
+                  )
                 }
               />
             </Form.Item>
