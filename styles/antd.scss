@@ -57,10 +57,15 @@ h6 {
   align-items: center;
 }
 .ant-form-item-label > label {
-  color: #2125299e;
+  color: #98adc3;
 }
 
 .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
   color: #28ad10;
   top: -3.5px;
+}
+.ant-card {
+  box-shadow: 0 10px 10px #4ac7c7;
+  background: #097e91;
+  border-radius: 10px;
 }

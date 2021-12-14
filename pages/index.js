@@ -8,7 +8,7 @@ import {isAuthorized} from '@/utils/auth0';
 import Link from 'next/link';
 import React, {useState} from 'react';
 import Modal from '@/components/modals/historique/historiquemodal';
-import {Spin, Space} from 'antd';
+import {Spin, Space, Row} from 'antd';
 
 export default function Home() {
   const {data, loading} = useGetUser();
@@ -95,9 +95,11 @@ export default function Home() {
         </>
       ) : (
         <Basepage>
-          <Space size="middle">
-            <Spin size="large" />
-          </Space>
+          <Row justify="center">
+            <Space size="middle">
+              <Spin size="large" />
+            </Space>
+          </Row>
         </Basepage>
       )}
     </div>

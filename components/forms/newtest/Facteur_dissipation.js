@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Input, Button, Select, DatePicker, Row, Divider} from 'antd';
+import {Form, Input, Space, Select, DatePicker, Row, Divider} from 'antd';
 
 export default function Facteur_dissipation() {
   return (
@@ -12,24 +12,20 @@ export default function Facteur_dissipation() {
       </Divider>{' '}
       <div>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            label="H"
-            name="H"
-            style={{
-              width: 'calc(50% - 8px)',
-              margin: '5px 8px',
-            }}
-            rules={[{required: true, message: 'Champ Requis'}]}>
-            <Input placeholder="Position 1" />
+          <Form.Item label="H" style={{marginBottom: 5, width: '30%'}}>
+            <Form.Item
+              name="H"
+              noStyle
+              rules={[{required: true, message: 'H required'}]}>
+              <Input placeholder="H" />
+            </Form.Item>
           </Form.Item>
-          <Form.Item
-            label="L"
-            name="L"
-            style={{
-              width: 'calc(50% - 8px)',
-              margin: '5px 8px',
-            }}>
-            <Input placeholder="Position 2" />
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item label="L" style={{marginBottom: 0, width: '30%'}}>
+            <Form.Item name="L" noStyle>
+              <Input placeholder="L" />
+            </Form.Item>
           </Form.Item>
         </Row>
       </div>
