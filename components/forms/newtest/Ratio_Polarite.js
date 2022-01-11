@@ -24,7 +24,7 @@ export default function Ratio_Polarite({
         <h3>Ratio et Polarité</h3>
       </Divider>
       <div>
-        {!miseenplaceok.state && (
+        {!miseenplaceok && (
           <div>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item

@@ -1,22 +1,25 @@
+import {useRouter} from 'next/router';
 import React, {useState, useEffect, memo, useMemo} from 'react';
 import Head from 'next/head';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
 import EtapeContent from '@/components/newTestContent';
-import HistoriqueModal from '@/components/modals/historique/historiquemodal';
-import Modalnewtest from '@/components/modals/newtest/scanmodal';
+// import HistoriqueModal from '@/components/modals/historique/historiquemodal';
+import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
+
 import Haut from '@/components/newTestComponents/Haut';
 import DisplayComponent from '@/components/Timer';
 import {Fakedata} from '@/FakeData/TestData';
-import {Mise_fakeData} from '@/FakeData/TestData';
-import {CommandeFake} from '@/FakeData/TestData';
+import {useGetCommande} from '@/actions/commandes';
+import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
 
 import withAuth from '@/hoc/withAuth';
 import {useGetUser} from '@/actions/user';
-import {UpdateData} from '@/actions/newtestupdate';
 
-import {useRouter} from 'next/router';
-import {Steps, Button, Row, Col, Divider, Form, Modal} from 'antd';
+import {UpdateData} from '@/actions/newtestupdate';
+import TestingApi from '@/lib/api/testing';
+
+import {Steps, Button, Row, Col, Divider, Form, Modal, Space, Spin} from 'antd';
 
 const {Step} = Steps;
 
@@ -69,21 +72,19 @@ const steps = [
   },
 ];
 
-const Newtest = () => {
-  const {data, loading} = useGetUser();
+const NewTest = ({commande, mise_en_placeById}) => {
   const [current, setCurrent] = useState(0);
   const [time, setTime] = useState({ms: 0, s: 0, m: 0, h: 0});
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
   const [form] = Form.useForm();
-  const [historiquemodal, sethistoriqueModal] = useState(false);
+  // const [historiquemodal, sethistoriqueModal] = useState(false);
   const router = useRouter();
-  const noCommande = router.query.numerocommande;
   const [Finaldata, setFinaldata] = useState(Fakedata);
   const initial_testform_values = {};
-  const [mise_data, setmise_data] = useState(Mise_fakeData);
   const [modal, setmodal] = useState(false);
-
+  const {data: dataU, loading: loadingU} = useGetUser();
+  const {data: initialDataC} = useGetCommande(router.query.id);
   const start = () => {
     run();
     setStatus(1);
@@ -126,7 +127,7 @@ const Newtest = () => {
   const resume = () => start();
   useEffect(() => {
     const filter = () => {
-      if (mise_data.state == true) {
+      if (mise_en_placeById !== null) {
         return (steps = steps.filter(
           step => !step.content.includes('Placer Borne')
         ));
@@ -134,35 +135,56 @@ const Newtest = () => {
     };
     filter();
   }, []);
+
   const next = () => {
     if (current == 0) {
-      if (mise_data.state == true) {
+      if (mise_en_placeById !== null) {
         console.log('begin the work mise en place done');
         //Bornes
-        UpdateData('Borne_rouge', mise_data.Bornes.Borne_rouge, setFinaldata);
-        UpdateData('Borne_verte', mise_data.Bornes.Borne_verte, setFinaldata);
-        UpdateData('Borne_jaune', mise_data.Bornes.Borne_jaune, setFinaldata);
+        UpdateData(
+          'Borne_rouge',
+          mise_en_placeById.Bornes.Borne_rouge,
+          setFinaldata
+        );
+        UpdateData(
+          'Borne_verte',
+          mise_en_placeById.Bornes.Borne_verte,
+          setFinaldata
+        );
+        UpdateData(
+          'Borne_jaune',
+          mise_en_placeById.Bornes.Borne_jaune,
+          setFinaldata
+        );
         //Ratio_Polarite
         UpdateData(
           'Volts_apluiqés_P1',
-          mise_data.Ratio.Volts_apluiqés_P1,
+          mise_en_placeById.Ratio.Volts_apluiqés_P1,
           setFinaldata
         );
         UpdateData(
           'Volts_apluiqés_P2',
-          mise_data.Ratio.Volts_apluiqés_P2,
+          mise_en_placeById.Ratio.Volts_apluiqés_P2,
           setFinaldata
         );
-        UpdateData('Volts_ht_P1', mise_data.Ratio.Volts_ht_P1, setFinaldata);
-        UpdateData('Volts_ht_P2', mise_data.Ratio.Volts_ht_P2, setFinaldata);
+        UpdateData(
+          'Volts_ht_P1',
+          mise_en_placeById.Ratio.Volts_ht_P1,
+          setFinaldata
+        );
+        UpdateData(
+          'Volts_ht_P2',
+          mise_en_placeById.Ratio.Volts_ht_P2,
+          setFinaldata
+        );
         UpdateData(
           'Polarite_volts_P1',
-          mise_data.Ratio.Polarité_volts_P1,
+          mise_en_placeById.Ratio.Polarité_volts_P1,
           setFinaldata
         );
         UpdateData(
           'Polarite_volts_P2',
-          mise_data.Ratio.Polarité_volts_P2,
+          mise_en_placeById.Ratio.Polarité_volts_P2,
           setFinaldata
         );
         setCurrent(current + 1);
@@ -192,13 +214,6 @@ const Newtest = () => {
     form.resetFields();
   };
 
-  var foundcommande = false;
-  for (var i = 0; i < CommandeFake.length; i++) {
-    if (CommandeFake[i].numcommand == noCommande) {
-      foundcommande = true;
-      break;
-    }
-  }
   function error(text) {
     Modal.error({
       title: 'Test échoué',
@@ -211,23 +226,37 @@ const Newtest = () => {
     console.log('stop fromnewtest');
     stop();
   }
+
+  if (router.isFallback) {
+    return (
+      <Basepage>
+        <Row justify="center">
+          <Space size="middle">
+            <Spin size="large" />
+          </Space>
+        </Row>
+      </Basepage>
+    );
+  }
+
   return (
     <div>
       <Head>
         <title>Testing App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Baselayout user={data} loading={loading}>
+      <Baselayout user={dataU} loading={loadingU}>
         <Basepage className="base-page">
-          {foundcommande ? (
+          {commande !== null ? (
             <div>
               <Haut
-                mise_data={mise_data}
+                mise_en_placeById={mise_en_placeById}
                 temperature_affected={Finaldata.temperature_affected}
-                setmise_data={setmise_data}
+                commande={commande}
                 setFinaldata={setFinaldata}
                 UpdateData={UpdateData}
+                useGetMise={useGetMise}
+                useUpdateMisePlace={useUpdateMisePlace}
               />
               <Divider dashed orientation="left" style={{color: 'white'}}>
                 Étapes de Test
@@ -268,7 +297,7 @@ const Newtest = () => {
                       <EtapeContent
                         UpdateData={UpdateData}
                         etapeName={steps[current].content}
-                        miseenplaceok={mise_data}
+                        mise_en_placeById={mise_en_placeById}
                         Finaldata={Finaldata}
                         setFinaldata={setFinaldata}
                         error={error}
@@ -320,28 +349,59 @@ const Newtest = () => {
                       </Form.Item>
                     </div>
                   </Form>
-                  <Modalnewtest
+                  {/* <Modalnewtest
                     modal={modal}
                     toggle={() => setmodal(!modal)}
                     direction="/"
+                  /> */}
+                  <Modalnewtestscanner
+                    modal={modal}
+                    toggle={() => setmodal(!modal)}
+                    direction="newtest"
                   />
                 </Col>
               </Row>
             </div>
           ) : (
-            <div>Commande not found</div>
+            <Basepage>
+              <Row justify="center">
+                <Space size="middle">
+                  <h1> Command Not Found</h1>
+                </Space>
+              </Row>
+            </Basepage>
           )}
-          <HistoriqueModal
-            noCommande={noCommande}
-            toggle={() => sethistoriqueModal(!historiquemodal)}
-            modal={historiquemodal}
-            title="Historique"
-            className="modalContainer"
-            width="100%"></HistoriqueModal>
         </Basepage>
       </Baselayout>
     </div>
   );
 };
 
-export default withAuth(Newtest)();
+export async function getStaticPaths() {
+  const json = await new TestingApi().getAllcommandes();
+  const commandes = json.data;
+  const paths = commandes.map(commande => {
+    return {
+      params: {id: commande.id_commande},
+    };
+  });
+
+  return {paths, fallback: true};
+}
+
+export async function getStaticProps({params}) {
+  const json = await new TestingApi().getById_commande(params.id);
+  const commande = json.data;
+  // const json_Mise_en_place = await new TestingApi().getAllmise_en_place();
+  // const mise_en_place = json_Mise_en_place.data;
+  let mise_en_placeById = null;
+  if (commande !== null) {
+    const json_Mise_en_placeById = await new TestingApi().getmiseById(
+      commande.id_product
+    );
+    mise_en_placeById = json_Mise_en_placeById.data;
+  }
+  return {props: {commande, mise_en_placeById}};
+}
+
+export default NewTest;

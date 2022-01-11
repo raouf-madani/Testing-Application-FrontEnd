@@ -77,7 +77,7 @@ function index() {
 
               <Form.Item>
                 <Row justify="center">
-                  <Button type="primary" htmlType="submit">
+                  <Button type="primary" htmlType="submit" block>
                     <a href="api/V1/login"> Login</a>
                   </Button>
                 </Row>

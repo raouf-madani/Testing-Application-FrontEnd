@@ -161,7 +161,7 @@ export const Mise_fakeData = {
     Valeur_dp_165s: 2,
     Valeur_dp_180s: 2,
   },
-  state: false,
+  state: true,
 };
 
 export const CommandeFake = [

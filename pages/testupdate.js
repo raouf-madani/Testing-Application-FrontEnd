@@ -1,6 +1,5 @@
 import React, {useState, useEffect, memo, useMemo} from 'react';
 import Updat_mise_place_modal from '@/components/updat_mise_place';
-
 import DisplayComponent from '@/components/Timer';
 
 import {
@@ -29,18 +28,10 @@ const Haut = ({
   commande,
   setFinaldata,
   mise_en_placeById,
-  useGetMise,
-  useUpdateMisePlace,
 }) => {
   const [miseenplacemodal, setmiseenplacemodal] = useState(false);
   const [temperature_noaffected, settemperature_noaffected] = useState(null);
   const [mise_data, setmise_data] = useState(mise_en_placeById);
-  const {data: initialDataM} = useGetMise(mise_en_placeById.id_product);
-  const [updateMise_place, {data, error, loading}] = useUpdateMisePlace();
-  const _updateMisePlace = async (id, data) => {
-    await updateMise_place(id, data);
-  };
-
   let initial_mise_placefrom_values = null;
   if (mise_data !== null) {
     initial_mise_placefrom_values = {
@@ -240,14 +231,13 @@ const Haut = ({
   };
 
   const handleCancel = () => {
-    setmise_data(mise_en_placeById);
     setmiseenplacemodal(false);
     form.resetFields();
   };
   const handleSubmit = () => {
-    _updateMisePlace(mise_data._id, mise_data);
     setmiseenplacemodal(false);
     form.resetFields();
+    console.log(mise_data);
   };
   console.log('Haut rundered');
 

@@ -10,15 +10,18 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
+import {useRouter} from 'next/router';
 import {Button} from 'reactstrap';
 
 const ModalExample = props => {
   const {modal, toggle, direction} = props;
+  const router = useRouter();
+  const [rout, setrout] = useState('');
 
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle} backdrop="static">
-        <Form action="/newtest">
+        <Form action="/newtest/">
           <ModalHeader>
             <div style={{color: 'black'}}> Scanner</div>
           </ModalHeader>
@@ -32,6 +35,7 @@ const ModalExample = props => {
                   id="Numerocommande"
                   placeholder="scaner votre code bare"
                   required
+                  onChange={e => setrout(e.target.value)}
                 />
               </Col>
             </FormGroup>
@@ -40,6 +44,12 @@ const ModalExample = props => {
             <Button color="info" outline type="submit">
               Commencer le Test
             </Button>{' '}
+            <Button
+              onClick={() => {
+                router.push('/newtest/[id]', `/newtest/${rout}`);
+              }}>
+              search
+            </Button>
             <Button href={direction} color="danger" outline onClick={toggle}>
               Cancel
             </Button>

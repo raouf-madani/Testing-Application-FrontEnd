@@ -29,7 +29,7 @@ export default function Perte_a_vide({
             </Form.Item>
           </Form.Item>
         </Row>
-        {!miseenplaceok.state && (
+        {!miseenplaceok && (
           <div>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
