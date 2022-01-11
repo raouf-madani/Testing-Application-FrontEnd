@@ -14,13 +14,13 @@ import SignatureForm from '@/components/forms/newtest/Signature';
 function newTestContent({
   etapeName,
   UpdateData,
-  miseenplaceok,
+  mise_en_placeById,
   setFinaldata,
   error,
 }) {
   const [chance, setchance] = useState(0);
   const NewTestHome = () => {
-    return miseenplaceok.state === true ? (
+    return mise_en_placeById !== null ? (
       <Alert
         message="Prét a Tester!"
         description="Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo"
@@ -44,7 +44,7 @@ function newTestContent({
       return (
         <BornesForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
         />
       );
@@ -52,7 +52,7 @@ function newTestContent({
       return (
         <Ratio_PolariteForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
         />
       );
@@ -60,7 +60,7 @@ function newTestContent({
       return (
         <InduitForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           error={error}
         />
@@ -69,7 +69,7 @@ function newTestContent({
       return (
         <HipotForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           error={error}
         />
@@ -78,7 +78,7 @@ function newTestContent({
       return (
         <Perte_a_VideForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
         />
       );
@@ -88,7 +88,7 @@ function newTestContent({
       return (
         <Perte_a_ChargeForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
         />
       );
@@ -99,7 +99,7 @@ function newTestContent({
       return (
         <Decharges_PartiellesForm
           UpdateData={UpdateData}
-          miseenplaceok={miseenplaceok}
+          miseenplaceok={mise_en_placeById}
           chance={chance}
           setchance={setchance}
           setFinaldata={setFinaldata}

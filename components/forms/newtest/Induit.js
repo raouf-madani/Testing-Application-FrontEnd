@@ -37,7 +37,7 @@ export default function Induit({
             </Form.Item>
           </Form.Item>
         </Row>
-        {!miseenplaceok.state && (
+        {!miseenplaceok && (
           <div>
             <Row
               style={{

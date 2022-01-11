@@ -14,19 +14,18 @@ import Modeltable from '@/components/tables/Historique/modeltable';
 import Modelgraph from '@/components/modals/historique/graphiquetests';
 
 const ModalLink = props => {
-  const {modal, className, title, toggle, width, height, noCommande} = props;
+  const {
+    modal,
+    className,
+    title,
+    toggle,
+    width,
+    height,
+    noCommande,
+    commandes,
+  } = props;
 
-  const [Commandes, setModels] = useState([
-    {id: '1', numcommand: 'CP20134', numproduit: 'Produit1'},
-    {id: '2', numcommand: 'CP20135', numproduit: 'Produit2'},
-    {id: '3', numcommand: 'CP20136', numproduit: 'Produit3'},
-    {id: '4', numcommand: 'CP20137', numproduit: 'Produit4'},
-    {id: '5', numcommand: 'CP20138', numproduit: 'Produit5'},
-    {id: '6', numcommand: 'CP20139', numproduit: 'Produit6'},
-    {id: '7', numcommand: 'CP20140', numproduit: 'Produit7'},
-    {id: '8', numcommand: 'CP20141', numproduit: 'Produit8'},
-    {id: '9', numcommand: 'CP20142', numproduit: 'Produit9'},
-  ]);
+  const [Commandes, setModels] = useState(commandes);
 
   const [Essais, setCEssais] = useState([
     {
@@ -169,7 +168,6 @@ const ModalLink = props => {
   const [searchcommand, setSearchcommand] = useState('');
   const [selectedmodel, setselectedmodel] = useState('');
   const [colored, setcolored] = useState(false);
-  const [orderedEssais, setorderedEssais] = useState([]);
   const [filteredEssais, setFilteredEssais] = useState([]);
   const [filteredCommands, setFilteredCommands] = useState([]);
   const [nestedModal, setNestedModal] = useState(false);
@@ -187,7 +185,7 @@ const ModalLink = props => {
     const handle = () => {
       setFilteredCommands(
         Commandes.filter(Commande =>
-          Commande.numcommand.includes(noCommande ? noCommande : searchcommand)
+          Commande.id_commande.includes(noCommande ? noCommande : searchcommand)
         )
       );
     };

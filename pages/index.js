@@ -3,14 +3,16 @@ import Loginpage from '@/components/loginpage';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
 import Modalnewtest from '@/components/modals/newtest/scanmodal';
+import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 import {useGetUser} from '@/actions/user';
 import {isAuthorized} from '@/utils/auth0';
 import Link from 'next/link';
 import React, {useState} from 'react';
 import Modal from '@/components/modals/historique/historiquemodal';
 import {Spin, Space, Row} from 'antd';
+import TestingApi from '@/lib/api/testing';
 
-export default function Home() {
+export default function Home({commandes}) {
   const {data, loading} = useGetUser();
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
@@ -73,10 +75,15 @@ export default function Home() {
                       </a>
                     </Link>
                     <div>
-                      <Modalnewtest
+                      {/* <Modalnewtest
                         modal={modal}
                         toggle={toggle}
                         direction="#"
+                      /> */}
+                      <Modalnewtestscanner
+                        modal={modal}
+                        toggle={toggle}
+                        direction="index"
                       />
                     </div>
                     <Modal
@@ -84,7 +91,8 @@ export default function Home() {
                       modal={modal1}
                       title="Historique"
                       className="modalContainer"
-                      width="100%"></Modal>
+                      width="100%"
+                      commandes={commandes}></Modal>
                   </div>
                 </main>
               </Basepage>
@@ -104,4 +112,12 @@ export default function Home() {
       )}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const json = await new TestingApi().getAllcommandes();
+  const commandes = json.data;
+  return {
+    props: {commandes},
+  };
 }
