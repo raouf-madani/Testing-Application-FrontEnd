@@ -35,7 +35,6 @@ const Haut = ({
   const [miseenplacemodal, setmiseenplacemodal] = useState(false);
   const [temperature_noaffected, settemperature_noaffected] = useState(null);
   const [mise_data, setmise_data] = useState(mise_en_placeById);
-  const {data: initialDataM} = useGetMise(mise_en_placeById.id_product);
   const [updateMise_place, {data, error, loading}] = useUpdateMisePlace();
   const _updateMisePlace = async (id, data) => {
     await updateMise_place(id, data);
@@ -342,7 +341,6 @@ const Haut = ({
               <Row>Model : {commande.id_product}</Row>
               <Row>Type : 1Phases</Row>
               <Row>Temps de Test: {mise_data == null ? 12 + 15 : 12} MIN</Row>
-              {mise_data._id}
             </div>
           </Col>
           <Divider type="vertical" />
