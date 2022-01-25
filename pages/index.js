@@ -26,7 +26,7 @@ export default function Home({commandes}) {
       </Head>
       {!loading ? (
         <>
-          {data ? (
+          {!data ? (
             <Baselayout user={data} loading={loading}>
               <Basepage className="base-page">
                 <main className="Homemain">
