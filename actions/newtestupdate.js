@@ -8,6 +8,14 @@ export const UpdateData = (type, newData, setFinaldata) => {
           [type]: newData,
         };
       });
+    // Test Type
+    case 'test_type':
+      setFinaldata(data => {
+        return {
+          ...data,
+          [type]: newData,
+        };
+      });
     //Bornes
     case 'Borne_rouge':
     case 'Borne_verte':
@@ -50,6 +58,8 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Fréquence_genératrice_P2':
     case 'Réactance_ske77_P2':
     case 'Réactance_ske17_P2':
+    case 'Test_Induit_P1':
+    case 'Test_Induit_P2':
       setFinaldata(data => {
         return {
           ...data,
@@ -60,16 +70,29 @@ export const UpdateData = (type, newData, setFinaldata) => {
         };
       });
 
+    //Hipot
+    case 'Test_Hipot_50':
+    case 'Test_Hipot_70':
+      setFinaldata(data => {
+        return {
+          ...data,
+          Hipot: {
+            ...data.Hipot,
+            [type]: newData,
+          },
+        };
+      });
+
     //Perte a Vide
     //Position1
-    case 'multiplicateur_volts_P1':
+    case 'Multiplicateur_volts_P1':
     case 'Multiplicateur_amperes_P1':
     case 'Perte_table_P1':
     case 'riv_P1':
     case 'Pertes_mesurés_P1':
     case 'Courant_excitation_mesurés_P1':
     //Position 2
-    case 'multiplicateur_volts_P2':
+    case 'Multiplicateur_volts_P2':
     case 'Multiplicateur_amperes_P2':
     case 'Perte_table_P2':
     case 'riv_P2':
@@ -119,6 +142,23 @@ export const UpdateData = (type, newData, setFinaldata) => {
           ...data,
           Perte_a_charge: {
             ...data.Perte_a_charge,
+            [type]: newData,
+          },
+        };
+      });
+
+    //Decharges Partielles
+    //Position1
+    case 'Réactance_ske77_DP_P1':
+    case 'Réactance_ske17_DP_P1':
+    //Position 2
+    case 'Réactance_ske77_DP_P2':
+    case 'Réactance_ske17_DP_P2':
+      setFinaldata(data => {
+        return {
+          ...data,
+          Decharges_Partielles: {
+            ...data.Decharges_Partielles,
             [type]: newData,
           },
         };

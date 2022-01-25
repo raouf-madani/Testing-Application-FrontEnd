@@ -1,11 +1,23 @@
 import React from 'react';
-import {Form, Input, Row, Divider} from 'antd';
+import {Form, Input, Row, Divider, Select} from 'antd';
 
 export default function Perte_a_charge({
   UpdateData,
   miseenplaceok,
   setFinaldata,
 }) {
+  const Multiplicateur_Volts = [
+    {label: '400', value: '400'},
+    {label: '208', value: '208'},
+  ];
+  const Multiplicateur_Amperes = [
+    {label: '4000', value: '4000'},
+    {label: '2000', value: '2000'},
+  ];
+  const NO_Cavalier = [
+    {label: '400', value: '400'},
+    {label: '200', value: '200'},
+  ];
   return (
     <div className="Containertest">
       <Divider
@@ -43,12 +55,13 @@ export default function Perte_a_charge({
                   name="Multiplicateur_Volts_Charge_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    placeholder="Position 1"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Volts}
+                    onChange={value =>
                       UpdateData(
                         'Multiplicateur_volts_charge_P1',
-                        e.target.value,
+                        value,
                         setFinaldata
                       )
                     }
@@ -61,12 +74,13 @@ export default function Perte_a_charge({
                     width: 'calc(50% - 8px)',
                     margin: '0 8px',
                   }}>
-                  <Input
-                    placeholder="Position 2"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Volts}
+                    onChange={value =>
                       UpdateData(
                         'Multiplicateur_volts_charge_P2',
-                        e.target.value,
+                        value,
                         setFinaldata
                       )
                     }
@@ -82,12 +96,13 @@ export default function Perte_a_charge({
                   name="Muliplicateur_Amperes_Charge_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    placeholder="Position 1"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Amperes}
+                    onChange={value =>
                       UpdateData(
                         'Multiplicateur_amperes_charge_P1',
-                        e.target.value,
+                        value,
                         setFinaldata
                       )
                     }
@@ -100,12 +115,13 @@ export default function Perte_a_charge({
                     width: 'calc(50% - 8px)',
                     margin: '0 8px',
                   }}>
-                  <Input
-                    placeholder="Position 2"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Amperes}
+                    onChange={value =>
                       UpdateData(
                         'Multiplicateur_amperes_charge_P2',
-                        e.target.value,
+                        value,
                         setFinaldata
                       )
                     }
@@ -122,6 +138,9 @@ export default function Perte_a_charge({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -140,6 +159,9 @@ export default function Perte_a_charge({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -161,6 +183,9 @@ export default function Perte_a_charge({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -179,6 +204,9 @@ export default function Perte_a_charge({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -214,6 +242,9 @@ export default function Perte_a_charge({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -232,6 +263,9 @@ export default function Perte_a_charge({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -263,68 +297,36 @@ export default function Perte_a_charge({
                 label="NO Cavalier"
                 style={{marginBottom: 0, width: '60%'}}>
                 <Form.Item
-                  name="No_Cavalier_P1"
+                  name="No_Cavalier"
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    placeholder="Position 1"
-                    onChange={e =>
-                      UpdateData('No_cavalier_P1', e.target.value, setFinaldata)
+                  <Select
+                    defaultValue=""
+                    options={NO_Cavalier}
+                    onChange={value =>
+                      UpdateData('No_cavalier', value, setFinaldata)
                     }
                   />
                 </Form.Item>
                 <Form.Item
-                  name="No_Cavalier_P2"
                   style={{
                     display: 'inline-block',
                     width: 'calc(50% - 8px)',
                     margin: '0 8px',
-                  }}>
-                  <Input
-                    placeholder="Position 2"
-                    onChange={e =>
-                      UpdateData('No_cavalier_P2', e.target.value, setFinaldata)
-                    }
-                  />
-                </Form.Item>
+                  }}></Form.Item>
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Perte Cavalier"
-                style={{marginBottom: 0, width: '60%'}}>
-                <Form.Item
-                  name="Perte_Cavalier_P1"
-                  rules={[{required: true, message: 'Champ Requis'}]}
-                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    placeholder="Position 1"
-                    onChange={e =>
-                      UpdateData(
-                        'Perte_cavalier_P1',
-                        e.target.value,
-                        setFinaldata
-                      )
-                    }
-                  />
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
+                  Pertes Cavalier P1 : 20
                 </Form.Item>
                 <Form.Item
-                  name="Perte_Cavalier_P2"
+                  className="show_item"
                   style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
                     margin: '0 8px',
                   }}>
-                  <Input
-                    placeholder="Position 2"
-                    onChange={e =>
-                      UpdateData(
-                        'Perte_cavalier_P2',
-                        e.target.value,
-                        setFinaldata
-                      )
-                    }
-                  />
+                  Pertes Cavalier P2 : 30
                 </Form.Item>
               </Form.Item>
             </Row>
@@ -337,6 +339,9 @@ export default function Perte_a_charge({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -355,6 +360,9 @@ export default function Perte_a_charge({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -376,6 +384,9 @@ export default function Perte_a_charge({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -394,6 +405,9 @@ export default function Perte_a_charge({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -408,6 +422,48 @@ export default function Perte_a_charge({
             </Row>
           </div>
         )}
+        {miseenplaceok && (
+          <div>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
+                  Multiplicateur Volts :{' '}
+                  {miseenplaceok.Perte_a_Charge.Multiplicateur_volts_charge_P1}
+                </Form.Item>
+                <Form.Item
+                  className="show_item"
+                  style={{
+                    margin: '0 8px',
+                  }}>
+                  Multiplicateur Volts :{' '}
+                  {miseenplaceok.Perte_a_Charge.Multiplicateur_volts_charge_P2}
+                </Form.Item>
+              </Form.Item>
+            </Row>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
+                  Multiplicateur Ampéres :{' '}
+                  {
+                    miseenplaceok.Perte_a_Charge
+                      .Multiplicateur_amperes_charge_P1
+                  }
+                </Form.Item>
+                <Form.Item
+                  className="show_item"
+                  style={{
+                    margin: '0 8px',
+                  }}>
+                  Multiplicateur Ampéres :{' '}
+                  {
+                    miseenplaceok.Perte_a_Charge
+                      .Multiplicateur_amperes_charge_P2
+                  }
+                </Form.Item>
+              </Form.Item>
+            </Row>
+          </div>
+        )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             label="Perte A Charge Mesuré (W)"
@@ -417,6 +473,9 @@ export default function Perte_a_charge({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -435,6 +494,9 @@ export default function Perte_a_charge({
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(
@@ -452,14 +514,17 @@ export default function Perte_a_charge({
             label="Impédance Mesuré"
             style={{marginBottom: 0, width: '60%'}}>
             <Form.Item
-              name="Impédance_Mesuré_P1"
+              name="Impédance_mesuré_P1"
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
-                    'Impédance_mesuré_P1',
+                    'Impédance_mesuré_P2',
                     e.target.value,
                     setFinaldata
                   )
@@ -474,6 +539,9 @@ export default function Perte_a_charge({
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(

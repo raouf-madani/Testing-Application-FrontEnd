@@ -17,14 +17,14 @@ export default function Facteur_dissipation() {
               name="H"
               noStyle
               rules={[{required: true, message: 'H required'}]}>
-              <Input placeholder="H" />
+              <Input type="number" min={10} max={1000} placeholder="H" />
             </Form.Item>
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item label="L" style={{marginBottom: 0, width: '30%'}}>
             <Form.Item name="L" noStyle>
-              <Input placeholder="L" />
+              <Input type="number" min={10} max={1000} placeholder="L" />
             </Form.Item>
           </Form.Item>
         </Row>

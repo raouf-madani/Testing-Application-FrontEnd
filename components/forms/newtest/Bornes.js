@@ -12,7 +12,12 @@ import {
   Divider,
 } from 'antd';
 
-export default function Bornes({UpdateData, miseenplaceok, setFinaldata}) {
+export default function Bornes({
+  UpdateData,
+  miseenplaceok,
+  setFinaldata,
+  setNewMisePlace,
+}) {
   return (
     <div className="Containertest">
       <Divider
@@ -38,9 +43,10 @@ export default function Bornes({UpdateData, miseenplaceok, setFinaldata}) {
                 ]}>
                 <Radio.Group
                   buttonStyle="solid"
-                  onChange={e =>
-                    UpdateData('Borne_rouge', e.target.value, setFinaldata)
-                  }>
+                  onChange={e => {
+                    UpdateData('Borne_rouge', e.target.value, setNewMisePlace);
+                    UpdateData('Borne_rouge', e.target.value, setFinaldata);
+                  }}>
                   <Space direction="vertical">
                     <Radio.Button
                       style={{width: '100px', marginBottom: '10px'}}
@@ -77,9 +83,10 @@ export default function Bornes({UpdateData, miseenplaceok, setFinaldata}) {
                 ]}>
                 <Radio.Group
                   buttonStyle="solid"
-                  onChange={e =>
-                    UpdateData('Borne_verte', e.target.value, setFinaldata)
-                  }>
+                  onChange={e => {
+                    UpdateData('Borne_verte', e.target.value, setNewMisePlace);
+                    UpdateData('Borne_verte', e.target.value, setFinaldata);
+                  }}>
                   <Space direction="vertical">
                     <Radio.Button
                       style={{width: '100px', marginBottom: '10px'}}
@@ -116,9 +123,10 @@ export default function Bornes({UpdateData, miseenplaceok, setFinaldata}) {
                 ]}>
                 <Radio.Group
                   buttonStyle="solid"
-                  onChange={e =>
-                    UpdateData('Borne_jaune', e.target.value, setFinaldata)
-                  }>
+                  onChange={e => {
+                    UpdateData('Borne_jaune', e.target.value, setNewMisePlace);
+                    UpdateData('Borne_jaune', e.target.value, setFinaldata);
+                  }}>
                   <Space direction="vertical">
                     <Radio.Button
                       style={{width: '100px', marginBottom: '10px'}}
