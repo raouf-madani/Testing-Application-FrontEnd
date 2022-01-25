@@ -748,4 +748,4 @@ export async function getStaticProps({params}) {
   return {props: {commande, mise_en_placeById, Tests, allCommandesById}};
 }
 
-export default withAuth(NewTest)();
+export default NewTest;
