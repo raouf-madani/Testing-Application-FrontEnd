@@ -501,7 +501,6 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     test_type_selected={test_type_selected}
                     settest_type_selected={settest_type_selected}
                   />
-                  {dataU.given_name}
                   <Divider dashed orientation="left" style={{color: 'white'}}>
                     Étapes de Test
                   </Divider>
