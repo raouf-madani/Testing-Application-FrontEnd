@@ -18,6 +18,9 @@ export default function RIV({UpdateData, setFinaldata}) {
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData('riv_P1', e.target.value, setFinaldata)
@@ -32,6 +35,9 @@ export default function RIV({UpdateData, setFinaldata}) {
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData('riv_P2', e.target.value, setFinaldata)

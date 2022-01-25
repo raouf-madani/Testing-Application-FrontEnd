@@ -1,9 +1,26 @@
 import React, {useState} from 'react';
-import {Form, Input, Space, Button, Row, Divider} from 'antd';
+import {Form, Input, Space, Button, Row, Divider, Select} from 'antd';
 import {PlusOutlined, MinusCircleOutlined} from '@ant-design/icons';
 
-export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
+export default function Decharges_Partielles({
+  UpdateData,
+  miseenplaceok,
+  setFinaldata,
+  setNewMisePlace,
+}) {
   const [stopaddrow, setstopaddrow] = useState(false);
+  const SKE77 = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
+  const SKE17 = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
   return (
     <div className="Containertest">
       <Divider
@@ -33,6 +50,127 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             </Form.Item>
           </Form.Item>
         </Row>
+        {miseenplaceok ? (
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="1.5pu"
+              className="show_item"
+              style={{width: '100%'}}>
+              Réactance SKE77 p1:
+              {miseenplaceok.Decharges_Partielles.Réactance_ske77_DP_P1}
+            </Form.Item>
+            <Form.Item
+              key="1.5pu"
+              className="show_item"
+              style={{width: '100%'}}>
+              Réactance SKE77 p2 :{' '}
+              {miseenplaceok.Decharges_Partielles.Réactance_ske77_DP_P2}
+            </Form.Item>
+            <Form.Item
+              key="1.5pu"
+              className="show_item"
+              style={{width: '100%'}}>
+              Réactance SKE17 p1 :
+              {miseenplaceok.Decharges_Partielles.Réactance_ske17_DP_P1}
+            </Form.Item>
+            <Form.Item
+              key="1.5pu"
+              className="show_item"
+              style={{width: '100%'}}>
+              Réactance SKE17 p2 :{' '}
+              {miseenplaceok.Decharges_Partielles.Réactance_ske17_DP_P2}
+            </Form.Item>
+          </Row>
+        ) : (
+          <>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                label="Réactance SKE77"
+                style={{width: '60%', marginBottom: '5px'}}>
+                <Form.Item
+                  name="Réactance_SKE77_DP_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}
+                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+                  <Select
+                    defaultValue=""
+                    options={SKE77}
+                    onChange={value => {
+                      UpdateData(
+                        'Réactance_ske77_DP_P1',
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData('Réactance_ske77_DP_P1', value, setFinaldata);
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  name="Réactance_SKE77_DP_P2"
+                  style={{
+                    display: 'inline-block',
+                    width: 'calc(50% - 8px)',
+                    margin: '0 8px',
+                  }}>
+                  <Select
+                    defaultValue=""
+                    options={SKE77}
+                    onChange={value => {
+                      UpdateData(
+                        'Réactance_ske77_DP_P2',
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData('Réactance_ske77_DP_P2', value, setFinaldata);
+                    }}
+                  />
+                </Form.Item>
+              </Form.Item>
+            </Row>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                label="Réactance SKE17"
+                style={{width: '60%', marginBottom: '5px'}}>
+                <Form.Item
+                  name="Réactance_SKE17_DP_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}
+                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+                  <Select
+                    defaultValue=""
+                    options={SKE77}
+                    onChange={value => {
+                      UpdateData(
+                        'Réactance_ske17_DP_P1',
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData('Réactance_ske17_DP_P1', value, setFinaldata);
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  name="Réactance_SKE17_DP_P2"
+                  style={{
+                    display: 'inline-block',
+                    width: 'calc(50% - 8px)',
+                    margin: '0 8px',
+                  }}>
+                  <Select
+                    defaultValue=""
+                    options={SKE17}
+                    onChange={value => {
+                      UpdateData(
+                        'Réactance_ske17_DP_P2',
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData('Réactance_ske17_DP_P2', value, setFinaldata);
+                    }}
+                  />
+                </Form.Item>
+              </Form.Item>
+            </Row>
+          </>
+        )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             key="15_Sec"
@@ -40,7 +178,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             label="15 Sec"
             name="15"
             rules={[{required: true, message: 'Champ Requis'}]}>
-            <Input placeholder="10 Sec" />
+            <Input type="number" min={10} max={1000} placeholder="10 Sec" />
           </Form.Item>
           <Form.Item
             key="30_Sec"
@@ -48,7 +186,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             label="30 Sec"
             name="30"
             rules={[{required: true, message: 'Champ Requis'}]}>
-            <Input placeholder="30 Sec" />
+            <Input type="number" min={10} max={1000} placeholder="30 Sec" />
           </Form.Item>
           <Form.Item
             key="45_Sec"
@@ -56,7 +194,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             label="45 Sec"
             name="45"
             rules={[{required: true, message: 'Champ Requis'}]}>
-            <Input placeholder="45 Sec" />
+            <Input type="number" min={10} max={1000} placeholder="45 Sec" />
           </Form.Item>
           <Form.Item
             key="60_Sec"
@@ -64,7 +202,7 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
             label="60 Sec"
             name="60"
             rules={[{required: true, message: 'Champ Requis'}]}>
-            <Input placeholder="60 Sec" />
+            <Input type="number" min={10} max={1000} placeholder="60 Sec" />
           </Form.Item>
         </Row>
         <Form.List name="" style={{width: '50%'}}>
@@ -80,7 +218,12 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                     name={[name, name == 0 ? '75' : '135']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input placeholder={name == 0 ? '75 Sec' : '135 Sec'} />
+                    <Input
+                      type="number"
+                      min={10}
+                      max={1000}
+                      placeholder={name == 0 ? '75 Sec' : '135 Sec'}
+                    />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -90,7 +233,12 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                     name={[name, name == 0 ? '90' : '150']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input placeholder={[name == 0 ? '90 Sec' : '150 Sec']} />
+                    <Input
+                      type="number"
+                      min={10}
+                      max={1000}
+                      placeholder={[name == 0 ? '90 Sec' : '150 Sec']}
+                    />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -100,7 +248,12 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                     name={[name, name == 0 ? '105' : '165']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input placeholder={[name == 0 ? '105 Sec' : '165 Sec']} />
+                    <Input
+                      type="number"
+                      min={10}
+                      max={1000}
+                      placeholder={[name == 0 ? '105 Sec' : '165 Sec']}
+                    />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -110,7 +263,12 @@ export default function Decharges_Partielles({UpdateData, miseenplaceok}) {
                     name={[name, name == 0 ? '120' : '180']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input placeholder={[name == 0 ? '120 Sec' : '180 Sec']} />
+                    <Input
+                      type="number"
+                      min={10}
+                      max={1000}
+                      placeholder={[name == 0 ? '120 Sec' : '180 Sec']}
+                    />
                   </Form.Item>
                   <MinusCircleOutlined onClick={() => remove(name)} />
 

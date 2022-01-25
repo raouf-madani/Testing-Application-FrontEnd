@@ -1,11 +1,20 @@
 import React, {useState} from 'react';
-import {Form, Input, Row, Divider} from 'antd';
+import {Form, Input, Row, Divider, Select} from 'antd';
 
 export default function Perte_a_vide({
   UpdateData,
   miseenplaceok,
   setFinaldata,
+  setNewMisePlace,
 }) {
+  const Multiplicateur_Volts = [
+    {label: '400', value: '400'},
+    {label: '208', value: '208'},
+  ];
+  const Multiplicateur_Amperes = [
+    {label: '4000', value: '4000'},
+    {label: '2000', value: '2000'},
+  ];
   return (
     <div className="Containertest">
       <Divider
@@ -29,6 +38,42 @@ export default function Perte_a_vide({
             </Form.Item>
           </Form.Item>
         </Row>
+        {miseenplaceok && (
+          <div>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
+                  Multiplicateur Volts :{' '}
+                  {miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1}
+                </Form.Item>
+                <Form.Item
+                  className="show_item"
+                  style={{
+                    margin: '0 8px',
+                  }}>
+                  Multiplicateur Volts :{' '}
+                  {miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P2}
+                </Form.Item>
+              </Form.Item>
+            </Row>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Form.Item className="show_item">
+                  Multiplicateur Ampéres :{' '}
+                  {miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P1}
+                </Form.Item>
+                <Form.Item
+                  className="show_item"
+                  style={{
+                    margin: '0 8px',
+                  }}>
+                  Multiplicateur Ampéres :{' '}
+                  {miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P2}
+                </Form.Item>
+              </Form.Item>
+            </Row>
+          </div>
+        )}
         {!miseenplaceok && (
           <div>
             <Row style={{justifyContent: 'center'}}>
@@ -39,15 +84,21 @@ export default function Perte_a_vide({
                   name="multiplicateur_Volts_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    placeholder="Position 1"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Volts}
+                    onChange={value => {
                       UpdateData(
-                        'multiplicateur_volts_P1',
-                        e.target.value,
+                        'Multiplicateur_volts_P1',
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData(
+                        'Multiplicateur_volts_P1',
+                        value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
                 <Form.Item
@@ -57,15 +108,21 @@ export default function Perte_a_vide({
                     width: 'calc(50% - 8px)',
                     margin: '0 8px',
                   }}>
-                  <Input
-                    placeholder="Position 2"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Volts}
+                    onChange={value => {
                       UpdateData(
-                        'multiplicateur_volts_P2',
-                        e.target.value,
+                        'Multiplicateur_volts_P2',
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData(
+                        'Multiplicateur_volts_P2',
+                        value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
               </Form.Item>
@@ -78,15 +135,21 @@ export default function Perte_a_vide({
                   name="Multiplicateur_Amprers_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    placeholder="Position 1"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Amperes}
+                    onChange={value => {
                       UpdateData(
                         'Multiplicateur_amperes_P1',
-                        e.target.value,
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData(
+                        'Multiplicateur_amperes_P1',
+                        value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
                 <Form.Item
@@ -96,15 +159,21 @@ export default function Perte_a_vide({
                     width: 'calc(50% - 8px)',
                     margin: '0 8px',
                   }}>
-                  <Input
-                    placeholder="Position 2"
-                    onChange={e =>
+                  <Select
+                    defaultValue=""
+                    options={Multiplicateur_Amperes}
+                    onChange={value => {
                       UpdateData(
                         'Multiplicateur_amperes_P2',
-                        e.target.value,
+                        value,
+                        setNewMisePlace
+                      );
+                      UpdateData(
+                        'Multiplicateur_amperes_P2',
+                        value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
               </Form.Item>
@@ -118,10 +187,22 @@ export default function Perte_a_vide({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 1"
-                    onChange={e =>
-                      UpdateData('Perte_table_P1', e.target.value, setFinaldata)
-                    }
+                    onChange={e => {
+                      UpdateData(
+                        'Perte_table_P1',
+                        e.target.value,
+                        setNewMisePlace
+                      );
+                      UpdateData(
+                        'Perte_table_P1',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
                   />
                 </Form.Item>
                 <Form.Item
@@ -132,10 +213,22 @@ export default function Perte_a_vide({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
                     placeholder="Position 2"
-                    onChange={e =>
-                      UpdateData('Perte_table_P2', e.target.value, setFinaldata)
-                    }
+                    onChange={e => {
+                      UpdateData(
+                        'Perte_table_P2',
+                        e.target.value,
+                        setNewMisePlace
+                      );
+                      UpdateData(
+                        'Perte_table_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
                   />
                 </Form.Item>
               </Form.Item>
@@ -151,6 +244,9 @@ export default function Perte_a_vide({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData('Pertes_mesurés_P1', e.target.value, setFinaldata)
@@ -165,9 +261,12 @@ export default function Perte_a_vide({
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 2"
                 onChange={e =>
-                  UpdateData('Pertes_mesurés_P1', e.target.value, setFinaldata)
+                  UpdateData('Pertes_mesurés_P2', e.target.value, setFinaldata)
                 }
               />
             </Form.Item>
@@ -182,6 +281,9 @@ export default function Perte_a_vide({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -200,6 +302,9 @@ export default function Perte_a_vide({
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(

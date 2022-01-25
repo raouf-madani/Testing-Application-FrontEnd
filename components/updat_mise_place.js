@@ -1,36 +1,43 @@
 import React from 'react';
-import {InputNumber, Form, Tabs, Input, Row} from 'antd';
+import {InputNumber, Form, Tabs, Input, Row, Select} from 'antd';
 import {InfoCircleOutlined} from '@ant-design/icons';
 const {TabPane} = Tabs;
-
 function newTestContent({UpdatemiseData, setmise_data}) {
+  const Borne_Rouge = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
+  const Borne_Verte = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
+  const Borne_Jaune = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
+  // decharges partielle
+  const SKE77 = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
+  const SKE17 = [
+    {label: '100', value: '100'},
+    {label: '200', value: '200'},
+    {label: '300', value: '300'},
+    {label: '600', value: '600'},
+  ];
   return (
     <Tabs tabPosition="top">
       <TabPane tab="Bornes" key="1">
         <Row justify="space-between">
-          <Form.Item
-            label="Borne Rouge"
-            tooltip={{
-              title: 'Tooltip with customize icon',
-              icon: <InfoCircleOutlined style={{color: 'red'}} />,
-            }}
-            style={{marginBottom: 0, width: '30%'}}>
-            <Form.Item
-              name="Borne_Rouge"
-              rules={[
-                {
-                  required: true,
-                  message: 'Champ Requis',
-                },
-              ]}>
-              <InputNumber
-                style={{width: 140}}
-                onChange={value =>
-                  UpdatemiseData('Borne_rouge', value, setmise_data)
-                }
-              />
-            </Form.Item>
-          </Form.Item>
           <Form.Item
             label="Borne Jaune"
             tooltip={{
@@ -46,11 +53,54 @@ function newTestContent({UpdatemiseData, setmise_data}) {
                   message: 'Champ Requis',
                 },
               ]}>
-              <Input
+              {/* <Input
                 onChange={e =>
                   UpdatemiseData('Borne_jaune', e.target.value, setmise_data)
                 }
+              /> */}
+              <Select
+                options={Borne_Jaune}
+                onChange={value => {
+                  UpdatemiseData('Borne_jaune', value, setmise_data);
+                }}
               />
+            </Form.Item>
+          </Form.Item>
+          <Form.Item
+            label="Borne Rouge"
+            tooltip={{
+              title: 'Tooltip with customize icon',
+              icon: <InfoCircleOutlined style={{color: 'red'}} />,
+            }}
+            style={{marginBottom: 0, width: '30%'}}>
+            <Form.Item
+              name="Borne_Rouge"
+              rules={[
+                {
+                  required: true,
+                  message: 'Champ Requis',
+                },
+              ]}>
+              {/* <Select
+                labelInValue={true}
+                defaultValue={{value: 100}}
+                style={{width: 120}}
+                onChange={handleChange}>
+                <Option value="100">100</Option>
+                <Option value="200">200</Option>
+                <Option value="300">300</Option>
+              </Select> */}
+              <Select
+                options={Borne_Rouge}
+                onChange={value => {
+                  UpdatemiseData('Borne_rouge', value, setmise_data);
+                }}
+              />
+              {/* <Input
+                onChange={e =>
+                  UpdatemiseData('Borne_rouge', e.target.value, setmise_data)
+                }
+              /> */}
             </Form.Item>
           </Form.Item>
           <Form.Item
@@ -68,10 +118,16 @@ function newTestContent({UpdatemiseData, setmise_data}) {
                   message: 'Champ Requis',
                 },
               ]}>
-              <Input
+              {/* <Input
                 onChange={e =>
                   UpdatemiseData('Borne_verte', e.target.value, setmise_data)
                 }
+              /> */}
+              <Select
+                options={Borne_Verte}
+                onChange={value => {
+                  UpdatemiseData('Borne_verte', value, setmise_data);
+                }}
               />
             </Form.Item>
           </Form.Item>
@@ -149,7 +205,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
               placeholder="Position 1"
               onChange={e =>
                 UpdatemiseData(
-                  'Polarité_volts_P1',
+                  'Polarite_volts_P1',
                   e.target.value,
                   setmise_data
                 )
@@ -167,7 +223,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
               placeholder="Position 2"
               onChange={e =>
                 UpdatemiseData(
-                  'Polarité_volts_P2',
+                  'Polarite_volts_P2',
                   e.target.value,
                   setmise_data
                 )
@@ -663,27 +719,13 @@ function newTestContent({UpdatemiseData, setmise_data}) {
         </Form.Item>
         <Form.Item label="NO Cavalier" style={{marginBottom: 0}}>
           <Form.Item
-            name="No_Cavalier_P1"
+            name="No_Cavalier"
             rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData('No_cavalier_P1', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-          <Form.Item
-            name="No_Cavalier_P2"
-            style={{
-              display: 'inline-block',
-              width: 'calc(50% - 8px)',
-              margin: '0 8px',
-            }}>
-            <Input
-              placeholder="Position 2"
-              onChange={e =>
-                UpdatemiseData('No_cavalier_P2', e.target.value, setmise_data)
+                UpdatemiseData('No_cavalier', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -723,6 +765,75 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             />
           </Form.Item>
         </Form.Item>
+      </TabPane>
+
+      <TabPane tab="Decharges Partielles" key="8">
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item
+            label="Réactance SKE77"
+            style={{width: '60%', marginBottom: '5px'}}>
+            <Form.Item
+              name="Réactance_SKE77_DP_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Select
+                defaultValue=""
+                options={SKE77}
+                onChange={value => {
+                  UpdatemiseData('Réactance_ske77_DP_P1', value, setmise_data);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              name="Réactance_SKE77_DP_P2"
+              style={{
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                margin: '0 8px',
+              }}>
+              <Select
+                defaultValue=""
+                options={SKE77}
+                onChange={value => {
+                  UpdatemiseData('Réactance_ske77_DP_P2', value, setmise_data);
+                }}
+              />
+            </Form.Item>
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item
+            label="Réactance SKE17"
+            style={{width: '60%', marginBottom: '5px'}}>
+            <Form.Item
+              name="Réactance_SKE17_DP_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Select
+                defaultValue=""
+                options={SKE77}
+                onChange={value => {
+                  UpdatemiseData('Réactance_ske17_DP_P1', value, setmise_data);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              name="Réactance_SKE17_DP_P2"
+              style={{
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                margin: '0 8px',
+              }}>
+              <Select
+                defaultValue=""
+                options={SKE17}
+                onChange={value => {
+                  UpdatemiseData('Réactance_ske17_DP_P2', value, setmise_data);
+                }}
+              />
+            </Form.Item>
+          </Form.Item>
+        </Row>
       </TabPane>
     </Tabs>
   );

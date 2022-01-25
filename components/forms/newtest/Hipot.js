@@ -10,7 +10,7 @@ import {
   Divider,
 } from 'antd';
 
-export default function Hipot({error}) {
+export default function Hipot({error, UpdateData, setFinaldata}) {
   return (
     <div className="Containertest">
       <Divider
@@ -28,12 +28,28 @@ export default function Hipot({error}) {
             name="test_70"
             rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-            <Radio.Group buttonStyle="solid">
-              <Radio.Button style={{margin: '5px'}} value={true}>
+            <Radio.Group buttonStyle="solid" key="Hipot_70">
+              <Radio.Button
+                style={{margin: '5px'}}
+                value={true}
+                onClick={() => {
+                  console.log('Test reussi'),
+                    UpdateData(
+                      'Test_Hipot_70',
+                      'test Hipot reussi',
+                      setFinaldata
+                    );
+                }}>
                 Test reussit
               </Radio.Button>
               <Radio.Button
                 onClick={() => {
+                  console.log('Test echoue'),
+                    UpdateData(
+                      'Test_Hipot_70',
+                      'test Hipot echoue',
+                      setFinaldata
+                    );
                   error(
                     'Le Test de Hipot a une tension appluiqué de 70 V est echoué...'
                   );
@@ -53,12 +69,28 @@ export default function Hipot({error}) {
             name="test_50"
             rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-            <Radio.Group buttonStyle="solid">
-              <Radio.Button style={{margin: '5px'}} value={true}>
+            <Radio.Group buttonStyle="solid" key="Hipot_50">
+              <Radio.Button
+                style={{margin: '5px'}}
+                value={true}
+                onClick={() => {
+                  console.log('Test reussi'),
+                    UpdateData(
+                      'Test_Hipot_50',
+                      'test Hipot reussi',
+                      setFinaldata
+                    );
+                }}>
                 Test reussit
               </Radio.Button>
               <Radio.Button
                 onClick={() => {
+                  console.log('Test echoue'),
+                    UpdateData(
+                      'Test_Hipot_50',
+                      'test Hipot echoue',
+                      setFinaldata
+                    );
                   error(
                     'Le Test de Hipot a une tension appluiqué de 50 V est echoué...'
                   );

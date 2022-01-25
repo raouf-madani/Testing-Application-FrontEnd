@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Modal, Button, Input, Form} from 'antd';
+import {Modal, Button, Input, Form, Checkbox} from 'antd';
 import {useRouter} from 'next/router';
 
-const App = ({modal, toggle, direction}) => {
+const App = ({modal, toggle, direction, teststatus}) => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [modalText, setModalText] = React.useState('Content of the modal');
   const [numcommande, setnumcommande] = useState(null);
+  const [firsttestday, setfirsttestday] = useState(false);
   const [form] = Form.useForm();
 
   const router = useRouter();
@@ -13,7 +14,10 @@ const App = ({modal, toggle, direction}) => {
   const handleOk = () => {
     if (numcommande !== null) {
       setConfirmLoading(true);
-      router.push('/newtest/[id]', `/newtest/${numcommande}`);
+      router.push({
+        pathname: '/newtest/[id]',
+        query: {id: numcommande, firstchecked: firsttestday},
+      });
     }
   };
 
@@ -21,8 +25,9 @@ const App = ({modal, toggle, direction}) => {
     console.log('Clicked cancel button');
     setConfirmLoading(false);
     form.resetFields();
-    router.push('/');
-    if (direction == 'index') {
+    if (teststatus == 'fin' && direction == 'index') {
+      router.push('/');
+    } else {
       toggle();
     }
   };
@@ -45,6 +50,11 @@ const App = ({modal, toggle, direction}) => {
           name="basic"
           onFinish={handleOk}
           autoComplete="off">
+          <Form.Item name="firsttest">
+            <Checkbox onChange={e => setfirsttestday(e.target.checked)}>
+              Premier Test de Jour
+            </Checkbox>
+          </Form.Item>
           <Form.Item
             label="Numero de Commande"
             name="Commande"

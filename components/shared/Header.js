@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Modalnewtest from '@/components/modals/newtest/scanmodal';
+import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 
 import {
   Collapse,
@@ -12,18 +13,30 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
   NavLink,
   UncontrolledDropdown,
 } from 'reactstrap';
+import {Modal, Button} from 'antd';
 import Link from 'next/link';
-import Typed from 'react-typed';
 import {isAuthorized} from '@/utils/auth0';
+const {confirm} = Modal;
+
+// function AnnulerConfirm() {
+//   confirm({
+//     title: "etes vous sur d'annuler le test Courant?",
+//     onOk() {
+//       console.log('ok');
+//     },
+//     onCancel() {
+//       console.log('Cancel');
+//     },
+//   });
+// }
 
 const Bslink = props => {
-  const {title, url, className = 'navlink', ontoggle} = props;
+  const {title, url, className = 'navlink', ontoggle, status} = props;
   return (
-    <Link href={url}>
+    <Link style={{PointerEvent: 'default'}} href={url}>
       <a
         className={`nav-link port-navbar-link ${className}`}
         onClick={ontoggle}>
@@ -83,11 +96,10 @@ const AdminMenu = () => {
     </Dropdown>
   );
 };
-const Header = ({user, loading, classNameheader}) => {
+const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
   const [isOpen, setIsOpen] = useState(false);
   const Roles = ['Actif Depuis 13h30:22'];
   const [modal, setModal] = useState(false);
-  const toggle1 = () => setModal(!modal);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -97,39 +109,50 @@ const Header = ({user, loading, classNameheader}) => {
         className={`port-navbar port-default absolute Navbar`}
         dark
         expand="md">
-        <NavbarBrand href="/">
-          {' '}
-          <span className="siemens">Siemens</span>{' '}
-          <span className="energy">Energy</span>
-        </NavbarBrand>
-        <Nav className="mr-auto" navbar>
-          <NavItem>
-            <NavbarText>Application d&apos;essai</NavbarText>
-          </NavItem>
-        </Nav>
+        {status == 0 ? (
+          <NavbarBrand href="/">
+            {' '}
+            <span className="siemens">Siemens</span>{' '}
+            <span className="energy">Energy</span>
+          </NavbarBrand>
+        ) : (
+          <>
+            <NavbarBrand onClick={AnnulerConfirm}>
+              {' '}
+              <span className="siemens">Siemens</span>{' '}
+              <span className="energy">Energy</span>
+            </NavbarBrand>
+          </>
+        )}
+
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem className="port-navbar-item">
-              <Bslink title="Accueil" url="/" />
+              <Bslink title="Accueil" url="/" status={status} />
             </NavItem>
             <NavItem className="port-navbar-item">
               <Bslink
                 title="New Test"
-                url="/newtest"
-                ontoggle={() => toggle1}
+                url="#"
+                ontoggle={() => setModal(!modal)}
+                status={status}
               />
             </NavItem>
-            <Modalnewtest modal={modal} toggle={toggle1} />
+            <Modalnewtestscanner
+              modal={modal}
+              toggle={() => setModal(!modal)}
+              direction="index"
+            />
             {user && isAuthorized(user, 'admin') && (
               <>
                 <NavItem className="port-navbar-item">
-                  <Bslink title="Editeur" url="/editeur" />
+                  <Bslink title="Editeur" url="/editeur" status={status} />
                 </NavItem>
               </>
             )}
             <NavItem className="port-navbar-item">
-              <Bslink title="Rapports" url="/rapports" />
+              <Bslink title="Rapports" url="/rapports" status={status} />
             </NavItem>
           </Nav>
           <Nav className="mr-auto">

@@ -16,6 +16,7 @@ function newTestContent({
   UpdateData,
   mise_en_placeById,
   setFinaldata,
+  setNewMisePlace,
   error,
 }) {
   const [chance, setchance] = useState(0);
@@ -46,6 +47,7 @@ function newTestContent({
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
         />
       );
     case 'Ratio/Polarite':
@@ -54,6 +56,7 @@ function newTestContent({
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
         />
       );
     case 'Induit':
@@ -63,6 +66,7 @@ function newTestContent({
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           error={error}
+          setNewMisePlace={setNewMisePlace}
         />
       );
     case 'Hipot':
@@ -80,6 +84,7 @@ function newTestContent({
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
         />
       );
     case 'RIV':
@@ -103,6 +108,7 @@ function newTestContent({
           chance={chance}
           setchance={setchance}
           setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
         />
       );
 

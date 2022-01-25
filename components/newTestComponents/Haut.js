@@ -19,18 +19,24 @@ import {
   InputNumber,
   Space,
   Tag,
+  Select,
 } from 'antd';
 import {CheckOutlined, CloseCircleOutlined} from '@ant-design/icons';
 import Marquee from 'react-fast-marquee';
 const {Panel} = Collapse;
 const Haut = ({
+  Finaldata,
   UpdateData,
-  temperature_affected,
   commande,
   setFinaldata,
   mise_en_placeById,
   useGetMise,
+  Tests_length,
   useUpdateMisePlace,
+  allCommandesById_length,
+  status,
+  test_type_selected,
+  settest_type_selected,
 }) => {
   const [miseenplacemodal, setmiseenplacemodal] = useState(false);
   const [temperature_noaffected, settemperature_noaffected] = useState(null);
@@ -39,7 +45,10 @@ const Haut = ({
   const _updateMisePlace = async (id, data) => {
     await updateMise_place(id, data);
   };
-
+  const Type_Test = [
+    {label: '1 Phase', value: '1phase'},
+    {label: '3 Phase', value: '3phase'},
+  ];
   let initial_mise_placefrom_values = null;
   if (mise_data !== null) {
     initial_mise_placefrom_values = {
@@ -96,7 +105,7 @@ const Haut = ({
         mise_data.Perte_a_Charge.Courant_appliquié_transfo_P1,
       Courant_Appliqué_Appareil_P1:
         mise_data.Perte_a_Charge.Courant_appliqué_appareil_P1,
-      No_Cavalier_P1: mise_data.Perte_a_Charge.No_cavalier_P1,
+      No_Cavalier: mise_data.Perte_a_Charge.No_cavalier,
       Perte_Cavalier_P1: mise_data.Perte_a_Charge.Perte_cavalier_P1,
       //P2
       Multiplicateur_Volts_Charge_P2:
@@ -111,8 +120,18 @@ const Haut = ({
         mise_data.Perte_a_Charge.Courant_appliquié_transfo_P2,
       Courant_Appliqué_Appareil_P2:
         mise_data.Perte_a_Charge.Courant_appliqué_appareil_P2,
-      No_Cavalier_P2: mise_data.Perte_a_Charge.No_cavalier_P2,
       Perte_Cavalier_P2: mise_data.Perte_a_Charge.Perte_cavalier_P2,
+      //Decharges Partielles
+      //P1
+      Réactance_SKE77_DP_P1:
+        mise_data.Decharges_Partielles.Réactance_ske77_DP_P1,
+      Réactance_SKE17_DP_P1:
+        mise_data.Decharges_Partielles.Réactance_ske17_DP_P1,
+      //P2
+      Réactance_SKE77_DP_P2:
+        mise_data.Decharges_Partielles.Réactance_ske77_DP_P2,
+      Réactance_SKE17_DP_P2:
+        mise_data.Decharges_Partielles.Réactance_ske17_DP_P2,
     };
   }
 
@@ -142,10 +161,10 @@ const Haut = ({
       //Ratio
       case 'Volts_apluiqés_P1':
       case 'Volts_ht_P1':
-      case 'Polarité_volts_P1':
+      case 'Polarite_volts_P1':
       case 'Volts_apluiqés_P2':
       case 'Volts_ht_P2':
-      case 'Polarité_volts_P2':
+      case 'Polarite_volts_P2':
         setmise_data(data => {
           return {
             ...data,
@@ -212,8 +231,9 @@ const Haut = ({
       case 'Perte_table_totale_P1':
       case 'Courant_appliquié_transfo_P1':
       case 'Courant_appliqué_appareil_P1':
-      case 'No_cavalier_P1':
       case 'Perte_cavalier_P1':
+      //no position
+      case 'No_cavalier':
       //Position 2
       case 'Multiplicateur_volts_charge_P2':
       case 'Multiplicateur_amperes_charge_P2':
@@ -222,13 +242,29 @@ const Haut = ({
       case 'Perte_table_totale_P2':
       case 'Courant_appliquié_transfo_P2':
       case 'Courant_appliqué_appareil_P2':
-      case 'No_cavalier_P2':
       case 'Perte_cavalier_P2':
         setmise_data(data => {
           return {
             ...data,
             Perte_a_Charge: {
               ...data.Perte_a_Charge,
+              [type]: newData,
+            },
+          };
+        });
+
+      //Decharges Partielles
+      //Position1
+      case 'Réactance_ske77_DP_P1':
+      case 'Réactance_ske17_DP_P1':
+      //Position 2
+      case 'Réactance_ske77_DP_P2':
+      case 'Réactance_ske17_DP_P2':
+        setmise_data(data => {
+          return {
+            ...data,
+            Decharges_Partielles: {
+              ...data.Decharges_Partielles,
               [type]: newData,
             },
           };
@@ -285,6 +321,7 @@ const Haut = ({
         <Row className="flex-div" style={{justifyContent: 'center'}}>
           {mise_data !== null && (
             <Button
+              disabled={status == 0 ? false : true}
               onClick={() => {
                 setmiseenplacemodal(!miseenplacemodal);
                 console.log('model clicked ');
@@ -339,7 +376,26 @@ const Haut = ({
                 border: '1px solid black',
               }}>
               <Row>Model : {commande.id_product}</Row>
-              <Row>Type : 1Phases</Row>
+              <Row>
+                {mise_data == null ? (
+                  Finaldata.test_type == null ? (
+                    <>
+                      Type :
+                      <Select
+                        defaultValue=""
+                        options={Type_Test}
+                        onChange={value => {
+                          settest_type_selected(value);
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <>Type : {Finaldata.test_type}</>
+                  )
+                ) : (
+                  <>Type : {commande.type_command}</>
+                )}{' '}
+              </Row>
               <Row>Temps de Test: {mise_data == null ? 12 + 15 : 12} MIN</Row>
             </div>
           </Col>
@@ -357,14 +413,16 @@ const Haut = ({
               <div>
                 <Row>#Mo : {commande && commande.id_commande}</Row>
                 <Row>Numero de serie :{commande && commande.num_serie}</Row>
-                <Row>Quantity : 4/{commande.quantite}</Row>
+                <Row>
+                  Quantity : {Tests_length + 1}/{allCommandesById_length}
+                </Row>
               </div>
               <Divider type="vertical" plain />
 
               <div>
-                <Row>Kva : 10</Row>
-                <Row>Voltage HT : 12470Grdy/7200v</Row>
-                <Row>Voltage BT : 120/240v</Row>
+                <Row>Kva : {commande.kva}</Row>
+                <Row>Voltage HT : {commande.voltage_ht}Grdy/7200v</Row>
+                <Row>Voltage BT : {commande.voltage_bt}/240v</Row>
               </div>
             </div>
           </Col>
@@ -377,14 +435,19 @@ const Haut = ({
           style={{padding: '5px 10px', background: 'white'}}>
           <Col>
             {mise_data !== null && (
-              <Space>
-                Bornes :
-                <Tag color="rgb(207 231 12)">
-                  {mise_data.Bornes.Borne_jaune}
-                </Tag>
-                <Tag color="#f50">{mise_data.Bornes.Borne_rouge}</Tag>
-                <Tag color="#87d068">{mise_data.Bornes.Borne_verte}</Tag>
-              </Space>
+              <>
+                <Space>
+                  Bornes :
+                  <Tag color="rgb(207 231 12)">
+                    {mise_data.Bornes.Borne_jaune}
+                  </Tag>
+                  <Tag color="#f50">{mise_data.Bornes.Borne_rouge}</Tag>
+                  <Tag color="#87d068">{mise_data.Bornes.Borne_verte}</Tag>
+                </Space>
+                <Space>
+                  No Cavalier :<Tag>{mise_data.Perte_a_Charge.No_cavalier}</Tag>
+                </Space>
+              </>
             )}
           </Col>
 
@@ -392,7 +455,7 @@ const Haut = ({
             <Row justify="end">
               <Space style={{marginRight: '10px'}}>
                 Temperature Affectée :
-                {temperature_affected == null ? (
+                {Finaldata.temperature_affected == null ? (
                   <Button
                     size="small"
                     disabled={temperature_noaffected == null ? true : false}
@@ -413,7 +476,7 @@ const Haut = ({
                     onClose={() =>
                       UpdateData('temperature_affected', null, setFinaldata)
                     }>
-                    {` ${temperature_affected}°C`}
+                    {` ${Finaldata.temperature_affected}°C`}
                   </Tag>
                 )}
               </Space>
@@ -422,6 +485,8 @@ const Haut = ({
                 Temperature Non Affectée :
                 <InputNumber
                   size="small"
+                  min={0}
+                  max={50}
                   style={{width: '60px'}}
                   onChange={settemperature_noaffected}
                   value={temperature_noaffected}

@@ -14,6 +14,7 @@ export default function Ratio_Polarite({
   UpdateData,
   miseenplaceok,
   setFinaldata,
+  setNewMisePlace,
 }) {
   return (
     <div className="Containertest">
@@ -31,17 +32,27 @@ export default function Ratio_Polarite({
                 label="Volts Apluiqés"
                 style={{marginBottom: 0, width: '60%'}}>
                 <Form.Item
+                  name="Volts_Apluiqés_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
+                    step="0.01"
                     placeholder="Position 1"
-                    onChange={e =>
+                    onChange={e => {
                       UpdateData(
                         'Volts_apluiqés_P1',
                         e.target.value,
                         setFinaldata
-                      )
-                    }
+                      );
+                      UpdateData(
+                        'Volts_apluiqés_P1',
+                        e.target.value,
+                        setNewMisePlace
+                      );
+                    }}
                   />
                 </Form.Item>
                 <Form.Item
@@ -52,14 +63,23 @@ export default function Ratio_Polarite({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
+                    step="0.01"
                     placeholder="Position 2"
-                    onChange={e =>
+                    onChange={e => {
+                      UpdateData(
+                        'Volts_apluiqés_P2',
+                        e.target.value,
+                        setNewMisePlace
+                      );
                       UpdateData(
                         'Volts_apluiqés_P2',
                         e.target.value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
               </Form.Item>
@@ -73,10 +93,19 @@ export default function Ratio_Polarite({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
+                    step="0.01"
                     placeholder="Position 1"
-                    onChange={e =>
-                      UpdateData('Volts_ht_P1', e.target.value, setFinaldata)
-                    }
+                    onChange={e => {
+                      UpdateData('Volts_ht_P1', e.target.value, setFinaldata);
+                      UpdateData(
+                        'Volts_ht_P1',
+                        e.target.value,
+                        setNewMisePlace
+                      );
+                    }}
                   />
                 </Form.Item>
                 <Form.Item
@@ -87,10 +116,19 @@ export default function Ratio_Polarite({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
+                    step="0.01"
                     placeholder="Position 2"
-                    onChange={e =>
-                      UpdateData('Volts_ht_P2', e.target.value, setFinaldata)
-                    }
+                    onChange={e => {
+                      UpdateData('Volts_ht_P2', e.target.value, setFinaldata);
+                      UpdateData(
+                        'Volts_ht_P2',
+                        e.target.value,
+                        setNewMisePlace
+                      );
+                    }}
                   />
                 </Form.Item>
               </Form.Item>
@@ -104,14 +142,23 @@ export default function Ratio_Polarite({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
+                    step="0.01"
                     placeholder="Position 1"
-                    onChange={e =>
+                    onChange={e => {
+                      UpdateData(
+                        'Polarite_volts_P1',
+                        e.target.value,
+                        setNewMisePlace
+                      );
                       UpdateData(
                         'Polarite_volts_P1',
                         e.target.value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
                 <Form.Item
@@ -122,14 +169,23 @@ export default function Ratio_Polarite({
                     margin: '0 8px',
                   }}>
                   <Input
+                    type="number"
+                    min={10}
+                    max={1000}
+                    step="0.01"
                     placeholder="Position 2"
-                    onChange={e =>
+                    onChange={e => {
+                      UpdateData(
+                        'Polarite_volts_P2',
+                        e.target.value,
+                        setNewMisePlace
+                      );
                       UpdateData(
                         'Polarite_volts_P2',
                         e.target.value,
                         setFinaldata
-                      )
-                    }
+                      );
+                    }}
                   />
                 </Form.Item>
               </Form.Item>
@@ -145,6 +201,10 @@ export default function Ratio_Polarite({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
+                step="0.01"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData('Volts_ht_mesuré_P1', e.target.value, setFinaldata)
@@ -160,6 +220,10 @@ export default function Ratio_Polarite({
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
+                step="0.01"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData('Volts_ht_mesuré_P2', e.target.value, setFinaldata)
@@ -177,6 +241,10 @@ export default function Ratio_Polarite({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
+                step="0.01"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -196,6 +264,10 @@ export default function Ratio_Polarite({
                 margin: '0 8px',
               }}>
               <Input
+                type="number"
+                min={10}
+                max={1000}
+                step="0.01"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(
