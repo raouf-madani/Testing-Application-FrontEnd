@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Form, Input, Row, Divider, Select} from 'antd';
 
 export default function Perte_a_charge({
@@ -6,6 +6,12 @@ export default function Perte_a_charge({
   miseenplaceok,
   setFinaldata,
 }) {
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   const Multiplicateur_Volts = [
     {label: '400', value: '400'},
     {label: '208', value: '208'},
@@ -56,6 +62,8 @@ export default function Perte_a_charge({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
+                    ref={inputEl}
+                    tabIndex={1}
                     defaultValue=""
                     options={Multiplicateur_Volts}
                     onChange={value =>
@@ -76,6 +84,7 @@ export default function Perte_a_charge({
                   }}>
                   <Select
                     defaultValue=""
+                    tabIndex={11}
                     options={Multiplicateur_Volts}
                     onChange={value =>
                       UpdateData(
@@ -98,6 +107,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
                     defaultValue=""
+                    tabIndex={2}
                     options={Multiplicateur_Amperes}
                     onChange={value =>
                       UpdateData(
@@ -117,6 +127,7 @@ export default function Perte_a_charge({
                   }}>
                   <Select
                     defaultValue=""
+                    tabIndex={12}
                     options={Multiplicateur_Amperes}
                     onChange={value =>
                       UpdateData(
@@ -139,6 +150,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={3}
                     min={10}
                     max={1000}
                     placeholder="Position 1"
@@ -160,6 +172,7 @@ export default function Perte_a_charge({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={13}
                     min={10}
                     max={1000}
                     placeholder="Position 2"
@@ -184,6 +197,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={4}
                     min={10}
                     max={1000}
                     placeholder="Position 1"
@@ -205,6 +219,7 @@ export default function Perte_a_charge({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={14}
                     min={10}
                     max={1000}
                     placeholder="Position 2"
@@ -243,6 +258,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={5}
                     min={10}
                     max={1000}
                     placeholder="Position 1"
@@ -264,6 +280,7 @@ export default function Perte_a_charge({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={15}
                     min={10}
                     max={1000}
                     placeholder="Position 2"
@@ -302,6 +319,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
                     defaultValue=""
+                    tabIndex={6}
                     options={NO_Cavalier}
                     onChange={value =>
                       UpdateData('No_cavalier', value, setFinaldata)
@@ -340,6 +358,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={7}
                     min={10}
                     max={1000}
                     placeholder="Position 1"
@@ -361,6 +380,7 @@ export default function Perte_a_charge({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={16}
                     min={10}
                     max={1000}
                     placeholder="Position 2"
@@ -385,6 +405,7 @@ export default function Perte_a_charge({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={8}
                     min={10}
                     max={1000}
                     placeholder="Position 1"
@@ -406,6 +427,7 @@ export default function Perte_a_charge({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={17}
                     min={10}
                     max={1000}
                     placeholder="Position 2"
@@ -473,6 +495,8 @@ export default function Perte_a_charge({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                ref={!miseenplaceok ? null : inputEl}
+                tabIndex={9}
                 type="number"
                 min={10}
                 max={1000}
@@ -495,6 +519,7 @@ export default function Perte_a_charge({
               }}>
               <Input
                 type="number"
+                tabIndex={18}
                 min={10}
                 max={1000}
                 placeholder="Position 2"
@@ -519,6 +544,7 @@ export default function Perte_a_charge({
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
                 type="number"
+                tabIndex={10}
                 min={10}
                 max={1000}
                 placeholder="Position 1"
@@ -540,6 +566,7 @@ export default function Perte_a_charge({
               }}>
               <Input
                 type="number"
+                tabIndex={19}
                 min={10}
                 max={1000}
                 placeholder="Position 2"

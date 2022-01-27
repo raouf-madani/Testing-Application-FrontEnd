@@ -35,11 +35,11 @@ const Haut = ({
   useUpdateMisePlace,
   allCommandesById_length,
   status,
-  test_type_selected,
+  temperature_noaffected,
+  settemperature_noaffected,
   settest_type_selected,
 }) => {
   const [miseenplacemodal, setmiseenplacemodal] = useState(false);
-  const [temperature_noaffected, settemperature_noaffected] = useState(null);
   const [mise_data, setmise_data] = useState(mise_en_placeById);
   const [updateMise_place, {data, error, loading}] = useUpdateMisePlace();
   const _updateMisePlace = async (id, data) => {
@@ -49,6 +49,21 @@ const Haut = ({
     {label: '1 Phase', value: '1phase'},
     {label: '3 Phase', value: '3phase'},
   ];
+
+  useEffect(() => {
+    const affecter = () => {
+      if (temperature_noaffected) {
+        UpdateData(
+          'temperature_affected',
+          temperature_noaffected,
+          setFinaldata
+        );
+        settemperature_noaffected(null);
+      }
+    };
+    affecter();
+  }, []);
+
   let initial_mise_placefrom_values = null;
   if (mise_data !== null) {
     initial_mise_placefrom_values = {
@@ -89,8 +104,7 @@ const Haut = ({
       Perte_Table_P2: mise_data.Perte_a_Vide.Perte_table_P2,
 
       //RIV
-      Riv_P1: mise_data.RIV.riv_P1,
-      Riv_P2: mise_data.RIV.riv_P2,
+      Riv: mise_data.riv,
       // Perte a Charge
       //P1
       Multiplicateur_Volts_Charge_P1:
@@ -127,11 +141,6 @@ const Haut = ({
         mise_data.Decharges_Partielles.Réactance_ske77_DP_P1,
       Réactance_SKE17_DP_P1:
         mise_data.Decharges_Partielles.Réactance_ske17_DP_P1,
-      //P2
-      Réactance_SKE77_DP_P2:
-        mise_data.Decharges_Partielles.Réactance_ske77_DP_P2,
-      Réactance_SKE17_DP_P2:
-        mise_data.Decharges_Partielles.Réactance_ske17_DP_P2,
     };
   }
 
@@ -139,6 +148,14 @@ const Haut = ({
   const UpdatemiseData = (type, newData, setmise_data) => {
     switch (type) {
       case 'state':
+        setmise_data(data => {
+          return {
+            ...data,
+            [type]: newData,
+          };
+        });
+      //riv
+      case 'riv':
         setmise_data(data => {
           return {
             ...data,
@@ -195,28 +212,14 @@ const Haut = ({
       case 'Multiplicateur_volts_P1':
       case 'Multiplicateur_amperes_P1':
       case 'Perte_table_P1':
-      case 'riv_P1':
       case 'Multiplicateur_volts_P2':
       case 'Multiplicateur_amperes_P2':
       case 'Perte_table_P2':
-      case 'riv_P2':
         setmise_data(data => {
           return {
             ...data,
             Perte_a_Vide: {
               ...data.Perte_a_Vide,
-              [type]: newData,
-            },
-          };
-        });
-      //RIV
-      case 'riv_P1':
-      case 'riv_P2':
-        setmise_data(data => {
-          return {
-            ...data,
-            RIV: {
-              ...data.RIV,
               [type]: newData,
             },
           };
@@ -321,7 +324,6 @@ const Haut = ({
         <Row className="flex-div" style={{justifyContent: 'center'}}>
           {mise_data !== null && (
             <Button
-              disabled={status == 0 ? false : true}
               onClick={() => {
                 setmiseenplacemodal(!miseenplacemodal);
                 console.log('model clicked ');

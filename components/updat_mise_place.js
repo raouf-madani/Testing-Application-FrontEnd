@@ -441,27 +441,12 @@ function newTestContent({UpdatemiseData, setmise_data}) {
       <TabPane tab="RIV" key="6">
         <Form.Item label="RIV" style={{marginBottom: 0}}>
           <Form.Item
-            name="Riv_P1"
-            rules={[{required: true, message: 'Champ Requis'}]}
-            style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+            name="Riv"
+            rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData('riv_P1', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-          <Form.Item
-            name="Riv_P2"
-            style={{
-              display: 'inline-block',
-              width: 'calc(50% - 8px)',
-              margin: '0 8px',
-            }}>
-            <Input
-              placeholder="Position 2"
-              onChange={e =>
-                UpdatemiseData('riv_P2', e.target.value, setmise_data)
+                UpdatemiseData('riv', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -771,11 +756,10 @@ function newTestContent({UpdatemiseData, setmise_data}) {
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             label="Réactance SKE77"
-            style={{width: '60%', marginBottom: '5px'}}>
+            style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Form.Item
               name="Réactance_SKE77_DP_P1"
-              rules={[{required: true, message: 'Champ Requis'}]}
-              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              rules={[{required: true, message: 'Champ Requis'}]}>
               <Select
                 defaultValue=""
                 options={SKE77}
@@ -784,51 +768,22 @@ function newTestContent({UpdatemiseData, setmise_data}) {
                 }}
               />
             </Form.Item>
-            <Form.Item
-              name="Réactance_SKE77_DP_P2"
-              style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
-                margin: '0 8px',
-              }}>
-              <Select
-                defaultValue=""
-                options={SKE77}
-                onChange={value => {
-                  UpdatemiseData('Réactance_ske77_DP_P2', value, setmise_data);
-                }}
-              />
-            </Form.Item>
           </Form.Item>
-        </Row>
-        <Row style={{justifyContent: 'center'}}>
           <Form.Item
             label="Réactance SKE17"
-            style={{width: '60%', marginBottom: '5px'}}>
+            style={{
+              display: 'inline-block',
+              width: 'calc(50% - 8px)',
+              margin: '0 8px',
+            }}>
             <Form.Item
               name="Réactance_SKE17_DP_P1"
-              rules={[{required: true, message: 'Champ Requis'}]}
-              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              rules={[{required: true, message: 'Champ Requis'}]}>
               <Select
                 defaultValue=""
                 options={SKE77}
                 onChange={value => {
                   UpdatemiseData('Réactance_ske17_DP_P1', value, setmise_data);
-                }}
-              />
-            </Form.Item>
-            <Form.Item
-              name="Réactance_SKE17_DP_P2"
-              style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
-                margin: '0 8px',
-              }}>
-              <Select
-                defaultValue=""
-                options={SKE17}
-                onChange={value => {
-                  UpdatemiseData('Réactance_ske17_DP_P2', value, setmise_data);
                 }}
               />
             </Form.Item>
