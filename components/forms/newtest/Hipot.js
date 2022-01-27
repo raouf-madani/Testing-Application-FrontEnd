@@ -30,6 +30,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Radio.Group buttonStyle="solid" key="Hipot_70">
               <Radio.Button
+                tabIndex={1}
                 style={{margin: '5px'}}
                 value={true}
                 onClick={() => {
@@ -71,6 +72,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Radio.Group buttonStyle="solid" key="Hipot_50">
               <Radio.Button
+                tabIndex={2}
                 style={{margin: '5px'}}
                 value={true}
                 onClick={() => {

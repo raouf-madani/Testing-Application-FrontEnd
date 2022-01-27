@@ -16,6 +16,14 @@ export const UpdateData = (type, newData, setFinaldata) => {
           [type]: newData,
         };
       });
+    //RIV
+    case 'riv':
+      setFinaldata(data => {
+        return {
+          ...data,
+          [type]: newData,
+        };
+      });
     //Bornes
     case 'Borne_rouge':
     case 'Borne_verte':
@@ -88,14 +96,12 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Multiplicateur_volts_P1':
     case 'Multiplicateur_amperes_P1':
     case 'Perte_table_P1':
-    case 'riv_P1':
     case 'Pertes_mesurés_P1':
     case 'Courant_excitation_mesurés_P1':
     //Position 2
     case 'Multiplicateur_volts_P2':
     case 'Multiplicateur_amperes_P2':
     case 'Perte_table_P2':
-    case 'riv_P2':
     case 'Pertes_mesurés_P2':
     case 'Courant_excitation_mesurés_P2':
       setFinaldata(data => {
@@ -151,9 +157,6 @@ export const UpdateData = (type, newData, setFinaldata) => {
     //Position1
     case 'Réactance_ske77_DP_P1':
     case 'Réactance_ske17_DP_P1':
-    //Position 2
-    case 'Réactance_ske77_DP_P2':
-    case 'Réactance_ske17_DP_P2':
       setFinaldata(data => {
         return {
           ...data,

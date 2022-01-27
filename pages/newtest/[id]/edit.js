@@ -87,9 +87,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [modal, setmodal] = useState(false);
   const {data: dataU, loading: loadingU} = useGetUser();
   const [test_type_selected, settest_type_selected] = useState();
-  const [kvaofday, setkvaofday] = useState(15);
+  const [kvaofday, setkvaofday] = useState(13);
   const [teststatus, setteststatus] = useState();
-  const [temperature_noaffected, settemperature_noaffected] = useState(20);
+  const [temperature_noaffected, settemperature_noaffected] = useState(null);
   const {data: commandehook} = useGetCommande(router.query.id);
   const start = () => {
     run();
@@ -738,7 +738,6 @@ export async function getStaticProps({params}) {
   console.log('la liste de commande final', allCommandesById.length);
   console.log('la commande final', Commandlist.length);
   let commande;
-  let command_state;
   let mise_en_placeById = null;
   if (Commandlist.length !== 0) {
     commande = Commandlist[0];

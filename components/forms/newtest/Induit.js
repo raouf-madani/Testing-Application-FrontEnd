@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {Form, Input, Radio, Row, Divider, Select} from 'antd';
 
 export default function Induit({
@@ -8,6 +8,12 @@ export default function Induit({
   setNewMisePlace,
   error,
 }) {
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   const Frequence_Gen = [
     {label: '400', value: '400'},
     {label: '208', value: '208'},
@@ -137,6 +143,8 @@ export default function Induit({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
+                    ref={inputEl}
+                    tabIndex={!miseenplaceok ? 1 : -1}
                     defaultValue=""
                     options={Frequence_Gen}
                     onChange={value => {
@@ -161,6 +169,7 @@ export default function Induit({
                     margin: '0 8px',
                   }}>
                   <Select
+                    tabIndex={!miseenplaceok ? 5 : -1}
                     defaultValue=""
                     options={Frequence_Gen}
                     onChange={value => {
@@ -189,6 +198,7 @@ export default function Induit({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
                     defaultValue=""
+                    tabIndex={!miseenplaceok ? 2 : -1}
                     options={SKE77}
                     onChange={value => {
                       UpdateData('Réactance_ske77_P1', value, setNewMisePlace);
@@ -204,6 +214,7 @@ export default function Induit({
                     margin: '0 8px',
                   }}>
                   <Select
+                    tabIndex={!miseenplaceok ? 6 : -1}
                     defaultValue=""
                     options={SKE77}
                     onChange={value => {
@@ -224,6 +235,7 @@ export default function Induit({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
                     defaultValue=""
+                    tabIndex={!miseenplaceok ? 3 : -1}
                     options={SKE17}
                     onChange={value => {
                       UpdateData('Réactance_ske17_P1', value, setNewMisePlace);
@@ -239,6 +251,7 @@ export default function Induit({
                     margin: '0 8px',
                   }}>
                   <Select
+                    tabIndex={!miseenplaceok ? 7 : -1}
                     defaultValue=""
                     options={SKE17}
                     onChange={value => {
@@ -255,12 +268,14 @@ export default function Induit({
           <Form.Item style={{width: '60%', marginBottom: '5px'}}>
             <Form.Item
               name="Resultat_P1"
-              rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-              <Radio.Group buttonStyle="solid">
+              <Radio.Group defaultValue="reussit" buttonStyle="solid">
                 <Radio.Button
+                  tabIndex={4}
+                  ref={!miseenplaceok ? null : inputEl}
                   style={{margin: '5px'}}
                   value="reussit"
+                  optionType="button"
                   onClick={() =>
                     UpdateData(
                       'Test_Induit_P1',
@@ -294,6 +309,7 @@ export default function Induit({
               }}>
               <Radio.Group buttonStyle="solid">
                 <Radio.Button
+                  tabIndex={8}
                   style={{margin: '5px'}}
                   value={true}
                   onClick={() =>

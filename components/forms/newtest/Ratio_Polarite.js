@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   Form,
   Input,
@@ -16,6 +16,12 @@ export default function Ratio_Polarite({
   setFinaldata,
   setNewMisePlace,
 }) {
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   return (
     <div className="Containertest">
       <Divider
@@ -37,6 +43,8 @@ export default function Ratio_Polarite({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={1}
+                    ref={inputEl}
                     min={10}
                     max={1000}
                     step="0.01"
@@ -63,7 +71,9 @@ export default function Ratio_Polarite({
                     margin: '0 8px',
                   }}>
                   <Input
+                    className="ratio_form"
                     type="number"
+                    tabIndex={6}
                     min={10}
                     max={1000}
                     step="0.01"
@@ -94,6 +104,7 @@ export default function Ratio_Polarite({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={2}
                     min={10}
                     max={1000}
                     step="0.01"
@@ -117,6 +128,7 @@ export default function Ratio_Polarite({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={7}
                     min={10}
                     max={1000}
                     step="0.01"
@@ -143,6 +155,7 @@ export default function Ratio_Polarite({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={3}
                     min={10}
                     max={1000}
                     step="0.01"
@@ -170,6 +183,7 @@ export default function Ratio_Polarite({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={8}
                     min={10}
                     max={1000}
                     step="0.01"
@@ -192,6 +206,29 @@ export default function Ratio_Polarite({
             </Row>
           </div>
         )}
+        {miseenplaceok && (
+          <Row
+            style={{
+              justifyContent: 'center',
+            }}>
+            <Form.Item
+              style={{
+                width: '70%',
+                marginBottom: '5px',
+              }}>
+              <Form.Item className="show_item">
+                Volte Apluiqués P1: {miseenplaceok.Ratio.Volts_apluiqés_P1}
+              </Form.Item>
+              <Form.Item
+                className="show_item"
+                style={{
+                  margin: '0 8px',
+                }}>
+                Volte Apluiqués P2: {miseenplaceok.Ratio.Volts_apluiqés_P2}
+              </Form.Item>
+            </Form.Item>
+          </Row>
+        )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             label="Volts HT Mesuré"
@@ -201,6 +238,8 @@ export default function Ratio_Polarite({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                ref={!miseenplaceok ? null : inputEl}
+                tabIndex={4}
                 type="number"
                 min={10}
                 max={1000}
@@ -221,6 +260,7 @@ export default function Ratio_Polarite({
               }}>
               <Input
                 type="number"
+                tabIndex={9}
                 min={10}
                 max={1000}
                 step="0.01"
@@ -242,6 +282,7 @@ export default function Ratio_Polarite({
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
                 type="number"
+                tabIndex={5}
                 min={10}
                 max={1000}
                 step="0.01"
@@ -265,6 +306,7 @@ export default function Ratio_Polarite({
               }}>
               <Input
                 type="number"
+                tabIndex={10}
                 min={10}
                 max={1000}
                 step="0.01"

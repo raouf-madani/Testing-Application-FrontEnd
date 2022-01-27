@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {Form, Input, Row, Divider, Select} from 'antd';
 
 export default function Perte_a_vide({
@@ -7,6 +7,12 @@ export default function Perte_a_vide({
   setFinaldata,
   setNewMisePlace,
 }) {
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   const Multiplicateur_Volts = [
     {label: '400', value: '400'},
     {label: '208', value: '208'},
@@ -85,6 +91,8 @@ export default function Perte_a_vide({
                   rules={[{required: true, message: 'Champ Requis'}]}
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
+                    ref={inputEl}
+                    tabIndex={1}
                     defaultValue=""
                     options={Multiplicateur_Volts}
                     onChange={value => {
@@ -110,6 +118,7 @@ export default function Perte_a_vide({
                   }}>
                   <Select
                     defaultValue=""
+                    tabIndex={6}
                     options={Multiplicateur_Volts}
                     onChange={value => {
                       UpdateData(
@@ -137,6 +146,7 @@ export default function Perte_a_vide({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Select
                     defaultValue=""
+                    tabIndex={2}
                     options={Multiplicateur_Amperes}
                     onChange={value => {
                       UpdateData(
@@ -161,6 +171,7 @@ export default function Perte_a_vide({
                   }}>
                   <Select
                     defaultValue=""
+                    tabIndex={7}
                     options={Multiplicateur_Amperes}
                     onChange={value => {
                       UpdateData(
@@ -188,6 +199,7 @@ export default function Perte_a_vide({
                   style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
                   <Input
                     type="number"
+                    tabIndex={3}
                     min={10}
                     max={1000}
                     placeholder="Position 1"
@@ -214,6 +226,7 @@ export default function Perte_a_vide({
                   }}>
                   <Input
                     type="number"
+                    tabIndex={8}
                     min={10}
                     max={1000}
                     placeholder="Position 2"
@@ -244,7 +257,9 @@ export default function Perte_a_vide({
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
+                ref={!miseenplaceok ? null : inputEl}
                 type="number"
+                tabIndex={4}
                 min={10}
                 max={1000}
                 placeholder="Position 1"
@@ -262,6 +277,7 @@ export default function Perte_a_vide({
               }}>
               <Input
                 type="number"
+                tabIndex={9}
                 min={10}
                 max={1000}
                 placeholder="Position 2"
@@ -282,6 +298,7 @@ export default function Perte_a_vide({
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
                 type="number"
+                tabIndex={5}
                 min={10}
                 max={1000}
                 placeholder="Position 1"
@@ -303,6 +320,7 @@ export default function Perte_a_vide({
               }}>
               <Input
                 type="number"
+                tabIndex={10}
                 min={10}
                 max={1000}
                 placeholder="Position 2"
