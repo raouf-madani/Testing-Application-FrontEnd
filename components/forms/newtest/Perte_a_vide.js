@@ -14,12 +14,22 @@ export default function Perte_a_vide({
     }
   }, [inputEl]);
   const Multiplicateur_Volts = [
-    {label: '400', value: '400'},
-    {label: '208', value: '208'},
+    {label: 0.4, value: 0.4},
+    {label: 1, value: 1},
+    {label: 2, value: 2},
+    {label: 4, value: 4},
+    {label: 8, value: 8},
+    {label: 16, value: 16},
+    {label: 24, value: 24},
+    {label: 40, value: 40},
+    {label: 48, value: 48},
   ];
   const Multiplicateur_Amperes = [
-    {label: '4000', value: '4000'},
-    {label: '2000', value: '2000'},
+    {label: 1, value: 1},
+    {label: 2, value: 2},
+    {label: 5, value: 5},
+    {label: 10, value: 10},
+    {label: 20, value: 20},
   ];
   return (
     <div className="Containertest">
@@ -202,6 +212,7 @@ export default function Perte_a_vide({
                     tabIndex={3}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e => {
                       UpdateData(
@@ -229,6 +240,7 @@ export default function Perte_a_vide({
                     tabIndex={8}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e => {
                       UpdateData(
@@ -262,6 +274,7 @@ export default function Perte_a_vide({
                 tabIndex={4}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData('Pertes_mesurés_P1', e.target.value, setFinaldata)
@@ -280,6 +293,7 @@ export default function Perte_a_vide({
                 tabIndex={9}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData('Pertes_mesurés_P2', e.target.value, setFinaldata)
@@ -301,6 +315,7 @@ export default function Perte_a_vide({
                 tabIndex={5}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -323,6 +338,7 @@ export default function Perte_a_vide({
                 tabIndex={10}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(

@@ -13,16 +13,30 @@ export default function Perte_a_charge({
     }
   }, [inputEl]);
   const Multiplicateur_Volts = [
-    {label: '400', value: '400'},
-    {label: '208', value: '208'},
+    {label: 0.4, value: 0.4},
+    {label: 1, value: 1},
+    {label: 2, value: 2},
+    {label: 4, value: 4},
+    {label: 8, value: 8},
+    {label: 16, value: 16},
+    {label: 24, value: 24},
+    {label: 40, value: 40},
+    {label: 48, value: 48},
   ];
   const Multiplicateur_Amperes = [
-    {label: '4000', value: '4000'},
-    {label: '2000', value: '2000'},
+    {label: 1, value: 1},
+    {label: 2, value: 2},
+    {label: 5, value: 5},
+    {label: 10, value: 10},
+    {label: 20, value: 20},
   ];
   const NO_Cavalier = [
-    {label: '400', value: '400'},
-    {label: '200', value: '200'},
+    {label: '27', value: '27'},
+    {label: '38', value: '38'},
+    {label: '39', value: '39'},
+    {label: '38 + sfils', value: '38 + sfils'},
+    {label: '38 + sfils', value: '38 + sfils'},
+    {label: '38 + sfils', value: '38 + sfils'},
   ];
   return (
     <div className="Containertest">
@@ -153,6 +167,7 @@ export default function Perte_a_charge({
                     tabIndex={3}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -175,6 +190,7 @@ export default function Perte_a_charge({
                     tabIndex={13}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -200,6 +216,7 @@ export default function Perte_a_charge({
                     tabIndex={4}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -222,6 +239,7 @@ export default function Perte_a_charge({
                     tabIndex={14}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -261,6 +279,7 @@ export default function Perte_a_charge({
                     tabIndex={5}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -283,6 +302,7 @@ export default function Perte_a_charge({
                     tabIndex={15}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -361,6 +381,7 @@ export default function Perte_a_charge({
                     tabIndex={7}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -383,6 +404,7 @@ export default function Perte_a_charge({
                     tabIndex={16}
                     min={10}
                     max={1000}
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -408,6 +430,7 @@ export default function Perte_a_charge({
                     tabIndex={8}
                     min={10}
                     max={1000}
+                    step="0.0000001"
                     placeholder="Position 1"
                     onChange={e =>
                       UpdateData(
@@ -430,6 +453,7 @@ export default function Perte_a_charge({
                     tabIndex={17}
                     min={10}
                     max={1000}
+                    step="0.0000001"
                     placeholder="Position 2"
                     onChange={e =>
                       UpdateData(
@@ -500,6 +524,7 @@ export default function Perte_a_charge({
                 type="number"
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -522,6 +547,7 @@ export default function Perte_a_charge({
                 tabIndex={18}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(
@@ -547,6 +573,7 @@ export default function Perte_a_charge({
                 tabIndex={10}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -569,6 +596,7 @@ export default function Perte_a_charge({
                 tabIndex={19}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(

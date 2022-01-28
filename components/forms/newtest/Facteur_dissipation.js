@@ -29,6 +29,7 @@ export default function Facteur_dissipation() {
                 tabIndex={1}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="H"
               />
             </Form.Item>
@@ -42,6 +43,7 @@ export default function Facteur_dissipation() {
                 tabIndex={2}
                 min={10}
                 max={1000}
+                step="0.0001"
                 placeholder="L"
               />
             </Form.Item>

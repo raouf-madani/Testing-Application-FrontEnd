@@ -47,7 +47,7 @@ export default function Ratio_Polarite({
                     ref={inputEl}
                     min={10}
                     max={1000}
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e => {
                       UpdateData(
@@ -76,7 +76,7 @@ export default function Ratio_Polarite({
                     tabIndex={6}
                     min={10}
                     max={1000}
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e => {
                       UpdateData(
@@ -107,7 +107,7 @@ export default function Ratio_Polarite({
                     tabIndex={2}
                     min={10}
                     max={1000}
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e => {
                       UpdateData('Volts_ht_P1', e.target.value, setFinaldata);
@@ -131,7 +131,7 @@ export default function Ratio_Polarite({
                     tabIndex={7}
                     min={10}
                     max={1000}
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e => {
                       UpdateData('Volts_ht_P2', e.target.value, setFinaldata);
@@ -158,7 +158,7 @@ export default function Ratio_Polarite({
                     tabIndex={3}
                     min={10}
                     max={1000}
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Position 1"
                     onChange={e => {
                       UpdateData(
@@ -186,7 +186,7 @@ export default function Ratio_Polarite({
                     tabIndex={8}
                     min={10}
                     max={1000}
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Position 2"
                     onChange={e => {
                       UpdateData(
@@ -243,7 +243,7 @@ export default function Ratio_Polarite({
                 type="number"
                 min={10}
                 max={1000}
-                step="0.01"
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData('Volts_ht_mesuré_P1', e.target.value, setFinaldata)
@@ -263,7 +263,7 @@ export default function Ratio_Polarite({
                 tabIndex={9}
                 min={10}
                 max={1000}
-                step="0.01"
+                step="0.0001"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData('Volts_ht_mesuré_P2', e.target.value, setFinaldata)
@@ -285,7 +285,7 @@ export default function Ratio_Polarite({
                 tabIndex={5}
                 min={10}
                 max={1000}
-                step="0.01"
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
@@ -309,7 +309,7 @@ export default function Ratio_Polarite({
                 tabIndex={10}
                 min={10}
                 max={1000}
-                step="0.01"
+                step="0.0001"
                 placeholder="Position 2"
                 onChange={e =>
                   UpdateData(

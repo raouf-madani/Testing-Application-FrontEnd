@@ -15,20 +15,27 @@ export default function Induit({
     }
   }, [inputEl]);
   const Frequence_Gen = [
-    {label: '400', value: '400'},
-    {label: '208', value: '208'},
+    {label: 400, value: 400},
+    {label: 208, value: 208},
   ];
   const SKE77 = [
-    {label: '100', value: '100'},
-    {label: '200', value: '200'},
-    {label: '300', value: '300'},
-    {label: '600', value: '600'},
+    {label: 'off', value: 'off'},
+    {label: 16, value: 16},
+    {label: 32, value: 32},
   ];
   const SKE17 = [
-    {label: '100', value: '100'},
-    {label: '200', value: '200'},
-    {label: '300', value: '300'},
-    {label: '600', value: '600'},
+    {label: 'off', value: 'off'},
+    {label: 1, value: 1},
+    {label: 3, value: 3},
+    {label: 5, value: 5},
+    {label: 7, value: 7},
+    {label: 9, value: 9},
+    {label: 10, value: 10},
+    {label: 11, value: 11},
+    {label: 12, value: 12},
+    {label: 13, value: 13},
+    {label: 14, value: 14},
+    {label: 15, value: 15},
   ];
   return (
     <div className="Containertest">
