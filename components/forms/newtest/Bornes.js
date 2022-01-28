@@ -18,6 +18,27 @@ export default function Bornes({
   setFinaldata,
   setNewMisePlace,
 }) {
+  const Bornes_values = [
+    {label: 1600, value: 1600},
+    {label: 1000, value: 1000},
+    {label: 600, value: 600},
+    {label: 480, value: 480},
+    {label: 300, value: 300},
+    {label: 150, value: 150},
+    {label: 75, value: 75},
+  ];
+  const items = [];
+  for (let i = 0; i < Bornes_values.length; i++) {
+    const element = Bornes_values[i];
+    items.push(
+      <Radio.Button
+        key={i}
+        style={{width: '100px', marginBottom: '5px'}}
+        value={element.value}>
+        {element.label}
+      </Radio.Button>
+    );
+  }
   return (
     <div className="Containertest">
       <Divider
@@ -47,23 +68,7 @@ export default function Bornes({
                     UpdateData('Borne_rouge', e.target.value, setNewMisePlace);
                     UpdateData('Borne_rouge', e.target.value, setFinaldata);
                   }}>
-                  <Space direction="vertical">
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="1000">
-                      1000
-                    </Radio.Button>
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="500">
-                      500
-                    </Radio.Button>
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="800">
-                      800
-                    </Radio.Button>
-                  </Space>
+                  <Space direction="vertical">{items}</Space>
                 </Radio.Group>
               </Form.Item>
             </Card>
@@ -87,23 +92,7 @@ export default function Bornes({
                     UpdateData('Borne_verte', e.target.value, setNewMisePlace);
                     UpdateData('Borne_verte', e.target.value, setFinaldata);
                   }}>
-                  <Space direction="vertical">
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="1000">
-                      1000
-                    </Radio.Button>
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="500">
-                      500
-                    </Radio.Button>
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="800">
-                      800
-                    </Radio.Button>
-                  </Space>
+                  <Space direction="vertical">{items}</Space>
                 </Radio.Group>
               </Form.Item>
             </Card>
@@ -127,23 +116,7 @@ export default function Bornes({
                     UpdateData('Borne_jaune', e.target.value, setNewMisePlace);
                     UpdateData('Borne_jaune', e.target.value, setFinaldata);
                   }}>
-                  <Space direction="vertical">
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="1000">
-                      1000
-                    </Radio.Button>
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="500">
-                      500
-                    </Radio.Button>
-                    <Radio.Button
-                      style={{width: '100px', marginBottom: '10px'}}
-                      value="800">
-                      800
-                    </Radio.Button>
-                  </Space>
+                  <Space direction="vertical">{items}</Space>
                 </Radio.Group>
               </Form.Item>
             </Card>

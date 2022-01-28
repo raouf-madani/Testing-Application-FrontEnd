@@ -29,6 +29,7 @@ export default function RIV({UpdateData, setFinaldata}) {
               tabIndex={1}
               min={10}
               max={1000}
+              step="0.0001"
               placeholder="RIV"
               onChange={e => UpdateData('riv', e.target.value, setFinaldata)}
             />
