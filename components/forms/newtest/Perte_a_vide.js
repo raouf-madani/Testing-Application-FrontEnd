@@ -111,11 +111,6 @@ export default function Perte_a_vide({
                         value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Multiplicateur_volts_P1',
-                        value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -135,11 +130,6 @@ export default function Perte_a_vide({
                         'Multiplicateur_volts_P2',
                         value,
                         setNewMisePlace
-                      );
-                      UpdateData(
-                        'Multiplicateur_volts_P2',
-                        value,
-                        setFinaldata
                       );
                     }}
                   />
@@ -164,11 +154,6 @@ export default function Perte_a_vide({
                         value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Multiplicateur_amperes_P1',
-                        value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -188,11 +173,6 @@ export default function Perte_a_vide({
                         'Multiplicateur_amperes_P2',
                         value,
                         setNewMisePlace
-                      );
-                      UpdateData(
-                        'Multiplicateur_amperes_P2',
-                        value,
-                        setFinaldata
                       );
                     }}
                   />
@@ -220,11 +200,6 @@ export default function Perte_a_vide({
                         e.target.value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Perte_table_P1',
-                        e.target.value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -247,11 +222,6 @@ export default function Perte_a_vide({
                         'Perte_table_P2',
                         e.target.value,
                         setNewMisePlace
-                      );
-                      UpdateData(
-                        'Perte_table_P2',
-                        e.target.value,
-                        setFinaldata
                       );
                     }}
                   />

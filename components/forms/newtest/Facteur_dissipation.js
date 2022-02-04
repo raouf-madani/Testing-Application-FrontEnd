@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {Form, Input, Space, Select, DatePicker, Row, Divider} from 'antd';
 
-export default function Facteur_dissipation() {
+export default function Facteur_dissipation({UpdateData, setFinaldata}) {
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -31,6 +31,7 @@ export default function Facteur_dissipation() {
                 max={1000}
                 step="0.0001"
                 placeholder="H"
+                onChange={e => UpdateData('H', e.target.value, setFinaldata)}
               />
             </Form.Item>
           </Form.Item>
@@ -45,6 +46,7 @@ export default function Facteur_dissipation() {
                 max={1000}
                 step="0.0001"
                 placeholder="L"
+                onChange={e => UpdateData('L', e.target.value, setFinaldata)}
               />
             </Form.Item>
           </Form.Item>

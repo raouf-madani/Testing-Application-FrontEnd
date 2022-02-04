@@ -88,17 +88,25 @@ function newTestContent({
         />
       );
     case 'RIV':
-      return <RivForm UpdateData={UpdateData} setFinaldata={setFinaldata} />;
+      return (
+        <RivForm UpdateData={UpdateData} setNewMisePlace={setNewMisePlace} />
+      );
     case 'Pertes a Charge':
       return (
         <Perte_a_ChargeForm
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
         />
       );
     case 'Facteur de dissipation':
-      return <Facteur_DissipationForm />;
+      return (
+        <Facteur_DissipationForm
+          UpdateData={UpdateData}
+          setFinaldata={setFinaldata}
+        />
+      );
 
     case 'Décharges Partielles':
       return (

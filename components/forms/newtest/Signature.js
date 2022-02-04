@@ -4,7 +4,7 @@ import {useGetUser} from '@/actions/user';
 
 import {Form, Input, Button, Select, DatePicker, Space, Divider} from 'antd';
 
-export default function Bornes() {
+export default function Signature({UpdateData, setFinaldata}) {
   const {data, loading} = useGetUser();
   const [signature, setsignature] = useState(false);
 
@@ -31,8 +31,13 @@ export default function Bornes() {
           {data.family_name}
         </h2>
       )}
-
-      <Button onClick={() => setsignature(true)}>Signer</Button>
+      <Button
+        onClick={() => {
+          setsignature(true);
+          UpdateData('id_employe', data.family_name, setFinaldata);
+        }}>
+        Signer
+      </Button>
     </div>
   );
 }

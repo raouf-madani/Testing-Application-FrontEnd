@@ -38,6 +38,7 @@ const Bslink = props => {
   return (
     <Link style={{PointerEvent: 'default'}} href={url}>
       <a
+        disabled={status !== 0 && true}
         className={`nav-link port-navbar-link ${className}`}
         onClick={ontoggle}>
         {title}
@@ -129,13 +130,17 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem className="port-navbar-item">
-              <Bslink title="Accueil" url="/" status={status} />
+              <Bslink
+                title="Accueil"
+                url={status == 0 ? '/' : '#'}
+                status={status}
+              />
             </NavItem>
             <NavItem className="port-navbar-item">
               <Bslink
                 title="New Test"
                 url="#"
-                ontoggle={() => setModal(!modal)}
+                ontoggle={status == 0 ? () => setModal(!modal) : AnnulerConfirm}
                 status={status}
               />
             </NavItem>
@@ -147,12 +152,20 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
             {user && isAuthorized(user, 'admin') && (
               <>
                 <NavItem className="port-navbar-item">
-                  <Bslink title="Editeur" url="/editeur" status={status} />
+                  <Bslink
+                    title="Editeur"
+                    url={status == 0 ? '/editeur' : '#'}
+                    status={status}
+                  />
                 </NavItem>
               </>
             )}
             <NavItem className="port-navbar-item">
-              <Bslink title="Rapports" url="/rapports" status={status} />
+              <Bslink
+                title="Rapports"
+                url={status == 0 ? '/rapports' : '#'}
+                status={status}
+              />
             </NavItem>
           </Nav>
           <Nav className="mr-auto">
@@ -191,7 +204,10 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
                       <DropdownItem divider />
                       <DropdownItem>
                         <span>
-                          <Logout />
+                          <Logout
+                            status={status}
+                            AnnulerConfirm={AnnulerConfirm}
+                          />
                         </span>
                       </DropdownItem>
                     </DropdownMenu>
