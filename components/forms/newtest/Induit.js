@@ -160,11 +160,6 @@ export default function Induit({
                         value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Fréquence_genératrice_P1',
-                        value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -185,11 +180,6 @@ export default function Induit({
                         value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Fréquence_genératrice_P2',
-                        value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -209,7 +199,6 @@ export default function Induit({
                     options={SKE77}
                     onChange={value => {
                       UpdateData('Réactance_ske77_P1', value, setNewMisePlace);
-                      UpdateData('Réactance_ske77_P1', value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -226,7 +215,6 @@ export default function Induit({
                     options={SKE77}
                     onChange={value => {
                       UpdateData('Réactance_ske77_P2', value, setNewMisePlace);
-                      UpdateData('Réactance_ske77_P2', value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -246,7 +234,6 @@ export default function Induit({
                     options={SKE17}
                     onChange={value => {
                       UpdateData('Réactance_ske17_P1', value, setNewMisePlace);
-                      UpdateData('Réactance_ske17_P1', value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -263,7 +250,6 @@ export default function Induit({
                     options={SKE17}
                     onChange={value => {
                       UpdateData('Réactance_ske17_P2', value, setNewMisePlace);
-                      UpdateData('Réactance_ske17_P2', value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -284,22 +270,14 @@ export default function Induit({
                   value="reussit"
                   optionType="button"
                   onClick={() =>
-                    UpdateData(
-                      'Test_Induit_P1',
-                      'test Induit reussi',
-                      setFinaldata
-                    )
+                    UpdateData('Test_Induit_P1', true, setFinaldata)
                   }>
                   reussit
                 </Radio.Button>
                 <Radio.Button
                   style={{margin: '5px'}}
                   onClick={() => {
-                    UpdateData(
-                      'Test_Induit_P1',
-                      'test Induit echoue',
-                      setFinaldata
-                    );
+                    UpdateData('Test_Induit_P1', false, setFinaldata);
                     error('Le Test de Induit Position 1 est echoué...');
                   }}
                   value="echoue">
@@ -320,21 +298,13 @@ export default function Induit({
                   style={{margin: '5px'}}
                   value={true}
                   onClick={() =>
-                    UpdateData(
-                      'Test_Induit_P2',
-                      'test Induit reussi',
-                      setFinaldata
-                    )
+                    UpdateData('Test_Induit_P2', true, setFinaldata)
                   }>
                   reussit{' '}
                 </Radio.Button>
                 <Radio.Button
                   onClick={() => {
-                    UpdateData(
-                      'Test_Induit_P2',
-                      'test Induit echoue',
-                      setFinaldata
-                    );
+                    UpdateData('Test_Induit_P2', false, setFinaldata);
                     error('Le Test de Induit Position 2 est echoué...');
                   }}
                   style={{margin: '5px'}}

@@ -94,7 +94,6 @@ export default function Decharges_Partielles({
                         value,
                         setNewMisePlace
                       );
-                      UpdateData('Réactance_ske77_DP_P1', value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -119,7 +118,6 @@ export default function Decharges_Partielles({
                         value,
                         setNewMisePlace
                       );
-                      UpdateData('Réactance_ske17_DP_P1', value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -132,7 +130,7 @@ export default function Decharges_Partielles({
             key="15_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="15 Sec"
-            name="15"
+            name="S_15"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               ref={!miseenplaceok ? null : inputEl}
@@ -140,14 +138,15 @@ export default function Decharges_Partielles({
               tabIndex={3}
               min={10}
               max={1000}
-              placeholder="10 Sec"
+              placeholder="15 Sec"
+              onChange={e => UpdateData('S_15', e.target.value, setFinaldata)}
             />
           </Form.Item>
           <Form.Item
             key="30_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="30 Sec"
-            name="30"
+            name="S_30"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               type="number"
@@ -155,13 +154,14 @@ export default function Decharges_Partielles({
               min={10}
               max={1000}
               placeholder="30 Sec"
+              onChange={e => UpdateData('S_30', e.target.value, setFinaldata)}
             />
           </Form.Item>
           <Form.Item
             key="45_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="45 Sec"
-            name="45"
+            name="S_45"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               type="number"
@@ -169,13 +169,14 @@ export default function Decharges_Partielles({
               min={10}
               max={1000}
               placeholder="45 Sec"
+              onChange={e => UpdateData('S_45', e.target.value, setFinaldata)}
             />
           </Form.Item>
           <Form.Item
             key="60_Sec"
             style={{width: '10%', marginRight: '5px'}}
             label="60 Sec"
-            name="60"
+            name="S_60"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               type="number"
@@ -183,6 +184,7 @@ export default function Decharges_Partielles({
               min={10}
               max={1000}
               placeholder="60 Sec"
+              onChange={e => UpdateData('S_60', e.target.value, setFinaldata)}
             />
           </Form.Item>
         </Row>
@@ -194,13 +196,14 @@ export default function Decharges_Partielles({
                   style={{
                     justifyContent: 'center',
                     display: 'flex',
+                    marginLeft: '15px',
                   }}>
                   <Form.Item
                     {...restField}
                     key={[name == 0 ? '75_Sec' : '135_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '75 Sec' : '135 Sec']}
-                    name={[name, name == 0 ? '75' : '135']}
+                    name={[name, name == 0 ? 'S_75' : 'S_135']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
                     <Input
@@ -218,7 +221,7 @@ export default function Decharges_Partielles({
                     key={[name == 0 ? '90_Sec' : '150_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '90 Sec' : '150 Sec']}
-                    name={[name, name == 0 ? '90' : '150']}
+                    name={[name, name == 0 ? 'S_90' : 'S_150']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
                     <Input
@@ -233,7 +236,7 @@ export default function Decharges_Partielles({
                     key={[name == 0 ? '105_Sec' : '165_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '105 Sec' : '165 Sec']}
-                    name={[name, name == 0 ? '105' : '165']}
+                    name={[name, name == 0 ? 'S_105' : 'S_165']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
                     <Input
@@ -248,7 +251,7 @@ export default function Decharges_Partielles({
                     key={[name == 0 ? '120_Sec' : '180_Sec']}
                     style={{width: '10%', marginRight: '5px'}}
                     label={[name == 0 ? '120 Sec' : '180 Sec']}
-                    name={[name, name == 0 ? '120' : '180']}
+                    name={[name, name == 0 ? 'S_120' : 'S_180']}
                     fieldKey={[fieldKey, 's']}
                     rules={[{required: true, message: 'Champ Requis'}]}>
                     <Input

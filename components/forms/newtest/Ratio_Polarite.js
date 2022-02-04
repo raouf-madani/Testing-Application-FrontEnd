@@ -53,11 +53,6 @@ export default function Ratio_Polarite({
                       UpdateData(
                         'Volts_apluiqés_P1',
                         e.target.value,
-                        setFinaldata
-                      );
-                      UpdateData(
-                        'Volts_apluiqés_P1',
-                        e.target.value,
                         setNewMisePlace
                       );
                     }}
@@ -84,11 +79,6 @@ export default function Ratio_Polarite({
                         e.target.value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Volts_apluiqés_P2',
-                        e.target.value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -110,7 +100,6 @@ export default function Ratio_Polarite({
                     step="0.0001"
                     placeholder="Position 1"
                     onChange={e => {
-                      UpdateData('Volts_ht_P1', e.target.value, setFinaldata);
                       UpdateData(
                         'Volts_ht_P1',
                         e.target.value,
@@ -134,7 +123,6 @@ export default function Ratio_Polarite({
                     step="0.0001"
                     placeholder="Position 2"
                     onChange={e => {
-                      UpdateData('Volts_ht_P2', e.target.value, setFinaldata);
                       UpdateData(
                         'Volts_ht_P2',
                         e.target.value,
@@ -166,11 +154,6 @@ export default function Ratio_Polarite({
                         e.target.value,
                         setNewMisePlace
                       );
-                      UpdateData(
-                        'Polarite_volts_P1',
-                        e.target.value,
-                        setFinaldata
-                      );
                     }}
                   />
                 </Form.Item>
@@ -193,11 +176,6 @@ export default function Ratio_Polarite({
                         'Polarite_volts_P2',
                         e.target.value,
                         setNewMisePlace
-                      );
-                      UpdateData(
-                        'Polarite_volts_P2',
-                        e.target.value,
-                        setFinaldata
                       );
                     }}
                   />

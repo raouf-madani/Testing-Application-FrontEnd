@@ -12,12 +12,7 @@ import {
   Divider,
 } from 'antd';
 
-export default function Bornes({
-  UpdateData,
-  miseenplaceok,
-  setFinaldata,
-  setNewMisePlace,
-}) {
+export default function Bornes({UpdateData, setNewMisePlace}) {
   const Bornes_values = [
     {label: 1600, value: 1600},
     {label: 1000, value: 1000},
@@ -66,7 +61,6 @@ export default function Bornes({
                   buttonStyle="solid"
                   onChange={e => {
                     UpdateData('Borne_rouge', e.target.value, setNewMisePlace);
-                    UpdateData('Borne_rouge', e.target.value, setFinaldata);
                   }}>
                   <Space direction="vertical">{items}</Space>
                 </Radio.Group>
@@ -90,7 +84,6 @@ export default function Bornes({
                   buttonStyle="solid"
                   onChange={e => {
                     UpdateData('Borne_verte', e.target.value, setNewMisePlace);
-                    UpdateData('Borne_verte', e.target.value, setFinaldata);
                   }}>
                   <Space direction="vertical">{items}</Space>
                 </Radio.Group>
@@ -114,7 +107,6 @@ export default function Bornes({
                   buttonStyle="solid"
                   onChange={e => {
                     UpdateData('Borne_jaune', e.target.value, setNewMisePlace);
-                    UpdateData('Borne_jaune', e.target.value, setFinaldata);
                   }}>
                   <Space direction="vertical">{items}</Space>
                 </Radio.Group>

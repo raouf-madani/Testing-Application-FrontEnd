@@ -145,137 +145,6 @@ const Haut = ({
   }
 
   const [form] = Form.useForm();
-  const UpdatemiseData = (type, newData, setmise_data) => {
-    switch (type) {
-      case 'state':
-        setmise_data(data => {
-          return {
-            ...data,
-            [type]: newData,
-          };
-        });
-      //riv
-      case 'riv':
-        setmise_data(data => {
-          return {
-            ...data,
-            [type]: newData,
-          };
-        });
-      //Bornes
-      case 'Borne_rouge':
-      case 'Borne_verte':
-      case 'Borne_jaune':
-        setmise_data(data => {
-          return {
-            ...data,
-            Bornes: {
-              ...data.Bornes,
-              [type]: newData,
-            },
-          };
-        });
-      //Ratio
-      case 'Volts_apluiqés_P1':
-      case 'Volts_ht_P1':
-      case 'Polarite_volts_P1':
-      case 'Volts_apluiqés_P2':
-      case 'Volts_ht_P2':
-      case 'Polarite_volts_P2':
-        setmise_data(data => {
-          return {
-            ...data,
-            Ratio: {
-              ...data.Ratio,
-              [type]: newData,
-            },
-          };
-        });
-
-      //Induit
-      case 'Fréquence_genératrice_P1':
-      case 'Réactance_ske77_P1':
-      case 'Réactance_ske17_P1':
-      case 'Fréquence_genératrice_P2':
-      case 'Réactance_ske77_P2':
-      case 'Réactance_ske17_P2':
-        setmise_data(data => {
-          return {
-            ...data,
-            Induit: {
-              ...data.Induit,
-              [type]: newData,
-            },
-          };
-        });
-      //Perte a Vide
-      case 'Multiplicateur_volts_P1':
-      case 'Multiplicateur_amperes_P1':
-      case 'Perte_table_P1':
-      case 'Multiplicateur_volts_P2':
-      case 'Multiplicateur_amperes_P2':
-      case 'Perte_table_P2':
-        setmise_data(data => {
-          return {
-            ...data,
-            Perte_a_Vide: {
-              ...data.Perte_a_Vide,
-              [type]: newData,
-            },
-          };
-        });
-
-      //Perte a Charge
-      //Position 1
-      case 'Multiplicateur_volts_charge_P1':
-      case 'Multiplicateur_amperes_charge_P1':
-      case 'Perte_table_charge_P1':
-      case 'Courant_de_correction_P1':
-      case 'Perte_table_totale_P1':
-      case 'Courant_appliquié_transfo_P1':
-      case 'Courant_appliqué_appareil_P1':
-      case 'Perte_cavalier_P1':
-      //no position
-      case 'No_cavalier':
-      //Position 2
-      case 'Multiplicateur_volts_charge_P2':
-      case 'Multiplicateur_amperes_charge_P2':
-      case 'Perte_table_charge_P2':
-      case 'Courant_de_correction_P2':
-      case 'Perte_table_totale_P2':
-      case 'Courant_appliquié_transfo_P2':
-      case 'Courant_appliqué_appareil_P2':
-      case 'Perte_cavalier_P2':
-        setmise_data(data => {
-          return {
-            ...data,
-            Perte_a_Charge: {
-              ...data.Perte_a_Charge,
-              [type]: newData,
-            },
-          };
-        });
-
-      //Decharges Partielles
-      //Position1
-      case 'Réactance_ske77_DP_P1':
-      case 'Réactance_ske17_DP_P1':
-      //Position 2
-      case 'Réactance_ske77_DP_P2':
-      case 'Réactance_ske17_DP_P2':
-        setmise_data(data => {
-          return {
-            ...data,
-            Decharges_Partielles: {
-              ...data.Decharges_Partielles,
-              [type]: newData,
-            },
-          };
-        });
-      default:
-        return null;
-    }
-  };
 
   const handleCancel = () => {
     setmise_data(mise_en_placeById);
@@ -362,10 +231,7 @@ const Haut = ({
             onFinish={handleSubmit}
             layout="vertical"
             initialValues={initial_mise_placefrom_values}>
-            <Updat_mise_place_modal
-              setmise_data={setmise_data}
-              UpdatemiseData={UpdatemiseData}
-            />
+            <Updat_mise_place_modal setmise_data={setmise_data} />
           </Form>
         </Modal>
         <Row justify="space-between">
@@ -395,7 +261,7 @@ const Haut = ({
                     <>Type : {Finaldata.test_type}</>
                   )
                 ) : (
-                  <>Type : {commande.type_command}</>
+                  <>Type : {mise_data.Type_test}</>
                 )}{' '}
               </Row>
               <Row>Temps de Test: {mise_data == null ? 12 + 15 : 12} MIN</Row>

@@ -1,8 +1,24 @@
-export const UpdateData = (type, newData, setFinaldata) => {
+export const UpdateData = (type, newData, setData) => {
   switch (type) {
+    //employe id
+    case 'id_employe':
+      setData(data => {
+        return {
+          ...data,
+          [type]: newData,
+        };
+      });
+    //commande id
+    case 'numcommand':
+      setData(data => {
+        return {
+          ...data,
+          [type]: newData,
+        };
+      });
     //Temperature
     case 'temperature_affected':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           [type]: newData,
@@ -10,7 +26,7 @@ export const UpdateData = (type, newData, setFinaldata) => {
       });
     // Test Type
     case 'test_type':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           [type]: newData,
@@ -18,7 +34,7 @@ export const UpdateData = (type, newData, setFinaldata) => {
       });
     //RIV
     case 'riv':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           [type]: newData,
@@ -28,7 +44,7 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Borne_rouge':
     case 'Borne_verte':
     case 'Borne_jaune':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           Bornes: {
@@ -49,7 +65,7 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Polarite_volts_P2':
     case 'Volts_ht_mesuré_P2':
     case 'Polarite_volts_Mesure_P2':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           Ratio: {
@@ -68,7 +84,7 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Réactance_ske17_P2':
     case 'Test_Induit_P1':
     case 'Test_Induit_P2':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           Induit: {
@@ -81,7 +97,7 @@ export const UpdateData = (type, newData, setFinaldata) => {
     //Hipot
     case 'Test_Hipot_50':
     case 'Test_Hipot_70':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
           Hipot: {
@@ -98,17 +114,18 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Perte_table_P1':
     case 'Pertes_mesurés_P1':
     case 'Courant_excitation_mesurés_P1':
+
     //Position 2
     case 'Multiplicateur_volts_P2':
     case 'Multiplicateur_amperes_P2':
     case 'Perte_table_P2':
     case 'Pertes_mesurés_P2':
     case 'Courant_excitation_mesurés_P2':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
-          Perte_a_vide: {
-            ...data.Perte_a_vide,
+          Perte_a_Vide: {
+            ...data.Perte_a_Vide,
             [type]: newData,
           },
         };
@@ -123,12 +140,13 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Perte_table_totale_P1':
     case 'Courant_appliquié_transfo_P1':
     case 'Courant_appliqué_appareil_P1':
-    case 'No_cavalier_P1':
     case 'Perte_cavalier_P1':
     case 'Resistance_ht_P1':
     case 'Resistance_bt_P1':
     case 'Perte_charge_mesuré_P1':
     case 'Impédance_mesuré_P1':
+    //no position
+    case 'No_cavalier':
     //Position 2
     case 'Multiplicateur_volts_charge_P2':
     case 'Multiplicateur_amperes_charge_P2':
@@ -137,31 +155,47 @@ export const UpdateData = (type, newData, setFinaldata) => {
     case 'Perte_table_totale_P2':
     case 'Courant_appliquié_transfo_P2':
     case 'Courant_appliqué_appareil_P2':
-    case 'No_cavalier_P2':
     case 'Perte_cavalier_P2':
     case 'Resistance_ht_P2':
     case 'Resistance_bt_P2':
     case 'Perte_charge_mesuré_P2':
     case 'Impédance_mesuré_P2':
-      setFinaldata(data => {
+      setData(data => {
         return {
           ...data,
-          Perte_a_charge: {
-            ...data.Perte_a_charge,
+          Perte_a_Charge: {
+            ...data.Perte_a_Charge,
             [type]: newData,
           },
         };
       });
 
     //Decharges Partielles
-    //Position1
+
     case 'Réactance_ske77_DP_P1':
     case 'Réactance_ske17_DP_P1':
-      setFinaldata(data => {
+    case 'S_15':
+    case 'S_30':
+    case 'S_45':
+    case 'S_60':
+      setData(data => {
         return {
           ...data,
           Decharges_Partielles: {
             ...data.Decharges_Partielles,
+            [type]: newData,
+          },
+        };
+      });
+
+    //Facteur Dissipation
+    case 'H':
+    case 'L':
+      setData(data => {
+        return {
+          ...data,
+          Facteur_Dissipation: {
+            ...data.Facteur_Dissipation,
             [type]: newData,
           },
         };

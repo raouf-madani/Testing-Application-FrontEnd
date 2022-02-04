@@ -5,6 +5,7 @@ export default function Perte_a_charge({
   UpdateData,
   miseenplaceok,
   setFinaldata,
+  setNewMisePlace,
 }) {
   const inputEl = useRef(null);
   useEffect(() => {
@@ -84,7 +85,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Multiplicateur_volts_charge_P1',
                         value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -104,7 +105,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Multiplicateur_volts_charge_P2',
                         value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -127,7 +128,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Multiplicateur_amperes_charge_P1',
                         value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -147,7 +148,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Multiplicateur_amperes_charge_P2',
                         value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -173,7 +174,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Perte_table_charge_P1',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -196,7 +197,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Perte_table_charge_P2',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -222,7 +223,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Courant_de_correction_P1',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -245,7 +246,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Courant_de_correction_P2',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -285,7 +286,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Courant_appliquié_transfo_P1',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -308,7 +309,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Courant_appliquié_transfo_P2',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -342,7 +343,7 @@ export default function Perte_a_charge({
                     tabIndex={6}
                     options={NO_Cavalier}
                     onChange={value =>
-                      UpdateData('No_cavalier', value, setFinaldata)
+                      UpdateData('No_cavalier', value, setNewMisePlace)
                     }
                   />
                 </Form.Item>
@@ -387,7 +388,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Resistance_ht_P1',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -410,7 +411,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Resistance_ht_P2',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -436,7 +437,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Resistance_bt_P1',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -459,7 +460,7 @@ export default function Perte_a_charge({
                       UpdateData(
                         'Resistance_bt_P2',
                         e.target.value,
-                        setFinaldata
+                        setNewMisePlace
                       )
                     }
                   />
@@ -565,7 +566,7 @@ export default function Perte_a_charge({
             label="Impédance Mesuré"
             style={{marginBottom: 0, width: '60%'}}>
             <Form.Item
-              name="Impédance_mesuré_P1"
+              name="Impédance_Mesuré_P1"
               rules={[{required: true, message: 'Champ Requis'}]}
               style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
               <Input
@@ -577,7 +578,7 @@ export default function Perte_a_charge({
                 placeholder="Position 1"
                 onChange={e =>
                   UpdateData(
-                    'Impédance_mesuré_P2',
+                    'Impédance_mesuré_P1',
                     e.target.value,
                     setFinaldata
                   )

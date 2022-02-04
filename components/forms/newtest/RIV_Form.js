@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {Form, Input, Button, Select, DatePicker, Row, Divider} from 'antd';
 
-export default function RIV({UpdateData, setFinaldata}) {
+export default function RIV({UpdateData, setNewMisePlace}) {
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -31,7 +31,7 @@ export default function RIV({UpdateData, setFinaldata}) {
               max={1000}
               step="0.0001"
               placeholder="RIV"
-              onChange={e => UpdateData('riv', e.target.value, setFinaldata)}
+              onChange={e => UpdateData('Riv', e.target.value, setNewMisePlace)}
             />
           </Form.Item>
         </Row>

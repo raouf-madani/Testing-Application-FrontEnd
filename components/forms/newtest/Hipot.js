@@ -35,22 +35,14 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                 value={true}
                 onClick={() => {
                   console.log('Test reussi'),
-                    UpdateData(
-                      'Test_Hipot_70',
-                      'test Hipot reussi',
-                      setFinaldata
-                    );
+                    UpdateData('Test_Hipot_70', true, setFinaldata);
                 }}>
                 Test reussit
               </Radio.Button>
               <Radio.Button
                 onClick={() => {
                   console.log('Test echoue'),
-                    UpdateData(
-                      'Test_Hipot_70',
-                      'test Hipot echoue',
-                      setFinaldata
-                    );
+                    UpdateData('Test_Hipot_70', false, setFinaldata);
                   error(
                     'Le Test de Hipot a une tension appluiqué de 70 V est echoué...'
                   );
@@ -76,12 +68,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                 style={{margin: '5px'}}
                 value={true}
                 onClick={() => {
-                  console.log('Test reussi'),
-                    UpdateData(
-                      'Test_Hipot_50',
-                      'test Hipot reussi',
-                      setFinaldata
-                    );
+                  UpdateData('Test_Hipot_50', true, setFinaldata);
                 }}>
                 Test reussit
               </Radio.Button>

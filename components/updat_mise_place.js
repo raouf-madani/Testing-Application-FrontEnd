@@ -1,8 +1,9 @@
 import React from 'react';
 import {InputNumber, Form, Tabs, Input, Row, Select} from 'antd';
+import {UpdateData} from '@/actions/newtestupdate';
 import {InfoCircleOutlined} from '@ant-design/icons';
 const {TabPane} = Tabs;
-function newTestContent({UpdatemiseData, setmise_data}) {
+function newTestContent({setmise_data}) {
   const Borne_Rouge = [
     {label: '100', value: '100'},
     {label: '200', value: '200'},
@@ -61,7 +62,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
               <Select
                 options={Borne_Jaune}
                 onChange={value => {
-                  UpdatemiseData('Borne_jaune', value, setmise_data);
+                  UpdateData('Borne_jaune', value, setmise_data);
                 }}
               />
             </Form.Item>
@@ -93,7 +94,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
               <Select
                 options={Borne_Rouge}
                 onChange={value => {
-                  UpdatemiseData('Borne_rouge', value, setmise_data);
+                  UpdateData('Borne_rouge', value, setmise_data);
                 }}
               />
               {/* <Input
@@ -126,7 +127,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
               <Select
                 options={Borne_Verte}
                 onChange={value => {
-                  UpdatemiseData('Borne_verte', value, setmise_data);
+                  UpdateData('Borne_verte', value, setmise_data);
                 }}
               />
             </Form.Item>
@@ -142,11 +143,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
-                  'Volts_apluiqés_P1',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Volts_apluiqés_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -160,11 +157,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
-                  'Volts_apluiqés_P2',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Volts_apluiqés_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -177,7 +170,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData('Volts_ht_P1', e.target.value, setmise_data)
+                UpdateData('Volts_ht_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -191,7 +184,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData('Volts_ht_P2', e.target.value, setmise_data)
+                UpdateData('Volts_ht_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -204,11 +197,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
-                  'Polarite_volts_P1',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Polarite_volts_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -222,11 +211,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
-                  'Polarite_volts_P2',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Polarite_volts_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -241,7 +226,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Fréquence_genératrice_P1',
                   e.target.value,
                   setmise_data
@@ -259,7 +244,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Fréquence_genératrice_P2',
                   e.target.value,
                   setmise_data
@@ -276,11 +261,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
-                  'Réactance_ske77_P1',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Réactance_ske77_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -294,11 +275,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
-                  'Réactance_ske77_P2',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Réactance_ske77_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -311,11 +288,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
-                  'Réactance_ske17_P1',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Réactance_ske17_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -329,11 +302,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
-                  'Réactance_ske17_P2',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Réactance_ske17_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -348,7 +317,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_volts_P1',
                   e.target.value,
                   setmise_data
@@ -366,7 +335,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_volts_P2',
                   e.target.value,
                   setmise_data
@@ -383,7 +352,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_amperes_P1',
                   e.target.value,
                   setmise_data
@@ -401,7 +370,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_amperes_P2',
                   e.target.value,
                   setmise_data
@@ -418,7 +387,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData('Perte_table_P1', e.target.value, setmise_data)
+                UpdateData('Perte_table_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -432,7 +401,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData('Perte_table_P2', e.target.value, setmise_data)
+                UpdateData('Perte_table_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -445,9 +414,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               placeholder="Position 1"
-              onChange={e =>
-                UpdatemiseData('riv', e.target.value, setmise_data)
-              }
+              onChange={e => UpdateData('riv', e.target.value, setmise_data)}
             />
           </Form.Item>
         </Form.Item>
@@ -461,7 +428,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_volts_charge_P1',
                   e.target.value,
                   setmise_data
@@ -479,7 +446,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_volts_charge_P2',
                   e.target.value,
                   setmise_data
@@ -496,7 +463,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_amperes_charge_P1',
                   e.target.value,
                   setmise_data
@@ -514,7 +481,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Multiplicateur_amperes_charge_P2',
                   e.target.value,
                   setmise_data
@@ -531,7 +498,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Perte_table_charge_P1',
                   e.target.value,
                   setmise_data
@@ -549,7 +516,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Perte_table_charge_P2',
                   e.target.value,
                   setmise_data
@@ -566,7 +533,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Courant_de_correction_P1',
                   e.target.value,
                   setmise_data
@@ -584,7 +551,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Courant_de_correction_P2',
                   e.target.value,
                   setmise_data
@@ -601,7 +568,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Perte_table_totale_P1',
                   e.target.value,
                   setmise_data
@@ -619,7 +586,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Perte_table_totale_P2',
                   e.target.value,
                   setmise_data
@@ -638,7 +605,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Courant_appliquié_transfo_P1',
                   e.target.value,
                   setmise_data
@@ -656,7 +623,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Courant_appliquié_transfo_P2',
                   e.target.value,
                   setmise_data
@@ -675,7 +642,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Courant_appliqué_appareil_P1',
                   e.target.value,
                   setmise_data
@@ -693,7 +660,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
+                UpdateData(
                   'Courant_appliqué_appareil_P2',
                   e.target.value,
                   setmise_data
@@ -710,7 +677,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData('No_cavalier', e.target.value, setmise_data)
+                UpdateData('No_cavalier', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -723,11 +690,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdatemiseData(
-                  'Perte_cavalier_P1',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Perte_cavalier_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -741,11 +704,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdatemiseData(
-                  'Perte_cavalier_P2',
-                  e.target.value,
-                  setmise_data
-                )
+                UpdateData('Perte_cavalier_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
@@ -764,7 +723,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
                 defaultValue=""
                 options={SKE77}
                 onChange={value => {
-                  UpdatemiseData('Réactance_ske77_DP_P1', value, setmise_data);
+                  UpdateData('Réactance_ske77_DP_P1', value, setmise_data);
                 }}
               />
             </Form.Item>
@@ -783,7 +742,7 @@ function newTestContent({UpdatemiseData, setmise_data}) {
                 defaultValue=""
                 options={SKE77}
                 onChange={value => {
-                  UpdatemiseData('Réactance_ske17_DP_P1', value, setmise_data);
+                  UpdateData('Réactance_ske17_DP_P1', value, setmise_data);
                 }}
               />
             </Form.Item>

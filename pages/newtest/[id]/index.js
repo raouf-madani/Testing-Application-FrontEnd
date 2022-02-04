@@ -15,7 +15,7 @@ import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
 
 import withAuth from '@/hoc/withAuth';
 import {useGetUser} from '@/actions/user';
-
+import {useCreateTest, useGetTest} from '@/actions/tests';
 import {UpdateData} from '@/actions/newtestupdate';
 import TestingApi from '@/lib/api/testing';
 
@@ -87,10 +87,16 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [modal, setmodal] = useState(false);
   const {data: dataU, loading: loadingU} = useGetUser();
   const [test_type_selected, settest_type_selected] = useState();
-  const [kvaofday, setkvaofday] = useState(15);
+  const [kvaofday, setkvaofday] = useState(13);
   const [teststatus, setteststatus] = useState();
   const [temperature_noaffected, settemperature_noaffected] = useState(20);
+  const [createTest, {data, loading}] = useCreateTest();
+  const _CreateTest = data => {
+    createTest(data);
+  };
   const {data: commandehook} = useGetCommande(router.query.id);
+  const {data: test} = useGetTest(50070345);
+  const {data: mise} = useGetMise('1AE654');
   const start = () => {
     run();
     setStatus(1);
@@ -178,235 +184,15 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       } else {
         if (mise_en_placeById !== null) {
           console.log('begin the work mise en place done');
-          console.log(mise_en_placeById.Bornes.Borne_rouge);
-          //Bornes
-          UpdateData(
-            'Borne_rouge',
-            mise_en_placeById.Bornes.Borne_rouge,
-            setFinaldata
-          );
-          UpdateData(
-            'Borne_verte',
-            mise_en_placeById.Bornes.Borne_verte,
-            setFinaldata
-          );
-          UpdateData(
-            'Borne_jaune',
-            mise_en_placeById.Bornes.Borne_jaune,
-            setFinaldata
-          );
-          //Ratio_Polarite
-          UpdateData(
-            'Volts_apluiqés_P1',
-            mise_en_placeById.Ratio.Volts_apluiqés_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Volts_apluiqés_P2',
-            mise_en_placeById.Ratio.Volts_apluiqés_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Volts_ht_P1',
-            mise_en_placeById.Ratio.Volts_ht_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Volts_ht_P2',
-            mise_en_placeById.Ratio.Volts_ht_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Polarite_volts_P1',
-            mise_en_placeById.Ratio.Polarite_volts_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Polarite_volts_P2',
-            mise_en_placeById.Ratio.Polarite_volts_P2,
-            setFinaldata
-          );
-          //Induit
-          UpdateData(
-            'Fréquence_genératrice_P1',
-            mise_en_placeById.Induit.Fréquence_genératrice_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Fréquence_genératrice_P2',
-            mise_en_placeById.Induit.Fréquence_genératrice_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Réactance_ske77_P1',
-            mise_en_placeById.Induit.Réactance_ske77_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Réactance_ske77_P2',
-            mise_en_placeById.Induit.Réactance_ske77_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Réactance_ske17_P1',
-            mise_en_placeById.Induit.Réactance_ske17_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Réactance_ske17_P2',
-            mise_en_placeById.Induit.Réactance_ske17_P2,
-            setFinaldata
-          );
-
-          //Perte A Vide
-          UpdateData(
-            'Multiplicateur_volts_P1',
-            mise_en_placeById.Perte_a_Vide.Multiplicateur_volts_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Multiplicateur_volts_P2',
-            mise_en_placeById.Perte_a_Vide.Multiplicateur_volts_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Multiplicateur_amperes_P1',
-            mise_en_placeById.Perte_a_Vide.Multiplicateur_amperes_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Multiplicateur_amperes_P2',
-            mise_en_placeById.Perte_a_Vide.Multiplicateur_amperes_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_table_P1',
-            mise_en_placeById.Perte_a_Vide.Perte_table_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_table_P2',
-            mise_en_placeById.Perte_a_Vide.Perte_table_P2,
-            setFinaldata
-          );
-
-          //Perte A Charge
-          UpdateData(
-            'Multiplicateur_volts_charge_P1',
-            mise_en_placeById.Perte_a_Charge.Multiplicateur_volts_charge_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Multiplicateur_volts_charge_P2',
-            mise_en_placeById.Perte_a_Charge.Multiplicateur_volts_charge_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Multiplicateur_amperes_charge_P1',
-            mise_en_placeById.Perte_a_Charge.Multiplicateur_amperes_charge_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Multiplicateur_amperes_charge_P2',
-            mise_en_placeById.Perte_a_Charge.Multiplicateur_amperes_charge_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_table_charge_P1',
-            mise_en_placeById.Perte_a_Charge.Perte_table_charge_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_table_charge_P2',
-            mise_en_placeById.Perte_a_Charge.Perte_table_charge_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Courant_de_correction_P1',
-            mise_en_placeById.Perte_a_Charge.Courant_de_correction_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Courant_de_correction_P2',
-            mise_en_placeById.Perte_a_Charge.Courant_de_correction_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_table_totale_P1',
-            mise_en_placeById.Perte_a_Charge.Perte_table_totale_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_table_totale_P2',
-            mise_en_placeById.Perte_a_Charge.Perte_table_totale_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Courant_appliquié_transfo_P1',
-            mise_en_placeById.Perte_a_Charge.Courant_appliquié_transfo_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Courant_appliquié_transfo_P2',
-            mise_en_placeById.Perte_a_Charge.Courant_appliquié_transfo_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Courant_appliqué_appareil_P1',
-            mise_en_placeById.Perte_a_Charge.Courant_appliqué_appareil_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Courant_appliqué_appareil_P2',
-            mise_en_placeById.Perte_a_Charge.Courant_appliqué_appareil_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'No_cavalier_P1',
-            mise_en_placeById.Perte_a_Charge.No_cavalier_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'No_cavalier_P2',
-            mise_en_placeById.Perte_a_Charge.No_cavalier_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_cavalier_P1',
-            mise_en_placeById.Perte_a_Charge.Perte_cavalier_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Perte_cavalier_P2',
-            mise_en_placeById.Perte_a_Charge.Perte_cavalier_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Resistance_ht_P1',
-            mise_en_placeById.Perte_a_Charge.Resistance_ht_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Resistance_ht_P2',
-            mise_en_placeById.Perte_a_Charge.Resistance_ht_P2,
-            setFinaldata
-          );
-          UpdateData(
-            'Resistance_bt_P1',
-            mise_en_placeById.Perte_a_Charge.Resistance_bt_P1,
-            setFinaldata
-          );
-          UpdateData(
-            'Resistance_bt_P2',
-            mise_en_placeById.Perte_a_Charge.Resistance_bt_P2,
-            setFinaldata
-          );
-
+          UpdateData('numcommand', 1010, setFinaldata);
           setCurrent(current + 1);
         } else {
           console.log('begin the work No mise en place ');
+          UpdateData('numcommand', 1010, setFinaldata);
+          UpdateData('numcommand', 1010, setNewMisePlace);
           // Type test
           UpdateData('test_type', test_type_selected, setFinaldata);
+          UpdateData('test_type', test_type_selected, setNewMisePlace);
           console.log(' la final data', Finaldata);
           setCurrent(current + 1);
         }
@@ -421,7 +207,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
         reset();
         form.resetFields();
         setmodal(!modal);
-        console.log(Finaldata);
+
+        console.log('the final data to create is ', Finaldata);
+        _CreateTest(Finaldata);
       } else {
         alert('affecter la temperature');
       }
@@ -683,7 +471,18 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                   <Row justify="center">
                     <Space size="middle">
                       <h1> produit deja tested voulez vous le retester?</h1>
-                      le kva de commande {commande.voltage_ht}
+                      <Button
+                        onClick={() => {
+                          router.push({
+                            pathname: '/newtest/[id]/edit',
+                            query: {
+                              id: router.query.id,
+                              firstchecked: router.query.firstchecked,
+                            },
+                          });
+                        }}>
+                        retester
+                      </Button>
                     </Space>
                   </Row>
                 </Basepage>
@@ -727,22 +526,31 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
   let id = params.id.slice(0, params.id.length - 2);
   let serie_num = params.id.slice(-2);
-  const json_Test = await new TestingApi().getTestResultsById(id);
-  const Tests = json_Test.data;
-  const json = await new TestingApi().getById_commande(id);
-  const allCommandesById = json.data;
+  let commande;
+  let mise_en_placeById = null;
+  let json_Test;
+  let Tests;
+  let allCommandesById;
+  try {
+    json_Test = await new TestingApi().getallTestResults();
+    Tests = json_Test.data;
+    const json = await new TestingApi().getById_commande(id);
+    allCommandesById = json.data;
+  } catch (error) {
+    console.log(error);
+  }
+
   const Commandlist = allCommandesById.filter(function (item) {
     return item.num_serie == serie_num;
   });
-  console.log('la liste de commande final', allCommandesById.length);
-  console.log('la commande final', Commandlist.length);
-  let commande;
-  let command_state;
-  let mise_en_placeById = null;
   if (Commandlist.length !== 0) {
     commande = Commandlist[0];
     if (commande !== null) {
-      if (Tests.some(test => test.num_serie === serie_num)) {
+      if (
+        Tests.some(
+          test => test.num_serie === serie_num && test.id_command === id
+        )
+      ) {
         commande = 'tested';
       }
       const json_Mise_en_placeById = await new TestingApi().getmiseById(
@@ -757,7 +565,6 @@ export async function getStaticProps({params}) {
       commande = null;
     }
   }
-  console.log(commande);
   return {props: {commande, mise_en_placeById, Tests, allCommandesById}};
 }
 
