@@ -5,11 +5,15 @@ export const Fakedata = {
   id_employe: '',
   test_type: null,
   Ratio: {
+    Tension_ht_mesuré: '',
+    Tension_ht_mesuré_P1: '',
+    Tension_ht_mesuré_P2: '',
+    Tension_ht_mesuré_P3: '',
+    Tension_ht_mesuré_P4: '',
+    Tension_ht_mesuré_P5: '',
     //Position 1
-    Volts_ht_mesuré_P1: '',
     Polarite_volts_Mesure_P1: '',
     //Position 2
-    Volts_ht_mesuré_P2: '',
     Polarite_volts_Mesure_P2: '',
   },
   Induit: {
@@ -17,6 +21,8 @@ export const Fakedata = {
     Test_Induit_P1: '',
     //Position 2
     Test_Induit_P2: '',
+    // comment
+    Comment: '',
   },
   Hipot: {
     //Position 1
@@ -99,8 +105,9 @@ export const Mise_NewData = [
       Courant_de_correction_P1: '',
       Perte_table_totale_P1: '',
       Courant_appliquié_transfo_P1: '',
-      Courant_appliqué_appareil_P1: '',
       Perte_cavalier_P1: '',
+      Resistance_ht_P1: '',
+      Resistance_bt_P1: '',
       // no position
       No_cavalier: '',
       //Position 2
@@ -110,12 +117,123 @@ export const Mise_NewData = [
       Courant_de_correction_P2: '',
       Perte_table_totale_P2: '',
       Courant_appliquié_transfo_P2: '',
-      Courant_appliqué_appareil_P2: '',
       Perte_cavalier_P2: '',
+      Resistance_ht_P2: '',
+      Resistance_bt_P2: '',
     },
     Decharges_Partielles: {
       Réactance_ske77_DP_P1: '',
       Réactance_ske17_DP_P1: '',
     },
+  },
+];
+
+// steps 1 phase
+export const steps1phase = [
+  {
+    title: 'Nouveau Test',
+    content: 'newtest',
+  },
+  {
+    title: 'Placer Borne',
+    content: 'Placer Borne',
+  },
+  {
+    title: 'Ratio/Polarite P1',
+    content: 'Ratio/Polarite P1',
+  },
+  {
+    title: 'Ratio/Polarite P2',
+    content: 'Ratio/Polarite P2',
+  },
+  {
+    title: 'Induit P1',
+    content: 'Induit P1',
+  },
+  {
+    title: 'Induit P2',
+    content: 'Induit P2',
+  },
+  {
+    title: 'Hipot',
+    content: 'Hipot',
+  },
+  {
+    title: 'Pertes a Vide P1',
+    content: 'Pertes a Vide P1',
+  },
+  {
+    title: 'Pertes a Vide P2',
+    content: 'Pertes a Vide P2',
+  },
+  {
+    title: 'RIV ',
+    content: 'RIV',
+  },
+  {
+    title: 'Pertes a Charge P1',
+    content: 'Pertes a Charge P1',
+  },
+  {
+    title: 'Pertes a Charge P2',
+    content: 'Pertes a Charge P2',
+  },
+  {
+    title: 'Décharges Partielles',
+    content: 'Décharges Partielles',
+  },
+  {
+    title: 'Facteur de dissipation',
+    content: 'Facteur de dissipation',
+  },
+
+  {
+    title: 'Signature',
+    content: 'Signature',
+  },
+];
+
+// steps 3 phase
+export const steps3phase = [
+  {
+    title: 'Nouveau Test',
+    content: 'newtest',
+  },
+  {
+    title: 'Ratio/Polarite',
+    content: 'Ratio/Polarite',
+  },
+  {
+    title: 'Induit',
+    content: 'Induit',
+  },
+  {
+    title: 'Hipot',
+    content: 'Hipot',
+  },
+  {
+    title: 'Pertes a Vide',
+    content: 'Pertes a Vide',
+  },
+  {
+    title: 'RIV ',
+    content: 'RIV',
+  },
+  {
+    title: 'Pertes a Charge',
+    content: 'Pertes a Charge',
+  },
+  {
+    title: 'Décharges Partielles',
+    content: 'Décharges Partielles',
+  },
+  {
+    title: 'Facteur de dissipation',
+    content: 'Facteur de dissipation',
+  },
+
+  {
+    title: 'Signature',
+    content: 'Signature',
   },
 ];

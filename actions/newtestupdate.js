@@ -33,7 +33,7 @@ export const UpdateData = (type, newData, setData) => {
         };
       });
     //RIV
-    case 'riv':
+    case 'Riv':
       setData(data => {
         return {
           ...data,
@@ -55,15 +55,21 @@ export const UpdateData = (type, newData, setData) => {
       });
 
     // Ratio
+
+    case 'Tension_ht_mesuré':
+    case 'Tension_ht_mesuré_P1':
+    case 'Tension_ht_mesuré_P2':
+    case 'Tension_ht_mesuré_P3':
+    case 'Tension_ht_mesuré_P4':
+    case 'Tension_ht_mesuré_P5':
+    //
     case 'Volts_apluiqés_P1':
     case 'Volts_ht_P1':
     case 'Polarite_volts_P1':
-    case 'Volts_ht_mesuré_P1':
     case 'Polarite_volts_Mesure_P1':
     case 'Volts_apluiqés_P2':
     case 'Volts_ht_P2':
     case 'Polarite_volts_P2':
-    case 'Volts_ht_mesuré_P2':
     case 'Polarite_volts_Mesure_P2':
       setData(data => {
         return {
@@ -84,6 +90,7 @@ export const UpdateData = (type, newData, setData) => {
     case 'Réactance_ske17_P2':
     case 'Test_Induit_P1':
     case 'Test_Induit_P2':
+    case 'Comment':
       setData(data => {
         return {
           ...data,

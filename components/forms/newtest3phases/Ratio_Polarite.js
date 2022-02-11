@@ -15,6 +15,7 @@ export default function Ratio_Polarite({
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
+  Prise,
 }) {
   const inputEl = useRef(null);
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Ratio_Polarite({
           <div>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="Volts Apluiqés"
+                label="Tension à appliquer"
                 style={{marginBottom: 0, width: '60%'}}>
                 <Form.Item
                   name="Volts_Apluiqés_P1"
@@ -86,7 +87,7 @@ export default function Ratio_Polarite({
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="Volts HT"
+                label="Tension HT théorique"
                 style={{marginBottom: 0, width: '60%'}}>
                 <Form.Item
                   name="Volts_HT_P1"
@@ -135,7 +136,7 @@ export default function Ratio_Polarite({
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="Polarité Volts"
+                label=" Polarité théorique"
                 style={{marginBottom: 0, width: '60%'}}>
                 <Form.Item
                   name="Polarité_Volts_P1"
@@ -208,51 +209,100 @@ export default function Ratio_Polarite({
           </Row>
         )}
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            label="Volts HT Mesuré"
-            style={{marginBottom: 0, width: '60%'}}>
+          {Prise == 'AP' ? (
             <Form.Item
-              name="Volts_HT_Mesuré_P1"
-              rules={[{required: true, message: 'Champ Requis'}]}
-              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-              <Input
-                ref={!miseenplaceok ? null : inputEl}
-                tabIndex={4}
-                type="number"
-                min={10}
-                max={1000}
-                step="0.0001"
-                placeholder="Position 1"
-                onChange={e =>
-                  UpdateData('Volts_ht_mesuré_P1', e.target.value, setFinaldata)
-                }
-              />
+              label=" Tension mesurée "
+              style={{marginBottom: 0, width: '60%'}}>
+              <Form.Item
+                name="Volts_HT_Mesuré_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}
+                style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+                <Input
+                  ref={!miseenplaceok ? null : inputEl}
+                  tabIndex={4}
+                  type="number"
+                  min={10}
+                  max={1000}
+                  step="0.0001"
+                  placeholder="Position 1"
+                  onChange={e =>
+                    UpdateData(
+                      'Volts_ht_mesuré_P1',
+                      e.target.value,
+                      setFinaldata
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                style={{
+                  display: 'inline-block',
+                  width: 'calc(50% - 8px)',
+                  margin: '0 8px',
+                }}></Form.Item>
             </Form.Item>
-
-            <Form.Item
-              name="Volts_HT_Mesuré_P2"
-              style={{
-                display: 'inline-block',
-                width: 'calc(50% - 8px)',
-                margin: '0 8px',
-              }}>
-              <Input
-                type="number"
-                tabIndex={9}
-                min={10}
-                max={1000}
-                step="0.0001"
-                placeholder="Position 2"
-                onChange={e =>
-                  UpdateData('Volts_ht_mesuré_P2', e.target.value, setFinaldata)
-                }
-              />
-            </Form.Item>
-          </Form.Item>
+          ) : (
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                key="P1"
+                style={{width: '20%', marginRight: '5px'}}
+                label="Prise1"
+                name="Prise1">
+                <Input
+                  ref={!miseenplaceok ? null : inputEl}
+                  type="number"
+                  tabIndex={3}
+                  min={10}
+                  max={1000}
+                  placeholder="Prise1"
+                />
+              </Form.Item>
+              <Form.Item
+                key="P2"
+                style={{width: '20%', marginRight: '5px'}}
+                label="Prise2"
+                name="Prise2">
+                <Input
+                  type="number"
+                  tabIndex={4}
+                  min={10}
+                  max={1000}
+                  placeholder="Prise2"
+                />
+              </Form.Item>
+              <Form.Item
+                key="P3"
+                style={{width: '20%', marginRight: '5px'}}
+                label="Prise3"
+                name="Prise3">
+                <Input
+                  type="number"
+                  tabIndex={5}
+                  min={10}
+                  max={1000}
+                  placeholder="Prise1"
+                />
+              </Form.Item>
+              <Form.Item
+                key="P4"
+                style={{width: '20%', marginRight: '5px'}}
+                label="Prise4"
+                name="Prise4">
+                <Input
+                  type="number"
+                  tabIndex={6}
+                  min={10}
+                  max={1000}
+                  placeholder="Prise4"
+                />
+              </Form.Item>
+            </Row>
+          )}
         </Row>
+
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Polarité V Mesuré"
+            label="Polarité mesurée "
             style={{marginBottom: 0, width: '60%'}}>
             <Form.Item
               name="Polarité_V_Mesuré_P1"

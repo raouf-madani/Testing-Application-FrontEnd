@@ -57,12 +57,13 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                     message: 'Champ Requis',
                   },
                 ]}>
-                <Select
-                  options={Bornes_values}
-                  onChange={value => {
-                    UpdateData('Borne_rouge', value, setNewMisePlace);
-                  }}
-                />
+                <Radio.Group
+                  buttonStyle="solid"
+                  onChange={e => {
+                    UpdateData('Borne_rouge', e.target.value, setNewMisePlace);
+                  }}>
+                  <Space direction="vertical">{items}</Space>
+                </Radio.Group>
               </Form.Item>
             </Card>
           </Col>
@@ -79,12 +80,13 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                     message: 'Champ Requis',
                   },
                 ]}>
-                <Select
-                  options={Bornes_values}
-                  onChange={value => {
-                    UpdateData('Borne_verte', value, setNewMisePlace);
-                  }}
-                />
+                <Radio.Group
+                  buttonStyle="solid"
+                  onChange={e => {
+                    UpdateData('Borne_verte', e.target.value, setNewMisePlace);
+                  }}>
+                  <Space direction="vertical">{items}</Space>
+                </Radio.Group>
               </Form.Item>
             </Card>
           </Col>
@@ -101,12 +103,13 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                     message: 'Champ Requis',
                   },
                 ]}>
-                <Select
-                  options={Bornes_values}
-                  onChange={value => {
-                    UpdateData('Borne_jaune', value, setNewMisePlace);
-                  }}
-                />
+                <Radio.Group
+                  buttonStyle="solid"
+                  onChange={e => {
+                    UpdateData('Borne_jaune', e.target.value, setNewMisePlace);
+                  }}>
+                  <Space direction="vertical">{items}</Space>
+                </Radio.Group>
               </Form.Item>
             </Card>
           </Col>
