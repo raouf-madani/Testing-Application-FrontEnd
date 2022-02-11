@@ -7,7 +7,7 @@ import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 import Haut from '@/components/newTestComponents/Haut';
 
 import DisplayComponent from '@/components/Timer';
-import TestArea from '@/components/Test_area';
+import TestArea from '@/components/test_area';
 import {
   Fakedata,
   Mise_NewData,
