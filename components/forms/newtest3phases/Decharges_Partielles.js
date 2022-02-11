@@ -86,7 +86,7 @@ export default function Decharges_Partielles({
                   <Select
                     ref={inputEl}
                     tabIndex={1}
-                    initialvalues=""
+                    defaultValue=""
                     options={SKE77}
                     onChange={value => {
                       UpdateData(
@@ -109,7 +109,7 @@ export default function Decharges_Partielles({
                   name="Réactance_SKE17_DP_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Select
-                    initialvalues=""
+                    defaultValue=""
                     tabIndex={2}
                     options={SKE17}
                     onChange={value => {
@@ -188,7 +188,7 @@ export default function Decharges_Partielles({
             />
           </Form.Item>
         </Row>
-        <Form.List name="decharges partielles" style={{width: '50%'}}>
+        <Form.List name="" style={{width: '50%'}}>
           {(fields, {add, remove}) => (
             <>
               {fields.map(({key, name, fieldKey, ...restField}) => (

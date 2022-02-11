@@ -1,5 +1,5 @@
-import React, {useRef, useEffect} from 'react';
-import {Form, Input, Row, Divider, Select} from 'antd';
+import React, {useRef, useEffect, useState} from 'react';
+import {Form, Input, Row, Divider, Select, Switch} from 'antd';
 
 export default function Perte_a_charge({
   UpdateData,
@@ -7,6 +7,7 @@ export default function Perte_a_charge({
   setFinaldata,
   setNewMisePlace,
 }) {
+  const [resistance, setresistance] = useState(false);
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -369,104 +370,125 @@ export default function Perte_a_charge({
                 </Form.Item>
               </Form.Item>
             </Row>
+
             <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Resistance HT "
-                style={{marginBottom: 0, width: '60%'}}>
-                <Form.Item
-                  name="Resistance_HT_P1"
-                  rules={[{required: true, message: 'Champ Requis'}]}
-                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    type="number"
-                    tabIndex={7}
-                    min={10}
-                    max={1000}
-                    step="0.0001"
-                    placeholder="Position 1"
-                    onChange={e =>
-                      UpdateData(
-                        'Resistance_ht_P1',
-                        e.target.value,
-                        setNewMisePlace
-                      )
-                    }
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="Resistance_HT_P2"
-                  style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
-                    margin: '0 8px',
-                  }}>
-                  <Input
-                    type="number"
-                    tabIndex={16}
-                    min={10}
-                    max={1000}
-                    step="0.0001"
-                    placeholder="Position 2"
-                    onChange={e =>
-                      UpdateData(
-                        'Resistance_ht_P2',
-                        e.target.value,
-                        setNewMisePlace
-                      )
-                    }
-                  />
-                </Form.Item>
+              <Form.Item style={{marginBottom: 0, width: '70%'}}>
+                <Switch
+                  checked={resistance}
+                  checkedChildren="Résistances"
+                  unCheckedChildren="Résistances"
+                  onChange={() => setresistance(!resistance)}
+                />
               </Form.Item>
             </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Resistance BT"
-                style={{marginBottom: 0, width: '60%'}}>
-                <Form.Item
-                  name="Resistance_BT_P1"
-                  rules={[{required: true, message: 'Champ Requis'}]}
-                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Input
-                    type="number"
-                    tabIndex={8}
-                    min={10}
-                    max={1000}
-                    step="0.0000001"
-                    placeholder="Position 1"
-                    onChange={e =>
-                      UpdateData(
-                        'Resistance_bt_P1',
-                        e.target.value,
-                        setNewMisePlace
-                      )
-                    }
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="Resistance_BT_P2"
-                  style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
-                    margin: '0 8px',
-                  }}>
-                  <Input
-                    type="number"
-                    tabIndex={17}
-                    min={10}
-                    max={1000}
-                    step="0.0000001"
-                    placeholder="Position 2"
-                    onChange={e =>
-                      UpdateData(
-                        'Resistance_bt_P2',
-                        e.target.value,
-                        setNewMisePlace
-                      )
-                    }
-                  />
-                </Form.Item>
-              </Form.Item>
-            </Row>
+            {resistance && (
+              <div>
+                <Row style={{justifyContent: 'center'}}>
+                  <Form.Item
+                    label="Resistance HT "
+                    style={{marginBottom: 0, width: '60%'}}>
+                    <Form.Item
+                      name="Resistance_HT_P1"
+                      rules={[{required: true, message: 'Champ Requis'}]}
+                      style={{
+                        display: 'inline-block',
+                        width: 'calc(50% - 8px)',
+                      }}>
+                      <Input
+                        type="number"
+                        tabIndex={7}
+                        min={10}
+                        max={1000}
+                        step="0.0001"
+                        placeholder="Position 1"
+                        onChange={e =>
+                          UpdateData(
+                            'Resistance_ht_P1',
+                            e.target.value,
+                            setNewMisePlace
+                          )
+                        }
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      name="Resistance_HT_P2"
+                      style={{
+                        display: 'inline-block',
+                        width: 'calc(50% - 8px)',
+                        margin: '0 8px',
+                      }}>
+                      <Input
+                        type="number"
+                        tabIndex={16}
+                        min={10}
+                        max={1000}
+                        step="0.0001"
+                        placeholder="Position 2"
+                        onChange={e =>
+                          UpdateData(
+                            'Resistance_ht_P2',
+                            e.target.value,
+                            setNewMisePlace
+                          )
+                        }
+                      />
+                    </Form.Item>
+                  </Form.Item>
+                </Row>
+                <Row style={{justifyContent: 'center'}}>
+                  <Form.Item
+                    label="Resistance BT"
+                    style={{marginBottom: 0, width: '60%'}}>
+                    <Form.Item
+                      name="Resistance_BT_P1"
+                      rules={[{required: true, message: 'Champ Requis'}]}
+                      style={{
+                        display: 'inline-block',
+                        width: 'calc(50% - 8px)',
+                      }}>
+                      <Input
+                        type="number"
+                        tabIndex={8}
+                        min={10}
+                        max={1000}
+                        step="0.0000001"
+                        placeholder="Position 1"
+                        onChange={e =>
+                          UpdateData(
+                            'Resistance_bt_P1',
+                            e.target.value,
+                            setNewMisePlace
+                          )
+                        }
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      name="Resistance_BT_P2"
+                      style={{
+                        display: 'inline-block',
+                        width: 'calc(50% - 8px)',
+                        margin: '0 8px',
+                      }}>
+                      <Input
+                        type="number"
+                        tabIndex={17}
+                        min={10}
+                        max={1000}
+                        step="0.0000001"
+                        placeholder="Position 2"
+                        onChange={e =>
+                          UpdateData(
+                            'Resistance_bt_P2',
+                            e.target.value,
+                            setNewMisePlace
+                          )
+                        }
+                      />
+                    </Form.Item>
+                  </Form.Item>
+                </Row>
+              </div>
+            )}
           </div>
         )}
         {miseenplaceok && (

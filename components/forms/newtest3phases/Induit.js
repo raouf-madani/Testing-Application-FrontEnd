@@ -8,6 +8,7 @@ export default function Induit({
   setNewMisePlace,
   error,
 }) {
+  const {TextArea} = Input;
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -45,53 +46,28 @@ export default function Induit({
         style={{color: '#34b1ab', marginBottom: '40px'}}>
         <h3>Induit</h3>{' '}
       </Divider>
-      <div>
-        <Row
+      <Row
+        style={{
+          justifyContent: 'center',
+        }}>
+        <Form.Item
           style={{
-            justifyContent: 'center',
+            width: '70%',
+            marginBottom: '5px',
           }}>
+          <Form.Item className="show_item">Position 1</Form.Item>
           <Form.Item
+            className="show_item"
             style={{
-              width: '70%',
-              marginBottom: '5px',
+              margin: '0 8px',
             }}>
-            <Form.Item className="show_item">
-              Tension applique position1 : 20V
-            </Form.Item>
-            <Form.Item
-              className="show_item"
-              style={{
-                margin: '0 8px',
-              }}>
-              Tension applique position2 : 20V
-            </Form.Item>
+            Position 2
           </Form.Item>
-        </Row>
+        </Form.Item>
+      </Row>
+      <div>
         {miseenplaceok && (
           <div>
-            <Row
-              style={{
-                justifyContent: 'center',
-              }}>
-              <Form.Item
-                style={{
-                  width: '70%',
-                  marginBottom: '5px',
-                }}>
-                <Form.Item className="show_item">
-                  Fréquence Genératrice :{' '}
-                  {miseenplaceok.Induit.Fréquence_genératrice_P1}
-                </Form.Item>
-                <Form.Item
-                  className="show_item"
-                  style={{
-                    margin: '0 8px',
-                  }}>
-                  Fréquence Genératrice :{' '}
-                  {miseenplaceok.Induit.Fréquence_genératrice_P2}
-                </Form.Item>
-              </Form.Item>
-            </Row>
             <Row
               style={{
                 justifyContent: 'center',
@@ -134,57 +110,33 @@ export default function Induit({
                 </Form.Item>
               </Form.Item>
             </Row>
-          </div>
-        )}
-        {!miseenplaceok && (
-          <div>
             <Row
               style={{
                 justifyContent: 'center',
               }}>
               <Form.Item
-                label="Fréquence Genératrice"
-                style={{width: '60%', marginBottom: '5px'}}>
-                <Form.Item
-                  name="Fréquence_Genératrice_P1"
-                  rules={[{required: true, message: 'Champ Requis'}]}
-                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                  <Select
-                    ref={inputEl}
-                    tabIndex={!miseenplaceok ? 1 : -1}
-                    defaultValue=""
-                    options={Frequence_Gen}
-                    onChange={value => {
-                      UpdateData(
-                        'Fréquence_genératrice_P1',
-                        value,
-                        setNewMisePlace
-                      );
-                    }}
-                  />
+                style={{
+                  width: '70%',
+                  marginBottom: '5px',
+                }}>
+                <Form.Item className="show_item">
+                  Fréquence Genératrice :{' '}
+                  {miseenplaceok.Induit.Fréquence_genératrice_P1}
                 </Form.Item>
                 <Form.Item
-                  name="Fréquence_Genératrice_P2"
+                  className="show_item"
                   style={{
-                    display: 'inline-block',
-                    width: 'calc(50% - 8px)',
                     margin: '0 8px',
                   }}>
-                  <Select
-                    tabIndex={!miseenplaceok ? 5 : -1}
-                    defaultValue=""
-                    options={Frequence_Gen}
-                    onChange={value => {
-                      UpdateData(
-                        'Fréquence_genératrice_P2',
-                        value,
-                        setNewMisePlace
-                      );
-                    }}
-                  />
+                  Fréquence Genératrice :{' '}
+                  {miseenplaceok.Induit.Fréquence_genératrice_P2}
                 </Form.Item>
               </Form.Item>
             </Row>
+          </div>
+        )}
+        {!miseenplaceok && (
+          <div>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label="Réactance SKE77"
@@ -255,8 +207,91 @@ export default function Induit({
                 </Form.Item>
               </Form.Item>
             </Row>
+            <Row
+              style={{
+                justifyContent: 'center',
+              }}>
+              <Form.Item
+                label="Fréquence Genératrice"
+                style={{width: '60%', marginBottom: '5px'}}>
+                <Form.Item
+                  name="Fréquence_Genératrice_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}
+                  style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+                  <Select
+                    ref={inputEl}
+                    tabIndex={!miseenplaceok ? 1 : -1}
+                    defaultValue=""
+                    options={Frequence_Gen}
+                    onChange={value => {
+                      UpdateData(
+                        'Fréquence_genératrice_P1',
+                        value,
+                        setNewMisePlace
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  name="Fréquence_Genératrice_P2"
+                  style={{
+                    display: 'inline-block',
+                    width: 'calc(50% - 8px)',
+                    margin: '0 8px',
+                  }}>
+                  <Select
+                    tabIndex={!miseenplaceok ? 5 : -1}
+                    defaultValue=""
+                    options={Frequence_Gen}
+                    onChange={value => {
+                      UpdateData(
+                        'Fréquence_genératrice_P2',
+                        value,
+                        setNewMisePlace
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Form.Item>
+            </Row>
           </div>
         )}
+        <Row
+          style={{
+            justifyContent: 'center',
+          }}>
+          <Form.Item
+            style={{
+              width: '70%',
+              marginBottom: '5px',
+            }}>
+            <Form.Item className="show_item">
+              Tension applique position1 : 20V
+            </Form.Item>
+            <Form.Item
+              className="show_item"
+              style={{
+                margin: '0 8px',
+              }}>
+              Tension applique position2 : 20V
+            </Form.Item>
+          </Form.Item>
+        </Row>
+
+        <Row
+          style={{
+            justifyContent: 'center',
+            marginBottom: '10px',
+          }}>
+          <Form.Item
+            label="Commentaire"
+            style={{
+              width: '60%',
+              marginBottom: '5px',
+            }}>
+            <TextArea rows={4} />
+          </Form.Item>
+        </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item style={{width: '60%', marginBottom: '5px'}}>
             <Form.Item

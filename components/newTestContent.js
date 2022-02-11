@@ -1,21 +1,40 @@
 import React, {useState} from 'react';
 import {Alert} from 'antd';
 import BornesForm from '@/components/forms/newtest/Bornes';
-import Ratio_PolariteForm from '@/components/forms/newtest/Ratio_Polarite';
-import InduitForm from '@/components/forms/newtest/Induit';
+import Ratio_PolariteForm_P1 from '@/components/forms/newtest/Ratio_Polarite_P1';
+import Ratio_PolariteForm_P2 from '@/components/forms/newtest/Ratio_Polarite_P2';
+import InduitForm_P1 from '@/components/forms/newtest/Induit_P1';
+import InduitForm_P2 from '@/components/forms/newtest/Induit_P2';
+
 import HipotForm from '@/components/forms/newtest/Hipot';
-import Perte_a_VideForm from '@/components/forms/newtest/Perte_a_vide';
+import Perte_a_VideForm_P1 from '@/components/forms/newtest/Perte_a_vide_P1';
+import Perte_a_VideForm_P2 from '@/components/forms/newtest/Perte_a_vide_P2';
 import RivForm from '@/components/forms/newtest/RIV_Form';
-import Perte_a_ChargeForm from '@/components/forms/newtest/Perte_a_charge';
+import Perte_a_ChargeForm_P1 from '@/components/forms/newtest/Perte_a_charge_P1';
+import Perte_a_ChargeForm_P2 from '@/components/forms/newtest/Perte_a_charge_P2';
+
 import Facteur_DissipationForm from '@/components/forms/newtest/Facteur_dissipation';
 import Decharges_PartiellesForm from '@/components/forms/newtest/Decharges_Partielles';
 import SignatureForm from '@/components/forms/newtest/Signature';
+import {Steps, Button, Row, Col, Divider, Form, Modal, Space, Spin} from 'antd';
 
-function newTestContent({
+const {Step} = Steps;
+export const Steps1phase = ({current, steps}) => {
+  return (
+    <Steps size="small" current={current} direction="vertical">
+      {steps.map(item => (
+        <Step key={item.title} id="newtest" title={item.title} />
+      ))}
+    </Steps>
+  );
+};
+function NewTestContent({
   etapeName,
   UpdateData,
   mise_en_placeById,
+  test_type_selected,
   setFinaldata,
+  Prise,
   setNewMisePlace,
   error,
 }) {
@@ -50,18 +69,39 @@ function newTestContent({
           setNewMisePlace={setNewMisePlace}
         />
       );
-    case 'Ratio/Polarite':
+    case 'Ratio/Polarite P1':
       return (
-        <Ratio_PolariteForm
+        <Ratio_PolariteForm_P1
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
+          Prise={Prise}
         />
       );
-    case 'Induit':
+    case 'Ratio/Polarite P2':
       return (
-        <InduitForm
+        <Ratio_PolariteForm_P2
+          UpdateData={UpdateData}
+          miseenplaceok={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
+          Prise={Prise}
+        />
+      );
+    case 'Induit P1':
+      return (
+        <InduitForm_P1
+          UpdateData={UpdateData}
+          miseenplaceok={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          error={error}
+          setNewMisePlace={setNewMisePlace}
+        />
+      );
+    case 'Induit P2':
+      return (
+        <InduitForm_P2
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
@@ -78,9 +118,18 @@ function newTestContent({
           error={error}
         />
       );
-    case 'Pertes a Vide':
+    case 'Pertes a Vide P1':
       return (
-        <Perte_a_VideForm
+        <Perte_a_VideForm_P1
+          UpdateData={UpdateData}
+          miseenplaceok={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
+        />
+      );
+    case 'Pertes a Vide P2':
+      return (
+        <Perte_a_VideForm_P2
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
@@ -91,9 +140,18 @@ function newTestContent({
       return (
         <RivForm UpdateData={UpdateData} setNewMisePlace={setNewMisePlace} />
       );
-    case 'Pertes a Charge':
+    case 'Pertes a Charge P1':
       return (
-        <Perte_a_ChargeForm
+        <Perte_a_ChargeForm_P1
+          UpdateData={UpdateData}
+          miseenplaceok={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
+        />
+      );
+    case 'Pertes a Charge P2':
+      return (
+        <Perte_a_ChargeForm_P2
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
@@ -129,4 +187,4 @@ function newTestContent({
   }
 }
 
-export default newTestContent;
+export default NewTestContent;

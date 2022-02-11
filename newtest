@@ -3,8 +3,15 @@ import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
+import EtapeContent1phase, {Steps1phase} from '@/components/newTestContent';
+import EtapeContent3phase from '@/components/newTestContent3phases';
+
+// import HistoriqueModal from '@/components/modals/historique/historiquemodal';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
+
 import Haut from '@/components/newTestComponents/Haut';
+
+import Content from '@/components/newTestComponents/Content1phase';
 
 import DisplayComponent from '@/components/Timer';
 import TestArea from '@/components/Test_area';
@@ -27,74 +34,10 @@ import {Steps, Button, Row, Col, Divider, Form, Modal, Space, Spin} from 'antd';
 
 const {Step} = Steps;
 const {confirm} = Modal;
-const stepsss = [
-  {
-    title: 'Nouveau Test',
-    content: 'newtest',
-  },
-  {
-    title: 'Placer Borne',
-    content: 'Placer Borne',
-  },
-  {
-    title: 'Ratio/Polarite P1',
-    content: 'Ratio/Polarite P1',
-  },
-  {
-    title: 'Ratio/Polarite P2',
-    content: 'Ratio/Polarite P2',
-  },
-  {
-    title: 'Induit P1',
-    content: 'Induit P1',
-  },
-  {
-    title: 'Induit P2',
-    content: 'Induit P2',
-  },
-  {
-    title: 'Hipot',
-    content: 'Hipot',
-  },
-  {
-    title: 'Pertes a Vide P1',
-    content: 'Pertes a Vide P1',
-  },
-  {
-    title: 'Pertes a Vide P2',
-    content: 'Pertes a Vide P2',
-  },
-  {
-    title: 'RIV ',
-    content: 'RIV',
-  },
-  {
-    title: 'Pertes a Charge P1',
-    content: 'Pertes a Charge P1',
-  },
-  {
-    title: 'Pertes a Charge P2',
-    content: 'Pertes a Charge P2',
-  },
-  {
-    title: 'Décharges Partielles',
-    content: 'Décharges Partielles',
-  },
-  {
-    title: 'Facteur de dissipation',
-    content: 'Facteur de dissipation',
-  },
-
-  {
-    title: 'Signature',
-    content: 'Signature',
-  },
-];
 
 const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const router = useRouter();
   const [current, setCurrent] = useState(0);
-  const [tablelength, settablelength] = useState(15);
   const [time, setTime] = useState({ms: 0, s: 0, m: 0, h: 0});
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
@@ -107,18 +50,18 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [modal, setmodal] = useState(false);
   const {data: dataU, loading: loadingU} = useGetUser();
   const [test_type_selected, settest_type_selected] = useState();
+  const [kvaofday, setkvaofday] = useState(13);
   const [teststatus, setteststatus] = useState();
-  const [temperature_noaffected, settemperature_noaffected] = useState(16);
+  const [temperature_noaffected, settemperature_noaffected] = useState();
   const [createTest, {data, loading}] = useCreateTest();
   const _CreateTest = data => {
     createTest(data);
   };
-  const steps = test_type_selected == '1phase' ? steps1phase : steps1phase;
-  console.log(steps);
+  const steps = test_type_selected == '1phase' ? steps1phase : steps3phase;
+
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
-  console.log('la length du table ', tablelength);
   const start = () => {
     run();
     setStatus(1);
@@ -159,6 +102,41 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   };
 
   const resume = () => start();
+  useEffect(() => {
+    const filter1 = () => {
+      if (mise_en_placeById != null) {
+        console.log(' le voltage_ht from commande', commande.voltage_ht);
+        console.log('le test status ', router.query.firstchecked);
+        return (steps = steps.filter(
+          step => !step.content.includes('Placer Borne')
+        ));
+      }
+    };
+    const filter2 = () => {
+      if (
+        mise_en_placeById != null &&
+        commande.voltage_ht < 16000 &&
+        router.query.firstchecked !== 'true' &&
+        commande.kva == kvaofday
+      ) {
+        return (steps = steps.filter(step => !step.content.includes('RIV')));
+      }
+    };
+    const filter3 = () => {
+      if (
+        mise_en_placeById != null &&
+        commande.kva == kvaofday &&
+        router.query.firstchecked !== 'true'
+      ) {
+        return (steps = steps.filter(
+          step => !step.content.includes('Facteur de dissipation')
+        ));
+      }
+    };
+    filter1();
+    filter2();
+    filter3();
+  }, [commande, mise_en_placeById, kvaofday]);
 
   const next = () => {
     if (current == 0) {
@@ -187,7 +165,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       {
         status === 0 ? start() : '';
       }
-    } else if (current < tablelength - 1) {
+    } else if (current < steps.length - 1) {
       setCurrent(current + 1);
     } else {
       if (Finaldata.temperature_affected !== null) {
@@ -201,7 +179,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
         alert('affecter la temperature');
       }
     }
-    if (current == tablelength - 1) {
+    if (current == steps.length - 1) {
       setteststatus('fin');
       console.log(teststatus);
     }
@@ -290,129 +268,170 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                   <Divider dashed orientation="left" style={{color: 'white'}}>
                     Étapes de Test
                   </Divider>
-                  <Form
-                    form={form}
-                    layout="vertical"
-                    name="results_form"
-                    onFinish={next}
-                    initialvalues={initial_testform_values}
-                    autoComplete="off">
-                    <TestArea
-                      mise_en_placeById={mise_en_placeById}
-                      settest_type_selected={settest_type_selected}
-                      commande={commande}
-                      test_type_selected={test_type_selected}
-                      Finaldata={Finaldata}
-                      setFinaldata={setFinaldata}
-                      setNewMisePlace={setNewMisePlace}
-                      error={error}
-                      current={current}
-                      settablelength={settablelength}
-                    />
-                    <div
-                      className="steps-action"
-                      style={{display: 'flex', justifyContent: 'end'}}>
-                      {mise_en_placeById !== null ? (
-                        <Form.Item>
-                          {current > 0 && (
-                            <>
-                              {status === 1 ? (
+                  <Row justify="space-between">
+                    <Col
+                      key="steps"
+                      span={6}
+                      style={{
+                        padding: '10px',
+                        borderRadius: '10px',
+                        boxShadow: '3px 4px 5px 1px rgb(163 234 237 / 77%)',
+                        maxHeight: '530px',
+                      }}>
+                      <Steps1phase steps={steps} current={current} />
+                    </Col>
+                    <Col
+                      key="content"
+                      span={17}
+                      style={{
+                        borderRadius: '10px',
+                      }}>
+                      <Form
+                        form={form}
+                        layout="vertical"
+                        name="results_form"
+                        onFinish={next}
+                        initialValues={initial_testform_values}
+                        autoComplete="off">
+                        <div className="steps-content">
+                          {test_type_selected == '1phase' ? (
+                            <EtapeContent1phase
+                              UpdateData={UpdateData}
+                              etapeName={steps[current].content}
+                              mise_en_placeById={mise_en_placeById}
+                              test_type_selected={test_type_selected}
+                              Finaldata={Finaldata}
+                              Prise={commande.prise}
+                              setFinaldata={setFinaldata}
+                              setNewMisePlace={setNewMisePlace}
+                              error={error}
+                            />
+                          ) : (
+                            <EtapeContent3phase
+                              UpdateData={UpdateData}
+                              etapeName={steps[current].content}
+                              mise_en_placeById={mise_en_placeById}
+                              test_type_selected={test_type_selected}
+                              Finaldata={Finaldata}
+                              Prise={commande.prise}
+                              setFinaldata={setFinaldata}
+                              setNewMisePlace={setNewMisePlace}
+                              error={error}
+                            />
+                          )}
+                        </div>
+                        <div
+                          className="steps-action"
+                          style={{display: 'flex', justifyContent: 'end'}}>
+                          {mise_en_placeById !== null ? (
+                            <Form.Item>
+                              {current > 0 && (
+                                <>
+                                  {status === 1 ? (
+                                    <Button
+                                      style={{margin: '0 8px'}}
+                                      onClick={stop}>
+                                      Stop
+                                    </Button>
+                                  ) : (
+                                    <Button
+                                      style={{margin: '0 8px'}}
+                                      onClick={resume}>
+                                      Resume
+                                    </Button>
+                                  )}
+
+                                  <Button
+                                    style={{margin: '0 8px'}}
+                                    disabled={status == 2 ? true : false}
+                                    onClick={() =>
+                                      (current == 1 && status === 1) ||
+                                      status === 2
+                                        ? AnnulerConfirm()
+                                        : prev()
+                                    }>
+                                    {current == 1 ? 'Annuler' : 'Retour'}
+                                  </Button>
+                                </>
+                              )}
+                              {current < steps.length - 1 && (
                                 <Button
-                                  style={{margin: '0 8px'}}
-                                  onClick={stop}>
-                                  Stop
-                                </Button>
-                              ) : (
-                                <Button
-                                  style={{margin: '0 8px'}}
-                                  onClick={resume}>
-                                  Resume
+                                  type="primary"
+                                  htmlType="submit"
+                                  disabled={status == 2 ? true : false}>
+                                  {current == 0 ? 'Commencer' : 'Suivant'}
                                 </Button>
                               )}
+                              {current === steps.length - 1 && (
+                                <Button type="primary" htmlType="submit">
+                                  enregistrer
+                                </Button>
+                              )}
+                            </Form.Item>
+                          ) : (
+                            test_type_selected && (
+                              <Form.Item>
+                                {current > 0 && (
+                                  <>
+                                    {status === 1 ? (
+                                      <Button
+                                        style={{margin: '0 8px'}}
+                                        onClick={stop}>
+                                        Stop
+                                      </Button>
+                                    ) : (
+                                      <Button
+                                        style={{margin: '0 8px'}}
+                                        onClick={resume}>
+                                        Resume
+                                      </Button>
+                                    )}
 
-                              <Button
-                                style={{margin: '0 8px'}}
-                                disabled={status == 2 ? true : false}
-                                onClick={() =>
-                                  (current == 1 && status === 1) || status === 2
-                                    ? AnnulerConfirm()
-                                    : prev()
-                                }>
-                                {current == 1 ? 'Annuler' : 'Retour'}
-                              </Button>
-                            </>
-                          )}
-                          {current < tablelength - 1 && (
-                            <Button
-                              type="primary"
-                              htmlType="submit"
-                              disabled={status == 2 ? true : false}>
-                              {current == 0 ? 'Commencer' : 'Suivant'}
-                            </Button>
-                          )}
-                          {current === tablelength - 1 && (
-                            <Button type="primary" htmlType="submit">
-                              enregistrer
-                            </Button>
-                          )}
-                        </Form.Item>
-                      ) : (
-                        test_type_selected && (
-                          <Form.Item>
-                            {current > 0 && (
-                              <>
-                                {status === 1 ? (
+                                    <Button
+                                      style={{margin: '0 8px'}}
+                                      disabled={status == 2 ? true : false}
+                                      onClick={() =>
+                                        (current == 1 && status === 1) ||
+                                        status === 2
+                                          ? AnnulerConfirm()
+                                          : prev()
+                                      }>
+                                      {current == 1 ? 'Annuler' : 'Retour'}
+                                    </Button>
+                                  </>
+                                )}
+                                {current < steps.length - 1 && (
                                   <Button
-                                    style={{margin: '0 8px'}}
-                                    onClick={stop}>
-                                    Stop
-                                  </Button>
-                                ) : (
-                                  <Button
-                                    style={{margin: '0 8px'}}
-                                    onClick={resume}>
-                                    Resume
+                                    type="primary"
+                                    tabIndex={20}
+                                    htmlType="submit"
+                                    disabled={status == 2 ? true : false}>
+                                    {current == 0 ? 'Commencer' : 'Suivant'}
                                   </Button>
                                 )}
-
-                                <Button
-                                  style={{margin: '0 8px'}}
-                                  disabled={status == 2 ? true : false}
-                                  onClick={() =>
-                                    (current == 1 && status === 1) ||
-                                    status === 2
-                                      ? AnnulerConfirm()
-                                      : prev()
-                                  }>
-                                  {current == 1 ? 'Annuler' : 'Retour'}
-                                </Button>
-                              </>
-                            )}
-                            {current < tablelength - 1 && (
-                              <Button
-                                type="primary"
-                                tabIndex={20}
-                                htmlType="submit"
-                                disabled={status == 2 ? true : false}>
-                                {current == 0 ? 'Commencer' : 'Suivant'}
-                              </Button>
-                            )}
-                            {current === tablelength - 1 && (
-                              <Button type="primary" htmlType="submit">
-                                enregistrer
-                              </Button>
-                            )}
-                          </Form.Item>
-                        )
-                      )}
-                    </div>
-                  </Form>
-                  <Modalnewtestscanner
+                                {current === steps.length - 1 && (
+                                  <Button type="primary" htmlType="submit">
+                                    enregistrer
+                                  </Button>
+                                )}
+                              </Form.Item>
+                            )
+                          )}
+                        </div>
+                      </Form>
+                      {/* <Modalnewtest
                     modal={modal}
                     toggle={() => setmodal(!modal)}
-                    teststatus={teststatus}
-                    direction="index"
-                  />
+                    direction="/"
+                  /> */}
+                      <Modalnewtestscanner
+                        modal={modal}
+                        toggle={() => setmodal(!modal)}
+                        teststatus={teststatus}
+                        direction="index"
+                      />
+                    </Col>
+                  </Row>
                 </div>
               ) : (
                 <Basepage>

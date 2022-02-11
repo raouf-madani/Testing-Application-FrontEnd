@@ -119,5 +119,6 @@ export async function getStaticProps() {
   const commandes = json.data;
   return {
     props: {commandes},
+    revalidate: 1,
   };
 }

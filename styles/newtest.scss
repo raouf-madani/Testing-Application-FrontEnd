@@ -1,5 +1,5 @@
 .steps-content {
-  min-height: 530px;
+  min-height: 600px;
   padding: 10px 40px;
   text-align: center;
   border-radius: 10px;
@@ -32,10 +32,15 @@
 .show_item {
   padding: 0 5px;
   display: inline-block;
-  width: calc(50% - 8px);
+  width: 40%;
   border-radius: 3px;
   box-shadow: 0 5px 5px rgb(21 94 102);
   color: rgb(227 234 235);
+}
+.show_item_input {
+  margin-bottom: 8px;
+  padding: 0 5px;
+  width: 40%;
 }
 .Signature {
   font-family: 'Corinthia', cursive;

@@ -37,7 +37,6 @@ const Haut = ({
   status,
   temperature_noaffected,
   settemperature_noaffected,
-  settest_type_selected,
 }) => {
   const [miseenplacemodal, setmiseenplacemodal] = useState(false);
   const [mise_data, setmise_data] = useState(mise_en_placeById);
@@ -121,6 +120,8 @@ const Haut = ({
         mise_data.Perte_a_Charge.Courant_appliqué_appareil_P1,
       No_Cavalier: mise_data.Perte_a_Charge.No_cavalier,
       Perte_Cavalier_P1: mise_data.Perte_a_Charge.Perte_cavalier_P1,
+      Resistance_HT_P1: mise_data.Perte_a_Charge.Resistance_ht_P1,
+      Resistance_BT_P1: mise_data.Perte_a_Charge.Resistance_bt_P1,
       //P2
       Multiplicateur_Volts_Charge_P2:
         mise_data.Perte_a_Charge.Multiplicateur_volts_charge_P2,
@@ -135,6 +136,8 @@ const Haut = ({
       Courant_Appliqué_Appareil_P2:
         mise_data.Perte_a_Charge.Courant_appliqué_appareil_P2,
       Perte_Cavalier_P2: mise_data.Perte_a_Charge.Perte_cavalier_P2,
+      Resistance_HT_P2: mise_data.Perte_a_Charge.Resistance_ht_P2,
+      Resistance_BT_P2: mise_data.Perte_a_Charge.Resistance_bt_P2,
       //Decharges Partielles
       //P1
       Réactance_SKE77_DP_P1:
@@ -245,7 +248,7 @@ const Haut = ({
               }}>
               <Row>Model : {commande.id_product}</Row>
               <Row>
-                {mise_data == null ? (
+                {/* {mise_data == null ? (
                   Finaldata.test_type == null ? (
                     <>
                       Type :
@@ -262,7 +265,8 @@ const Haut = ({
                   )
                 ) : (
                   <>Type : {mise_data.Type_test}</>
-                )}{' '}
+                )}{' '} */}
+                <>Type : {commande.type_command}</>
               </Row>
               <Row>Temps de Test: {mise_data == null ? 12 + 15 : 12} MIN</Row>
             </div>

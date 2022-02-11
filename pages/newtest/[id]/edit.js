@@ -89,7 +89,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [kvaofday, setkvaofday] = useState(13);
   const [teststatus, setteststatus] = useState();
   const [updatedtest, setupdatedtest] = useState();
-  const [temperature_noaffected, settemperature_noaffected] = useState(20);
+  const [temperature_noaffected, settemperature_noaffected] = useState();
   const [createTest, {data, loading}] = useCreateTest();
 
   const {data: commandehook} = useGetCommande(router.query.id);
@@ -170,14 +170,14 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     filter1();
     filter2();
     filter3();
-  }, [commande, mise_en_placeById, kvaofday]);
+  }, [commande, mise_en_placeById, kvaofday, router.query.firstchecked]);
 
   let initial_testform_values = null;
   if (Finaldata !== null) {
     initial_testform_values = {
       //Ratio
       //P1
-      Volts_HT_Mesuré_P1: Finaldata.Ratio.Volts_ht_mesuré_P1,
+      Tension_HT_Mesuré_P1: Finaldata.Ratio.Tension_ht_mesuré_P1,
       Polarité_V_Mesuré_P1: Finaldata.Ratio.Polarite_volts_Mesure_P1,
       //P2
       Volts_HT_Mesuré_P2: Finaldata.Ratio.Volts_ht_mesuré_P2,
@@ -538,7 +538,10 @@ export async function getStaticProps({params}) {
     mise_en_placeById = json_Mise_en_placeById.data;
   }
 
-  return {props: {commande, mise_en_placeById, Tests, allCommandesById}};
+  return {
+    props: {commande, mise_en_placeById, Tests, allCommandesById},
+    revalidate: 60,
+  };
 }
 
 export default withAuth(NewTest)();
