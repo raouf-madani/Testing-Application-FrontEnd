@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   Form,
   Input,
@@ -34,6 +34,12 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
       </Radio.Button>
     );
   }
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   return (
     <div className="Containertest">
       <Divider
@@ -58,6 +64,7 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                   },
                 ]}>
                 <Select
+                  ref={inputEl}
                   options={Bornes_values}
                   onChange={value => {
                     UpdateData('Borne_rouge', value, setNewMisePlace);

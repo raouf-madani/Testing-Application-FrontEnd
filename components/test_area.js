@@ -44,7 +44,6 @@ function Test_area({
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
-              Prise={commande.prise}
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
@@ -57,7 +56,6 @@ function Test_area({
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
-              Prise={commande.prise}
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
@@ -70,10 +68,10 @@ function Test_area({
         <>
           {Finaldata.test_type == '1phase' ? (
             <Phase1Forms
+              commande={commande}
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
-              Prise="SP"
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
@@ -82,10 +80,10 @@ function Test_area({
             />
           ) : Finaldata.test_type == '3phase' ? (
             <Phase3Forms
+              commande={commande}
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
-              Prise="SP"
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
@@ -129,15 +127,6 @@ function Test_area({
                           3 Phase
                         </Radio.Button>
                       </Radio.Group>
-                      {/* <Space direction="horizental">
-                        <Select
-                          defaultValue="Choose a Test envirenement"
-                          options={Type_Test}
-                          onChange={value => {
-                            settest_type_selected(value);
-                          }}
-                        />
-                      </Space> */}
                     </Row>
                   </div>
                 </Col>

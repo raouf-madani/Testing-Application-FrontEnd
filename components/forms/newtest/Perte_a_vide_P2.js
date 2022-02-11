@@ -70,7 +70,8 @@ export default function Perte_a_vide({
                 className="show_item_input">
                 <Select
                   initialvalues=""
-                  tabIndex={6}
+                  ref={inputEl}
+                  tabIndex={1}
                   options={Multiplicateur_Volts}
                   onChange={value => {
                     UpdateData(
@@ -89,7 +90,7 @@ export default function Perte_a_vide({
                 className="show_item_input">
                 <Select
                   initialvalues=""
-                  tabIndex={7}
+                  tabIndex={2}
                   options={Multiplicateur_Amperes}
                   onChange={value => {
                     UpdateData(
@@ -108,7 +109,7 @@ export default function Perte_a_vide({
                 className="show_item_input">
                 <Input
                   type="number"
-                  tabIndex={8}
+                  tabIndex={3}
                   min={10}
                   max={1000}
                   step="0.0001"
@@ -132,7 +133,8 @@ export default function Perte_a_vide({
             className="show_item_input">
             <Input
               type="number"
-              tabIndex={9}
+              ref={!miseenplaceok ? null : inputEl}
+              tabIndex={4}
               min={10}
               max={1000}
               step="0.0001"
@@ -150,7 +152,7 @@ export default function Perte_a_vide({
             className="show_item_input">
             <Input
               type="number"
-              tabIndex={10}
+              tabIndex={5}
               min={10}
               max={1000}
               step="0.0001"
