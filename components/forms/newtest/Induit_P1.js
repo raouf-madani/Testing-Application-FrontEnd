@@ -89,8 +89,9 @@ export default function Induit({
                 className="show_item_input"
                 rules={[{required: true, message: 'Champ Requis'}]}>
                 <Select
+                  ref={inputEl}
                   initialvalues=""
-                  tabIndex={!miseenplaceok ? 2 : -1}
+                  tabIndex={1}
                   options={SKE77}
                   onChange={value => {
                     UpdateData('Réactance_ske77_P1', value, setNewMisePlace);
@@ -106,7 +107,7 @@ export default function Induit({
                 className="show_item_input">
                 <Select
                   initialvalues=""
-                  tabIndex={!miseenplaceok ? 3 : -1}
+                  tabIndex={2}
                   options={SKE17}
                   onChange={value => {
                     UpdateData('Réactance_ske17_P1', value, setNewMisePlace);
@@ -124,8 +125,7 @@ export default function Induit({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
-                  ref={inputEl}
-                  tabIndex={!miseenplaceok ? 1 : -1}
+                  tabIndex={3}
                   initialvalues=""
                   options={Frequence_Gen}
                   onChange={value => {
@@ -162,6 +162,8 @@ export default function Induit({
               marginBottom: '5px',
             }}>
             <TextArea
+              ref={!miseenplaceok ? null : inputEl}
+              tabIndex={!miseenplaceok ? 4 : 1}
               rows={4}
               onChange={e => {
                 UpdateData('Comment', e.target.value, setFinaldata);
@@ -175,8 +177,7 @@ export default function Induit({
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Radio.Group initialvalues="reussit" buttonStyle="solid">
               <Radio.Button
-                tabIndex={4}
-                ref={!miseenplaceok ? null : inputEl}
+                tabIndex={!miseenplaceok ? 5 : 2}
                 style={{margin: '5px'}}
                 value="reussit"
                 onClick={() =>

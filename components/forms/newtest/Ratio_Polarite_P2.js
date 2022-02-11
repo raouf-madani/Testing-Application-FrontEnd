@@ -42,7 +42,8 @@ export default function Ratio_Polarite({
                 <Input
                   className="ratio_form"
                   type="number"
-                  tabIndex={6}
+                  tabIndex={1}
+                  ref={inputEl}
                   min={10}
                   max={1000}
                   step="0.0001"
@@ -64,7 +65,7 @@ export default function Ratio_Polarite({
                 className="show_item_input">
                 <Input
                   type="number"
-                  tabIndex={7}
+                  tabIndex={2}
                   min={10}
                   max={1000}
                   step="0.0001"
@@ -82,7 +83,7 @@ export default function Ratio_Polarite({
                 name="Polarité_Volts_P2">
                 <Input
                   type="number"
-                  tabIndex={8}
+                  tabIndex={3}
                   min={10}
                   max={1000}
                   step="0.0001"
@@ -116,7 +117,8 @@ export default function Ratio_Polarite({
             className="show_item_input">
             <Input
               type="number"
-              tabIndex={10}
+              ref={miseenplaceok ? inputEl : null}
+              tabIndex={miseenplaceok ? 1 : 4}
               min={10}
               max={1000}
               step="0.0001"

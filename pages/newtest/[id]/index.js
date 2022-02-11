@@ -114,11 +114,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     createTest(data);
   };
   const steps = test_type_selected == '1phase' ? steps1phase : steps1phase;
-  console.log(steps);
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
-  console.log('la length du table ', tablelength);
   const start = () => {
     run();
     setStatus(1);

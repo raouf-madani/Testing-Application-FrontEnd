@@ -79,7 +79,6 @@ function ContentAndSteps1phase(props) {
     mise_en_placeById,
     test_type_selected,
     commande,
-    Prise,
     current,
     Finaldata,
     setFinaldata,
@@ -122,7 +121,7 @@ function ContentAndSteps1phase(props) {
     filter2();
     filter3();
     settablelength(steps.length);
-    console.log('steps trieer from 1 phase component', steps);
+    console.log('la commandes est', commande);
   }, []);
   return (
     <div>
@@ -154,7 +153,7 @@ function ContentAndSteps1phase(props) {
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
-              Prise={Prise}
+              Prise={commande.prise}
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}

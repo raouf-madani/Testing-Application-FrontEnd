@@ -83,7 +83,8 @@ export default function Induit({
                 name="Réactance_SKE77_P2"
                 className="show_item_input">
                 <Select
-                  tabIndex={!miseenplaceok ? 6 : -1}
+                  ref={inputEl}
+                  tabIndex={1}
                   initialvalues=""
                   options={SKE77}
                   onChange={value => {
@@ -98,7 +99,7 @@ export default function Induit({
                 name="Réactance_SKE17_P2"
                 className="show_item_input">
                 <Select
-                  tabIndex={!miseenplaceok ? 7 : -1}
+                  tabIndex={2}
                   initialvalues=""
                   options={SKE17}
                   onChange={value => {
@@ -116,7 +117,7 @@ export default function Induit({
                 name="Fréquence_Genératrice_P2"
                 className="show_item_input">
                 <Select
-                  tabIndex={!miseenplaceok ? 5 : -1}
+                  tabIndex={3}
                   initialvalues=""
                   options={Frequence_Gen}
                   onChange={value => {
@@ -150,7 +151,8 @@ export default function Induit({
             }}>
             <Radio.Group buttonStyle="solid">
               <Radio.Button
-                tabIndex={8}
+                ref={!miseenplaceok ? null : inputEl}
+                tabIndex={!miseenplaceok ? 4 : 1}
                 style={{margin: '5px'}}
                 value={true}
                 onClick={() =>
