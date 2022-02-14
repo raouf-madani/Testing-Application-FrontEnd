@@ -51,6 +51,14 @@ export const Fakedata = {
     S_30: '',
     S_45: '',
     S_60: '',
+    S_75: '',
+    S_90: '',
+    S_105: '',
+    S_120: '',
+    S_135: '',
+    S_150: '',
+    S_165: '',
+    S_180: '',
   },
   Facteur_Dissipation: {
     //Position 1

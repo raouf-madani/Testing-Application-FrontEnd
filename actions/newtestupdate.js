@@ -185,6 +185,14 @@ export const UpdateData = (type, newData, setData) => {
     case 'S_30':
     case 'S_45':
     case 'S_60':
+    case 'S_75':
+    case 'S_90':
+    case 'S_105':
+    case 'S_120':
+    case 'S_135':
+    case 'S_150':
+    case 'S_165':
+    case 'S_180':
       setData(data => {
         return {
           ...data,

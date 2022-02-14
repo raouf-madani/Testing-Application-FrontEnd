@@ -23,7 +23,18 @@ import {useCreateTest, useGetTest} from '@/actions/tests';
 import {UpdateData} from '@/actions/newtestupdate';
 import TestingApi from '@/lib/api/testing';
 
-import {Steps, Button, Row, Col, Divider, Form, Modal, Space, Spin} from 'antd';
+import {
+  Steps,
+  Button,
+  Row,
+  Col,
+  Divider,
+  Form,
+  Modal,
+  Space,
+  Spin,
+  Input,
+} from 'antd';
 
 const {Step} = Steps;
 const {confirm} = Modal;
@@ -98,12 +109,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [time, setTime] = useState({ms: 0, s: 0, m: 0, h: 0});
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
-  const [form] = Form.useForm();
+
   // const [historiquemodal, sethistoriqueModal] = useState(false);
 
   const [Finaldata, setFinaldata] = useState(Fakedata);
   const [NewMisePlace, setNewMisePlace] = useState(Mise_NewData);
-  const initial_testform_values = {};
   const [modal, setmodal] = useState(false);
   const {data: dataU, loading: loadingU} = useGetUser();
   const [test_type_selected, settest_type_selected] = useState();
@@ -117,6 +127,17 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
+  // let initial_testform_values = null;
+  // initial_testform_values = {
+  //   //Decharge Partielle
+  //   S_15: 15,
+  //   S_30: 30,
+  //   S_45: 45,
+  //   S_60: 60,
+  //   results_form_Polarité_V_Mesuré_P1: 100,
+  //   Volts_Apluiqés_P1: 399,
+  // };
+  const [form] = Form.useForm();
   const start = () => {
     run();
     setStatus(1);
@@ -293,7 +314,20 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     layout="vertical"
                     name="results_form"
                     onFinish={next}
-                    initialvalues={initial_testform_values}
+                    initialValues={{
+                      S_15: Finaldata.Decharges_Partielles.S_15,
+                      S_30: Finaldata.Decharges_Partielles.S_30,
+                      S_45: Finaldata.Decharges_Partielles.S_45,
+                      S_60: Finaldata.Decharges_Partielles.S_60,
+                      S_75: Finaldata.Decharges_Partielles.S_75,
+                      S_90: Finaldata.Decharges_Partielles.S_90,
+                      S_105: Finaldata.Decharges_Partielles.S_105,
+                      S_120: Finaldata.Decharges_Partielles.S_120,
+                      S_135: Finaldata.Decharges_Partielles.S_135,
+                      S_150: Finaldata.Decharges_Partielles.S_150,
+                      S_165: Finaldata.Decharges_Partielles.S_165,
+                      S_180: Finaldata.Decharges_Partielles.S_180,
+                    }}
                     autoComplete="off">
                     <TestArea
                       mise_en_placeById={mise_en_placeById}
@@ -389,7 +423,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                             {current < tablelength - 1 && (
                               <Button
                                 type="primary"
-                                tabIndex={20}
+                                tabIndex={mise_en_placeById !== null ? 3 : 15}
                                 htmlType="submit"
                                 disabled={status == 2 ? true : false}>
                                 {current == 0 ? 'Commencer' : 'Suivant'}

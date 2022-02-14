@@ -7,13 +7,60 @@ export default function Decharges_Partielles({
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
+  Finaldata,
 }) {
+  const [Line2, setLine2] = useState(false);
+  const [Line3, setLine3] = useState(false);
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
       inputEl.current.focus();
     }
   }, [inputEl]);
+
+  useEffect(() => {
+    if (
+      Finaldata.Decharges_Partielles.S_15 < 50 &&
+      Finaldata.Decharges_Partielles.S_30 < 50 &&
+      Finaldata.Decharges_Partielles.S_45 < 50 &&
+      Finaldata.Decharges_Partielles.S_60 < 50
+    ) {
+      setLine2(false);
+    } else {
+      setLine2(true);
+    }
+    if (
+      Finaldata.Decharges_Partielles.S_75 < 50 &&
+      Finaldata.Decharges_Partielles.S_90 < 50 &&
+      Finaldata.Decharges_Partielles.S_105 < 50 &&
+      Finaldata.Decharges_Partielles.S_120 < 50
+    ) {
+      setLine3(false);
+    } else {
+      setLine3(true);
+    }
+  }, [Finaldata]);
+
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
+
+  useEffect(() => {
+    if (Line2 == false) {
+      console.log('supprimer la 2eme et la 3eme ligne');
+      UpdateData('S_75', '', setFinaldata);
+      UpdateData('S_90', '', setFinaldata);
+      UpdateData('S_105', '', setFinaldata);
+      UpdateData('S_120', '', setFinaldata);
+      UpdateData('S_135', '', setFinaldata);
+      UpdateData('S_150', '', setFinaldata);
+      UpdateData('S_165', '', setFinaldata);
+      UpdateData('S_180', '', setFinaldata);
+    }
+  }, [Line2]);
+
   const [stopaddrow, setstopaddrow] = useState(false);
   const SKE77 = [
     {label: 'off', value: 'off'},
@@ -34,6 +81,7 @@ export default function Decharges_Partielles({
     {label: 14, value: 14},
     {label: 15, value: 15},
   ];
+
   return (
     <div className="Containertest">
       <Divider
@@ -43,7 +91,7 @@ export default function Decharges_Partielles({
         <h3>Decharges Partielles</h3>
       </Divider>
       <div>
-        <Row style={{justifyContent: 'center'}}>
+        <Row key="row1" style={{justifyContent: 'center'}}>
           <Form.Item>
             <Form.Item
               key="1.7pu"
@@ -53,7 +101,7 @@ export default function Decharges_Partielles({
             </Form.Item>
           </Form.Item>
         </Row>
-        <Row style={{justifyContent: 'center'}}>
+        <Row key="row2" style={{justifyContent: 'center'}}>
           <Form.Item>
             <Form.Item
               key="1.5pu"
@@ -64,20 +112,27 @@ export default function Decharges_Partielles({
           </Form.Item>
         </Row>
         {miseenplaceok ? (
-          <Row style={{justifyContent: 'center'}}>
-            <Form.Item key="1.5pu" className="show_item" style={{width: '40%'}}>
-              Réactance SKE77 p1:
+          <Row key="row3" style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="Réactance_SKE77"
+              className="show_item"
+              style={{width: '40%'}}>
+              Réactance SKE77:
               {miseenplaceok.Decharges_Partielles.Réactance_ske77_DP_P1}
             </Form.Item>
-            <Form.Item key="1.5pu" className="show_item" style={{width: '40%'}}>
-              Réactance SKE17 p1 :
+            <Form.Item
+              key="Réactance_SKE17"
+              className="show_item"
+              style={{width: '40%'}}>
+              Réactance SKE17 :
               {miseenplaceok.Decharges_Partielles.Réactance_ske17_DP_P1}
             </Form.Item>
           </Row>
         ) : (
           <>
-            <Row style={{justifyContent: 'center'}}>
+            <Row key="row3" style={{justifyContent: 'center'}}>
               <Form.Item
+                key="Réactance_SKE77"
                 label="Réactance SKE77"
                 style={{display: 'inline-block', width: 'calc(30% - 8px)'}}>
                 <Form.Item
@@ -99,6 +154,7 @@ export default function Decharges_Partielles({
                 </Form.Item>
               </Form.Item>
               <Form.Item
+                key="Réactance_SKE17"
                 label="Réactance SKE17"
                 style={{
                   display: 'inline-block',
@@ -134,12 +190,14 @@ export default function Decharges_Partielles({
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               ref={!miseenplaceok ? null : inputEl}
-              type="number"
-              tabIndex={3}
+              tabIndex={miseenplaceok ? 3 : 1}
               min={10}
               max={1000}
               placeholder="15 Sec"
-              onChange={e => UpdateData('S_15', e.target.value, setFinaldata)}
+              onChange={e => {
+                UpdateData('S_15', e.target.value, setFinaldata);
+                e.target.value < 50 && UpdateData('S_75', '', setFinaldata);
+              }}
             />
           </Form.Item>
           <Form.Item
@@ -149,8 +207,7 @@ export default function Decharges_Partielles({
             name="S_30"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
-              type="number"
-              tabIndex={4}
+              tabIndex={miseenplaceok ? 4 : 2}
               min={10}
               max={1000}
               placeholder="30 Sec"
@@ -164,8 +221,7 @@ export default function Decharges_Partielles({
             name="S_45"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
-              type="number"
-              tabIndex={5}
+              tabIndex={miseenplaceok ? 5 : 3}
               min={10}
               max={1000}
               placeholder="45 Sec"
@@ -179,8 +235,7 @@ export default function Decharges_Partielles({
             name="S_60"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
-              type="number"
-              tabIndex={6}
+              tabIndex={miseenplaceok ? 6 : 4}
               min={10}
               max={1000}
               placeholder="60 Sec"
@@ -188,107 +243,145 @@ export default function Decharges_Partielles({
             />
           </Form.Item>
         </Row>
-        <Form.List name="decharges partielles" style={{width: '50%'}}>
-          {(fields, {add, remove}) => (
-            <>
-              {fields.map(({key, name, fieldKey, ...restField}) => (
-                <Row
-                  key={[name == 0 ? 'line2' : 'line3']}
-                  style={{
-                    justifyContent: 'center',
-                    display: 'flex',
-                    marginLeft: '15px',
-                  }}>
-                  <Form.Item
-                    {...restField}
-                    key={[name == 0 ? '75_Sec' : '135_Sec']}
-                    style={{width: '10%', marginRight: '5px'}}
-                    label={[name == 0 ? '75 Sec' : '135 Sec']}
-                    name={[name, name == 0 ? 'S_75' : 'S_135']}
-                    fieldKey={[fieldKey, 's']}
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      min={10}
-                      max={1000}
-                      onChange={e => {
-                        e.target.value > 50 ? add() : null;
-                      }}
-                      placeholder={name == 0 ? '75 Sec' : '135 Sec'}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    key={[name == 0 ? '90_Sec' : '150_Sec']}
-                    style={{width: '10%', marginRight: '5px'}}
-                    label={[name == 0 ? '90 Sec' : '150 Sec']}
-                    name={[name, name == 0 ? 'S_90' : 'S_150']}
-                    fieldKey={[fieldKey, 's']}
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      min={10}
-                      max={1000}
-                      placeholder={[name == 0 ? '90 Sec' : '150 Sec']}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    key={[name == 0 ? '105_Sec' : '165_Sec']}
-                    style={{width: '10%', marginRight: '5px'}}
-                    label={[name == 0 ? '105 Sec' : '165 Sec']}
-                    name={[name, name == 0 ? 'S_105' : 'S_165']}
-                    fieldKey={[fieldKey, 's']}
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      min={10}
-                      max={1000}
-                      placeholder={[name == 0 ? '105 Sec' : '165 Sec']}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    key={[name == 0 ? '120_Sec' : '180_Sec']}
-                    style={{width: '10%', marginRight: '5px'}}
-                    label={[name == 0 ? '120 Sec' : '180 Sec']}
-                    name={[name, name == 0 ? 'S_120' : 'S_180']}
-                    fieldKey={[fieldKey, 's']}
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      min={10}
-                      max={1000}
-                      placeholder={[name == 0 ? '120 Sec' : '180 Sec']}
-                    />
-                  </Form.Item>
-                  <MinusCircleOutlined
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                    onClick={() => remove(name)}
-                  />
+        {Line2 && (
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="75_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="75 Sec"
+              name="S_75"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                ref={!miseenplaceok ? null : inputEl}
+                min={10}
+                max={1000}
+                tabIndex={miseenplaceok ? 7 : 5}
+                placeholder="75 Sec"
+                onChange={e => {
+                  UpdateData('S_75', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              key="90_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="90 Sec"
+              name="S_90"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                min={10}
+                max={1000}
+                placeholder="90 Sec"
+                tabIndex={miseenplaceok ? 8 : 6}
+                onChange={e => UpdateData('S_90', e.target.value, setFinaldata)}
+              />
+            </Form.Item>
+            <Form.Item
+              key="105_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="105 Sec"
+              name="S_105"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                min={10}
+                max={1000}
+                placeholder="105 Sec"
+                tabIndex={miseenplaceok ? 9 : 7}
+                onChange={e =>
+                  UpdateData('S_105', e.target.value, setFinaldata)
+                }
+              />
+            </Form.Item>
+            <Form.Item
+              key="120_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="120 Sec"
+              name="S_120"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                min={10}
+                max={1000}
+                placeholder="120 Sec"
+                tabIndex={miseenplaceok ? 10 : 8}
+                onChange={e =>
+                  UpdateData('S_120', e.target.value, setFinaldata)
+                }
+              />
+            </Form.Item>
+          </Row>
+        )}
 
-                  {name < 1 ? setstopaddrow(false) : setstopaddrow(true)}
-                </Row>
-              ))}
-              {!stopaddrow && (
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item key="Add_Button" name="buttons">
-                    <Button
-                      type="dashed"
-                      onClick={() => add()}
-                      block
-                      icon={<PlusOutlined />}>
-                      Add field
-                    </Button>
-                  </Form.Item>
-                </Row>
-              )}
-            </>
-          )}
-        </Form.List>
+        {Line2 && Line3 && (
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="135_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="135 Sec"
+              name="S_135"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                ref={!miseenplaceok ? null : inputEl}
+                min={10}
+                max={1000}
+                placeholder="135 Sec"
+                tabIndex={miseenplaceok ? 11 : 9}
+                onChange={e =>
+                  UpdateData('S_135', e.target.value, setFinaldata)
+                }
+              />
+            </Form.Item>
+            <Form.Item
+              key="150_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="150 Sec"
+              name="S_150"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                min={10}
+                max={1000}
+                placeholder="150 Sec"
+                tabIndex={miseenplaceok ? 12 : 10}
+                onChange={e =>
+                  UpdateData('S_150', e.target.value, setFinaldata)
+                }
+              />
+            </Form.Item>
+            <Form.Item
+              key="165_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="165 Sec"
+              name="S_165"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                min={10}
+                max={1000}
+                placeholder="165 Sec"
+                tabIndex={miseenplaceok ? 13 : 11}
+                onChange={e =>
+                  UpdateData('S_165', e.target.value, setFinaldata)
+                }
+              />
+            </Form.Item>
+            <Form.Item
+              key="180_Sec"
+              style={{width: '10%', marginRight: '5px'}}
+              label="180 Sec"
+              name="S_180"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                min={10}
+                max={1000}
+                placeholder="180 Sec"
+                tabIndex={miseenplaceok ? 14 : 12}
+                onChange={e =>
+                  UpdateData('S_180', e.target.value, setFinaldata)
+                }
+              />
+            </Form.Item>
+          </Row>
+        )}
+        {Line2 ? <>line 2 active</> : <>line 2 no active</>}
+        {Line3 ? <>line 3 active</> : <>line 3 no active</>}
       </div>
     </div>
   );
