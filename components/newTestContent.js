@@ -16,7 +16,18 @@ import Perte_a_ChargeForm_P2 from '@/components/forms/newtest/Perte_a_charge_P2'
 import Facteur_DissipationForm from '@/components/forms/newtest/Facteur_dissipation';
 import Decharges_PartiellesForm from '@/components/forms/newtest/Decharges_Partielles';
 import SignatureForm from '@/components/forms/newtest/Signature';
-import {Steps, Button, Row, Col, Divider, Form, Modal, Space, Spin} from 'antd';
+import {
+  Steps,
+  Button,
+  Row,
+  Col,
+  Divider,
+  Form,
+  Modal,
+  Space,
+  Spin,
+  Input,
+} from 'antd';
 
 const {Step} = Steps;
 export const Steps1phase = ({current, steps}) => {
@@ -37,6 +48,7 @@ function NewTestContent({
   Prise,
   setNewMisePlace,
   error,
+  Finaldata,
 }) {
   const [chance, setchance] = useState(0);
   const NewTestHome = () => {
@@ -173,6 +185,7 @@ function NewTestContent({
           miseenplaceok={mise_en_placeById}
           chance={chance}
           setchance={setchance}
+          Finaldata={Finaldata}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
         />

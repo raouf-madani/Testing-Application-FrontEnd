@@ -82,15 +82,6 @@ function newTestContent({setmise_data}) {
                   message: 'Champ Requis',
                 },
               ]}>
-              {/* <Select
-                labelInValue={true}
-                defaultValue={{value: 100}}
-                style={{width: 120}}
-                onChange={handleChange}>
-                <Option value="100">100</Option>
-                <Option value="200">200</Option>
-                <Option value="300">300</Option>
-              </Select> */}
               <Select
                 options={Borne_Rouge}
                 onChange={value => {
