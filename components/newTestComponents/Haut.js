@@ -21,7 +21,11 @@ import {
   Tag,
   Select,
 } from 'antd';
-import {CheckOutlined, CloseCircleOutlined} from '@ant-design/icons';
+import {
+  CheckOutlined,
+  CloseCircleOutlined,
+  HistoryOutlined,
+} from '@ant-design/icons';
 import Marquee from 'react-fast-marquee';
 const {Panel} = Collapse;
 const Haut = ({
@@ -30,11 +34,9 @@ const Haut = ({
   commande,
   setFinaldata,
   mise_en_placeById,
-  useGetMise,
   Tests_length,
   useUpdateMisePlace,
   allCommandesById_length,
-  status,
   temperature_noaffected,
   settemperature_noaffected,
 }) => {
@@ -44,10 +46,6 @@ const Haut = ({
   const _updateMisePlace = async (id, data) => {
     await updateMise_place(id, data);
   };
-  const Type_Test = [
-    {label: '1 Phase', value: '1phase'},
-    {label: '3 Phase', value: '3phase'},
-  ];
 
   useEffect(() => {
     const affecter = () => {
@@ -181,7 +179,13 @@ const Haut = ({
         header="Detaille de la Commande"
         extra={
           mise_data !== null ? (
-            <CheckOutlined style={{color: '#00ffff', fontSize: '20px'}} />
+            <Button
+              type="primary"
+              icon={
+                <HistoryOutlined style={{color: '#00ffff', fontSize: '20px'}} />
+              }>
+              Historique
+            </Button>
           ) : (
             <Alert
               banner
