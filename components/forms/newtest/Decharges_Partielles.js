@@ -190,7 +190,7 @@ export default function Decharges_Partielles({
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
               ref={!miseenplaceok ? null : inputEl}
-              tabIndex={miseenplaceok ? 3 : 1}
+              tabIndex={!miseenplaceok ? 3 : 1}
               min={10}
               max={1000}
               placeholder="15 Sec"
@@ -207,7 +207,7 @@ export default function Decharges_Partielles({
             name="S_30"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
-              tabIndex={miseenplaceok ? 4 : 2}
+              tabIndex={!miseenplaceok ? 4 : 2}
               min={10}
               max={1000}
               placeholder="30 Sec"
@@ -221,7 +221,7 @@ export default function Decharges_Partielles({
             name="S_45"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
-              tabIndex={miseenplaceok ? 5 : 3}
+              tabIndex={!miseenplaceok ? 5 : 3}
               min={10}
               max={1000}
               placeholder="45 Sec"
@@ -235,7 +235,7 @@ export default function Decharges_Partielles({
             name="S_60"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
-              tabIndex={miseenplaceok ? 6 : 4}
+              tabIndex={!miseenplaceok ? 6 : 4}
               min={10}
               max={1000}
               placeholder="60 Sec"
@@ -255,7 +255,7 @@ export default function Decharges_Partielles({
                 ref={!miseenplaceok ? null : inputEl}
                 min={10}
                 max={1000}
-                tabIndex={miseenplaceok ? 7 : 5}
+                tabIndex={!miseenplaceok ? 7 : 5}
                 placeholder="75 Sec"
                 onChange={e => {
                   UpdateData('S_75', e.target.value, setFinaldata);
@@ -272,7 +272,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="90 Sec"
-                tabIndex={miseenplaceok ? 8 : 6}
+                tabIndex={!miseenplaceok ? 8 : 6}
                 onChange={e => UpdateData('S_90', e.target.value, setFinaldata)}
               />
             </Form.Item>
@@ -286,7 +286,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="105 Sec"
-                tabIndex={miseenplaceok ? 9 : 7}
+                tabIndex={!miseenplaceok ? 9 : 7}
                 onChange={e =>
                   UpdateData('S_105', e.target.value, setFinaldata)
                 }
@@ -302,7 +302,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="120 Sec"
-                tabIndex={miseenplaceok ? 10 : 8}
+                tabIndex={!miseenplaceok ? 10 : 8}
                 onChange={e =>
                   UpdateData('S_120', e.target.value, setFinaldata)
                 }
@@ -324,7 +324,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="135 Sec"
-                tabIndex={miseenplaceok ? 11 : 9}
+                tabIndex={!miseenplaceok ? 11 : 9}
                 onChange={e =>
                   UpdateData('S_135', e.target.value, setFinaldata)
                 }
@@ -340,7 +340,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="150 Sec"
-                tabIndex={miseenplaceok ? 12 : 10}
+                tabIndex={!miseenplaceok ? 12 : 10}
                 onChange={e =>
                   UpdateData('S_150', e.target.value, setFinaldata)
                 }
@@ -356,7 +356,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="165 Sec"
-                tabIndex={miseenplaceok ? 13 : 11}
+                tabIndex={!miseenplaceok ? 13 : 11}
                 onChange={e =>
                   UpdateData('S_165', e.target.value, setFinaldata)
                 }
@@ -372,7 +372,7 @@ export default function Decharges_Partielles({
                 min={10}
                 max={1000}
                 placeholder="180 Sec"
-                tabIndex={miseenplaceok ? 14 : 12}
+                tabIndex={!miseenplaceok ? 14 : 12}
                 onChange={e =>
                   UpdateData('S_180', e.target.value, setFinaldata)
                 }

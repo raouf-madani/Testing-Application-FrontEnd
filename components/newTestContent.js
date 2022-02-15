@@ -55,7 +55,7 @@ function NewTestContent({
     return mise_en_placeById !== null ? (
       <Alert
         message="Prét a Tester!"
-        description="Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo"
+        description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
         type="success"
         showIcon
       />
