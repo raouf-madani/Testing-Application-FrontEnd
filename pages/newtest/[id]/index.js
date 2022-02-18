@@ -8,12 +8,7 @@ import Haut from '@/components/newTestComponents/Haut';
 
 import DisplayComponent from '@/components/Timer';
 import TestArea from '@/components/test_area';
-import {
-  Fakedata,
-  Mise_NewData,
-  steps1phase,
-  steps3phase,
-} from '@/FakeData/TestData';
+import {Fakedata, Fakedata3phases, Mise_NewData} from '@/FakeData/TestData';
 import {useGetCommande} from '@/actions/commandes';
 import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
 
@@ -38,69 +33,6 @@ import {
 
 const {Step} = Steps;
 const {confirm} = Modal;
-const stepsss = [
-  {
-    title: 'Nouveau Test',
-    content: 'newtest',
-  },
-  {
-    title: 'Placer Borne',
-    content: 'Placer Borne',
-  },
-  {
-    title: 'Ratio/Polarite P1',
-    content: 'Ratio/Polarite P1',
-  },
-  {
-    title: 'Ratio/Polarite P2',
-    content: 'Ratio/Polarite P2',
-  },
-  {
-    title: 'Induit P1',
-    content: 'Induit P1',
-  },
-  {
-    title: 'Induit P2',
-    content: 'Induit P2',
-  },
-  {
-    title: 'Hipot',
-    content: 'Hipot',
-  },
-  {
-    title: 'Pertes a Vide P1',
-    content: 'Pertes a Vide P1',
-  },
-  {
-    title: 'Pertes a Vide P2',
-    content: 'Pertes a Vide P2',
-  },
-  {
-    title: 'RIV ',
-    content: 'RIV',
-  },
-  {
-    title: 'Pertes a Charge P1',
-    content: 'Pertes a Charge P1',
-  },
-  {
-    title: 'Pertes a Charge P2',
-    content: 'Pertes a Charge P2',
-  },
-  {
-    title: 'Décharges Partielles',
-    content: 'Décharges Partielles',
-  },
-  {
-    title: 'Facteur de dissipation',
-    content: 'Facteur de dissipation',
-  },
-
-  {
-    title: 'Signature',
-    content: 'Signature',
-  },
-];
 
 const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const router = useRouter();
@@ -113,6 +45,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   // const [historiquemodal, sethistoriqueModal] = useState(false);
 
   const [Finaldata, setFinaldata] = useState(Fakedata);
+  const [Finaldata3phases, setFinaldata3phases] = useState(Fakedata3phases);
   const [NewMisePlace, setNewMisePlace] = useState(Mise_NewData);
   const [modal, setmodal] = useState(false);
   const {data: dataU, loading: loadingU} = useGetUser();
@@ -123,20 +56,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const _CreateTest = data => {
     createTest(data);
   };
-  const steps = test_type_selected == '1phase' ? steps1phase : steps1phase;
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
-  // let initial_testform_values = null;
-  // initial_testform_values = {
-  //   //Decharge Partielle
-  //   S_15: 15,
-  //   S_30: 30,
-  //   S_45: 45,
-  //   S_60: 60,
-  //   results_form_Polarité_V_Mesuré_P1: 100,
-  //   Volts_Apluiqés_P1: 399,
-  // };
   const [form] = Form.useForm();
   const start = () => {
     run();
@@ -228,7 +150,57 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     console.log(Finaldata);
     console.log(NewMisePlace);
   };
+  // nex for 3 phases
+  const next3phases = () => {
+    if (current == 0) {
+      if (Finaldata3phases.temperature_affected == null) {
+        alert(
+          temperature_noaffected
+            ? 'affecter la temperature'
+            : 'affecter la temperature non affected'
+        );
+      } else {
+        if (mise_en_placeById !== null) {
+          console.log('begin the work mise en place done');
+          UpdateData('numcommand', 1010, setFinaldata3phases);
+          setCurrent(current + 1);
+        } else {
+          console.log('begin the work No mise en place ');
+          UpdateData('numcommand', 1010, setFinaldata3phases);
+          UpdateData('numcommand', 1010, setNewMisePlace);
+          // Type test
+          UpdateData('test_type', test_type_selected, setFinaldata3phases);
+          UpdateData('test_type', test_type_selected, setNewMisePlace);
+          console.log(' la final data', Finaldata3phases);
+          setCurrent(current + 1);
+        }
+      }
+      {
+        status === 0 ? start() : '';
+      }
+    } else if (current < tablelength - 1) {
+      setCurrent(current + 1);
+    } else {
+      if (Finaldata3phases.temperature_affected !== null) {
+        reset();
+        form.resetFields();
+        setmodal(!modal);
 
+        console.log('the final data to create is ', Finaldata3phases);
+        _CreateTest(Finaldata3phases);
+      } else {
+        alert('affecter la temperature');
+      }
+    }
+    if (current == tablelength - 1) {
+      setteststatus('fin');
+      console.log(teststatus);
+    }
+
+    console.log(Finaldata3phases);
+    console.log(NewMisePlace);
+  };
+  ///
   const prev = () => {
     setCurrent(current - 1);
   };
@@ -248,13 +220,28 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       },
     });
   }
+  // for 3 phases
+  function AnnulerConfirm3phases() {
+    confirm({
+      title: "etes vous sur d'annuler le test Courant?",
+      onOk() {
+        reset();
+        setCurrent(0);
+        settest_type_selected();
+        setFinaldata3phases(Fakedata3phases);
+        form.resetFields();
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  }
 
   function error(text) {
     Modal.error({
       title: 'Test échoué',
       content: text,
       onOk() {
-        console.log(Finaldata);
         window.location.href = '/';
       },
     });
@@ -293,8 +280,10 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                   <Haut
                     mise_en_placeById={mise_en_placeById}
                     Finaldata={Finaldata}
-                    commande={commande}
                     setFinaldata={setFinaldata}
+                    Finaldata3phases={Finaldata3phases}
+                    setFinaldata3phases={setFinaldata3phases}
+                    commande={commande}
                     UpdateData={UpdateData}
                     useGetMise={useGetMise}
                     useUpdateMisePlace={useUpdateMisePlace}
@@ -313,7 +302,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     form={form}
                     layout="vertical"
                     name="results_form"
-                    onFinish={next}
+                    onFinish={test_type_selected == '1phase' ? next : next}
                     initialValues={{
                       S_15: Finaldata.Decharges_Partielles.S_15,
                       S_30: Finaldata.Decharges_Partielles.S_30,
@@ -336,108 +325,23 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                       test_type_selected={test_type_selected}
                       Finaldata={Finaldata}
                       setFinaldata={setFinaldata}
+                      Finaldata3phases={Finaldata3phases}
+                      setFinaldata3phases={setFinaldata3phases}
                       setNewMisePlace={setNewMisePlace}
                       error={error}
                       current={current}
                       settablelength={settablelength}
+                      //props for buttons
+                      status={status}
+                      resume={resume}
+                      stop={stop}
+                      AnnulerConfirm={AnnulerConfirm}
+                      prev={prev}
+                      tablelength={tablelength}
+                      // props button reussi
+                      next={next}
+                      next3phases={next3phases}
                     />
-                    <div
-                      className="steps-action"
-                      style={{display: 'flex', justifyContent: 'end'}}>
-                      {mise_en_placeById !== null ? (
-                        <Form.Item>
-                          {current > 0 && (
-                            <>
-                              {status === 1 ? (
-                                <Button
-                                  style={{margin: '0 8px'}}
-                                  onClick={stop}>
-                                  Stop
-                                </Button>
-                              ) : (
-                                <Button
-                                  style={{margin: '0 8px'}}
-                                  onClick={resume}>
-                                  Resume
-                                </Button>
-                              )}
-
-                              <Button
-                                style={{margin: '0 8px'}}
-                                disabled={status == 2 ? true : false}
-                                onClick={() =>
-                                  (current == 1 && status === 1) || status === 2
-                                    ? AnnulerConfirm()
-                                    : prev()
-                                }>
-                                {current == 1 ? 'Annuler' : 'Retour'}
-                              </Button>
-                            </>
-                          )}
-                          {current < tablelength - 1 && (
-                            <Button
-                              type="primary"
-                              htmlType="submit"
-                              disabled={status == 2 ? true : false}>
-                              {current == 0 ? 'Commencer' : 'Suivant'}
-                            </Button>
-                          )}
-                          {current === tablelength - 1 && (
-                            <Button type="primary" htmlType="submit">
-                              enregistrer
-                            </Button>
-                          )}
-                        </Form.Item>
-                      ) : (
-                        test_type_selected && (
-                          <Form.Item>
-                            {current > 0 && (
-                              <>
-                                {status === 1 ? (
-                                  <Button
-                                    style={{margin: '0 8px'}}
-                                    onClick={stop}>
-                                    Stop
-                                  </Button>
-                                ) : (
-                                  <Button
-                                    style={{margin: '0 8px'}}
-                                    onClick={resume}>
-                                    Resume
-                                  </Button>
-                                )}
-
-                                <Button
-                                  style={{margin: '0 8px'}}
-                                  disabled={status == 2 ? true : false}
-                                  onClick={() =>
-                                    (current == 1 && status === 1) ||
-                                    status === 2
-                                      ? AnnulerConfirm()
-                                      : prev()
-                                  }>
-                                  {current == 1 ? 'Annuler' : 'Retour'}
-                                </Button>
-                              </>
-                            )}
-                            {current < tablelength - 1 && (
-                              <Button
-                                type="primary"
-                                tabIndex={mise_en_placeById !== null ? 3 : 15}
-                                htmlType="submit"
-                                disabled={status == 2 ? true : false}>
-                                {current == 0 ? 'Commencer' : 'Suivant'}
-                              </Button>
-                            )}
-                            {current === tablelength - 1 && (
-                              <Button type="primary" htmlType="submit">
-                                enregistrer
-                              </Button>
-                            )}
-                          </Form.Item>
-                        )
-                      )}
-                    </div>
                   </Form>
                   <Modalnewtestscanner
                     modal={modal}

@@ -44,8 +44,6 @@ export default function Ratio_Polarite({
                   type="number"
                   tabIndex={1}
                   ref={inputEl}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
@@ -66,8 +64,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   tabIndex={2}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
@@ -84,8 +80,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   tabIndex={3}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
@@ -111,16 +105,130 @@ export default function Ratio_Polarite({
           </Row>
         )}
         <Row style={{justifyContent: 'center'}}>
+          {Prise == 'AP' ? (
+            <Form.Item
+              label=" Tension mesurée "
+              name="Tension_HT_Mesuré_Pos2"
+              className="show_item_input">
+              <Input
+                ref={!miseenplaceok ? null : inputEl}
+                tabIndex={!miseenplaceok ? 4 : 1}
+                type="number"
+                step="0.0001"
+                placeholder="Position 1"
+                onChange={e =>
+                  UpdateData(
+                    'Tension_ht_mesuré_Pos2',
+                    e.target.value,
+                    setFinaldata
+                  )
+                }
+              />
+            </Form.Item>
+          ) : (
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                key="P1"
+                style={{width: '16%', marginRight: '5px'}}
+                label="Prise1"
+                name="Tension_HT_Mesuré_P1_P2">
+                <Input
+                  ref={!miseenplaceok ? null : inputEl}
+                  type="number"
+                  tabIndex={!miseenplaceok ? 4 : 1}
+                  placeholder="Prise1"
+                  onChange={e =>
+                    UpdateData(
+                      'Tension_ht_mesuré_P1_P2',
+                      e.target.value,
+                      setFinaldata
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                key="P2"
+                style={{width: '16%', marginRight: '5px'}}
+                label="Prise2"
+                name="Tension_HT_Mesuré_P2_P2">
+                <Input
+                  type="number"
+                  tabIndex={!miseenplaceok ? 5 : 2}
+                  placeholder="Prise2"
+                  onChange={e =>
+                    UpdateData(
+                      'Tension_ht_mesuré_P2_P2',
+                      e.target.value,
+                      setFinaldata
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                key="P3"
+                style={{width: '16%', marginRight: '5px'}}
+                label="Prise3"
+                name="Tension_HT_Mesuré_P3_P2">
+                <Input
+                  type="number"
+                  tabIndex={!miseenplaceok ? 6 : 3}
+                  placeholder="Prise1"
+                  onChange={e =>
+                    UpdateData(
+                      'Tension_ht_mesuré_P3_P2',
+                      e.target.value,
+                      setFinaldata
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                key="P4"
+                style={{width: '16%', marginRight: '5px'}}
+                label="Prise4"
+                name="Tension_HT_Mesuré_P4_P2">
+                <Input
+                  type="number"
+                  tabIndex={!miseenplaceok ? 7 : 4}
+                  placeholder="Prise4"
+                  onChange={e =>
+                    UpdateData(
+                      'Tension_ht_mesuré_P4_P2',
+                      e.target.value,
+                      setFinaldata
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                key="P5"
+                style={{width: '16%', marginRight: '5px'}}
+                label="Prise5"
+                name="Tension_HT_Mesuré_P5_P2">
+                <Input
+                  type="number"
+                  tabIndex={!miseenplaceok ? 8 : 5}
+                  placeholder="Prise5"
+                  onChange={e =>
+                    UpdateData(
+                      'Tension_ht_mesuré_P5_P2',
+                      e.target.value,
+                      setFinaldata
+                    )
+                  }
+                />
+              </Form.Item>
+            </Row>
+          )}
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
           <Form.Item
             name="Polarité_V_Mesuré_P2"
             label="Polarité mesurée "
             className="show_item_input">
             <Input
               type="number"
-              ref={miseenplaceok ? inputEl : null}
-              tabIndex={miseenplaceok ? 1 : 4}
-              min={10}
-              max={1000}
+              tabIndex={Prise == 'AP' ? 5 : 9}
               step="0.0001"
               placeholder="Position 2"
               onChange={e =>

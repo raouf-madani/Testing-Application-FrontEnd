@@ -56,12 +56,18 @@ export const UpdateData = (type, newData, setData) => {
 
     // Ratio
 
-    case 'Tension_ht_mesuré':
     case 'Tension_ht_mesuré_P1':
+    case 'Tension_ht_mesuré_P1_P1':
+    case 'Tension_ht_mesuré_P2_P1':
+    case 'Tension_ht_mesuré_P3_P1':
+    case 'Tension_ht_mesuré_P4_P1':
+    case 'Tension_ht_mesuré_P5_P1':
     case 'Tension_ht_mesuré_P2':
-    case 'Tension_ht_mesuré_P3':
-    case 'Tension_ht_mesuré_P4':
-    case 'Tension_ht_mesuré_P5':
+    case 'Tension_ht_mesuré_P1_P2':
+    case 'Tension_ht_mesuré_P2_P2':
+    case 'Tension_ht_mesuré_P3_P2':
+    case 'Tension_ht_mesuré_P4_P2':
+    case 'Tension_ht_mesuré_P5_P2':
     //
     case 'Volts_apluiqés_P1':
     case 'Volts_ht_P1':

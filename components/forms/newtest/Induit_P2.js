@@ -83,6 +83,8 @@ export default function Induit({
                 name="Réactance_SKE77_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Réactance SKE77"
+                  showSearch
                   ref={inputEl}
                   tabIndex={1}
                   initialvalues=""
@@ -99,6 +101,8 @@ export default function Induit({
                 name="Réactance_SKE17_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Réactance SKE17"
+                  showSearch
                   tabIndex={2}
                   initialvalues=""
                   options={SKE17}
@@ -117,6 +121,8 @@ export default function Induit({
                 name="Fréquence_Genératrice_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Fréquence"
+                  showSearch
                   tabIndex={3}
                   initialvalues=""
                   options={Frequence_Gen}

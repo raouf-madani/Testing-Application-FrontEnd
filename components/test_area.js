@@ -28,6 +28,15 @@ function Test_area({
   error,
   settest_type_selected,
   settablelength,
+  // props for buttons
+  status,
+  resume,
+  stop,
+  AnnulerConfirm,
+  prev,
+  tablelength,
+  // props button reussi
+  next,
 }) {
   const Type_Test = [
     {label: '1 Phase', value: '1phase'},
@@ -49,6 +58,15 @@ function Test_area({
               error={error}
               current={current}
               settablelength={settablelength}
+              //props for buttons
+              status={status}
+              resume={resume}
+              stop={stop}
+              AnnulerConfirm={AnnulerConfirm}
+              prev={prev}
+              tablelength={tablelength}
+              // props button reussi
+              next={next}
             />
           ) : (
             <Phase3Forms
@@ -61,6 +79,15 @@ function Test_area({
               error={error}
               current={current}
               settablelength={settablelength}
+              //props for buttons
+              status={status}
+              resume={resume}
+              stop={stop}
+              AnnulerConfirm={AnnulerConfirm}
+              prev={prev}
+              tablelength={tablelength}
+              // props button reussi
+              next={next}
             />
           )}
         </>
@@ -77,6 +104,15 @@ function Test_area({
               error={error}
               current={current}
               settablelength={settablelength}
+              //props for buttons
+              status={status}
+              resume={resume}
+              stop={stop}
+              AnnulerConfirm={AnnulerConfirm}
+              prev={prev}
+              tablelength={tablelength}
+              // props button reussi
+              next={next}
             />
           ) : Finaldata.test_type == '3phase' ? (
             <Phase3Forms
@@ -89,6 +125,15 @@ function Test_area({
               error={error}
               current={current}
               settablelength={settablelength}
+              //props for buttons
+              status={status}
+              resume={resume}
+              stop={stop}
+              AnnulerConfirm={AnnulerConfirm}
+              prev={prev}
+              tablelength={tablelength}
+              // props button reussi
+              next={next}
             />
           ) : (
             <>
@@ -135,6 +180,22 @@ function Test_area({
           )}
         </>
       )}
+      <div
+        className="steps-action"
+        style={{display: 'flex', justifyContent: 'end'}}>
+        {test_type_selected && (
+          <Form.Item>
+            {current == 0 && (
+              <Button
+                type="primary"
+                tabIndex={mise_en_placeById !== null ? 3 : 15}
+                htmlType="submit">
+                'Commencer'
+              </Button>
+            )}
+          </Form.Item>
+        )}
+      </div>
     </>
   );
 }

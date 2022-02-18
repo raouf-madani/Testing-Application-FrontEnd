@@ -23,31 +23,14 @@ export default function Facteur_dissipation({UpdateData, setFinaldata}) {
               name="H"
               noStyle
               rules={[{required: true, message: 'H required'}]}>
-              <Input
-                ref={inputEl}
-                type="number"
-                tabIndex={1}
-                min={10}
-                max={1000}
-                step="0.0001"
-                placeholder="H"
-                onChange={e => UpdateData('H', e.target.value, setFinaldata)}
-              />
+              <Input ref={inputEl} type="number" tabIndex={1} placeholder="H" />
             </Form.Item>
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item label="L" style={{marginBottom: 0, width: '30%'}}>
             <Form.Item name="L" noStyle>
-              <Input
-                type="number"
-                tabIndex={2}
-                min={10}
-                max={1000}
-                step="0.0001"
-                placeholder="L"
-                onChange={e => UpdateData('L', e.target.value, setFinaldata)}
-              />
+              <Input type="number" tabIndex={2} placeholder="L" />
             </Form.Item>
           </Form.Item>
         </Row>

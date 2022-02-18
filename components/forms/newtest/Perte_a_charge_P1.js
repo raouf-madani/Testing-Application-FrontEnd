@@ -1,14 +1,15 @@
 import React, {useRef, useEffect, useState} from 'react';
 import {Form, Input, Row, Divider, Select, Switch} from 'antd';
+import {Fakedata, Fakedata3phases, Mise_NewData} from '@/FakeData/TestData';
+import {UpdateData} from '@/actions/newtestupdate';
 
 export default function Perte_a_charge({
-  UpdateData,
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
 }) {
-  const [resistance_P1, setresistance_P1] = useState(false);
-  const res = resistance_P1;
+  const [resistance_P1, setresistance_P1] = useState();
+
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -64,6 +65,8 @@ export default function Perte_a_charge({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="Muliplicateur Volts"
+                  showSearch
                   ref={inputEl}
                   tabIndex={1}
                   initialvalues=""
@@ -85,6 +88,8 @@ export default function Perte_a_charge({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="Muliplicateur Amperes"
+                  showSearch
                   initialvalues=""
                   tabIndex={2}
                   options={Multiplicateur_Amperes}
@@ -107,8 +112,6 @@ export default function Perte_a_charge({
                 <Input
                   type="number"
                   tabIndex={3}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 1"
                   onChange={e =>
@@ -130,8 +133,6 @@ export default function Perte_a_charge({
                 <Input
                   type="number"
                   tabIndex={4}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 1"
                   onChange={e =>
@@ -158,8 +159,6 @@ export default function Perte_a_charge({
                 <Input
                   type="number"
                   tabIndex={5}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 1"
                   onChange={e =>
@@ -184,6 +183,8 @@ export default function Perte_a_charge({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="NO Cavalier"
+                  showSearch
                   initialvalues=""
                   tabIndex={6}
                   options={NO_Cavalier}
@@ -198,69 +199,6 @@ export default function Perte_a_charge({
                 Pertes Cavalier P1 : 20
               </Form.Item>
             </Row>
-
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                name="Resistance_Switch_P1"
-                style={{marginBottom: 0, width: '70%'}}>
-                <Switch
-                  checked={resistance_P1}
-                  checkedChildren="Résistances"
-                  unCheckedChildren="Résistances"
-                  onChange={() => setresistance_P1(!resistance_P1)}
-                />
-              </Form.Item>
-            </Row>
-            {resistance_P1 && (
-              <div>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    label="Resistance HT "
-                    name="Resistance_HT_P1"
-                    rules={[{required: true, message: 'Champ Requis'}]}
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={7}
-                      min={10}
-                      max={1000}
-                      step="0.0001"
-                      placeholder="Position 1"
-                      onChange={e =>
-                        UpdateData(
-                          'Resistance_ht_P1',
-                          e.target.value,
-                          setNewMisePlace
-                        )
-                      }
-                    />
-                  </Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    label="Resistance BT"
-                    name="Resistance_BT_P1"
-                    rules={[{required: true, message: 'Champ Requis'}]}
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={8}
-                      min={10}
-                      max={1000}
-                      step="0.0000001"
-                      placeholder="Position 1"
-                      onChange={e =>
-                        UpdateData(
-                          'Resistance_bt_P1',
-                          e.target.value,
-                          setNewMisePlace
-                        )
-                      }
-                    />
-                  </Form.Item>
-                </Row>
-              </div>
-            )}
           </div>
         )}
         {miseenplaceok && (
@@ -281,6 +219,65 @@ export default function Perte_a_charge({
         )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
+            name="Resistance_Switch_P1"
+            style={{marginBottom: 0, width: '70%'}}
+            valuePropName="checked">
+            <Switch
+              checked={resistance_P1}
+              checkedChildren="Résistances"
+              unCheckedChildren="Résistances"
+              onChange={() => setresistance_P1(resistance_P1 ? false : true)}
+            />
+          </Form.Item>
+        </Row>
+        {resistance_P1 && (
+          <div>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                label="Resistance HT "
+                name="Resistance_HT_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}
+                className="show_item_input">
+                <Input
+                  type="number"
+                  tabIndex={7}
+                  step="0.0001"
+                  placeholder="Position 1"
+                  onChange={e =>
+                    UpdateData(
+                      'Resistance_ht_P1',
+                      e.target.value,
+                      setNewMisePlace
+                    )
+                  }
+                />
+              </Form.Item>
+            </Row>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                label="Resistance BT"
+                name="Resistance_BT_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}
+                className="show_item_input">
+                <Input
+                  type="number"
+                  tabIndex={8}
+                  step="0.001"
+                  placeholder="Position 1"
+                  onChange={e =>
+                    UpdateData(
+                      'Resistance_bt_P1',
+                      e.target.value,
+                      setNewMisePlace
+                    )
+                  }
+                />
+              </Form.Item>
+            </Row>
+          </div>
+        )}
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item
             label="Perte A Charge Mesuré (W)"
             name="Perte_Charge_Mesuré_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -289,8 +286,6 @@ export default function Perte_a_charge({
               ref={!miseenplaceok ? null : inputEl}
               tabIndex={9}
               type="number"
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 1"
               onChange={e =>
@@ -312,8 +307,6 @@ export default function Perte_a_charge({
             <Input
               type="number"
               tabIndex={10}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 1"
               onChange={e =>

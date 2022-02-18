@@ -64,6 +64,8 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                   },
                 ]}>
                 <Select
+                  placeholder="Borne Rouge"
+                  showSearch
                   ref={inputEl}
                   options={Bornes_values}
                   onChange={value => {
@@ -87,6 +89,8 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                   },
                 ]}>
                 <Select
+                  placeholder="Borne Verte"
+                  showSearch
                   options={Bornes_values}
                   onChange={value => {
                     UpdateData('Borne_verte', value, setNewMisePlace);
@@ -109,6 +113,8 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
                   },
                 ]}>
                 <Select
+                  placeholder="Borne Jaune"
+                  showSearch
                   options={Bornes_values}
                   onChange={value => {
                     UpdateData('Borne_jaune', value, setNewMisePlace);

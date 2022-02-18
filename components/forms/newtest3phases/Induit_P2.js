@@ -12,13 +12,22 @@ import {
   Divider,
 } from 'antd';
 
-export default function Hipot({commande, mise_en_placeById}) {
+export default function Induit_p2({commande, mise_en_placeById}) {
   const TR_Charge = [
     {label: '347/600', value: 347 / 600},
     {label: '693/1200', value: 693 / 1200},
     {label: '1385/2400', value: 1385 / 2400},
     {label: '2771/4800', value: 2771 / 4800},
     {label: 'N/A', value: 'N/A'},
+  ];
+  const Position_TX = [
+    {label: 'Étoile-Phase', value: 'Étoile-Phase'},
+    {label: 'Triangle-Ligne', value: 'Triangle-Ligne'},
+  ];
+  const Reactance = [
+    {label: 'A1B1C1', value: 'A1B1C1'},
+    {label: 'A3B3C3', value: 'A3B3C3'},
+    {label: 'A4B4C4', value: 'A4B4C4'},
   ];
   const TR_Courant = [
     {label: '5/X1', value: 5 / 1},
@@ -52,121 +61,113 @@ export default function Hipot({commande, mise_en_placeById}) {
         dashed
         orientation="left"
         style={{color: '#34b1ab', marginBottom: '40px'}}>
-        <h3>Hi-Pot</h3>
+        <h3>Induit P2</h3>
       </Divider>
       <div>
+        {' '}
         {!mise_en_placeById ? (
           <>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="Tension à appliquer "
-                name="Tension_a_appliquer_Hipot "
+                key="Valeur_induit_P2 "
+                label="Valeur induit "
+                name="Valeur_Induit_P2 "
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
-                  ref={inputEl}
                   type="number"
+                  ref={inputEl}
                   tabIndex={1}
-                  placeholder="Tension à appliquer "
+                  placeholder="Valeur induit P2"
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="TR Charge "
-                name="TR_Charge_Hipot"
+                key="Réactance_induit_P2"
+                label="Réactance"
+                name="Réactance_induit_P2"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
-                  placeholder="TR Charge "
+                  placeholder="Réactance P2"
                   showSearch
                   initialvalues=""
                   tabIndex={2}
+                  options={Reactance}
+                />
+              </Form.Item>
+            </Row>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                key="TR_Charge_Induit_P2"
+                label="TR Charge "
+                name="TR_Charge_Induit_P2"
+                rules={[{required: true, message: 'Champ Requis'}]}
+                className="show_item_input">
+                <Select
+                  placeholder="TR Charge P2"
+                  showSearch
+                  initialvalues=""
+                  tabIndex={3}
                   options={TR_Charge}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="TR Courant  "
-                name="TR_Courant_Hipot "
+                key="TR_Courant_Courant_Induit_P2"
+                label="TR Courant"
+                name="TR_Courant_Courant_Induit_P2 "
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
-                  placeholder="TR Courant  "
+                  placeholder="TR Courant P2 "
                   showSearch
                   initialvalues=""
-                  tabIndex={3}
+                  tabIndex={4}
                   options={TR_Courant}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
+                key="TR_Voltage_Voltage_Induit_P2"
                 label="TR Voltage  "
-                name="TR_Voltage_Hipot "
+                name="TR_Voltage_Voltage_Induit_P2"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
-                  placeholder="TR Voltage  "
+                  placeholder="TR Voltage P2"
                   showSearch
                   initialvalues=""
-                  tabIndex={4}
+                  tabIndex={5}
                   options={TR_Voltage}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                label="Sélecteur Hi-Pot"
-                name="test_50_Hipot"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Radio.Group buttonStyle="solid" key="Sélecteur_Hi-Pot ">
-                  <Radio.Button tabIndex={5} style={{margin: '5px'}} value={20}>
-                    20
-                  </Radio.Button>
-                  <Radio.Button style={{margin: '5px'}} value={40}>
-                    40
-                  </Radio.Button>
-                </Radio.Group>
-              </Form.Item>
-            </Row>
-
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Tension au transformateur BT  "
-                name="Tension_au_transformateur_BT_Hipot  "
+                key="Tension_a_appliquer_Induit_P2"
+                label="Tension à appliquer"
+                name="Tension_a_appliquer_Induit_P2 "
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
                   type="number"
                   tabIndex={6}
-                  placeholder="Tension au transformateur BT  "
-                />
-              </Form.Item>
-            </Row>
-
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Tension au transformateur HT  "
-                name="Tension_au_transformateur_HT_Hipot  "
-                rules={[{required: true, message: 'Champ Requis'}]}
-                className="show_item_input">
-                <Input
-                  type="number"
-                  tabIndex={7}
-                  placeholder="Tension au transformateur HT  "
+                  placeholder="Tension à appliquer "
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                name="Hipot_3Phases_Hipot"
+                name="Induit_P2_test"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                <Radio.Group buttonStyle="solid" key="Hipot_3Phases">
+                <Radio.Group buttonStyle="solid" key="Induit_P2_test">
                   <Radio.Button
-                    tabIndex={8}
+                    tabIndex={7}
                     style={{margin: '5px'}}
                     value={true}>
                     Test Réussi
@@ -179,7 +180,7 @@ export default function Hipot({commande, mise_en_placeById}) {
             </Row>
           </>
         ) : (
-          <> test regulier pour 3 phases</>
+          <></>
         )}
       </div>
     </div>

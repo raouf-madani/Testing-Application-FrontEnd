@@ -1,135 +1,180 @@
-// import React, {useState} from 'react';
-// import {Alert} from 'antd';
-// import BornesForm from '@/components/forms/newtest/Bornes';
-// import Ratio_PolariteForm from '@/components/forms/newtest/Ratio_Polarite';
-// import InduitForm from '@/components/forms/newtest/Induit';
-// import HipotForm from '@/components/forms/newtest/Hipot';
-// import Perte_a_VideForm from '@/components/forms/newtest/Perte_a_vide';
-// import RivForm from '@/components/forms/newtest/RIV_Form';
-// import Perte_a_ChargeForm from '@/components/forms/newtest/Perte_a_charge';
-// import Facteur_DissipationForm from '@/components/forms/newtest/Facteur_dissipation';
-// import Decharges_PartiellesForm from '@/components/forms/newtest/Decharges_Partielles';
-// import SignatureForm from '@/components/forms/newtest/Signature';
+import React, {useState} from 'react';
+import {Alert} from 'antd';
+import Essai_Continuite from '@/components/forms/newtest3phases/Essai_Continuite';
+import Resistance from '@/components/forms/newtest3phases/Resistance';
+import Facteur_DissipationForm from '@/components/forms/newtest3phases/Facteur_dissipation';
+import HipotForm from '@/components/forms/newtest3phases/Hipot';
+import Ratio_P1_Form from '@/components/forms/newtest3phases/Ratio_P1';
+import Ratio_P2_Form from '@/components/forms/newtest3phases/Ratio_P2';
+import PolariteForm from '@/components/forms/newtest3phases/Polarite';
+import InduitForm_P1 from '@/components/forms/newtest3phases/Induit_P1';
+import InduitForm_P2 from '@/components/forms/newtest3phases/Induit_P2';
+import Perte_a_VideForm_P1 from '@/components/forms/newtest3phases/Perte_a_vide_P1';
+import Perte_a_VideForm_P2 from '@/components/forms/newtest3phases/Perte_a_vide_P2';
+import RivForm from '@/components/forms/newtest3phases/RIV_Form';
+import Perte_a_ChargeForm_P1 from '@/components/forms/newtest3phases/Perte_a_charge_P1';
+import Perte_a_ChargeForm_P2 from '@/components/forms/newtest3phases/Perte_a_charge_P2';
 
-// function NewTestContent({
-//   etapeName,
-//   UpdateData,
-//   mise_en_placeById,
-//   test_type_selected,
-//   setFinaldata,
-//   Prise,
-//   setNewMisePlace,
-//   error,
-// }) {
-//   const [chance, setchance] = useState(0);
-//   const NewTestHome = () => {
-//     return mise_en_placeById !== null ? (
-//       <Alert
-//         message="Prét a Tester!"
-//         description="Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo"
-//         type="success"
-//         showIcon
-//       />
-//     ) : (
-//       <Alert
-//         message="Mise en place du produit"
-//         description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue. 3phases"
-//         type="info"
-//         showIcon
-//       />
-//     );
-//   };
+import Decharges_PartiellesForm from '@/components/forms/newtest3phases/Decharges_Partielles';
+import SignatureForm from '@/components/forms/newtest/Signature';
+import {
+  Steps,
+  Button,
+  Row,
+  Col,
+  Divider,
+  Form,
+  Modal,
+  Space,
+  Spin,
+  Input,
+} from 'antd';
 
-//   switch (etapeName) {
-//     case 'newtest':
-//       return <NewTestHome />;
-//     case 'Placer Borne':
-//       return (
-//         <BornesForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           setFinaldata={setFinaldata}
-//           setNewMisePlace={setNewMisePlace}
-//         />
-//       );
-//     case 'Ratio/Polarite':
-//       return (
-//         <Ratio_PolariteForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           setFinaldata={setFinaldata}
-//           setNewMisePlace={setNewMisePlace}
-//           Prise={Prise}
-//         />
-//       );
-//     case 'Induit':
-//       return (
-//         <InduitForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           setFinaldata={setFinaldata}
-//           error={error}
-//           setNewMisePlace={setNewMisePlace}
-//         />
-//       );
-//     case 'Hipot':
-//       return (
-//         <HipotForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           setFinaldata={setFinaldata}
-//           error={error}
-//         />
-//       );
-//     case 'Pertes a Vide':
-//       return (
-//         <Perte_a_VideForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           setFinaldata={setFinaldata}
-//           setNewMisePlace={setNewMisePlace}
-//         />
-//       );
-//     case 'RIV':
-//       return (
-//         <RivForm UpdateData={UpdateData} setNewMisePlace={setNewMisePlace} />
-//       );
-//     case 'Pertes a Charge':
-//       return (
-//         <Perte_a_ChargeForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           setFinaldata={setFinaldata}
-//           setNewMisePlace={setNewMisePlace}
-//         />
-//       );
-//     case 'Facteur de dissipation':
-//       return (
-//         <Facteur_DissipationForm
-//           UpdateData={UpdateData}
-//           setFinaldata={setFinaldata}
-//         />
-//       );
+const {Step} = Steps;
+export const Steps1phase = ({current, steps}) => {
+  return (
+    <Steps size="small" current={current} direction="vertical">
+      {steps.map(item => (
+        <Step key={item.title} id="newtest" title={item.title} />
+      ))}
+    </Steps>
+  );
+};
+function NewTestContent({
+  etapeName,
+  UpdateData,
+  commande,
+  mise_en_placeById,
+  test_type_selected,
+  setFinaldata,
+  Prise,
+  setNewMisePlace,
+  error,
+  Finaldata,
+}) {
+  const [chance, setchance] = useState(0);
+  const NewTestHome = () => {
+    return mise_en_placeById !== null ? (
+      <Alert
+        message="Prét a Tester!"
+        description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
+        type="success"
+        showIcon
+      />
+    ) : (
+      <Alert
+        message="Mise en place du produit"
+        description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
+        type="info"
+        showIcon
+      />
+    );
+  };
 
-//     case 'Décharges Partielles':
-//       return (
-//         <Decharges_PartiellesForm
-//           UpdateData={UpdateData}
-//           miseenplaceok={mise_en_placeById}
-//           chance={chance}
-//           setchance={setchance}
-//           setFinaldata={setFinaldata}
-//           setNewMisePlace={setNewMisePlace}
-//         />
-//       );
+  switch (etapeName) {
+    case 'newtest':
+      return <NewTestHome />;
+    case 'Essai continuité':
+      return <Essai_Continuite />;
+    case 'Resistance':
+      return (
+        <Resistance commande={commande} mise_en_placeById={mise_en_placeById} />
+      );
 
-//     case 'Signature':
-//       return (
-//         <SignatureForm UpdateData={UpdateData} setFinaldata={setFinaldata} />
-//       );
-//     default:
-//       return null;
-//   }
-// }
+    case 'Facteur de dissipation':
+      return (
+        <Facteur_DissipationForm
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Hi-Pot':
+      return (
+        <HipotForm commande={commande} mise_en_placeById={mise_en_placeById} />
+      );
+    case 'Ratio P1':
+      return (
+        <Ratio_P1_Form
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Ratio P2':
+      return (
+        <Ratio_P2_Form
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Polarité':
+      return (
+        <PolariteForm
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Induit P1':
+      return (
+        <InduitForm_P1
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Induit P2':
+      return (
+        <InduitForm_P2
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Pertes à vide P1':
+      return (
+        <Perte_a_VideForm_P1
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Pertes à vide P2':
+      return (
+        <Perte_a_VideForm_P2
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Riv':
+      return (
+        <RivForm commande={commande} mise_en_placeById={mise_en_placeById} />
+      );
+    case 'Pertes a Charge P1':
+      return (
+        <Perte_a_ChargeForm_P1
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+    case 'Pertes a Charge P2':
+      return (
+        <Perte_a_ChargeForm_P2
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
 
-// export default NewTestContent;
+    case 'Décharges Partielles':
+      return (
+        <Decharges_PartiellesForm
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+        />
+      );
+
+    case 'Signature':
+      return (
+        <SignatureForm UpdateData={UpdateData} setFinaldata={setFinaldata} />
+      );
+    default:
+      return null;
+  }
+}
+
+export default NewTestContent;

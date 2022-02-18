@@ -69,6 +69,8 @@ export default function Perte_a_vide({
                 name="multiplicateur_Volts_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Multiplicateur Volts"
+                  showSearch
                   initialvalues=""
                   ref={inputEl}
                   tabIndex={1}
@@ -89,6 +91,8 @@ export default function Perte_a_vide({
                 name="Multiplicateur_Amprers_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Multiplicateur Ampéres"
+                  showSearch
                   initialvalues=""
                   tabIndex={2}
                   options={Multiplicateur_Amperes}
@@ -110,8 +114,6 @@ export default function Perte_a_vide({
                 <Input
                   type="number"
                   tabIndex={3}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
@@ -135,8 +137,6 @@ export default function Perte_a_vide({
               type="number"
               ref={!miseenplaceok ? null : inputEl}
               tabIndex={4}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 2"
               onChange={e =>
@@ -153,8 +153,6 @@ export default function Perte_a_vide({
             <Input
               type="number"
               tabIndex={5}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 2"
               onChange={e =>
