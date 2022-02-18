@@ -6,7 +6,9 @@ import Ratio_PolariteForm_P2 from '@/components/forms/newtest/Ratio_Polarite_P2'
 import InduitForm_P1 from '@/components/forms/newtest/Induit_P1';
 import InduitForm_P2 from '@/components/forms/newtest/Induit_P2';
 
-import HipotForm from '@/components/forms/newtest/Hipot';
+import HipotForm_HT from '@/components/forms/newtest/Hipot_HT';
+import HipotForm_BT from '@/components/forms/newtest/Hipot_BT';
+
 import Perte_a_VideForm_P1 from '@/components/forms/newtest/Perte_a_vide_P1';
 import Perte_a_VideForm_P2 from '@/components/forms/newtest/Perte_a_vide_P2';
 import RivForm from '@/components/forms/newtest/RIV_Form';
@@ -49,23 +51,30 @@ function NewTestContent({
   setNewMisePlace,
   error,
   Finaldata,
+
+  // props button reussi
+  next,
 }) {
   const [chance, setchance] = useState(0);
   const NewTestHome = () => {
     return mise_en_placeById !== null ? (
-      <Alert
-        message="Prét a Tester!"
-        description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
-        type="success"
-        showIcon
-      />
+      <div className="Containertest">
+        <Alert
+          message="Prét a Tester!"
+          description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
+          type="success"
+          showIcon
+        />
+      </div>
     ) : (
-      <Alert
-        message="Mise en place du produit"
-        description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
-        type="info"
-        showIcon
-      />
+      <div className="Containertest">
+        <Alert
+          message="Mise en place du produit"
+          description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
+          type="info"
+          showIcon
+        />
+      </div>
     );
   };
 
@@ -109,6 +118,8 @@ function NewTestContent({
           setFinaldata={setFinaldata}
           error={error}
           setNewMisePlace={setNewMisePlace}
+          // props button reussi
+          next={next}
         />
       );
     case 'Induit P2':
@@ -119,15 +130,30 @@ function NewTestContent({
           setFinaldata={setFinaldata}
           error={error}
           setNewMisePlace={setNewMisePlace}
+          // props button reussi
+          next={next}
         />
       );
-    case 'Hipot':
+    case 'Hipot HT':
       return (
-        <HipotForm
+        <HipotForm_HT
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           error={error}
+          // props button reussi
+          next={next}
+        />
+      );
+    case 'Hipot BT':
+      return (
+        <HipotForm_BT
+          UpdateData={UpdateData}
+          miseenplaceok={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          error={error}
+          // props button reussi
+          next={next}
         />
       );
     case 'Pertes a Vide P1':
@@ -188,6 +214,7 @@ function NewTestContent({
           Finaldata={Finaldata}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
+          error={error}
         />
       );
 

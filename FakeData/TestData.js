@@ -5,12 +5,20 @@ export const Fakedata = {
   id_employe: '',
   test_type: null,
   Ratio: {
-    Tension_ht_mesuré: '',
+    //Position1
     Tension_ht_mesuré_P1: '',
+    Tension_ht_mesuré_P1_P1: '',
+    Tension_ht_mesuré_P2_P1: '',
+    Tension_ht_mesuré_P3_P1: '',
+    Tension_ht_mesuré_P4_P1: '',
+    Tension_ht_mesuré_P5_P1: '',
+    //Position2
     Tension_ht_mesuré_P2: '',
-    Tension_ht_mesuré_P3: '',
-    Tension_ht_mesuré_P4: '',
-    Tension_ht_mesuré_P5: '',
+    Tension_ht_mesuré_P1_P2: '',
+    Tension_ht_mesuré_P2_P2: '',
+    Tension_ht_mesuré_P3_P2: '',
+    Tension_ht_mesuré_P4_P2: '',
+    Tension_ht_mesuré_P5_P2: '',
     //Position 1
     Polarite_volts_Mesure_P1: '',
     //Position 2
@@ -67,7 +75,7 @@ export const Fakedata = {
   },
 };
 
-//////// mise en place data
+//////// mise en place data 1 phase
 
 export const Mise_NewData = [
   {
@@ -135,6 +143,191 @@ export const Mise_NewData = [
     },
   },
 ];
+// Final Data 3 phases
+
+export const Fakedata3phases = [
+  {
+    numcommand: 888,
+    temperature_affected: null,
+    Date_Heure: {},
+    id_employe: '',
+    test_type: null,
+    Resistance: {
+      //Position 1
+      Resistance_ht_P1: '',
+      //Position 2
+      Resistance_ht_P2: '',
+      // comment
+      Resistance_bt: '',
+    },
+    Facteur_Dissipation: {
+      //Position 1
+      H: '',
+      L: '',
+    },
+    Hipot: {
+      //Position 1
+      Tension_a_appliquer_Hipot: '',
+      TR_Charge_Hipot: '',
+      TR_Courant_Hipot: '',
+      TR_Voltage_Hipot: '',
+      test_50_Hipot: '',
+      Tension_au_transformateur_BT_Hipot: '',
+      Tension_au_transformateur_HT_Hipot: '',
+      Hipot_3Phases_Hipot: '',
+    },
+    Ratio: {
+      //Position1
+      Tension_a_appliquer_Ratio_P1: '',
+      Tension_côté_primaire_P1: '',
+      TR_Charge_Ratio_P1: '',
+      TR_Courant_Courant_P1: '',
+      TR_Voltage_Voltage_P1: '',
+      Prise1_théoriques_P1: '',
+      Prise2_théoriques_P1: '',
+      Prise3_théoriques_P1: '',
+      Prise4_théoriques_P1: '',
+      Prise5_théoriques_P1: '',
+      Prise1_mesurés_P1: '',
+      Prise2_mesurés_P1: '',
+      Prise3_mesurés_P1: '',
+      Prise4_mesurés_P1: '',
+      Prise5_mesurés_P1: '',
+      //Position2
+      Tension_a_appliquer_Ratio_P2: '',
+      Tension_côté_primaire_P2: '',
+      TR_Charge_Ratio_P2: '',
+      TR_Courant_Courant_P2: '',
+      TR_Voltage_Voltage_P2: '',
+      Prise1_théoriques_P2: '',
+      Prise2_théoriques_P2: '',
+      Prise3_théoriques_P2: '',
+      Prise4_théoriques_P2: '',
+      Prise5_théoriques_P2: '',
+      Prise1_mesurés_P2: '',
+      Prise2_mesurés_P2: '',
+      Prise3_mesurés_P2: '',
+      Prise4_mesurés_P2: '',
+      Prise5_mesurés_P2: '',
+    },
+    Polarité: {
+      Tension_a_appliquer_Polarite: '',
+      Position_du_sélecteur_Tx_Polarite: '',
+      Sélecteur_phase_ligne_Polarite: '',
+      TR_Charge_Polarite: '',
+      TR_Courant_Polarite: '',
+      TR_Voltage_Polarite: '',
+      Lecteur_1PH_Polarite: '',
+      H2_X2_Polarite: '',
+      H3_X3_Polarite: '',
+      H3_X2_Polarite: '',
+      H2_X3_Polarite: '',
+    },
+    Induit: {
+      //Position 1
+      Valeur_Induit_P1: '',
+      Réactance_induit_P1: '',
+      TR_Charge_Induit_P1: '',
+      TR_Courant_Courant_Induit_P1: '',
+      TR_Voltage_Voltage_Induit_P1: '',
+      Tension_a_appliquer_Induit_P1: '',
+      Induit_P1_test: '',
+      //Position 2
+      Valeur_Induit_P2: '',
+      Réactance_induit_P2: '',
+      TR_Charge_Induit_P2: '',
+      TR_Courant_Courant_Induit_P2: '',
+      TR_Voltage_Voltage_Induit_P2: '',
+      Tension_a_appliquer_Induit_P2: '',
+      Induit_P1_test: '',
+    },
+
+    Perte_a_vide: {
+      //Position 1
+      Pertes_câble_PerteVide_P1: '',
+      TR_Charge_PerteVide_P1: '',
+      TR_Courant_PerteVide_P1: '',
+      TR_Voltage_PerteVide_P1: '',
+      Tension_nominale_PerteVide_P1: '',
+      Tension_à_appliqué_PerteVide_P1: '',
+      Pertes_mesurées_PerteVide_P1: '',
+      Courant_excitation_mesuré_PerteVide_P1: '',
+      PV_mesurés_Ph1_PerteVide_P1: '',
+      PV_mesurés_Ph2_PerteVide_P1: '',
+      PV_mesurés_Ph3_PerteVide_P1: '',
+      //Position 2
+      Pertes_câble_PerteVide_P2: '',
+      TR_Charge_PerteVide_P2: '',
+      TR_Courant_PerteVide_P2: '',
+      TR_Voltage_PerteVide_P2: '',
+      Tension_nominale_PerteVide_21: '',
+      Tension_à_appliqué_PerteVide_P2: '',
+      Pertes_mesurées_PerteVide_P2: '',
+      Courant_excitation_mesuré_PerteVide_P2: '',
+      PV_mesurés_Ph1_PerteVide_P2: '',
+      PV_mesurés_Ph2_PerteVide_P2: '',
+      PV_mesurés_Ph3_PerteVide_P2: '',
+    },
+    RIV: {
+      TR_Charge_RIV: '',
+      TR_Courant_RIV: '',
+      TR_Tension_RIV: '',
+      Tension_a_appliquer_RIV: '',
+      Valeur_mesurée_RIV: '',
+    },
+    Perte_a_charge: {
+      //Position 1
+      Pertes_câble_PerteCharge_P1: '',
+      Raccord_flexible_PerteCharge_P1: '',
+      Pertes_raccord_PerteVide_P1: '',
+      TR_Charge_PerteCharge_P1: '',
+      TR_Courant_PerteCharge_P1: '',
+      TR_Voltage_PerteCharge_P1: '',
+      Courant_à_appliqué_PerteCharge_P1: '',
+      PV_mesurés_Ph1_PerteCharge_P1: '',
+      PV_mesurés_Ph2_PerteCharge_P1: '',
+      PV_mesurés_Ph3_PerteCharge_P1: '',
+      Pertes_mesurées_PerteCharge_P1: '',
+      Impédance_mesurée_PerteCharge_P1: '',
+      //Position 2
+      Pertes_câble_PerteCharge_P2: '',
+      Raccord_flexible_PerteCharge_P2: '',
+      Pertes_raccord_PerteVide_P2: '',
+      TR_Charge_PerteCharge_P2: '',
+      TR_Courant_PerteCharge_P2: '',
+      TR_Voltage_PerteCharge_P2: '',
+      Courant_à_appliqué_PerteCharge_P2: '',
+      PV_mesurés_Ph1_PerteCharge_P2: '',
+      PV_mesurés_Ph2_PerteCharge_P2: '',
+      PV_mesurés_Ph3_PerteCharge_P2: '',
+      Pertes_mesurées_PerteCharge_P2: '',
+      Impédance_mesurée_PerteCharge_P2: '',
+    },
+    Decharges_Partielles: {
+      //Position 1
+      Sélecteur_de_prise_DechargeP: '',
+      Sélecteur_de_tension_DechargeP: '',
+      Réactance_DechargeP: '',
+      TR_Charge_DechargeP: '',
+      TR_Courant_DechargeP: '',
+      TR_Voltage_DechargeP: '',
+      Tension_appliqué_1_7_pu_DechargeP: '',
+      Tension_appliqué_1_5_pu_DechargeP: '',
+      S_15: '',
+      S_30: '',
+      S_45: '',
+      S_60: '',
+      S_75: '',
+      S_90: '',
+      S_105: '',
+      S_120: '',
+      S_135: '',
+      S_150: '',
+      S_165: '',
+      S_180: '',
+    },
+  },
+];
 
 // steps 1 phase
 export const steps1phase = [
@@ -151,21 +344,27 @@ export const steps1phase = [
     content: 'Ratio/Polarite P1',
   },
   {
-    title: 'Ratio/Polarite P2',
-    content: 'Ratio/Polarite P2',
-  },
-  {
     title: 'Induit P1',
     content: 'Induit P1',
   },
+  {
+    title: 'Ratio/Polarite P2',
+    content: 'Ratio/Polarite P2',
+  },
+
   {
     title: 'Induit P2',
     content: 'Induit P2',
   },
   {
-    title: 'Hipot',
-    content: 'Hipot',
+    title: 'Hipot BT',
+    content: 'Hipot BT',
   },
+  {
+    title: 'Hipot HT',
+    content: 'Hipot HT',
+  },
+
   {
     title: 'Pertes a Vide P1',
     content: 'Pertes a Vide P1',
@@ -208,38 +407,65 @@ export const steps3phase = [
     content: 'newtest',
   },
   {
-    title: 'Ratio/Polarite',
-    content: 'Ratio/Polarite',
+    title: 'Essai continuité',
+    content: 'Essai continuité',
   },
   {
-    title: 'Induit',
-    content: 'Induit',
-  },
-  {
-    title: 'Hipot',
-    content: 'Hipot',
-  },
-  {
-    title: 'Pertes a Vide',
-    content: 'Pertes a Vide',
-  },
-  {
-    title: 'RIV ',
-    content: 'RIV',
-  },
-  {
-    title: 'Pertes a Charge',
-    content: 'Pertes a Charge',
-  },
-  {
-    title: 'Décharges Partielles',
-    content: 'Décharges Partielles',
+    title: 'Resistance ',
+    content: 'Resistance ',
   },
   {
     title: 'Facteur de dissipation',
     content: 'Facteur de dissipation',
   },
-
+  {
+    title: 'Hi-Pot',
+    content: 'Hi-Pot',
+  },
+  {
+    title: 'Ratio P1',
+    content: 'Ratio P1',
+  },
+  {
+    title: 'Ratio P2',
+    content: 'Ratio P2',
+  },
+  {
+    title: 'Polarité',
+    content: 'Polarité',
+  },
+  {
+    title: 'Induit P1',
+    content: 'Induit P1',
+  },
+  {
+    title: 'Induit P2',
+    content: 'Induit P2',
+  },
+  {
+    title: 'Pertes à vide P1',
+    content: 'Pertes à vide P1',
+  },
+  {
+    title: 'Pertes à vide P2',
+    content: 'Pertes à vide P2',
+  },
+  {
+    title: 'Riv',
+    content: 'Riv',
+  },
+  {
+    title: 'Pertes a Charge P1',
+    content: 'Pertes a Charge P1',
+  },
+  {
+    title: 'Pertes a Charge P2',
+    content: 'Pertes a Charge P2',
+  },
+  {
+    title: 'Décharges Partielles',
+    content: 'Décharges Partielles',
+  },
   {
     title: 'Signature',
     content: 'Signature',

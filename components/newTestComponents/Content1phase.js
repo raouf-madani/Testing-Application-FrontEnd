@@ -24,20 +24,25 @@ const steps = [
     content: 'Ratio/Polarite P1',
   },
   {
-    title: 'Ratio/Polarite P2',
-    content: 'Ratio/Polarite P2',
-  },
-  {
     title: 'Induit P1',
     content: 'Induit P1',
   },
+  {
+    title: 'Ratio/Polarite P2',
+    content: 'Ratio/Polarite P2',
+  },
+
   {
     title: 'Induit P2',
     content: 'Induit P2',
   },
   {
-    title: 'Hipot',
-    content: 'Hipot',
+    title: 'Hipot BT',
+    content: 'Hipot BT',
+  },
+  {
+    title: 'Hipot HT',
+    content: 'Hipot HT',
   },
   {
     title: 'Pertes a Vide P1',
@@ -85,6 +90,15 @@ function ContentAndSteps1phase(props) {
     setNewMisePlace,
     error,
     settablelength,
+    // props for buttons
+    status,
+    resume,
+    stop,
+    AnnulerConfirm,
+    prev,
+    tablelength,
+    // props button reussi
+    next,
   } = props;
   const router = useRouter();
   const [kvaofday, setkvaofday] = useState(13);
@@ -157,7 +171,97 @@ function ContentAndSteps1phase(props) {
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
+              // props button reussi
+              next={next}
             />
+            <div
+              className="steps-action"
+              style={{display: 'flex', justifyContent: 'end'}}>
+              {mise_en_placeById !== null ? (
+                <Form.Item>
+                  {current > 0 && (
+                    <>
+                      {status === 1 ? (
+                        <Button style={{margin: '0 8px'}} onClick={stop}>
+                          Stop
+                        </Button>
+                      ) : (
+                        <Button style={{margin: '0 8px'}} onClick={resume}>
+                          Resume
+                        </Button>
+                      )}
+
+                      <Button
+                        style={{margin: '0 8px'}}
+                        disabled={status == 2 ? true : false}
+                        onClick={() =>
+                          (current == 1 && status === 1) || status === 2
+                            ? AnnulerConfirm()
+                            : prev()
+                        }>
+                        {current == 1 ? 'Annuler' : 'Retour'}
+                      </Button>
+                    </>
+                  )}
+                  {current < tablelength - 1 && (
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      disabled={status == 2 ? true : false}>
+                      {current == 0 ? 'Commencer' : 'Suivant'}
+                    </Button>
+                  )}
+                  {current === tablelength - 1 && (
+                    <Button type="primary" htmlType="submit">
+                      enregistrer
+                    </Button>
+                  )}
+                </Form.Item>
+              ) : (
+                test_type_selected && (
+                  <Form.Item>
+                    {current > 0 && (
+                      <>
+                        {status === 1 ? (
+                          <Button style={{margin: '0 8px'}} onClick={stop}>
+                            Stop
+                          </Button>
+                        ) : (
+                          <Button style={{margin: '0 8px'}} onClick={resume}>
+                            Resume
+                          </Button>
+                        )}
+
+                        <Button
+                          style={{margin: '0 8px'}}
+                          disabled={status == 2 ? true : false}
+                          onClick={() =>
+                            (current == 1 && status === 1) || status === 2
+                              ? AnnulerConfirm()
+                              : prev()
+                          }>
+                          {current == 1 ? 'Annuler' : 'Retour'}
+                        </Button>
+                      </>
+                    )}
+                    {current < tablelength - 1 && (
+                      <Button
+                        type="primary"
+                        tabIndex={mise_en_placeById !== null ? 3 : 15}
+                        htmlType="submit"
+                        disabled={status == 2 ? true : false}>
+                        {current == 0 ? 'Commencer' : 'Suivant'}
+                      </Button>
+                    )}
+                    {current === tablelength - 1 && (
+                      <Button type="primary" htmlType="submit">
+                        enregistrer
+                      </Button>
+                    )}
+                  </Form.Item>
+                )
+              )}
+            </div>
           </div>
         </Col>
       </Row>

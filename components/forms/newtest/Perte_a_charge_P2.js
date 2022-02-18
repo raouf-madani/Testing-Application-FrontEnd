@@ -62,6 +62,8 @@ export default function Perte_a_charge({
                 name="Multiplicateur_Volts_Charge_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Muliplicateur Volts"
+                  showSearch
                   initialvalues=""
                   ref={inputEl}
                   tabIndex={1}
@@ -82,6 +84,8 @@ export default function Perte_a_charge({
                 name="Muliplicateur_Amperes_Charge_P2"
                 className="show_item_input">
                 <Select
+                  placeholder="Muliplicateur Amperes"
+                  showSearch
                   initialvalues=""
                   tabIndex={2}
                   options={Multiplicateur_Amperes}
@@ -103,8 +107,6 @@ export default function Perte_a_charge({
                 <Input
                   type="number"
                   tabIndex={3}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e =>
@@ -125,8 +127,6 @@ export default function Perte_a_charge({
                 <Input
                   type="number"
                   tabIndex={4}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e =>
@@ -156,8 +156,6 @@ export default function Perte_a_charge({
                 <Input
                   type="number"
                   tabIndex={5}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e =>
@@ -204,8 +202,6 @@ export default function Perte_a_charge({
                     <Input
                       type="number"
                       tabIndex={6}
-                      min={10}
-                      max={1000}
                       step="0.0001"
                       placeholder="Position 2"
                       onChange={e =>
@@ -226,8 +222,6 @@ export default function Perte_a_charge({
                     <Input
                       type="number"
                       tabIndex={7}
-                      min={10}
-                      max={1000}
                       step="0.0000001"
                       placeholder="Position 2"
                       onChange={e =>
@@ -269,8 +263,6 @@ export default function Perte_a_charge({
               type="number"
               tabIndex={8}
               ref={!miseenplaceok ? null : inputEl}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 2"
               onChange={e =>
@@ -291,8 +283,6 @@ export default function Perte_a_charge({
             <Input
               type="number"
               tabIndex={9}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 2"
               onChange={e =>

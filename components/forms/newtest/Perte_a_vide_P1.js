@@ -70,6 +70,8 @@ export default function Perte_a_vide({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="Multiplicateur Volts"
+                  showSearch
                   ref={inputEl}
                   tabIndex={1}
                   initialvalues=""
@@ -91,6 +93,8 @@ export default function Perte_a_vide({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="Multiplicateur Ampéres"
+                  showSearch
                   initialvalues=""
                   tabIndex={2}
                   options={Multiplicateur_Amperes}
@@ -113,8 +117,6 @@ export default function Perte_a_vide({
                 <Input
                   type="number"
                   tabIndex={3}
-                  min={10}
-                  max={1000}
                   step="0.0001"
                   placeholder="Position 1"
                   onChange={e => {
@@ -139,8 +141,6 @@ export default function Perte_a_vide({
               ref={!miseenplaceok ? null : inputEl}
               type="number"
               tabIndex={4}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 1"
               onChange={e =>
@@ -158,8 +158,6 @@ export default function Perte_a_vide({
             <Input
               type="number"
               tabIndex={5}
-              min={10}
-              max={1000}
               step="0.0001"
               placeholder="Position 1"
               onChange={e =>

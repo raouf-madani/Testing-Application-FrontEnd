@@ -7,6 +7,8 @@ export default function Induit({
   setFinaldata,
   setNewMisePlace,
   error,
+  // props button reussi
+  next,
 }) {
   const {TextArea} = Input;
   const inputEl = useRef(null);
@@ -89,6 +91,8 @@ export default function Induit({
                 className="show_item_input"
                 rules={[{required: true, message: 'Champ Requis'}]}>
                 <Select
+                  placeholder="Réactance SKE77"
+                  showSearch
                   ref={inputEl}
                   initialvalues=""
                   tabIndex={1}
@@ -106,6 +110,8 @@ export default function Induit({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="Réactance SKE17"
+                  showSearch
                   initialvalues=""
                   tabIndex={2}
                   options={SKE17}
@@ -125,6 +131,8 @@ export default function Induit({
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
+                  placeholder="Fréquence"
+                  showSearch
                   tabIndex={3}
                   initialvalues=""
                   options={Frequence_Gen}
@@ -148,29 +156,41 @@ export default function Induit({
             Tension applique position1 : 20V
           </Form.Item>
         </Row>
-
-        <Row
-          style={{
-            justifyContent: 'center',
-            marginBottom: '10px',
-          }}>
-          <Form.Item
-            name="Commentaire"
-            label="Commentaire"
+        {!miseenplaceok ? (
+          <Row
             style={{
-              width: '60%',
-              marginBottom: '5px',
+              justifyContent: 'center',
+              marginBottom: '10px',
             }}>
-            <TextArea
-              ref={!miseenplaceok ? null : inputEl}
-              tabIndex={!miseenplaceok ? 4 : 1}
-              rows={4}
-              onChange={e => {
-                UpdateData('Comment', e.target.value, setFinaldata);
-              }}
-            />
-          </Form.Item>
-        </Row>
+            <Form.Item
+              name="Commentaire"
+              label="Commentaire"
+              style={{
+                width: '60%',
+                marginBottom: '5px',
+              }}>
+              <TextArea
+                ref={!miseenplaceok ? null : inputEl}
+                tabIndex={!miseenplaceok ? 4 : 1}
+                rows={4}
+                onChange={e => {
+                  UpdateData('Comment', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          </Row>
+        ) : (
+          <>
+            <Row
+              style={{
+                justifyContent: 'center',
+              }}>
+              <Form.Item className="show_item">
+                {miseenplaceok.Induit.Comment}
+              </Form.Item>
+            </Row>
+          </>
+        )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             name="Resultat_P1"

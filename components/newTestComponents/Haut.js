@@ -161,7 +161,7 @@ const Haut = ({
 
   return (
     <Collapse
-      defaultActiveKey="1"
+      defaultActiveKey=""
       onChange={key => {
         console.log(key);
       }}
