@@ -64,7 +64,7 @@ export default function Perte_a_charge({
         dashed
         orientation="left"
         style={{color: '#34b1ab', marginBottom: '40px'}}>
-        <h3>Perte A Charge Position 1</h3>{' '}
+        <h3>Perte A Charge Position 2</h3>{' '}
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
@@ -126,7 +126,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={3}
                   step="0.0001"
-                  placeholder="Position 1"
+                  placeholder="Position 2"
                   onChange={e =>
                     UpdateData(
                       'Perte_table_charge_P2',
@@ -146,7 +146,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={4}
                   step="0.0001"
-                  placeholder="Position 1"
+                  placeholder="Position 2"
                   onChange={e =>
                     UpdateData(
                       'Courant_de_correction_P2',
@@ -171,7 +171,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={5}
                   step="0.0001"
-                  placeholder="Position 1"
+                  placeholder="Position 2"
                   onChange={e =>
                     UpdateData(
                       'Courant_appliquié_transfo_P2',
@@ -256,7 +256,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={7}
                   step="0.0001"
-                  placeholder="Position 1"
+                  placeholder="Position 2"
                   onChange={e =>
                     UpdateData('Resistance_ht_P2', e.target.value, setFinaldata)
                   }
@@ -272,7 +272,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={8}
                   step="0.001"
-                  placeholder="Position 1"
+                  placeholder="Position 2"
                   onChange={e =>
                     UpdateData('Resistance_bt_P2', e.target.value, setFinaldata)
                   }
@@ -291,7 +291,7 @@ export default function Perte_a_charge({
               tabIndex={9}
               type="number"
               step="0.0001"
-              placeholder="Position 1"
+              placeholder="Position 2"
               onChange={e =>
                 UpdateData(
                   'Perte_charge_mesuré_P2',
@@ -311,7 +311,7 @@ export default function Perte_a_charge({
               type="number"
               tabIndex={10}
               step="0.0001"
-              placeholder="Position 1"
+              placeholder="Position 2"
               onChange={e =>
                 UpdateData('Impédance_mesuré_P2', e.target.value, setFinaldata)
               }

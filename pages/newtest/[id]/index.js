@@ -345,6 +345,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                       settest_type_selected={settest_type_selected}
                       commande={commande}
                       test_type_selected={test_type_selected}
+                      temperature_noaffected={temperature_noaffected}
                       form={form}
                       Finaldata={
                         TypeOfTest == '1phase' ? Finaldata : Finaldata3phases
