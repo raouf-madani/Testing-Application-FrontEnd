@@ -90,6 +90,7 @@ function ContentAndSteps1phase(props) {
     setNewMisePlace,
     error,
     settablelength,
+    form,
     // props for buttons
     status,
     resume,
@@ -171,6 +172,7 @@ function ContentAndSteps1phase(props) {
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
+              form={form}
               // props button reussi
               next={next}
             />

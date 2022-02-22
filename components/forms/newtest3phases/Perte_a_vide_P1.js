@@ -1,4 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+import {TR_Charge, TR_Courant, TR_Voltage} from '@/FakeData/TestData';
+
 import {
   Form,
   Input,
@@ -12,34 +15,11 @@ import {
   Divider,
 } from 'antd';
 
-export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
-  const TR_Charge = [
-    {label: '347/600', value: 347 / 600},
-    {label: '693/1200', value: 693 / 1200},
-    {label: '1385/2400', value: 1385 / 2400},
-    {label: '2771/4800', value: 2771 / 4800},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Courant = [
-    {label: '5/X1', value: 5 / 1},
-    {label: '10/X2', value: 10 / 2},
-    {label: '25/X5', value: 25 / 5},
-    {label: '50/X10', value: 50 / 10},
-    {label: '100/X20', value: 100 / 20},
-    {label: '200/X40', value: 200 / 40},
-    {label: '400/X80', value: 400 / 80},
-    {label: '600/X120', value: 600 / 120},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Voltage = [
-    {label: '240/X2', value: 240 / 2},
-    {label: '480/X4', value: 480 / 4},
-    {label: '600/X5', value: 600 / 5},
-    {label: '1200/X10', value: 1200 / 10},
-    {label: '2400/X20', value: 2400 / 20},
-    {label: '4800/X40', value: 4800 / 40},
-    {label: 'N/A', value: 'N/A'},
-  ];
+export default function Perte_a_vide_p1({
+  commande,
+  mise_en_placeById,
+  setFinaldata,
+}) {
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -70,6 +50,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                   ref={inputEl}
                   tabIndex={1}
                   placeholder="Pertes câble P1"
+                  onChange={e => {
+                    UpdateData(
+                      'Pertes_câble_PerteVide_P1',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -86,14 +73,17 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={2}
                   options={TR_Charge}
+                  onChange={value => {
+                    UpdateData('TR_Charge_PerteVide_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="TR_Courant_Courant_PerteVide_P1"
+                key="TR_Courant_PerteVide_P1"
                 label="TR Courant"
-                name="TR_Courant_Courant_PerteVide_P1 "
+                name="TR_Courant_PerteVide_P1 "
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
@@ -102,14 +92,17 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={3}
                   options={TR_Courant}
+                  onChange={value => {
+                    UpdateData('TR_Courant_PerteVide_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="TR_Voltage_Voltage_PerteVide_P1"
+                key="TR_Voltage_PerteVide_P1"
                 label="TR Voltage  "
-                name="TR_Voltage_Voltage_PerteVide_P1"
+                name="TR_Voltage_PerteVide_P1"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
@@ -118,6 +111,9 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={4}
                   options={TR_Voltage}
+                  onChange={value => {
+                    UpdateData('TR_Voltage_PerteVide_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -132,6 +128,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                   type="number"
                   tabIndex={5}
                   placeholder="% Tension nominale P1"
+                  onChange={e => {
+                    UpdateData(
+                      'Tension_nominale_PerteVide_P1',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -146,6 +149,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                   type="number"
                   tabIndex={6}
                   placeholder="Tension à appliqué P1"
+                  onChange={e => {
+                    UpdateData(
+                      'Tension_à_appliqué_PerteVide_P1',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -162,6 +172,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                       type="number"
                       tabIndex={7}
                       placeholder="Pertes mesurées P1"
+                      onChange={e => {
+                        UpdateData(
+                          'Pertes_mesurées_PerteVide_P1',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
                     />
                   </Form.Item>
                 </Row>
@@ -176,6 +193,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                       type="number"
                       tabIndex={8}
                       placeholder="Courant excitation mesuré P1"
+                      onChange={e => {
+                        UpdateData(
+                          'Courant_excitation_mesuré_PerteVide_P1',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
                     />
                   </Form.Item>
                 </Row>
@@ -193,6 +217,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                       type="number"
                       tabIndex={9}
                       placeholder="PV (W) mesurés Ph1 P1"
+                      onChange={e => {
+                        UpdateData(
+                          'PV_mesurés_Ph1_PerteVide_P1',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
                     />
                   </Form.Item>
                 </Row>
@@ -207,6 +238,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                       type="number"
                       tabIndex={10}
                       placeholder="PV (W) mesurés Ph2 P1"
+                      onChange={e => {
+                        UpdateData(
+                          'PV_mesurés_Ph2_PerteVide_P1',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
                     />
                   </Form.Item>
                 </Row>
@@ -221,6 +259,13 @@ export default function Perte_a_vide_p1({commande, mise_en_placeById}) {
                       type="number"
                       tabIndex={11}
                       placeholder="PV (W) mesurés Ph3 P1"
+                      onChange={e => {
+                        UpdateData(
+                          'PV_mesurés_Ph3_PerteVide_P1',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
                     />
                   </Form.Item>
                 </Row>

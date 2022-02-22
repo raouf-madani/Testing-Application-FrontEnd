@@ -17,6 +17,9 @@ export default function Induit({
       inputEl.current.focus();
     }
   }, [inputEl]);
+  useEffect(() => {
+    UpdateData('Test_Induit_P1', true, setFinaldata);
+  }, []);
   const Frequence_Gen = [
     {label: 400, value: 400},
     {label: 208, value: 208},
@@ -170,7 +173,6 @@ export default function Induit({
                 marginBottom: '5px',
               }}>
               <TextArea
-                ref={!miseenplaceok ? null : inputEl}
                 tabIndex={!miseenplaceok ? 4 : 1}
                 rows={4}
                 onChange={e => {
@@ -192,14 +194,16 @@ export default function Induit({
           </>
         )}
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            name="Resultat_P1"
-            rules={[{required: true, message: 'Champ Requis'}]}>
-            <Radio.Group initialvalues="reussit" buttonStyle="solid">
+          <Form.Item name="Resultat_P1">
+            <Radio.Group defaultValue="reussit" buttonStyle="solid">
               <Radio.Button
                 tabIndex={!miseenplaceok ? 5 : 2}
+                ref={!miseenplaceok ? null : inputEl}
                 style={{margin: '5px'}}
                 value="reussit"
+                onKeyPress={() =>
+                  UpdateData('Test_Induit_P1', true, setFinaldata)
+                }
                 onClick={() =>
                   UpdateData('Test_Induit_P1', true, setFinaldata)
                 }>

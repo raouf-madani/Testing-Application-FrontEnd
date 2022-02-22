@@ -89,6 +89,7 @@ function ContentAndSteps1phase(props) {
     setNewMisePlace,
     error,
     settablelength,
+    form,
     // props for buttons
     status,
     resume,
@@ -100,13 +101,13 @@ function ContentAndSteps1phase(props) {
   const router = useRouter();
   const [kvaofday, setkvaofday] = useState(13);
   useEffect(() => {
-    const filter1 = () => {
-      if (mise_en_placeById != null) {
-        return (steps = steps.filter(
-          step => !step.content.includes('Placer Borne')
-        ));
-      }
-    };
+    // const filter1 = () => {
+    //   if (mise_en_placeById != null) {
+    //     return (steps = steps.filter(
+    //       step => !step.content.includes('Resistance')
+    //     ));
+    //   }
+    // };
     const filter2 = () => {
       if (
         mise_en_placeById != null &&
@@ -128,7 +129,7 @@ function ContentAndSteps1phase(props) {
         ));
       }
     };
-    filter1();
+    // filter1();
     filter2();
     filter3();
     settablelength(steps.length);
@@ -169,6 +170,7 @@ function ContentAndSteps1phase(props) {
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}
               error={error}
+              form={form}
             />
             <div
               className="steps-action"

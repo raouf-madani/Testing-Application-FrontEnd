@@ -55,7 +55,6 @@ const Haut = ({
           temperature_noaffected,
           setFinaldata
         );
-        settemperature_noaffected(null);
       }
     };
     affecter();

@@ -1,7 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+
 import {Form, Input, Space, Select, DatePicker, Row, Divider} from 'antd';
 
-export default function Facteur_dissipation({UpdateData, setFinaldata}) {
+export default function Facteur_dissipation({setFinaldata}) {
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -23,14 +25,29 @@ export default function Facteur_dissipation({UpdateData, setFinaldata}) {
               name="H"
               noStyle
               rules={[{required: true, message: 'H required'}]}>
-              <Input ref={inputEl} type="number" tabIndex={1} placeholder="H" />
+              <Input
+                ref={inputEl}
+                type="number"
+                tabIndex={1}
+                placeholder="H"
+                onChange={e => {
+                  UpdateData('H', e.target.value, setFinaldata);
+                }}
+              />
             </Form.Item>
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item label="L" style={{marginBottom: 0, width: '30%'}}>
             <Form.Item name="L" noStyle>
-              <Input type="number" tabIndex={2} placeholder="L" />
+              <Input
+                type="number"
+                tabIndex={2}
+                placeholder="L"
+                onChange={e => {
+                  UpdateData('L', e.target.value, setFinaldata);
+                }}
+              />
             </Form.Item>
           </Form.Item>
         </Row>

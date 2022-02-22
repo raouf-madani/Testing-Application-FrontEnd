@@ -8,7 +8,12 @@ import Haut from '@/components/newTestComponents/Haut';
 
 import DisplayComponent from '@/components/Timer';
 import TestArea from '@/components/test_area';
-import {Fakedata, Fakedata3phases, Mise_NewData} from '@/FakeData/TestData';
+import {
+  Fakedata,
+  Fakedata3phases,
+  Mise_NewData,
+  Mise_NewData3phases,
+} from '@/FakeData/TestData';
 import {useGetCommande} from '@/actions/commandes';
 import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
 
@@ -47,6 +52,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [Finaldata, setFinaldata] = useState(Fakedata);
   const [Finaldata3phases, setFinaldata3phases] = useState(Fakedata3phases);
   const [NewMisePlace, setNewMisePlace] = useState(Mise_NewData);
+  const [NewMisePlace3phases, setNewMisePlace3phases] =
+    useState(Mise_NewData3phases);
+
   const [modal, setmodal] = useState(false);
   const {data: dataU, loading: loadingU} = useGetUser();
   const [test_type_selected, settest_type_selected] = useState();
@@ -59,6 +67,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
+  const TypeOfTest = mise_en_placeById
+    ? mise_en_placeById.Type_test
+    : test_type_selected;
   const [form] = Form.useForm();
   const start = () => {
     run();
@@ -101,9 +112,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
 
   const resume = () => start();
 
-  const next = () => {
+  const next = data => {
     if (current == 0) {
-      if (Finaldata.temperature_affected == null) {
+      if (data.temperature_affected == null) {
         alert(
           temperature_noaffected
             ? 'affecter la temperature'
@@ -112,16 +123,36 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       } else {
         if (mise_en_placeById !== null) {
           console.log('begin the work mise en place done');
-          UpdateData('numcommand', 1010, setFinaldata);
+          UpdateData(
+            'numcommand',
+            1010,
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
           setCurrent(current + 1);
         } else {
           console.log('begin the work No mise en place ');
-          UpdateData('numcommand', 1010, setFinaldata);
-          UpdateData('numcommand', 1010, setNewMisePlace);
+          UpdateData(
+            'numcommand',
+            1010,
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
+          UpdateData(
+            'numcommand',
+            1010,
+            TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
+          );
           // Type test
-          UpdateData('test_type', test_type_selected, setFinaldata);
-          UpdateData('test_type', test_type_selected, setNewMisePlace);
-          console.log(' la final data', Finaldata);
+          UpdateData(
+            'test_type',
+            test_type_selected,
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
+          UpdateData(
+            'test_type',
+            test_type_selected,
+            TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
+          );
+          console.log(' la final data', data);
           setCurrent(current + 1);
         }
       }
@@ -131,13 +162,13 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     } else if (current < tablelength - 1) {
       setCurrent(current + 1);
     } else {
-      if (Finaldata.temperature_affected !== null) {
+      if (data.temperature_affected !== null) {
         reset();
         form.resetFields();
         setmodal(!modal);
 
-        console.log('the final data to create is ', Finaldata);
-        _CreateTest(Finaldata);
+        console.log('the final data to create is ', data);
+        // _CreateTest(data);
       } else {
         alert('affecter la temperature');
       }
@@ -147,60 +178,10 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       console.log(teststatus);
     }
 
-    console.log(Finaldata);
-    console.log(NewMisePlace);
+    console.log(data);
+    console.log(TypeOfTest == '1phase' ? NewMisePlace : NewMisePlace3phases);
+    console.log('the current is ', current);
   };
-  // nex for 3 phases
-  const next3phases = () => {
-    if (current == 0) {
-      if (Finaldata3phases.temperature_affected == null) {
-        alert(
-          temperature_noaffected
-            ? 'affecter la temperature'
-            : 'affecter la temperature non affected'
-        );
-      } else {
-        if (mise_en_placeById !== null) {
-          console.log('begin the work mise en place done');
-          UpdateData('numcommand', 1010, setFinaldata3phases);
-          setCurrent(current + 1);
-        } else {
-          console.log('begin the work No mise en place ');
-          UpdateData('numcommand', 1010, setFinaldata3phases);
-          UpdateData('numcommand', 1010, setNewMisePlace);
-          // Type test
-          UpdateData('test_type', test_type_selected, setFinaldata3phases);
-          UpdateData('test_type', test_type_selected, setNewMisePlace);
-          console.log(' la final data', Finaldata3phases);
-          setCurrent(current + 1);
-        }
-      }
-      {
-        status === 0 ? start() : '';
-      }
-    } else if (current < tablelength - 1) {
-      setCurrent(current + 1);
-    } else {
-      if (Finaldata3phases.temperature_affected !== null) {
-        reset();
-        form.resetFields();
-        setmodal(!modal);
-
-        console.log('the final data to create is ', Finaldata3phases);
-        _CreateTest(Finaldata3phases);
-      } else {
-        alert('affecter la temperature');
-      }
-    }
-    if (current == tablelength - 1) {
-      setteststatus('fin');
-      console.log(teststatus);
-    }
-
-    console.log(Finaldata3phases);
-    console.log(NewMisePlace);
-  };
-  ///
   const prev = () => {
     setCurrent(current - 1);
   };
@@ -213,21 +194,6 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
         setCurrent(0);
         settest_type_selected();
         setFinaldata(Fakedata);
-        form.resetFields();
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
-    });
-  }
-  // for 3 phases
-  function AnnulerConfirm3phases() {
-    confirm({
-      title: "etes vous sur d'annuler le test Courant?",
-      onOk() {
-        reset();
-        setCurrent(0);
-        settest_type_selected();
         setFinaldata3phases(Fakedata3phases);
         form.resetFields();
       },
@@ -260,7 +226,54 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       </Basepage>
     );
   }
-
+  let initial_from_values1phase = {
+    // Decharges Partielle
+    S_15: Finaldata.Decharges_Partielles.S_15,
+    S_30: Finaldata.Decharges_Partielles.S_30,
+    S_45: Finaldata.Decharges_Partielles.S_45,
+    S_60: Finaldata.Decharges_Partielles.S_60,
+    S_75: Finaldata.Decharges_Partielles.S_75,
+    S_90: Finaldata.Decharges_Partielles.S_90,
+    S_105: Finaldata.Decharges_Partielles.S_105,
+    S_120: Finaldata.Decharges_Partielles.S_120,
+    S_135: Finaldata.Decharges_Partielles.S_135,
+    S_150: Finaldata.Decharges_Partielles.S_150,
+    S_165: Finaldata.Decharges_Partielles.S_165,
+    S_180: Finaldata.Decharges_Partielles.S_180,
+    //Pertes a Charge
+    Resistance_HT_P1: Finaldata.Perte_a_charge.Resistance_ht_P1,
+    Resistance_BT_P1: Finaldata.Perte_a_charge.Resistance_bt_P1,
+    Resistance_HT_P2: Finaldata.Perte_a_charge.Resistance_ht_P2,
+    Resistance_BT_P2: Finaldata.Perte_a_charge.Resistance_bt_P2,
+  };
+  let initial_from_values3phase = {
+    // Decharges Partielles
+    S_15: Finaldata3phases.Decharges_Partielles.S_15,
+    S_30: Finaldata3phases.Decharges_Partielles.S_30,
+    S_45: Finaldata3phases.Decharges_Partielles.S_45,
+    S_60: Finaldata3phases.Decharges_Partielles.S_60,
+    S_75: Finaldata3phases.Decharges_Partielles.S_75,
+    S_90: Finaldata3phases.Decharges_Partielles.S_90,
+    S_105: Finaldata3phases.Decharges_Partielles.S_105,
+    S_120: Finaldata3phases.Decharges_Partielles.S_120,
+    S_135: Finaldata3phases.Decharges_Partielles.S_135,
+    S_150: Finaldata3phases.Decharges_Partielles.S_150,
+    S_165: Finaldata3phases.Decharges_Partielles.S_165,
+    S_180: Finaldata3phases.Decharges_Partielles.S_180,
+    // Resistance
+    Resistance_ht_P1: Finaldata3phases.Resistance.Resistance_ht_P1,
+    Resistance_ht_P2: Finaldata3phases.Resistance.Resistance_ht_P2,
+    Resistance_bt: Finaldata3phases.Resistance.Resistance_bt,
+    H1_H2_P1: Finaldata3phases.Resistance.H1_H2_P1,
+    H1_H3_P1: Finaldata3phases.Resistance.H1_H3_P1,
+    H2_H3_P1: Finaldata3phases.Resistance.H2_H3_P1,
+    H1_H2_P2: Finaldata3phases.Resistance.H1_H2_P1,
+    H1_H3_P2: Finaldata3phases.Resistance.H1_H3_P1,
+    H2_H3_P2: Finaldata3phases.Resistance.H2_H3_P1,
+    X1_X2: Finaldata3phases.Resistance.H1_H2_P1,
+    X1_X3: Finaldata3phases.Resistance.H1_H3_P1,
+    X2_X3: Finaldata3phases.Resistance.H2_H3_P1,
+  };
   return (
     <div>
       <Head>
@@ -279,10 +292,14 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                 <div>
                   <Haut
                     mise_en_placeById={mise_en_placeById}
-                    Finaldata={Finaldata}
-                    setFinaldata={setFinaldata}
-                    Finaldata3phases={Finaldata3phases}
-                    setFinaldata3phases={setFinaldata3phases}
+                    Finaldata={
+                      TypeOfTest == '1phase' ? Finaldata : Finaldata3phases
+                    }
+                    setFinaldata={
+                      TypeOfTest == '1phase'
+                        ? setFinaldata
+                        : setFinaldata3phases
+                    }
                     commande={commande}
                     UpdateData={UpdateData}
                     useGetMise={useGetMise}
@@ -302,32 +319,46 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     form={form}
                     layout="vertical"
                     name="results_form"
-                    onFinish={test_type_selected == '1phase' ? next : next}
-                    initialValues={{
-                      S_15: Finaldata.Decharges_Partielles.S_15,
-                      S_30: Finaldata.Decharges_Partielles.S_30,
-                      S_45: Finaldata.Decharges_Partielles.S_45,
-                      S_60: Finaldata.Decharges_Partielles.S_60,
-                      S_75: Finaldata.Decharges_Partielles.S_75,
-                      S_90: Finaldata.Decharges_Partielles.S_90,
-                      S_105: Finaldata.Decharges_Partielles.S_105,
-                      S_120: Finaldata.Decharges_Partielles.S_120,
-                      S_135: Finaldata.Decharges_Partielles.S_135,
-                      S_150: Finaldata.Decharges_Partielles.S_150,
-                      S_165: Finaldata.Decharges_Partielles.S_165,
-                      S_180: Finaldata.Decharges_Partielles.S_180,
-                    }}
+                    onFinish={
+                      test_type_selected == '1phase'
+                        ? () =>
+                            next(
+                              TypeOfTest == '1phase'
+                                ? Finaldata
+                                : Finaldata3phases
+                            )
+                        : () =>
+                            next(
+                              TypeOfTest == '1phase'
+                                ? Finaldata
+                                : Finaldata3phases
+                            )
+                    }
+                    initialValues={
+                      TypeOfTest == '1phase'
+                        ? initial_from_values1phase
+                        : initial_from_values3phase
+                    }
                     autoComplete="off">
                     <TestArea
                       mise_en_placeById={mise_en_placeById}
                       settest_type_selected={settest_type_selected}
                       commande={commande}
                       test_type_selected={test_type_selected}
-                      Finaldata={Finaldata}
-                      setFinaldata={setFinaldata}
-                      Finaldata3phases={Finaldata3phases}
-                      setFinaldata3phases={setFinaldata3phases}
-                      setNewMisePlace={setNewMisePlace}
+                      form={form}
+                      Finaldata={
+                        TypeOfTest == '1phase' ? Finaldata : Finaldata3phases
+                      }
+                      setFinaldata={
+                        TypeOfTest == '1phase'
+                          ? setFinaldata
+                          : setFinaldata3phases
+                      }
+                      setNewMisePlace={
+                        TypeOfTest == '1phase'
+                          ? setNewMisePlace
+                          : setNewMisePlace3phases
+                      }
                       error={error}
                       current={current}
                       settablelength={settablelength}
@@ -339,8 +370,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                       prev={prev}
                       tablelength={tablelength}
                       // props button reussi
-                      next={next}
-                      next3phases={next3phases}
+                      next={() =>
+                        next(
+                          TypeOfTest == '1phase' ? Finaldata : Finaldata3phases
+                        )
+                      }
                     />
                   </Form>
                   <Modalnewtestscanner

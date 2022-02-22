@@ -7,8 +7,15 @@ export default function Perte_a_charge({
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
+  Finaldata,
+  form,
 }) {
-  const [resistance_P1, setresistance_P1] = useState();
+  const [resistance_P1, setresistance_P1] = useState(
+    Finaldata.Perte_a_charge.Resistance_ht_P1 ||
+      Finaldata.Perte_a_charge.Resistance_bt_P1
+      ? true
+      : false
+  );
 
   const inputEl = useRef(null);
   useEffect(() => {
@@ -42,6 +49,15 @@ export default function Perte_a_charge({
     {label: '38 + sfils', value: '38 + sfils'},
     {label: '39 + sfils', value: '39 + sfils'},
   ];
+
+  useEffect(() => {
+    if (!resistance_P1) {
+      form.resetFields(['Resistance_HT_P1']),
+        form.resetFields(['Resistance_BT_P1']),
+        UpdateData('Resistance_ht_P1', '', setFinaldata),
+        UpdateData('Resistance_bt_P1', '', setFinaldata);
+    }
+  }, [resistance_P1]);
   return (
     <div className="Containertest">
       <Divider
@@ -220,13 +236,18 @@ export default function Perte_a_charge({
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             name="Resistance_Switch_P1"
-            style={{marginBottom: 0, width: '70%'}}
-            valuePropName="checked">
+            style={{marginBottom: 0, width: '70%'}}>
             <Switch
               checked={resistance_P1}
               checkedChildren="Résistances"
               unCheckedChildren="Résistances"
-              onChange={() => setresistance_P1(resistance_P1 ? false : true)}
+              onChange={() =>
+                resistance_P1 != true
+                  ? setresistance_P1(true)
+                  : (setresistance_P1(false),
+                    UpdateData('Resistance_ht_P1', '', setFinaldata),
+                    UpdateData('Resistance_bt_P1', '', setFinaldata))
+              }
             />
           </Form.Item>
         </Row>
@@ -244,11 +265,7 @@ export default function Perte_a_charge({
                   step="0.0001"
                   placeholder="Position 1"
                   onChange={e =>
-                    UpdateData(
-                      'Resistance_ht_P1',
-                      e.target.value,
-                      setNewMisePlace
-                    )
+                    UpdateData('Resistance_ht_P1', e.target.value, setFinaldata)
                   }
                 />
               </Form.Item>
@@ -265,11 +282,7 @@ export default function Perte_a_charge({
                   step="0.001"
                   placeholder="Position 1"
                   onChange={e =>
-                    UpdateData(
-                      'Resistance_bt_P1',
-                      e.target.value,
-                      setNewMisePlace
-                    )
+                    UpdateData('Resistance_bt_P1', e.target.value, setFinaldata)
                   }
                 />
               </Form.Item>

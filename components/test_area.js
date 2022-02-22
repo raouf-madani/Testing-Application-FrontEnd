@@ -28,6 +28,7 @@ function Test_area({
   error,
   settest_type_selected,
   settablelength,
+  form,
   // props for buttons
   status,
   resume,
@@ -58,6 +59,7 @@ function Test_area({
               error={error}
               current={current}
               settablelength={settablelength}
+              form={form}
               //props for buttons
               status={status}
               resume={resume}
@@ -78,6 +80,7 @@ function Test_area({
               setNewMisePlace={setNewMisePlace}
               error={error}
               current={current}
+              form={form}
               settablelength={settablelength}
               //props for buttons
               status={status}
@@ -103,6 +106,7 @@ function Test_area({
               setNewMisePlace={setNewMisePlace}
               error={error}
               current={current}
+              form={form}
               settablelength={settablelength}
               //props for buttons
               status={status}
@@ -124,6 +128,7 @@ function Test_area({
               setNewMisePlace={setNewMisePlace}
               error={error}
               current={current}
+              form={form}
               settablelength={settablelength}
               //props for buttons
               status={status}

@@ -4,10 +4,15 @@ import {Form, Input, Radio, Row, Divider, Select} from 'antd';
 export default function Induit({
   UpdateData,
   miseenplaceok,
+  Finaldata,
   setFinaldata,
   setNewMisePlace,
   error,
 }) {
+  const [selectedRadio, setselectedRadio] = useState(
+    Finaldata.Induit.Test_Induit_P2
+  );
+
   const {TextArea} = Input;
   const inputEl = useRef(null);
   useEffect(() => {
@@ -155,15 +160,22 @@ export default function Induit({
               width: 'calc(50% - 8px)',
               margin: '0 8px',
             }}>
-            <Radio.Group buttonStyle="solid">
+            <Radio.Group
+              defaultValue={Finaldata.Induit.Test_Induit_P2 && 'reussit'}
+              buttonStyle="solid">
               <Radio.Button
                 ref={!miseenplaceok ? null : inputEl}
                 tabIndex={!miseenplaceok ? 4 : 1}
                 style={{margin: '5px'}}
-                value={true}
-                onClick={() =>
-                  UpdateData('Test_Induit_P2', true, setFinaldata)
-                }>
+                value="reussit"
+                onKeyPress={() => {
+                  UpdateData('Test_Induit_P2', true, setFinaldata);
+                  console.log('enter pressed');
+                }}
+                onClick={() => {
+                  UpdateData('Test_Induit_P2', true, setFinaldata);
+                  console.log('mouse pressed');
+                }}>
                 reussit{' '}
               </Radio.Button>
               <Radio.Button
@@ -172,12 +184,13 @@ export default function Induit({
                   error('Le Test de Induit Position 2 est echoué...');
                 }}
                 style={{margin: '5px'}}
-                value={false}>
+                value="echoue">
                 echoue
               </Radio.Button>
             </Radio.Group>
           </Form.Item>
         </Row>
+        {selectedRadio}
       </div>
     </div>
   );

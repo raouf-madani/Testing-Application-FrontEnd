@@ -1,13 +1,22 @@
 import React, {useRef, useEffect, useState} from 'react';
 import {Form, Input, Row, Divider, Select, Switch} from 'antd';
+import {Fakedata, Fakedata3phases, Mise_NewData} from '@/FakeData/TestData';
+import {UpdateData} from '@/actions/newtestupdate';
 
 export default function Perte_a_charge({
-  UpdateData,
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
+  Finaldata,
+  form,
 }) {
-  const [resistance_P2, setresistance_P2] = useState(false);
+  const [resistance_P2, setresistance_P2] = useState(
+    Finaldata.Perte_a_charge.Resistance_ht_P2 ||
+      Finaldata.Perte_a_charge.Resistance_bt_P2
+      ? true
+      : false
+  );
+
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -40,13 +49,22 @@ export default function Perte_a_charge({
     {label: '38 + sfils', value: '38 + sfils'},
     {label: '39 + sfils', value: '39 + sfils'},
   ];
+
+  useEffect(() => {
+    if (!resistance_P2) {
+      form.resetFields(['Resistance_HT_P2']),
+        form.resetFields(['Resistance_BT_P2']),
+        UpdateData('Resistance_ht_P2', '', setFinaldata),
+        UpdateData('Resistance_bt_P2', '', setFinaldata);
+    }
+  }, [resistance_P2]);
   return (
     <div className="Containertest">
       <Divider
         dashed
         orientation="left"
         style={{color: '#34b1ab', marginBottom: '40px'}}>
-        <h3>Perte A Charge Position 2</h3>{' '}
+        <h3>Perte A Charge Position 1</h3>{' '}
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
@@ -64,9 +82,9 @@ export default function Perte_a_charge({
                 <Select
                   placeholder="Muliplicateur Volts"
                   showSearch
-                  initialvalues=""
                   ref={inputEl}
                   tabIndex={1}
+                  initialvalues=""
                   options={Multiplicateur_Volts}
                   onChange={value =>
                     UpdateData(
@@ -108,7 +126,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={3}
                   step="0.0001"
-                  placeholder="Position 2"
+                  placeholder="Position 1"
                   onChange={e =>
                     UpdateData(
                       'Perte_table_charge_P2',
@@ -128,7 +146,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={4}
                   step="0.0001"
-                  placeholder="Position 2"
+                  placeholder="Position 1"
                   onChange={e =>
                     UpdateData(
                       'Courant_de_correction_P2',
@@ -140,11 +158,7 @@ export default function Perte_a_charge({
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                className="show_item"
-                style={{
-                  margin: '0 8px',
-                }}>
+              <Form.Item className="show_item">
                 Pertes table totales P2 (W) : 20 W
               </Form.Item>
             </Row>
@@ -157,7 +171,7 @@ export default function Perte_a_charge({
                   type="number"
                   tabIndex={5}
                   step="0.0001"
-                  placeholder="Position 2"
+                  placeholder="Position 1"
                   onChange={e =>
                     UpdateData(
                       'Courant_appliquié_transfo_P2',
@@ -173,69 +187,28 @@ export default function Perte_a_charge({
                 Courant Appliqué P2 (Appareil) : 20
               </Form.Item>
             </Row>
-
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item className="show_item">
-                Pertes Cavalier P2 : 30
-              </Form.Item>
-            </Row>
-
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                name="Resistance_Switch_P2"
-                style={{marginBottom: 0, width: '70%'}}>
-                <Switch
-                  checked={resistance_P2}
-                  checkedChildren="Résistances"
-                  unCheckedChildren="Résistances"
-                  onChange={() => setresistance_P2(!resistance_P2)}
+                label="NO Cavalier"
+                name="No_Cavalier"
+                className="show_item_input">
+                <Select
+                  placeholder="NO Cavalier"
+                  showSearch
+                  initialvalues=""
+                  tabIndex={6}
+                  options={NO_Cavalier}
+                  onChange={value =>
+                    UpdateData('No_cavalier', value, setNewMisePlace)
+                  }
                 />
               </Form.Item>
             </Row>
-            {resistance_P2 && (
-              <div>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    label="Resistance HT "
-                    name="Resistance_HT_P2"
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={6}
-                      step="0.0001"
-                      placeholder="Position 2"
-                      onChange={e =>
-                        UpdateData(
-                          'Resistance_ht_P2',
-                          e.target.value,
-                          setNewMisePlace
-                        )
-                      }
-                    />
-                  </Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    label="Resistance BT"
-                    name="Resistance_BT_P2"
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={7}
-                      step="0.0000001"
-                      placeholder="Position 2"
-                      onChange={e =>
-                        UpdateData(
-                          'Resistance_bt_P2',
-                          e.target.value,
-                          setNewMisePlace
-                        )
-                      }
-                    />
-                  </Form.Item>
-                </Row>
-              </div>
-            )}
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item className="show_item">
+                Pertes Cavalier P2 : 20
+              </Form.Item>
+            </Row>
           </div>
         )}
         {miseenplaceok && (
@@ -256,15 +229,69 @@ export default function Perte_a_charge({
         )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
+            name="Resistance_Switch_P2"
+            style={{marginBottom: 0, width: '70%'}}>
+            <Switch
+              checked={resistance_P2}
+              checkedChildren="Résistances"
+              unCheckedChildren="Résistances"
+              onChange={() =>
+                resistance_P2 != true
+                  ? setresistance_P2(true)
+                  : (setresistance_P2(false),
+                    UpdateData('Resistance_ht_P2', '', setFinaldata),
+                    UpdateData('Resistance_bt_P2', '', setFinaldata))
+              }
+            />
+          </Form.Item>
+        </Row>
+        {resistance_P2 && (
+          <div>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                label="Resistance HT "
+                name="Resistance_HT_P2"
+                className="show_item_input">
+                <Input
+                  type="number"
+                  tabIndex={7}
+                  step="0.0001"
+                  placeholder="Position 1"
+                  onChange={e =>
+                    UpdateData('Resistance_ht_P2', e.target.value, setFinaldata)
+                  }
+                />
+              </Form.Item>
+            </Row>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                label="Resistance BT"
+                name="Resistance_BT_P2"
+                className="show_item_input">
+                <Input
+                  type="number"
+                  tabIndex={8}
+                  step="0.001"
+                  placeholder="Position 1"
+                  onChange={e =>
+                    UpdateData('Resistance_bt_P2', e.target.value, setFinaldata)
+                  }
+                />
+              </Form.Item>
+            </Row>
+          </div>
+        )}
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item
             label="Perte A Charge Mesuré (W)"
             name="Perte_Charge_Mesuré_P2"
             className="show_item_input">
             <Input
-              type="number"
-              tabIndex={8}
               ref={!miseenplaceok ? null : inputEl}
+              tabIndex={9}
+              type="number"
               step="0.0001"
-              placeholder="Position 2"
+              placeholder="Position 1"
               onChange={e =>
                 UpdateData(
                   'Perte_charge_mesuré_P2',
@@ -282,9 +309,9 @@ export default function Perte_a_charge({
             className="show_item_input">
             <Input
               type="number"
-              tabIndex={9}
+              tabIndex={10}
               step="0.0001"
-              placeholder="Position 2"
+              placeholder="Position 1"
               onChange={e =>
                 UpdateData('Impédance_mesuré_P2', e.target.value, setFinaldata)
               }

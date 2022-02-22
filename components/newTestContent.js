@@ -51,6 +51,7 @@ function NewTestContent({
   setNewMisePlace,
   error,
   Finaldata,
+  form,
 
   // props button reussi
   next,
@@ -127,6 +128,7 @@ function NewTestContent({
         <InduitForm_P2
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
+          Finaldata={Finaldata}
           setFinaldata={setFinaldata}
           error={error}
           setNewMisePlace={setNewMisePlace}
@@ -181,19 +183,23 @@ function NewTestContent({
     case 'Pertes a Charge P1':
       return (
         <Perte_a_ChargeForm_P1
+          Finaldata={Finaldata}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
+          form={form}
         />
       );
     case 'Pertes a Charge P2':
       return (
         <Perte_a_ChargeForm_P2
+          Finaldata={Finaldata}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
+          form={form}
         />
       );
     case 'Facteur de dissipation':

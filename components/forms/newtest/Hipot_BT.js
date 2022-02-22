@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   Form,
   Input,
@@ -11,6 +11,12 @@ import {
 } from 'antd';
 
 export default function Hipot({error, UpdateData, setFinaldata}) {
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   return (
     <div className="Containertest">
       <Divider
@@ -26,13 +32,19 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
           </Form.Item>
           <Form.Item
             name="test_50"
-            rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-            <Radio.Group buttonStyle="solid" key="Hipot_50">
+            <Radio.Group
+              defaultValue="reussit"
+              buttonStyle="solid"
+              key="Hipot_50">
               <Radio.Button
-                tabIndex={2}
+                tabIndex={1}
+                ref={inputEl}
                 style={{margin: '5px'}}
-                value={true}
+                value="reussit"
+                onKeyPress={() => {
+                  UpdateData('Test_Hipot_50', true, setFinaldata);
+                }}
                 onClick={() => {
                   UpdateData('Test_Hipot_50', true, setFinaldata);
                 }}>
@@ -51,7 +63,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                   );
                 }}
                 style={{margin: '5px'}}
-                value={false}>
+                value="echoue">
                 Test echoue
               </Radio.Button>
             </Radio.Group>
