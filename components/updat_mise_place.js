@@ -700,60 +700,6 @@ function newTestContent({setmise_data}) {
             />
           </Form.Item>
         </Form.Item>
-
-        <Form.Item label="Resistance HT" style={{marginBottom: 0}}>
-          <Form.Item
-            name="Resistance_HT_P1"
-            style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-            <Input
-              placeholder="Position 1"
-              onChange={e =>
-                UpdateData('Resistance_ht_P1', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-          <Form.Item
-            name="Resistance_HT_P2"
-            style={{
-              display: 'inline-block',
-              width: 'calc(50% - 8px)',
-              margin: '0 8px',
-            }}>
-            <Input
-              placeholder="Position 2"
-              onChange={e =>
-                UpdateData('Resistance_ht_P2', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-        </Form.Item>
-
-        <Form.Item label="Resistance BT" style={{marginBottom: 0}}>
-          <Form.Item
-            name="Resistance_BT_P1"
-            style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-            <Input
-              placeholder="Position 1"
-              onChange={e =>
-                UpdateData('Resistance_bt_P1', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-          <Form.Item
-            name="Resistance_BT_P2"
-            style={{
-              display: 'inline-block',
-              width: 'calc(50% - 8px)',
-              margin: '0 8px',
-            }}>
-            <Input
-              placeholder="Position 2"
-              onChange={e =>
-                UpdateData('Resistance_bt_P2', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-        </Form.Item>
       </TabPane>
 
       <TabPane tab="Decharges Partielles" key="8">

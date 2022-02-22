@@ -51,23 +51,28 @@ function NewTestContent({
   setNewMisePlace,
   error,
   Finaldata,
+  form,
 }) {
   const [chance, setchance] = useState(0);
   const NewTestHome = () => {
     return mise_en_placeById !== null ? (
-      <Alert
-        message="Prét a Tester!"
-        description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
-        type="success"
-        showIcon
-      />
+      <div className="Containertest">
+        <Alert
+          message="Prét a Tester!"
+          description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
+          type="success"
+          showIcon
+        />
+      </div>
     ) : (
-      <Alert
-        message="Mise en place du produit"
-        description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
-        type="info"
-        showIcon
-      />
+      <div className="Containertest">
+        <Alert
+          message="Mise en place du produit"
+          description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
+          type="info"
+          showIcon
+        />
+      </div>
     );
   };
 
@@ -78,7 +83,13 @@ function NewTestContent({
       return <Essai_Continuite />;
     case 'Resistance':
       return (
-        <Resistance commande={commande} mise_en_placeById={mise_en_placeById} />
+        <Resistance
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          Finaldata={Finaldata}
+          form={form}
+        />
       );
 
     case 'Facteur de dissipation':
@@ -86,17 +97,23 @@ function NewTestContent({
         <Facteur_DissipationForm
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Hi-Pot':
       return (
-        <HipotForm commande={commande} mise_en_placeById={mise_en_placeById} />
+        <HipotForm
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
+        />
       );
     case 'Ratio P1':
       return (
         <Ratio_P1_Form
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Ratio P2':
@@ -104,6 +121,7 @@ function NewTestContent({
         <Ratio_P2_Form
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Polarité':
@@ -111,6 +129,7 @@ function NewTestContent({
         <PolariteForm
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Induit P1':
@@ -118,6 +137,7 @@ function NewTestContent({
         <InduitForm_P1
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Induit P2':
@@ -125,6 +145,7 @@ function NewTestContent({
         <InduitForm_P2
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Pertes à vide P1':
@@ -132,6 +153,7 @@ function NewTestContent({
         <Perte_a_VideForm_P1
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Pertes à vide P2':
@@ -139,17 +161,23 @@ function NewTestContent({
         <Perte_a_VideForm_P2
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Riv':
       return (
-        <RivForm commande={commande} mise_en_placeById={mise_en_placeById} />
+        <RivForm
+          commande={commande}
+          mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
+        />
       );
     case 'Pertes a Charge P1':
       return (
         <Perte_a_ChargeForm_P1
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
     case 'Pertes a Charge P2':
@@ -157,6 +185,7 @@ function NewTestContent({
         <Perte_a_ChargeForm_P2
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
         />
       );
 
@@ -165,6 +194,9 @@ function NewTestContent({
         <Decharges_PartiellesForm
           commande={commande}
           mise_en_placeById={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          Finaldata={Finaldata}
+          error={error}
         />
       );
 

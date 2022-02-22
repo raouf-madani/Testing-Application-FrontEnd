@@ -1,4 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+
+import {TR_Charge, TR_Courant, TR_Voltage} from '@/FakeData/TestData';
+
 import {
   Form,
   Input,
@@ -12,9 +16,15 @@ import {
   Divider,
 } from 'antd';
 
-export default function Decharges_Partielles({commande, mise_en_placeById}) {
-  const [Line2, setLine2] = useState(false);
-  const [Line3, setLine3] = useState(false);
+export default function Decharges_Partielles({
+  commande,
+  mise_en_placeById,
+  setFinaldata,
+  Finaldata,
+  error,
+}) {
+  const [Line2, setLine2] = useState();
+  const [Line3, setLine3] = useState();
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -22,74 +32,48 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
     }
   }, [inputEl]);
 
-  // useEffect(() => {
-  //   if (
-  //     Finaldata.Decharges_Partielles.S_15 < 500 &&
-  //     Finaldata.Decharges_Partielles.S_30 < 500 &&
-  //     Finaldata.Decharges_Partielles.S_45 < 500 &&
-  //     Finaldata.Decharges_Partielles.S_60 < 500
-  //   ) {
-  //     setLine2(false);
-  //   } else {
-  //     setLine2(true);
-  //   }
-  //   if (
-  //     Finaldata.Decharges_Partielles.S_75 < 500 &&
-  //     Finaldata.Decharges_Partielles.S_90 < 500 &&
-  //     Finaldata.Decharges_Partielles.S_105 < 500 &&
-  //     Finaldata.Decharges_Partielles.S_120 < 500
-  //   ) {
-  //     setLine3(false);
-  //   } else {
-  //     setLine3(true);
-  //   }
-  // }, [Finaldata]);
+  useEffect(() => {
+    if (
+      Finaldata.Decharges_Partielles.S_15 < 500 &&
+      Finaldata.Decharges_Partielles.S_30 < 500 &&
+      Finaldata.Decharges_Partielles.S_45 < 500 &&
+      Finaldata.Decharges_Partielles.S_60 < 500
+    ) {
+      setLine2(false);
+    } else {
+      setLine2(true);
+    }
+    if (
+      Finaldata.Decharges_Partielles.S_75 < 500 &&
+      Finaldata.Decharges_Partielles.S_90 < 500 &&
+      Finaldata.Decharges_Partielles.S_105 < 500 &&
+      Finaldata.Decharges_Partielles.S_120 < 500
+    ) {
+      setLine3(false);
+    } else {
+      setLine3(true);
+    }
+  }, [Finaldata]);
 
-  // useEffect(() => {
-  //   if (Line2 == false) {
-  //     console.log('supprimer la 2eme et la 3eme ligne');
-  //     UpdateData('S_75', '', setFinaldata);
-  //     UpdateData('S_90', '', setFinaldata);
-  //     UpdateData('S_105', '', setFinaldata);
-  //     UpdateData('S_120', '', setFinaldata);
-  //     UpdateData('S_135', '', setFinaldata);
-  //     UpdateData('S_150', '', setFinaldata);
-  //     UpdateData('S_165', '', setFinaldata);
-  //     UpdateData('S_180', '', setFinaldata);
-  //   }
-  // }, [Line2]);
+  useEffect(() => {
+    if (Line2 == false) {
+      console.log('supprimer la 2eme et la 3eme ligne');
+      UpdateData('S_75', '', setFinaldata);
+      UpdateData('S_90', '', setFinaldata);
+      UpdateData('S_105', '', setFinaldata);
+      UpdateData('S_120', '', setFinaldata);
+      UpdateData('S_135', '', setFinaldata);
+      UpdateData('S_150', '', setFinaldata);
+      UpdateData('S_165', '', setFinaldata);
+      UpdateData('S_180', '', setFinaldata);
+    }
+  }, [Line2]);
   const Reactance = [
     {label: 'A1B1C1', value: 'A1B1C1'},
     {label: 'A3B3C3', value: 'A3B3C3'},
     {label: 'A4B4C4', value: 'A4B4C4'},
   ];
-  const TR_Charge = [
-    {label: '347/600', value: 347 / 600},
-    {label: '693/1200', value: 693 / 1200},
-    {label: '1385/2400', value: 1385 / 2400},
-    {label: '2771/4800', value: 2771 / 4800},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Voltage = [
-    {label: '240/X2', value: 240 / 2},
-    {label: '480/X4', value: 480 / 4},
-    {label: '600/X5', value: 600 / 5},
-    {label: '1200/X10', value: 1200 / 10},
-    {label: '2400/X20', value: 2400 / 20},
-    {label: '4800/X40', value: 4800 / 40},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Courant = [
-    {label: '5/X1', value: 5 / 1},
-    {label: '10/X2', value: 10 / 2},
-    {label: '25/X5', value: 25 / 5},
-    {label: '50/X10', value: 50 / 10},
-    {label: '100/X20', value: 100 / 20},
-    {label: '200/X40', value: 200 / 40},
-    {label: '400/X80', value: 400 / 80},
-    {label: '600/X120', value: 600 / 120},
-    {label: 'N/A', value: 'N/A'},
-  ];
+
   return (
     <div className="Containertest">
       <Divider
@@ -110,6 +94,13 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               ref={inputEl}
               type="number"
               placeholder="Sélecteur de prise"
+              onChange={e => {
+                UpdateData(
+                  'Sélecteur_de_prise_DechargeP',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
             />
           </Form.Item>
         </Row>
@@ -120,7 +111,17 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="Sélecteur_de_tension_DechargeP "
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
-            <Input type="number" placeholder="Sélecteur de tension" />
+            <Input
+              type="number"
+              placeholder="Sélecteur de tension"
+              onChange={e => {
+                UpdateData(
+                  'Sélecteur_de_tension_DechargeP',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
+            />
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
@@ -135,6 +136,9 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               showSearch
               initialvalues=""
               options={Reactance}
+              onChange={value => {
+                UpdateData('Réactance_DechargeP', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -150,6 +154,9 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               showSearch
               initialvalues=""
               options={TR_Charge}
+              onChange={value => {
+                UpdateData('TR_Charge_DechargeP', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -165,6 +172,9 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               showSearch
               initialvalues=""
               options={TR_Courant}
+              onChange={value => {
+                UpdateData('TR_Courant_DechargeP', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -180,6 +190,9 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               showSearch
               initialvalues=""
               options={TR_Voltage}
+              onChange={value => {
+                UpdateData('TR_Voltage_DechargeP', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -190,7 +203,17 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="Tension_appliqué_1_7_pu_DechargeP "
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
-            <Input type="number" placeholder="Tension appliqué 1.7 pu" />
+            <Input
+              type="number"
+              placeholder="Tension appliqué 1.7 pu"
+              onChange={e => {
+                UpdateData(
+                  'Tension_appliqué_1_7_pu_DechargeP',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
+            />
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
@@ -200,7 +223,17 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="Tension_appliqué_1_5_pu_DechargeP "
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
-            <Input type="number" placeholder="Tension appliqué 1.5 pu" />
+            <Input
+              type="number"
+              placeholder="Tension appliqué 1.5 pu"
+              onChange={e => {
+                UpdateData(
+                  'Tension_appliqué_1_5_pu_DechargeP',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
+            />
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
@@ -211,12 +244,12 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="S_15"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
+              type="number"
               ref={!mise_en_placeById ? null : inputEl}
               placeholder="15 Sec"
-              // onChange={e => {
-              //   UpdateData('S_15', e.target.value, setFinaldata);
-              //   e.target.value < 50 && UpdateData('S_75', '', setFinaldata);
-              // }}
+              onChange={e => {
+                UpdateData('S_15', e.target.value, setFinaldata);
+              }}
             />
           </Form.Item>
           <Form.Item
@@ -226,8 +259,11 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="S_30"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
+              type="number"
               placeholder="30 Sec"
-              // onChange={e => UpdateData('S_30', e.target.value, setFinaldata)}
+              onChange={e => {
+                UpdateData('S_30', e.target.value, setFinaldata);
+              }}
             />
           </Form.Item>
           <Form.Item
@@ -237,8 +273,11 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="S_45"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
+              type="number"
               placeholder="45 Sec"
-              // onChange={e => UpdateData('S_45', e.target.value, setFinaldata)}
+              onChange={e => {
+                UpdateData('S_45', e.target.value, setFinaldata);
+              }}
             />
           </Form.Item>
           <Form.Item
@@ -248,8 +287,11 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
             name="S_60"
             rules={[{required: true, message: 'Champ Requis'}]}>
             <Input
+              type="number"
               placeholder="60 Sec"
-              // onChange={e => UpdateData('S_60', e.target.value, setFinaldata)}
+              onChange={e => {
+                UpdateData('S_60', e.target.value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -262,11 +304,12 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_75"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 ref={!mise_en_placeById ? null : inputEl}
                 placeholder="75 Sec"
-                // onChange={e => {
-                //   UpdateData('S_75', e.target.value, setFinaldata);
-                // }}
+                onChange={e => {
+                  UpdateData('S_75', e.target.value, setFinaldata);
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -276,9 +319,11 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_90"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 placeholder="90 Sec"
-
-                // onChange={e => UpdateData('S_90', e.target.value, setFinaldata)}
+                onChange={e => {
+                  UpdateData('S_90', e.target.value, setFinaldata);
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -288,11 +333,11 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_105"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 placeholder="105 Sec"
-
-                // onChange={e =>
-                //   UpdateData('S_105', e.target.value, setFinaldata)
-                // }
+                onChange={e => {
+                  UpdateData('S_105', e.target.value, setFinaldata);
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -302,11 +347,11 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_120"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 placeholder="120 Sec"
-
-                // onChange={e =>
-                //   UpdateData('S_120', e.target.value, setFinaldata)
-                // }
+                onChange={e => {
+                  UpdateData('S_120', e.target.value, setFinaldata);
+                }}
               />
             </Form.Item>
           </Row>
@@ -321,12 +366,14 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_135"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 ref={!mise_en_placeById ? null : inputEl}
                 placeholder="135 Sec"
-
-                // onChange={e =>
-                //   UpdateData('S_135', e.target.value, setFinaldata)
-                // }
+                onChange={e => {
+                  UpdateData('S_135', e.target.value, setFinaldata);
+                  e.target.value > 500 &&
+                    error('Le Test avec cette valeur est echoué...');
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -336,11 +383,13 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_150"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 placeholder="150 Sec"
-
-                // onChange={e =>
-                //   UpdateData('S_150', e.target.value, setFinaldata)
-                // }
+                onChange={e => {
+                  UpdateData('S_150', e.target.value, setFinaldata);
+                  e.target.value > 500 &&
+                    error('Le Test avec cette valeur est echoué...');
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -350,11 +399,13 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_165"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 placeholder="165 Sec"
-
-                // onChange={e =>
-                //   UpdateData('S_165', e.target.value, setFinaldata)
-                // }
+                onChange={e => {
+                  UpdateData('S_165', e.target.value, setFinaldata);
+                  e.target.value > 500 &&
+                    error('Le Test avec cette valeur est echoué...');
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -364,11 +415,13 @@ export default function Decharges_Partielles({commande, mise_en_placeById}) {
               name="S_180"
               rules={[{required: true, message: 'Champ Requis'}]}>
               <Input
+                type="number"
                 placeholder="180 Sec"
-
-                // onChange={e =>
-                //   UpdateData('S_180', e.target.value, setFinaldata)
-                // }
+                onChange={e => {
+                  UpdateData('S_180', e.target.value, setFinaldata);
+                  e.target.value > 500 &&
+                    error('Le Test avec cette valeur est echoué...');
+                }}
               />
             </Form.Item>
           </Row>

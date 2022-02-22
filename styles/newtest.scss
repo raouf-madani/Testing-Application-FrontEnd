@@ -5,24 +5,24 @@
   border-radius: 10px;
   box-shadow: 3px 4px 5px 1px rgb(163 234 237 / 77%);
   .Containertest {
-    min-height: 520px;
+    min-height: 550px;
     background: #24717400;
     padding: 10px;
     box-shadow: 0 0 15px #00806e;
     display: inline-flexbox;
-    // overflow-x: hidden;
-    // overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
-  // ::-webkit-scrollbar {
-  //   width: 4px;
-  // }
-  // ::-webkit-scrollbar-thumb {
-  //   background-image: linear-gradient(180deg, #000028 0%, #009999 100%);
-  //   border-radius: 2px;
-  // }
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background-image: linear-gradient(180deg, #222269 0%, #91e7e7 100%);
-  // }
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #000028 0%, #009999 100%);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(180deg, #222269 0%, #91e7e7 100%);
+  }
 }
 
 .steps-action {

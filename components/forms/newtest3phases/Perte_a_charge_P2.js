@@ -1,4 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+
+import {TR_Charge, TR_Courant, TR_Voltage} from '@/FakeData/TestData';
+
 import {
   Form,
   Input,
@@ -12,34 +16,11 @@ import {
   Divider,
 } from 'antd';
 
-export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
-  const TR_Charge = [
-    {label: '347/600', value: 347 / 600},
-    {label: '693/1200', value: 693 / 1200},
-    {label: '1385/2400', value: 1385 / 2400},
-    {label: '2771/4800', value: 2771 / 4800},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Courant = [
-    {label: '5/X1', value: 5 / 1},
-    {label: '10/X2', value: 10 / 2},
-    {label: '25/X5', value: 25 / 5},
-    {label: '50/X10', value: 50 / 10},
-    {label: '100/X20', value: 100 / 20},
-    {label: '200/X40', value: 200 / 40},
-    {label: '400/X80', value: 400 / 80},
-    {label: '600/X120', value: 600 / 120},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Voltage = [
-    {label: '240/X2', value: 240 / 2},
-    {label: '480/X4', value: 480 / 4},
-    {label: '600/X5', value: 600 / 5},
-    {label: '1200/X10', value: 1200 / 10},
-    {label: '2400/X20', value: 2400 / 20},
-    {label: '4800/X40', value: 4800 / 40},
-    {label: 'N/A', value: 'N/A'},
-  ];
+export default function Perte_a_Charge_P2({
+  commande,
+  mise_en_placeById,
+  setFinaldata,
+}) {
   const Raccord_Flexible = [
     {label: '5', value: 5},
     {label: '25AB', value: '25AB'},
@@ -81,13 +62,19 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
             key="Pertes_câble_PerteCharge_P2"
             label="Pertes câble"
             name="Pertes_câble_PerteCharge_P2 "
-            rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Input
               type="number"
               ref={inputEl}
               tabIndex={1}
               placeholder="Pertes câble P2"
+              onChange={e => {
+                UpdateData(
+                  'Pertes_câble_PerteCharge_P2',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
             />
           </Form.Item>
         </Row>
@@ -96,7 +83,6 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
             key="Raccord_flexible_PerteCharge_P2"
             label="Raccord flexible"
             name="Raccord_flexible_PerteCharge_P2"
-            rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Select
               placeholder="Raccord flexible P2"
@@ -104,17 +90,34 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
               initialvalues=""
               tabIndex={2}
               options={Raccord_Flexible}
+              onChange={value => {
+                UpdateData(
+                  'Raccord_flexible_PerteCharge_P2',
+                  value,
+                  setFinaldata
+                );
+              }}
             />
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            key="Pertes_raccord_PerteVide_P2"
+            key="Pertes_raccord_PerteCharge_P2"
             label="Pertes raccord"
-            name="Pertes_raccord_PerteVide_P2 "
-            rules={[{required: true, message: 'Champ Requis'}]}
+            name="Pertes_raccord_PerteCharge_P2 "
             className="show_item_input">
-            <Input type="number" tabIndex={3} placeholder="Pertes raccord P2" />
+            <Input
+              type="number"
+              tabIndex={3}
+              placeholder="Pertes raccord P2"
+              onChange={e => {
+                UpdateData(
+                  'Pertes_raccord_PerteCharge_P2',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
+            />
           </Form.Item>
         </Row>
         <Row style={{justifyContent: 'center'}}>
@@ -122,7 +125,6 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
             key="TR_Charge_PerteCharge_P2"
             label="TR Charge "
             name="TR_Charge_PerteCharge_P2"
-            rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Select
               placeholder="TR Charge P2"
@@ -130,6 +132,9 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
               initialvalues=""
               tabIndex={4}
               options={TR_Charge}
+              onChange={value => {
+                UpdateData('TR_Charge_PerteCharge_P2', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -138,7 +143,6 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
             key="TR_Courant_PerteCharge_P2"
             label="TR Courant"
             name="TR_Courant_PerteCharge_P2 "
-            rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Select
               placeholder="TR Courant P2 "
@@ -146,6 +150,9 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
               initialvalues=""
               tabIndex={5}
               options={TR_Courant}
+              onChange={value => {
+                UpdateData('TR_Courant_PerteCharge_P2', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -154,7 +161,6 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
             key="TR_Voltage_PerteCharge_P2"
             label="TR Voltage"
             name="TR_Voltage_PerteCharge_P2 "
-            rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Select
               placeholder="TR Voltage P2 "
@@ -162,6 +168,9 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
               initialvalues=""
               tabIndex={6}
               options={TR_Voltage}
+              onChange={value => {
+                UpdateData('TR_Voltage_PerteCharge_P2', value, setFinaldata);
+              }}
             />
           </Form.Item>
         </Row>
@@ -170,12 +179,18 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
             key="Courant_à_appliqué_PerteCharge_P2"
             label="Courant à appliqué"
             name="Courant_à_appliqué_PerteCharge_P2 "
-            rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Input
               type="number"
               tabIndex={7}
               placeholder="Courant à appliqué P2"
+              onChange={e => {
+                UpdateData(
+                  'Courant_à_appliqué_PerteCharge_P2',
+                  e.target.value,
+                  setFinaldata
+                );
+              }}
             />
           </Form.Item>
         </Row>
@@ -185,13 +200,19 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
               <Form.Item
                 key="PV_mesurés_Ph1_PerteCharge_P2"
                 label="PV (W) mesurés Ph1"
-                name="PV_mesurés_Ph1_PerteCharge_P1 "
-                rules={[{required: true, message: 'Champ Requis'}]}
+                name="PV_mesurés_Ph1_PerteCharge_P2 "
                 className="show_item_input">
                 <Input
                   type="number"
                   tabIndex={8}
                   placeholder="PV (W) mesurés Ph1 P2"
+                  onChange={e => {
+                    UpdateData(
+                      'PV_mesurés_Ph1_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -200,12 +221,18 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
                 key="PV_mesurés_Ph2_PerteCharge_P2"
                 label="PV (W) mesurés Ph1"
                 name="PV_mesurés_Ph2_PerteCharge_P2 "
-                rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
                   type="number"
                   tabIndex={9}
                   placeholder="PV (W) mesurés Ph2 P2"
+                  onChange={e => {
+                    UpdateData(
+                      'PV_mesurés_Ph2_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -214,12 +241,18 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
                 key="PV_mesurés_Ph3_PerteCharge_P2"
                 label="PV (W) mesurés Ph1"
                 name="PV_mesurés_Ph3_PerteCharge_P2 "
-                rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
                   type="number"
                   tabIndex={10}
                   placeholder="PV (W) mesurés Ph3 P2"
+                  onChange={e => {
+                    UpdateData(
+                      'PV_mesurés_Ph3_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -231,26 +264,38 @@ export default function Perte_a_Charge_p2({commande, mise_en_placeById}) {
                 key="Pertes_mesurées_PerteCharge_P2"
                 label="Pertes mesurées"
                 name="Pertes_mesurées_PerteCharge_P2 "
-                rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
                   type="number"
                   tabIndex={8}
                   placeholder="Pertes mesurées P2"
+                  onChange={e => {
+                    UpdateData(
+                      'Pertes_mesurées_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="Impédance mesurée_PerteCharge_P2"
+                key="Impédance_mesurée_PerteCharge_P2"
                 label="Impédance  mesuré"
-                name="Impédance mesurée_PerteCharge_P2 "
-                rules={[{required: true, message: 'Champ Requis'}]}
+                name="Impédance_mesurée_PerteCharge_P2 "
                 className="show_item_input">
                 <Input
                   type="number"
                   tabIndex={9}
                   placeholder="Impédance mesurée P2"
+                  onChange={e => {
+                    UpdateData(
+                      'Impédance_mesurée_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>

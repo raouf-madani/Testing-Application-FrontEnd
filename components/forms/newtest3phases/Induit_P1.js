@@ -1,4 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+import {TR_Charge, TR_Courant, TR_Voltage} from '@/FakeData/TestData';
+
 import {
   Form,
   Input,
@@ -12,42 +15,11 @@ import {
   Divider,
 } from 'antd';
 
-export default function Induit_p1({commande, mise_en_placeById}) {
-  const TR_Charge = [
-    {label: '347/600', value: 347 / 600},
-    {label: '693/1200', value: 693 / 1200},
-    {label: '1385/2400', value: 1385 / 2400},
-    {label: '2771/4800', value: 2771 / 4800},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const Position_TX = [
-    {label: 'Étoile-Phase', value: 'Étoile-Phase'},
-    {label: 'Triangle-Ligne', value: 'Triangle-Ligne'},
-  ];
+export default function Induit_p1({commande, mise_en_placeById, setFinaldata}) {
   const Reactance = [
     {label: 'A1B1C1', value: 'A1B1C1'},
     {label: 'A3B3C3', value: 'A3B3C3'},
     {label: 'A4B4C4', value: 'A4B4C4'},
-  ];
-  const TR_Courant = [
-    {label: '5/X1', value: 5 / 1},
-    {label: '10/X2', value: 10 / 2},
-    {label: '25/X5', value: 25 / 5},
-    {label: '50/X10', value: 50 / 10},
-    {label: '100/X20', value: 100 / 20},
-    {label: '200/X40', value: 200 / 40},
-    {label: '400/X80', value: 400 / 80},
-    {label: '600/X120', value: 600 / 120},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Voltage = [
-    {label: '240/X2', value: 240 / 2},
-    {label: '480/X4', value: 480 / 4},
-    {label: '600/X5', value: 600 / 5},
-    {label: '1200/X10', value: 1200 / 10},
-    {label: '2400/X20', value: 2400 / 20},
-    {label: '4800/X40', value: 4800 / 40},
-    {label: 'N/A', value: 'N/A'},
   ];
   const inputEl = useRef(null);
   useEffect(() => {
@@ -79,6 +51,13 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   ref={inputEl}
                   tabIndex={1}
                   placeholder="Valeur induit P1"
+                  onChange={e => {
+                    UpdateData(
+                      'Valeur_Induit_P1',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -95,6 +74,9 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={2}
                   options={Reactance}
+                  onChange={value => {
+                    UpdateData('Réactance_induit_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -111,14 +93,17 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={3}
                   options={TR_Charge}
+                  onChange={value => {
+                    UpdateData('TR_Charge_Induit_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="TR_Courant_Courant_Induit_P1"
+                key="TR_Courant_Induit_P1"
                 label="TR Courant"
-                name="TR_Courant_Courant_Induit_P1 "
+                name="TR_Courant_Induit_P1 "
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
@@ -127,14 +112,17 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={4}
                   options={TR_Courant}
+                  onChange={value => {
+                    UpdateData('TR_Courant_Induit_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="TR_Voltage_Voltage_Induit_P1"
+                key="TR_Voltage_Induit_P1"
                 label="TR Voltage  "
-                name="TR_Voltage_Voltage_Induit_P1"
+                name="TR_Voltage_Induit_P1"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Select
@@ -143,6 +131,9 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={5}
                   options={TR_Voltage}
+                  onChange={value => {
+                    UpdateData('TR_Voltage_Induit_P1', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -157,6 +148,13 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   type="number"
                   tabIndex={6}
                   placeholder="Tension à appliquer "
+                  onChange={e => {
+                    UpdateData(
+                      'Tension_a_appliquer_Induit_P1',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -169,10 +167,24 @@ export default function Induit_p1({commande, mise_en_placeById}) {
                   <Radio.Button
                     tabIndex={7}
                     style={{margin: '5px'}}
-                    value={true}>
+                    value={true}
+                    onKeyPress={() => {
+                      UpdateData('Induit_P1_test', true, setFinaldata);
+                    }}
+                    onClick={() => {
+                      UpdateData('Induit_P1_test', true, setFinaldata);
+                    }}>
                     Test Réussi
                   </Radio.Button>
-                  <Radio.Button style={{margin: '5px'}} value={false}>
+                  <Radio.Button
+                    style={{margin: '5px'}}
+                    value={false}
+                    onKeyPress={() => {
+                      UpdateData('Induit_P1_test', false, setFinaldata);
+                    }}
+                    onClick={() => {
+                      UpdateData('Induit_P1_test', false, setFinaldata);
+                    }}>
                     Test Échoué
                   </Radio.Button>
                 </Radio.Group>

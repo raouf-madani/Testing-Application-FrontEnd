@@ -1,4 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+
+import {TR_Charge, TR_Courant, TR_Voltage} from '@/FakeData/TestData';
+
 import {
   Form,
   Input,
@@ -12,37 +16,10 @@ import {
   Divider,
 } from 'antd';
 
-export default function Polarite({commande, mise_en_placeById}) {
-  const TR_Charge = [
-    {label: '347/600', value: 347 / 600},
-    {label: '693/1200', value: 693 / 1200},
-    {label: '1385/2400', value: 1385 / 2400},
-    {label: '2771/4800', value: 2771 / 4800},
-    {label: 'N/A', value: 'N/A'},
-  ];
+export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
   const Position_TX = [
     {label: 'Étoile-Phase', value: 'Étoile-Phase'},
     {label: 'Triangle-Ligne', value: 'Triangle-Ligne'},
-  ];
-  const TR_Courant = [
-    {label: '5/X1', value: 5 / 1},
-    {label: '10/X2', value: 10 / 2},
-    {label: '25/X5', value: 25 / 5},
-    {label: '50/X10', value: 50 / 10},
-    {label: '100/X20', value: 100 / 20},
-    {label: '200/X40', value: 200 / 40},
-    {label: '400/X80', value: 400 / 80},
-    {label: '600/X120', value: 600 / 120},
-    {label: 'N/A', value: 'N/A'},
-  ];
-  const TR_Voltage = [
-    {label: '240/X2', value: 240 / 2},
-    {label: '480/X4', value: 480 / 4},
-    {label: '600/X5', value: 600 / 5},
-    {label: '1200/X10', value: 1200 / 10},
-    {label: '2400/X20', value: 2400 / 20},
-    {label: '4800/X40', value: 4800 / 40},
-    {label: 'N/A', value: 'N/A'},
   ];
   const inputEl = useRef(null);
   useEffect(() => {
@@ -73,6 +50,13 @@ export default function Polarite({commande, mise_en_placeById}) {
                   ref={inputEl}
                   tabIndex={1}
                   placeholder="Tension à appliquer "
+                  onChange={e => {
+                    UpdateData(
+                      'Tension_a_appliquer_Polarite',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -87,6 +71,13 @@ export default function Polarite({commande, mise_en_placeById}) {
                   type="number"
                   tabIndex={2}
                   placeholder="Position du sélecteur Tx"
+                  onChange={e => {
+                    UpdateData(
+                      'Position_du_sélecteur_Tx_Polarite',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -103,6 +94,13 @@ export default function Polarite({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={3}
                   options={Position_TX}
+                  onChange={value => {
+                    UpdateData(
+                      'Sélecteur_phase_ligne_Polarite',
+                      value,
+                      setFinaldata
+                    );
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -119,6 +117,9 @@ export default function Polarite({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={4}
                   options={TR_Charge}
+                  onChange={value => {
+                    UpdateData('TR_Charge_Polarite', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -135,6 +136,9 @@ export default function Polarite({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={5}
                   options={TR_Courant}
+                  onChange={value => {
+                    UpdateData('TR_Courant_Polarite', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -151,6 +155,9 @@ export default function Polarite({commande, mise_en_placeById}) {
                   initialvalues=""
                   tabIndex={6}
                   options={TR_Voltage}
+                  onChange={value => {
+                    UpdateData('TR_Voltage_Polarite', value, setFinaldata);
+                  }}
                 />
               </Form.Item>
             </Row>
@@ -170,6 +177,13 @@ export default function Polarite({commande, mise_en_placeById}) {
                       type="number"
                       tabIndex={7}
                       placeholder="Lecteur 1PH "
+                      onChange={e => {
+                        UpdateData(
+                          'Lecteur_1PH_Polarite',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
                     />
                   </Form.Item>
                 </Row>
@@ -186,7 +200,18 @@ export default function Polarite({commande, mise_en_placeById}) {
                     label="H2-X2"
                     name="H2_X2_Polarite"
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input tabIndex={8} placeholder="H2-X2" />
+                    <Input
+                      type="number"
+                      tabIndex={8}
+                      placeholder="H2-X2"
+                      onChange={e => {
+                        UpdateData(
+                          'H2_X2_Polarite',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
+                    />
                   </Form.Item>
                   <Form.Item
                     key="H3_X3_Polarite"
@@ -194,7 +219,18 @@ export default function Polarite({commande, mise_en_placeById}) {
                     label="H3-X3"
                     name="H3_X3_Polarite"
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input tabIndex={9} placeholder="H3-X3" />
+                    <Input
+                      type="number"
+                      tabIndex={9}
+                      placeholder="H3-X3"
+                      onChange={e => {
+                        UpdateData(
+                          'H3_X3_Polarite',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
+                    />
                   </Form.Item>
                 </Row>
                 <Row style={{justifyContent: 'center'}}>
@@ -207,7 +243,18 @@ export default function Polarite({commande, mise_en_placeById}) {
                     label="H3-X2"
                     name="H3_X2_Polarite"
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input tabIndex={10} placeholder="H3-X2" />
+                    <Input
+                      type="number"
+                      tabIndex={10}
+                      placeholder="H3-X2"
+                      onChange={e => {
+                        UpdateData(
+                          'H3_X2_Polarite',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
+                    />
                   </Form.Item>
                   <Form.Item
                     key="H2_X3_Polarite"
@@ -215,7 +262,18 @@ export default function Polarite({commande, mise_en_placeById}) {
                     label="H2-X3"
                     name="H2_X3_Polarite"
                     rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input tabIndex={11} placeholder="H2-X3" />
+                    <Input
+                      type="number"
+                      tabIndex={11}
+                      placeholder="H2-X3"
+                      onChange={e => {
+                        UpdateData(
+                          'H2_X3_Polarite',
+                          e.target.value,
+                          setFinaldata
+                        );
+                      }}
+                    />
                   </Form.Item>
                 </Row>
               </>
