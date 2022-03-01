@@ -89,22 +89,22 @@ export default function Decharges_Partielles({
 
   const SKE77 = [
     {label: 'off', value: 'off'},
-    {label: 16, value: 16},
-    {label: 32, value: 32},
+    {label: '1:16', value: '1:16'},
+    {label: '2:32', value: '2:32'},
   ];
   const SKE17 = [
     {label: 'off', value: 'off'},
-    {label: 1, value: 1},
-    {label: 3, value: 3},
-    {label: 5, value: 5},
-    {label: 7, value: 7},
-    {label: 9, value: 9},
-    {label: 10, value: 10},
-    {label: 11, value: 11},
-    {label: 12, value: 12},
-    {label: 13, value: 13},
-    {label: 14, value: 14},
-    {label: 15, value: 15},
+    {label: '1:1', value: '1:1'},
+    {label: '2:3', value: '2:3'},
+    {label: '3:5', value: '3:5'},
+    {label: '4:7', value: '4:7'},
+    {label: '5:9', value: '5:9'},
+    {label: '6:10', value: '6:10'},
+    {label: '7:11', value: '7:11'},
+    {label: '8:12', value: '8:12'},
+    {label: '9:13', value: '9:13'},
+    {label: '10:14', value: '10:14'},
+    {label: '11:15', value: '11:15'},
   ];
 
   return (

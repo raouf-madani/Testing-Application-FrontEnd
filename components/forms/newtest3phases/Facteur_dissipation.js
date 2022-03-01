@@ -28,6 +28,7 @@ export default function Facteur_dissipation({setFinaldata}) {
               <Input
                 ref={inputEl}
                 type="number"
+                step="0.000001"
                 tabIndex={1}
                 placeholder="H"
                 onChange={e => {
@@ -42,6 +43,7 @@ export default function Facteur_dissipation({setFinaldata}) {
             <Form.Item name="L" noStyle>
               <Input
                 type="number"
+                step="0.000001"
                 tabIndex={2}
                 placeholder="L"
                 onChange={e => {

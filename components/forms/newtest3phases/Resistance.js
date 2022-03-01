@@ -94,12 +94,31 @@ export default function Resistance_BT({
             <>
               <Row style={{justifyContent: 'center'}}>
                 <Form.Item
+                  label="Resistance BT "
+                  className="show_item_input"
+                  name="Resistance_BT"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.000001"
+                    tabIndex={2}
+                    placeholder="Resistance BT"
+                    onChange={e => {
+                      UpdateData('Resistance_bt', e.target.value, setFinaldata);
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
                   label="Resistance HT P1 "
                   className="show_item_input"
-                  name="Resistance_HT_P1">
+                  name="Resistance_HT_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
                     ref={inputEl}
                     type="number"
+                    step="0.001"
                     tabIndex={2}
                     placeholder="Resistance HT P1"
                     onChange={e => {
@@ -116,9 +135,11 @@ export default function Resistance_BT({
                 <Form.Item
                   label="Resistance HT P2 "
                   className="show_item_input"
-                  name="Resistance_HT_P2">
+                  name="Resistance_HT_P2"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
                     type="number"
+                    step="0.001"
                     tabIndex={2}
                     placeholder="Resistance HT P2"
                     onChange={e => {
@@ -127,21 +148,6 @@ export default function Resistance_BT({
                         e.target.value,
                         setFinaldata
                       );
-                    }}
-                  />
-                </Form.Item>
-              </Row>
-              <Row style={{justifyContent: 'center'}}>
-                <Form.Item
-                  label="Resistance BT "
-                  className="show_item_input"
-                  name="Resistance_BT">
-                  <Input
-                    type="number"
-                    tabIndex={2}
-                    placeholder="Resistance BT"
-                    onChange={e => {
-                      UpdateData('Resistance_bt', e.target.value, setFinaldata);
                     }}
                   />
                 </Form.Item>
@@ -156,11 +162,13 @@ export default function Resistance_BT({
               <Row style={{justifyContent: 'center'}}>
                 <Form.Item
                   key="X1_X2"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="X1_X2"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="X1-X2"
                   name="X1_X2"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.000001"
                     ref={inputEl}
                     tabIndex={1}
                     placeholder="X1-X2"
@@ -171,11 +179,13 @@ export default function Resistance_BT({
                 </Form.Item>
                 <Form.Item
                   key="X1_X3"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="X1_X3"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="X1-X3"
                   name="X1_X3"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.000001"
                     tabIndex={2}
                     placeholder="X1-X3"
                     onChange={e => {
@@ -185,11 +195,13 @@ export default function Resistance_BT({
                 </Form.Item>
                 <Form.Item
                   key="X2_X3"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="X2_X3"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="X2-X3"
                   name="X2_X3"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.000001"
                     tabIndex={3}
                     placeholder="X2-X3"
                     onChange={e => {
@@ -204,11 +216,13 @@ export default function Resistance_BT({
               <Row style={{justifyContent: 'center'}}>
                 <Form.Item
                   key="H1_H2_P1"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="H1_H2"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H1-H2"
                   name="H1_H2_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.001"
                     tabIndex={4}
                     placeholder="H1-H2_P1"
                     onChange={e => {
@@ -218,11 +232,13 @@ export default function Resistance_BT({
                 </Form.Item>
                 <Form.Item
                   key="H1_H3_P1"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="H1_H3"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H1-H3"
                   name="H1_H3_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.001"
                     tabIndex={5}
                     placeholder="H1-H3_P1"
                     onChange={e => {
@@ -232,11 +248,13 @@ export default function Resistance_BT({
                 </Form.Item>
                 <Form.Item
                   key="H2_H3_P1"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="H2_H3"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H2-H3"
                   name="H2_H3_P1"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.001"
                     tabIndex={6}
                     placeholder="H2-H3_P1"
                     onChange={e => {
@@ -251,11 +269,13 @@ export default function Resistance_BT({
               <Row style={{justifyContent: 'center'}}>
                 <Form.Item
                   key="H1_H2_P2"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="H1_H2"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H1-H2"
                   name="H1_H2_P2"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.001"
                     tabIndex={7}
                     placeholder="H1-H2_P2"
                     onChange={e => {
@@ -265,11 +285,13 @@ export default function Resistance_BT({
                 </Form.Item>
                 <Form.Item
                   key="H1_H3_P2"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="H1_H3"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H1-H3"
                   name="H1_H3_P2"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.001"
                     tabIndex={8}
                     placeholder="H1-H3_P2"
                     onChange={e => {
@@ -279,11 +301,13 @@ export default function Resistance_BT({
                 </Form.Item>
                 <Form.Item
                   key="H2_H3_P2"
-                  style={{width: '10%', marginRight: '5px'}}
-                  label="H2_H3"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H2-H3"
                   name="H2_H3_P2"
                   rules={[{required: true, message: 'Champ Requis'}]}>
                   <Input
+                    type="number"
+                    step="0.001"
                     tabIndex={9}
                     placeholder="H2-H3_P2"
                     onChange={e => {

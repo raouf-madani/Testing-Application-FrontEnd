@@ -36,8 +36,8 @@ export default function Perte_a_vide_P2({
       </Divider>
       <div>
         {' '}
-        {!mise_en_placeById ? (
-          <>
+        <>
+          {!mise_en_placeById && (
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 key="Pertes_câble_PerteVide_P2"
@@ -46,6 +46,7 @@ export default function Perte_a_vide_P2({
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.01"
                   ref={inputEl}
                   tabIndex={1}
                   placeholder="Pertes câble P2"
@@ -59,7 +60,10 @@ export default function Perte_a_vide_P2({
                 />
               </Form.Item>
             </Row>
-            <Row style={{justifyContent: 'center'}}>
+          )}
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Charge_PerteVide_P2"
                 label="TR Charge "
@@ -76,8 +80,13 @@ export default function Perte_a_vide_P2({
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Charge :</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Courant_PerteVide_P2"
                 label="TR Courant"
@@ -94,8 +103,13 @@ export default function Perte_a_vide_P2({
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Courant :</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Voltage_PerteVide_P2"
                 label="TR Voltage  "
@@ -112,8 +126,13 @@ export default function Perte_a_vide_P2({
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Voltage :</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_nominale_PerteVide_P2"
                 label="% Tension nominale"
@@ -132,8 +151,12 @@ export default function Perte_a_vide_P2({
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">% Tension nominale :</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_à_appliqué_PerteVide_P2"
                 label="Tension à appliqué"
@@ -141,6 +164,7 @@ export default function Perte_a_vide_P2({
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.01"
                   tabIndex={6}
                   placeholder="Tension à appliqué P2"
                   onChange={e => {
@@ -152,118 +176,172 @@ export default function Perte_a_vide_P2({
                   }}
                 />
               </Form.Item>
-            </Row>
-            {commande.type_command == '1phase' ? (
-              <>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="Pertes_mesurées_PerteVide_P2"
-                    label="Pertes mesurées"
-                    name="Pertes_mesurées_PerteVide_P2 "
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={7}
-                      placeholder="Pertes mesurées P2"
-                      onChange={e => {
-                        UpdateData(
-                          'Pertes_mesurées_PerteVide_P2',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="Courant_excitation_mesuré_PerteVide_P2"
-                    label="Courant excitation mesuré"
-                    name="Courant_excitation_mesuré_PerteVide_P2 "
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={8}
-                      placeholder="Courant excitation mesuré P2"
-                      onChange={e => {
-                        UpdateData(
-                          'Courant_excitation_mesuré_PerteVide_P2',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-              </>
             ) : (
-              <>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="PV_mesurés_Ph1_PerteVide_P2"
-                    label="PV (W) mesurés Ph1"
-                    name="PV_mesurés_Ph1_PerteVide_P2 "
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={9}
-                      placeholder="PV (W) mesurés Ph1 P2"
-                      onChange={e => {
-                        UpdateData(
-                          'PV_mesurés_Ph1_PerteVide_P2',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="PV_mesurés_Ph2_PerteVide_P2"
-                    label="PV (W) mesurés Ph1"
-                    name="PV_mesurés_Ph2_PerteVide_P2 "
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={10}
-                      placeholder="PV (W) mesurés Ph2 P2"
-                      onChange={e => {
-                        UpdateData(
-                          'PV_mesurés_Ph2_PerteVide_P2',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="PV_mesurés_Ph3_PerteVide_P2"
-                    label="PV (W) mesurés Ph1"
-                    name="PV_mesurés_Ph3_PerteVide_P2 "
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={11}
-                      placeholder="PV (W) mesurés Ph3 P2"
-                      onChange={e => {
-                        UpdateData(
-                          'PV_mesurés_Ph3_PerteVide_P2',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-              </>
+              <Form.Item className="show_item">Tension à appliqué :</Form.Item>
             )}
-          </>
-        ) : (
-          <>test regulier perte a vide</>
-        )}
+          </Row>
+          {commande.type_command == '1phase' ? (
+            <>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="Pertes_mesurées_PerteVide_P2"
+                  label="Pertes mesurées"
+                  name="Pertes_mesurées_PerteVide_P2 "
+                  className="show_item_input">
+                  <Input
+                    type="number"
+                    tabIndex={7}
+                    placeholder="Pertes mesurées P2"
+                    onChange={e => {
+                      UpdateData(
+                        'Pertes_mesurées_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="Courant_excitation_mesuré_PerteVide_P2"
+                  label="Courant excitation mesuré"
+                  name="Courant_excitation_mesuré_PerteVide_P2 "
+                  className="show_item_input">
+                  <Input
+                    type="number"
+                    tabIndex={8}
+                    placeholder="Courant excitation mesuré P2"
+                    onChange={e => {
+                      UpdateData(
+                        'Courant_excitation_mesuré_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+            </>
+          ) : (
+            <>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="PV_mesurés_Ph1_PerteVide_P2"
+                  label="PV (W) mesurés Ph1"
+                  name="PV_mesurés_Ph1_PerteVide_P2 "
+                  style={{width: '18%', marginRight: '5px'}}>
+                  <Input
+                    type="number"
+                    tabIndex={9}
+                    placeholder="PV (W) mesurés Ph1 P2"
+                    onChange={e => {
+                      UpdateData(
+                        'PV_mesurés_Ph1_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Exc_amp_mesuré_Ph1_PerteVide_P2"
+                  label="I.Exc (amp) mesuré Ph1"
+                  name="Exc_amp_mesuré_Ph1_PerteVide_P2 "
+                  style={{width: '18%', marginRight: '5px'}}>
+                  <Input
+                    type="number"
+                    tabIndex={9}
+                    placeholder="I.Exc (amp) mesuré Ph1"
+                    onChange={e => {
+                      UpdateData(
+                        'Exc_amp_mesuré_Ph1_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="PV_mesurés_Ph2_PerteVide_P2"
+                  label="PV (W) mesurés Ph2"
+                  name="PV_mesurés_Ph2_PerteVide_P2 "
+                  style={{width: '18%', marginRight: '5px'}}>
+                  <Input
+                    type="number"
+                    tabIndex={9}
+                    placeholder="PV (W) mesurés Ph2 P2"
+                    onChange={e => {
+                      UpdateData(
+                        'PV_mesurés_Ph2_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Exc_amp_mesuré_Ph2_PerteVide_P2"
+                  label="I.Exc (amp) mesuré Ph2"
+                  name="Exc_amp_mesuré_Ph2_PerteVide_P2 "
+                  style={{width: '18%', marginRight: '5px'}}>
+                  <Input
+                    type="number"
+                    tabIndex={9}
+                    placeholder="I.Exc (amp) mesuré Ph2"
+                    onChange={e => {
+                      UpdateData(
+                        'Exc_amp_mesuré_Ph2_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="PV_mesurés_Ph3_PerteVide_P2"
+                  label="PV (W) mesurés Ph3"
+                  name="PV_mesurés_Ph3_PerteVide_P2 "
+                  style={{width: '18%', marginRight: '5px'}}>
+                  <Input
+                    type="number"
+                    tabIndex={9}
+                    placeholder="PV (W) mesurés Ph3 P2"
+                    onChange={e => {
+                      UpdateData(
+                        'PV_mesurés_Ph3_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Exc_amp_mesuré_Ph3_PerteVide_P2"
+                  label="I.Exc (amp) mesuré Ph3"
+                  name="Exc_amp_mesuré_Ph3_PerteVide_P2 "
+                  style={{width: '18%', marginRight: '5px'}}>
+                  <Input
+                    type="number"
+                    tabIndex={9}
+                    placeholder="I.Exc (amp) mesuré Ph3"
+                    onChange={e => {
+                      UpdateData(
+                        'Exc_amp_mesuré_Ph3_PerteVide_P2',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>{' '}
+            </>
+          )}
+        </>
       </div>
     </div>
   );

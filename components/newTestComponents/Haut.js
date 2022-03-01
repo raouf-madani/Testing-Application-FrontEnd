@@ -47,18 +47,18 @@ const Haut = ({
     await updateMise_place(id, data);
   };
 
-  useEffect(() => {
-    const affecter = () => {
-      if (temperature_noaffected) {
-        UpdateData(
-          'temperature_affected',
-          temperature_noaffected,
-          setFinaldata
-        );
-      }
-    };
-    affecter();
-  }, []);
+  // useEffect(() => {
+  //   const affecter = () => {
+  //     if (temperature_noaffected) {
+  //       UpdateData(
+  //         'temperature_affected',
+  //         temperature_noaffected,
+  //         setFinaldata
+  //       );
+  //     }
+  //   };
+  //   affecter();
+  // }, []);
 
   let initial_mise_placefrom_values = null;
   if (mise_data !== null) {

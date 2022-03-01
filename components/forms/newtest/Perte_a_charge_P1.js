@@ -4,6 +4,7 @@ import {Fakedata, Fakedata3phases, Mise_NewData} from '@/FakeData/TestData';
 import {UpdateData} from '@/actions/newtestupdate';
 
 export default function Perte_a_charge({
+  commande,
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
@@ -69,7 +70,7 @@ export default function Perte_a_charge({
       <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item className="show_item">
-            Courant Appliqué Appareil P1 : 20
+            Courant Nominale P1 : {(commande.kva * 1000) / commande.voltage_ht}
           </Form.Item>
         </Row>
         {!miseenplaceok && (
@@ -162,37 +163,6 @@ export default function Perte_a_charge({
               </Form.Item>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Form.Item className="show_item">
-                Pertes table totales P1 (W) : 20 W
-              </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Courant Appliquiué Au Transfo"
-                name="Courant_Appliquié_Transfo_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}
-                className="show_item_input">
-                <Input
-                  type="number"
-                  tabIndex={5}
-                  step="0.0001"
-                  placeholder="Position 1"
-                  onChange={e =>
-                    UpdateData(
-                      'Courant_appliquié_transfo_P1',
-                      e.target.value,
-                      setNewMisePlace
-                    )
-                  }
-                />
-              </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item className="show_item">
-                Courant Appliqué P1 (Appareil) : 20
-              </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label="NO Cavalier"
                 name="No_Cavalier"
@@ -233,26 +203,75 @@ export default function Perte_a_charge({
             </Row>
           </div>
         )}
-        <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            name="Resistance_Switch_P1"
-            style={{marginBottom: 0, width: '70%'}}>
-            <Switch
-              checked={resistance_P1}
-              checkedChildren="Résistances"
-              unCheckedChildren="Résistances"
-              onChange={() =>
-                resistance_P1 != true
-                  ? setresistance_P1(true)
-                  : (setresistance_P1(false),
-                    UpdateData('Resistance_ht_P1', '', setFinaldata),
-                    UpdateData('Resistance_bt_P1', '', setFinaldata))
-              }
-            />
-          </Form.Item>
-        </Row>
-        {resistance_P1 && (
-          <div>
+        {miseenplaceok ? (
+          <>
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                name="Resistance_Switch_P1"
+                style={{marginBottom: 0, width: '70%'}}>
+                <Switch
+                  checked={resistance_P1}
+                  checkedChildren="Résistances"
+                  unCheckedChildren="Résistances"
+                  onChange={() =>
+                    resistance_P1 != true
+                      ? setresistance_P1(true)
+                      : (setresistance_P1(false),
+                        UpdateData('Resistance_ht_P1', '', setFinaldata),
+                        UpdateData('Resistance_bt_P1', '', setFinaldata))
+                  }
+                />
+              </Form.Item>
+            </Row>
+            {resistance_P1 && (
+              <div>
+                <Row style={{justifyContent: 'center'}}>
+                  <Form.Item
+                    label="Resistance HT "
+                    name="Resistance_HT_P1"
+                    rules={[{required: true, message: 'Champ Requis'}]}
+                    className="show_item_input">
+                    <Input
+                      type="number"
+                      tabIndex={7}
+                      step="0.0001"
+                      placeholder="Position 1"
+                      onChange={e =>
+                        UpdateData(
+                          'Resistance_ht_P1',
+                          e.target.value,
+                          setFinaldata
+                        )
+                      }
+                    />
+                  </Form.Item>
+                </Row>
+                <Row style={{justifyContent: 'center'}}>
+                  <Form.Item
+                    label="Resistance BT"
+                    name="Resistance_BT_P1"
+                    rules={[{required: true, message: 'Champ Requis'}]}
+                    className="show_item_input">
+                    <Input
+                      type="number"
+                      tabIndex={8}
+                      step="0.001"
+                      placeholder="Position 1"
+                      onChange={e =>
+                        UpdateData(
+                          'Resistance_bt_P1',
+                          e.target.value,
+                          setFinaldata
+                        )
+                      }
+                    />
+                  </Form.Item>
+                </Row>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label="Resistance HT "
@@ -287,8 +306,9 @@ export default function Perte_a_charge({
                 />
               </Form.Item>
             </Row>
-          </div>
+          </>
         )}
+
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             label="Perte A Charge Mesuré (W)"

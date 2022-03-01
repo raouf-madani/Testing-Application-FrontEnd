@@ -42,6 +42,7 @@ export default function Ratio_Polarite({
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={1}
                   ref={inputEl}
                   placeholder="Position 1"
@@ -63,6 +64,7 @@ export default function Ratio_Polarite({
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={2}
                   placeholder="Position 1"
                   onChange={e => {
@@ -79,6 +81,7 @@ export default function Ratio_Polarite({
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={3}
                   placeholder="Position 1"
                   onChange={e => {
@@ -99,28 +102,25 @@ export default function Ratio_Polarite({
               justifyContent: 'center',
             }}>
             <Form.Item className="show_item">
-              Volte Apluiqués P1: {miseenplaceok.Ratio.Volts_apluiqés_P1}
+              Tension à appliquer : {miseenplaceok.Ratio.Volts_apluiqés_P1}
             </Form.Item>
           </Row>
         )}
         <Row style={{justifyContent: 'center'}}>
-          {Prise == 'AP' ? (
+          {Prise !== 'AP' ? (
             <Form.Item
               label=" Tension mesurée "
-              name="Tension_HT_Mesuré_Pos1"
+              name="Tension_mesurée_P1"
               rules={[{required: true, message: 'Champ Requis'}]}
               className="show_item_input">
               <Input
                 ref={!miseenplaceok ? null : inputEl}
                 tabIndex={4}
                 type="number"
+                step="0.0001"
                 placeholder="Position 1"
                 onChange={e =>
-                  UpdateData(
-                    'Tension_ht_mesuré_Pos1',
-                    e.target.value,
-                    setFinaldata
-                  )
+                  UpdateData('Tension_mesurée_P1', e.target.value, setFinaldata)
                 }
               />
             </Form.Item>
@@ -130,15 +130,17 @@ export default function Ratio_Polarite({
                 key="P1"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise1"
-                name="Tension_HT_Mesuré_P1_P1">
+                name="Tension_mesurée_P1_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}>
                 <Input
                   ref={!miseenplaceok ? null : inputEl}
                   type="number"
+                  step="0.0001"
                   tabIndex={4}
                   placeholder="Prise1"
                   onChange={e =>
                     UpdateData(
-                      'Tension_ht_mesuré_P1_P1',
+                      'Tension_mesurée_P1_P1',
                       e.target.value,
                       setFinaldata
                     )
@@ -149,14 +151,16 @@ export default function Ratio_Polarite({
                 key="P2"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise2"
-                name="Tension_HT_Mesuré_P2_P1">
+                name="Tension_mesurée_P2_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}>
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={5}
                   placeholder="Prise2"
                   onChange={e =>
                     UpdateData(
-                      'Tension_ht_mesuré_P2_P1',
+                      'Tension_mesurée_P2_P1',
                       e.target.value,
                       setFinaldata
                     )
@@ -167,14 +171,16 @@ export default function Ratio_Polarite({
                 key="P3"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise3"
-                name="Tension_HT_Mesuré_P3_P1">
+                name="Tension_mesurée_P3_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}>
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={6}
                   placeholder="Prise1"
                   onChange={e =>
                     UpdateData(
-                      'Tension_ht_mesuré_P3_P1',
+                      'Tension_mesurée_P3_P1',
                       e.target.value,
                       setFinaldata
                     )
@@ -185,14 +191,16 @@ export default function Ratio_Polarite({
                 key="P4"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise4"
-                name="Tension_HT_Mesuré_P4_P1">
+                name="Tension_mesurée_P4_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}>
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={7}
                   placeholder="Prise4"
                   onChange={e =>
                     UpdateData(
-                      'Tension_ht_mesuré_P4_P1',
+                      'Tension_mesurée_P4_P1',
                       e.target.value,
                       setFinaldata
                     )
@@ -203,14 +211,16 @@ export default function Ratio_Polarite({
                 key="P5"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise5"
-                name="Tension_HT_Mesuré_P5_P1">
+                name="Tension_mesurée_P5_P1"
+                rules={[{required: true, message: 'Champ Requis'}]}>
                 <Input
                   type="number"
+                  step="0.0001"
                   tabIndex={8}
                   placeholder="Prise5"
                   onChange={e =>
                     UpdateData(
-                      'Tension_ht_mesuré_P5_P1',
+                      'Tension_mesurée_P5_P1',
                       e.target.value,
                       setFinaldata
                     )
@@ -224,19 +234,16 @@ export default function Ratio_Polarite({
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             label="Polarité mesurée "
-            name="Polarité_V_Mesuré_P1"
+            name="Polarité_Mesuré_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Input
               type="number"
+              step="0.0001"
               tabIndex={Prise == 'AP' ? 5 : 9}
               placeholder="Position 1"
               onChange={e =>
-                UpdateData(
-                  'Polarite_volts_Mesure_P1',
-                  e.target.value,
-                  setFinaldata
-                )
+                UpdateData('Polarité_mesurée_P1', e.target.value, setFinaldata)
               }
             />
           </Form.Item>

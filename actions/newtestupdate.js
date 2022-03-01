@@ -56,18 +56,18 @@ export const UpdateData = (type, newData, setData) => {
 
     // Ratio 1 phase
 
-    case 'Tension_ht_mesuré_P1':
-    case 'Tension_ht_mesuré_P1_P1':
-    case 'Tension_ht_mesuré_P2_P1':
-    case 'Tension_ht_mesuré_P3_P1':
-    case 'Tension_ht_mesuré_P4_P1':
-    case 'Tension_ht_mesuré_P5_P1':
-    case 'Tension_ht_mesuré_P2':
-    case 'Tension_ht_mesuré_P1_P2':
-    case 'Tension_ht_mesuré_P2_P2':
-    case 'Tension_ht_mesuré_P3_P2':
-    case 'Tension_ht_mesuré_P4_P2':
-    case 'Tension_ht_mesuré_P5_P2':
+    case 'Tension_mesurée_P1':
+    case 'Tension_mesurée_P1_P1':
+    case 'Tension_mesurée_P2_P1':
+    case 'Tension_mesurée_P3_P1':
+    case 'Tension_mesurée_P4_P1':
+    case 'Tension_mesurée_P5_P1':
+    case 'Tension_mesurée_P2':
+    case 'Tension_mesurée_P1_P2':
+    case 'Tension_mesurée_P2_P2':
+    case 'Tension_mesurée_P3_P2':
+    case 'Tension_mesurée_P4_P2':
+    case 'Tension_mesurée_P5_P2':
     //
     case 'Volts_apluiqés_P1':
     case 'Volts_ht_P1':
@@ -374,6 +374,9 @@ export const UpdateData = (type, newData, setData) => {
     case 'PV_mesurés_Ph1_PerteVide_P1':
     case 'PV_mesurés_Ph2_PerteVide_P1':
     case 'PV_mesurés_Ph3_PerteVide_P1':
+    case 'Exc_amp_mesuré_Ph1_PerteVide_P1':
+    case 'Exc_amp_mesuré_Ph2_PerteVide_P1':
+    case 'Exc_amp_mesuré_Ph3_PerteVide_P1':
 
     // Position 2
     case 'Pertes_câble_PerteVide_P2':
@@ -387,6 +390,9 @@ export const UpdateData = (type, newData, setData) => {
     case 'PV_mesurés_Ph1_PerteVide_P2':
     case 'PV_mesurés_Ph2_PerteVide_P2':
     case 'PV_mesurés_Ph3_PerteVide_P2':
+    case 'Exc_amp_mesuré_Ph1_PerteVide_P2':
+    case 'Exc_amp_mesuré_Ph2_PerteVide_P2':
+    case 'Exc_amp_mesuré_Ph3_PerteVide_P2':
       setData(data => {
         return {
           ...data,
@@ -422,9 +428,12 @@ export const UpdateData = (type, newData, setData) => {
     case 'TR_Courant_PerteCharge_P1':
     case 'TR_Voltage_PerteCharge_P1':
     case 'Courant_à_appliqué_PerteCharge_P1':
-    case 'PV_mesurés_Ph1_PerteCharge_P1':
-    case 'PV_mesurés_Ph2_PerteCharge_P1':
-    case 'PV_mesurés_Ph3_PerteCharge_P1':
+    case 'PC_mesurés_Ph1_PerteCharge_P1':
+    case 'PC_mesurés_Ph2_PerteCharge_P1':
+    case 'PC_mesurés_Ph3_PerteCharge_P1':
+    case 'Imp_V_mesuré_Ph1_PerteCharge_P1':
+    case 'Imp_V_mesuré_Ph2_PerteCharge_P1':
+    case 'Imp_V_mesuré_Ph3_PerteCharge_P1':
     case 'Pertes_mesurées_PerteCharge_P1':
     case 'Impédance_mesurée_PerteCharge_P1':
 
@@ -436,9 +445,12 @@ export const UpdateData = (type, newData, setData) => {
     case 'TR_Courant_PerteCharge_P2':
     case 'TR_Voltage_PerteCharge_P2':
     case 'Courant_à_appliqué_PerteCharge_P2':
-    case 'PV_mesurés_Ph1_PerteCharge_P2':
-    case 'PV_mesurés_Ph2_PerteCharge_P2':
-    case 'PV_mesurés_Ph3_PerteCharge_P2':
+    case 'PC_mesurés_Ph1_PerteCharge_P2':
+    case 'PC_mesurés_Ph2_PerteCharge_P2':
+    case 'PC_mesurés_Ph3_PerteCharge_P2':
+    case 'Imp_V_mesuré_Ph1_PerteCharge_P2':
+    case 'Imp_V_mesuré_Ph2_PerteCharge_P2':
+    case 'Imp_V_mesuré_Ph3_PerteCharge_P2':
     case 'Pertes_mesurées_PerteCharge_P2':
     case 'Impédance_mesurée_PerteCharge_P2':
       setData(data => {

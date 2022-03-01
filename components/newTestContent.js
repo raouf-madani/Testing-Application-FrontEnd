@@ -42,6 +42,7 @@ export const Steps1phase = ({current, steps}) => {
   );
 };
 function NewTestContent({
+  commande,
   etapeName,
   UpdateData,
   mise_en_placeById,
@@ -183,6 +184,7 @@ function NewTestContent({
     case 'Pertes a Charge P1':
       return (
         <Perte_a_ChargeForm_P1
+          commande={commande}
           Finaldata={Finaldata}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
@@ -194,6 +196,7 @@ function NewTestContent({
     case 'Pertes a Charge P2':
       return (
         <Perte_a_ChargeForm_P2
+          commande={commande}
           Finaldata={Finaldata}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}

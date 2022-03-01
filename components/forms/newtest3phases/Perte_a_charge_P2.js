@@ -48,6 +48,7 @@ export default function Perte_a_Charge_P2({
       inputEl.current.focus();
     }
   }, [inputEl]);
+
   return (
     <div className="Containertest">
       <Divider
@@ -57,158 +58,246 @@ export default function Perte_a_Charge_P2({
         <h3>Perte a Charge P2</h3>
       </Divider>
       <div>
+        {!mise_en_placeById && (
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="Pertes_câble_PerteCharge_P2"
+              label="Pertes câble"
+              name="Pertes_câble_PerteCharge_P2 "
+              className="show_item_input">
+              <Input
+                type="number"
+                step="0.01"
+                ref={inputEl}
+                tabIndex={1}
+                placeholder="Pertes câble P2"
+                onChange={e => {
+                  UpdateData(
+                    'Pertes_câble_PerteCharge_P2',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          </Row>
+        )}
+
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Pertes_câble_PerteCharge_P2"
-            label="Pertes câble"
-            name="Pertes_câble_PerteCharge_P2 "
-            className="show_item_input">
-            <Input
-              type="number"
-              ref={inputEl}
-              tabIndex={1}
-              placeholder="Pertes câble P2"
-              onChange={e => {
-                UpdateData(
-                  'Pertes_câble_PerteCharge_P2',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Raccord_flexible_PerteCharge_P2"
+              label="Raccord flexible"
+              name="Raccord_flexible_PerteCharge_P2"
+              className="show_item_input">
+              <Select
+                placeholder="Raccord flexible P2"
+                showSearch
+                initialvalues=""
+                tabIndex={2}
+                options={Raccord_Flexible}
+                onChange={value => {
+                  UpdateData(
+                    'Raccord_flexible_PerteCharge_P2',
+                    value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">Raccord flexible :</Form.Item>
+          )}
         </Row>
+        {!mise_en_placeById && (
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="Pertes_raccord_PerteCharge_P2"
+              label="Pertes raccord"
+              name="Pertes_raccord_PerteCharge_P2 "
+              className="show_item_input">
+              <Input
+                type="number"
+                tabIndex={3}
+                placeholder="Pertes raccord P2"
+                onChange={e => {
+                  UpdateData(
+                    'Pertes_raccord_PerteCharge_P2',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          </Row>
+        )}
+
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Raccord_flexible_PerteCharge_P2"
-            label="Raccord flexible"
-            name="Raccord_flexible_PerteCharge_P2"
-            className="show_item_input">
-            <Select
-              placeholder="Raccord flexible P2"
-              showSearch
-              initialvalues=""
-              tabIndex={2}
-              options={Raccord_Flexible}
-              onChange={value => {
-                UpdateData(
-                  'Raccord_flexible_PerteCharge_P2',
-                  value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Charge_PerteCharge_P2"
+              label="TR Charge "
+              name="TR_Charge_PerteCharge_P2"
+              className="show_item_input">
+              <Select
+                placeholder="TR Charge P2"
+                showSearch
+                initialvalues=""
+                tabIndex={4}
+                options={TR_Charge}
+                onChange={value => {
+                  UpdateData('TR_Charge_PerteCharge_P2', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Charge :</Form.Item>
+          )}
         </Row>
+
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Pertes_raccord_PerteCharge_P2"
-            label="Pertes raccord"
-            name="Pertes_raccord_PerteCharge_P2 "
-            className="show_item_input">
-            <Input
-              type="number"
-              tabIndex={3}
-              placeholder="Pertes raccord P2"
-              onChange={e => {
-                UpdateData(
-                  'Pertes_raccord_PerteCharge_P2',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Courant_PerteCharge_P2"
+              label="TR Courant"
+              name="TR_Courant_PerteCharge_P2 "
+              className="show_item_input">
+              <Select
+                placeholder="TR Courant P2 "
+                showSearch
+                initialvalues=""
+                tabIndex={5}
+                options={TR_Courant}
+                onChange={value => {
+                  UpdateData('TR_Courant_PerteCharge_P2', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Courant :</Form.Item>
+          )}
         </Row>
+
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Charge_PerteCharge_P2"
-            label="TR Charge "
-            name="TR_Charge_PerteCharge_P2"
-            className="show_item_input">
-            <Select
-              placeholder="TR Charge P2"
-              showSearch
-              initialvalues=""
-              tabIndex={4}
-              options={TR_Charge}
-              onChange={value => {
-                UpdateData('TR_Charge_PerteCharge_P2', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Voltage_PerteCharge_P2"
+              label="TR Voltage"
+              name="TR_Voltage_PerteCharge_P2 "
+              className="show_item_input">
+              <Select
+                placeholder="TR Voltage P2 "
+                showSearch
+                initialvalues=""
+                tabIndex={6}
+                options={TR_Voltage}
+                onChange={value => {
+                  UpdateData('TR_Voltage_PerteCharge_P2', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Voltage :</Form.Item>
+          )}
         </Row>
+
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Courant_PerteCharge_P2"
-            label="TR Courant"
-            name="TR_Courant_PerteCharge_P2 "
-            className="show_item_input">
-            <Select
-              placeholder="TR Courant P2 "
-              showSearch
-              initialvalues=""
-              tabIndex={5}
-              options={TR_Courant}
-              onChange={value => {
-                UpdateData('TR_Courant_PerteCharge_P2', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
-        </Row>
-        <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Voltage_PerteCharge_P2"
-            label="TR Voltage"
-            name="TR_Voltage_PerteCharge_P2 "
-            className="show_item_input">
-            <Select
-              placeholder="TR Voltage P2 "
-              showSearch
-              initialvalues=""
-              tabIndex={6}
-              options={TR_Voltage}
-              onChange={value => {
-                UpdateData('TR_Voltage_PerteCharge_P2', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
-        </Row>
-        <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Courant_à_appliqué_PerteCharge_P2"
-            label="Courant à appliqué"
-            name="Courant_à_appliqué_PerteCharge_P2 "
-            className="show_item_input">
-            <Input
-              type="number"
-              tabIndex={7}
-              placeholder="Courant à appliqué P2"
-              onChange={e => {
-                UpdateData(
-                  'Courant_à_appliqué_PerteCharge_P2',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Courant_à_appliqué_PerteCharge_P2"
+              label="Courant à appliqué"
+              name="Courant_à_appliqué_PerteCharge_P2 "
+              className="show_item_input">
+              <Input
+                type="number"
+                step="0.0001"
+                tabIndex={7}
+                placeholder="Courant à appliqué P2"
+                onChange={e => {
+                  UpdateData(
+                    'Courant_à_appliqué_PerteCharge_P2',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">Courant à appliqué :</Form.Item>
+          )}
         </Row>
         {commande.type_command == '3phase' ? (
           <>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="PV_mesurés_Ph1_PerteCharge_P2"
-                label="PV (W) mesurés Ph1"
-                name="PV_mesurés_Ph1_PerteCharge_P2 "
-                className="show_item_input">
+                key="PC_mesurés_Ph1_PerteCharge_P2"
+                label="PC (W) mesurés Ph1"
+                name="PC_mesurés_Ph1_PerteCharge_P2 "
+                style={{width: '16%', marginRight: '5px'}}>
                 <Input
                   type="number"
                   tabIndex={8}
-                  placeholder="PV (W) mesurés Ph1 P2"
+                  placeholder="PC (W) mesurés Ph1 P2"
                   onChange={e => {
                     UpdateData(
-                      'PV_mesurés_Ph1_PerteCharge_P2',
+                      'PC_mesurés_Ph1_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
+                />
+              </Form.Item>
+              <Form.Item
+                key="Imp_V_mesuré_Ph1_PerteCharge_P2"
+                label="Imp. (V) mesuré Ph1"
+                name="Imp_V_mesuré_Ph1_PerteCharge_P2 "
+                style={{width: '16%', marginRight: '5px'}}>
+                <Input
+                  type="number"
+                  tabIndex={8}
+                  placeholder="PC (W) mesurés Ph1 P2"
+                  onChange={e => {
+                    UpdateData(
+                      'Imp_V_mesuré_Ph1_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
+                />
+              </Form.Item>
+            </Row>
+
+            <Row style={{justifyContent: 'center'}}>
+              <Form.Item
+                key="PC_mesurés_Ph2_PerteCharge_P2"
+                label="PC (W) mesurés Ph2"
+                name="PC_mesurés_Ph2_PerteCharge_P2 "
+                style={{width: '16%', marginRight: '5px'}}>
+                <Input
+                  type="number"
+                  tabIndex={8}
+                  placeholder="PC (W) mesurés Ph2 P2"
+                  onChange={e => {
+                    UpdateData(
+                      'PC_mesurés_Ph2_PerteCharge_P2',
+                      e.target.value,
+                      setFinaldata
+                    );
+                  }}
+                />
+              </Form.Item>
+              <Form.Item
+                key="Imp_V_mesuré_Ph2_PerteCharge_P2"
+                label="Imp. (V) mesuré Ph2"
+                name="Imp_V_mesuré_Ph2_PerteCharge_P2 "
+                style={{width: '16%', marginRight: '5px'}}>
+                <Input
+                  type="number"
+                  tabIndex={8}
+                  placeholder="PC (W) mesurés Ph2 P2"
+                  onChange={e => {
+                    UpdateData(
+                      'Imp_V_mesuré_Ph2_PerteCharge_P2',
                       e.target.value,
                       setFinaldata
                     );
@@ -218,37 +307,35 @@ export default function Perte_a_Charge_P2({
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="PV_mesurés_Ph2_PerteCharge_P2"
-                label="PV (W) mesurés Ph1"
-                name="PV_mesurés_Ph2_PerteCharge_P2 "
-                className="show_item_input">
+                key="PC_mesurés_Ph3_PerteCharge_P2"
+                label="PC (W) mesurés Ph3"
+                name="PC_mesurés_Ph3_PerteCharge_P2 "
+                style={{width: '16%', marginRight: '5px'}}>
                 <Input
                   type="number"
-                  tabIndex={9}
-                  placeholder="PV (W) mesurés Ph2 P2"
+                  tabIndex={8}
+                  placeholder="PC (W) mesurés Ph3 P2"
                   onChange={e => {
                     UpdateData(
-                      'PV_mesurés_Ph2_PerteCharge_P2',
+                      'PC_mesurés_Ph3_PerteCharge_P2',
                       e.target.value,
                       setFinaldata
                     );
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="PV_mesurés_Ph3_PerteCharge_P2"
-                label="PV (W) mesurés Ph1"
-                name="PV_mesurés_Ph3_PerteCharge_P2 "
-                className="show_item_input">
+                key="Imp_V_mesuré_Ph3_PerteCharge_P2"
+                label="Imp. (V) mesuré Ph3"
+                name="Imp_V_mesuré_Ph3_PerteCharge_P2 "
+                style={{width: '16%', marginRight: '5px'}}>
                 <Input
                   type="number"
-                  tabIndex={10}
-                  placeholder="PV (W) mesurés Ph3 P2"
+                  tabIndex={8}
+                  placeholder="PC (W) mesurés Ph3 P2"
                   onChange={e => {
                     UpdateData(
-                      'PV_mesurés_Ph3_PerteCharge_P2',
+                      'Imp_V_mesuré_Ph3_PerteCharge_P2',
                       e.target.value,
                       setFinaldata
                     );

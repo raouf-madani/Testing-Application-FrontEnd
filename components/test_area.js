@@ -1,4 +1,6 @@
 import React from 'react';
+import {UpdateData} from '@/actions/newtestupdate';
+
 import {
   Steps,
   Button,
@@ -29,6 +31,7 @@ function Test_area({
   settest_type_selected,
   settablelength,
   form,
+  temperature_noaffected,
   // props for buttons
   status,
   resume,
@@ -166,6 +169,11 @@ function Test_area({
                           value="1phase"
                           onClick={() => {
                             settest_type_selected('1phase');
+                            UpdateData(
+                              'temperature_affected',
+                              temperature_noaffected,
+                              setFinaldata
+                            );
                           }}>
                           1 Phase
                         </Radio.Button>

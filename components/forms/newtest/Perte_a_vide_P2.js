@@ -106,26 +106,6 @@ export default function Perte_a_vide({
                 />
               </Form.Item>
             </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                label="Perte Table"
-                name="Perte_Table_P2"
-                className="show_item_input">
-                <Input
-                  type="number"
-                  tabIndex={3}
-                  step="0.0001"
-                  placeholder="Position 2"
-                  onChange={e => {
-                    UpdateData(
-                      'Perte_table_P2',
-                      e.target.value,
-                      setNewMisePlace
-                    );
-                  }}
-                />
-              </Form.Item>
-            </Row>
           </div>
         )}
         <Row style={{justifyContent: 'center'}}>

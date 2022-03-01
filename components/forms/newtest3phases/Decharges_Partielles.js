@@ -84,157 +84,196 @@ export default function Decharges_Partielles({
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Sélecteur_de_prise_DechargeP"
-            label="Sélecteur de prise"
-            name="Sélecteur_de_prise_DechargeP "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Input
-              ref={inputEl}
-              type="number"
-              placeholder="Sélecteur de prise"
-              onChange={e => {
-                UpdateData(
-                  'Sélecteur_de_prise_DechargeP',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Sélecteur_de_prise_DechargeP"
+              label="Sélecteur de prise"
+              name="Sélecteur_de_prise_DechargeP "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Input
+                ref={inputEl}
+                type="number"
+                placeholder="Sélecteur de prise"
+                onChange={e => {
+                  UpdateData(
+                    'Sélecteur_de_prise_DechargeP',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">Sélecteur de prise :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Sélecteur_de_tension_DechargeP"
-            label="Sélecteur de tension"
-            name="Sélecteur_de_tension_DechargeP "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Input
-              type="number"
-              placeholder="Sélecteur de tension"
-              onChange={e => {
-                UpdateData(
-                  'Sélecteur_de_tension_DechargeP',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Sélecteur_de_tension_DechargeP"
+              label="Sélecteur de tension"
+              name="Sélecteur_de_tension_DechargeP "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Input
+                type="number"
+                placeholder="Sélecteur de tension"
+                onChange={e => {
+                  UpdateData(
+                    'Sélecteur_de_tension_DechargeP',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">Sélecteur de tension :</Form.Item>
+          )}
+        </Row>
+
+        <Row style={{justifyContent: 'center'}}>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Réactance_DechargeP"
+              label="Réactance "
+              name="Réactance_DechargeP"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                placeholder="Réactance"
+                showSearch
+                initialvalues=""
+                options={Reactance}
+                onChange={value => {
+                  UpdateData('Réactance_DechargeP', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">Réactance :</Form.Item>
+          )}
+        </Row>
+
+        <Row style={{justifyContent: 'center'}}>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Charge_DechargeP"
+              label="TR Charge "
+              name="TR_Charge_DechargeP"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                placeholder="TR Charge"
+                showSearch
+                initialvalues=""
+                options={TR_Charge}
+                onChange={value => {
+                  UpdateData('TR_Charge_DechargeP', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Charge :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Réactance_DechargeP"
-            label="Réactance "
-            name="Réactance_DechargeP"
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              placeholder="Réactance"
-              showSearch
-              initialvalues=""
-              options={Reactance}
-              onChange={value => {
-                UpdateData('Réactance_DechargeP', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Courant_DechargeP"
+              label="TR Courant"
+              name="TR_Courant_DechargeP "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                placeholder="TR Courant "
+                showSearch
+                initialvalues=""
+                options={TR_Courant}
+                onChange={value => {
+                  UpdateData('TR_Courant_DechargeP', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Courant :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Charge_DechargeP"
-            label="TR Charge "
-            name="TR_Charge_DechargeP"
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              placeholder="TR Charge"
-              showSearch
-              initialvalues=""
-              options={TR_Charge}
-              onChange={value => {
-                UpdateData('TR_Charge_DechargeP', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Voltage_DechargeP"
+              label="TR Voltage"
+              name="TR_Voltage_DechargeP "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                placeholder="TR Voltage "
+                showSearch
+                initialvalues=""
+                options={TR_Voltage}
+                onChange={value => {
+                  UpdateData('TR_Voltage_DechargeP', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Voltage :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Courant_DechargeP"
-            label="TR Courant"
-            name="TR_Courant_DechargeP "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              placeholder="TR Courant "
-              showSearch
-              initialvalues=""
-              options={TR_Courant}
-              onChange={value => {
-                UpdateData('TR_Courant_DechargeP', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Tension_appliqué_1_7_pu_DechargeP"
+              label="Tension appliqué 1.7 pu"
+              name="Tension_appliqué_1_7_pu_DechargeP "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Input
+                type="number"
+                placeholder="Tension appliqué 1.7 pu"
+                onChange={e => {
+                  UpdateData(
+                    'Tension_appliqué_1_7_pu_DechargeP',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">
+              Tension appliqué 1.7 pu :
+            </Form.Item>
+          )}
         </Row>
+
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Voltage_DechargeP"
-            label="TR Voltage"
-            name="TR_Voltage_DechargeP "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              placeholder="TR Voltage "
-              showSearch
-              initialvalues=""
-              options={TR_Voltage}
-              onChange={value => {
-                UpdateData('TR_Voltage_DechargeP', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
-        </Row>
-        <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Tension_appliqué_1_7_pu_DechargeP"
-            label="Tension appliqué 1.7 pu"
-            name="Tension_appliqué_1_7_pu_DechargeP "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Input
-              type="number"
-              placeholder="Tension appliqué 1.7 pu"
-              onChange={e => {
-                UpdateData(
-                  'Tension_appliqué_1_7_pu_DechargeP',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
-        </Row>
-        <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Tension_appliqué_1_5_pu_DechargeP"
-            label="Tension appliqué 1.5 pu"
-            name="Tension_appliqué_1_5_pu_DechargeP "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Input
-              type="number"
-              placeholder="Tension appliqué 1.5 pu"
-              onChange={e => {
-                UpdateData(
-                  'Tension_appliqué_1_5_pu_DechargeP',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Tension_appliqué_1_5_pu_DechargeP"
+              label="Tension appliqué 1.5 pu"
+              name="Tension_appliqué_1_5_pu_DechargeP "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Input
+                type="number"
+                placeholder="Tension appliqué 1.5 pu"
+                onChange={e => {
+                  UpdateData(
+                    'Tension_appliqué_1_5_pu_DechargeP',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">
+              Tension appliqué 1.5 pu :
+            </Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
