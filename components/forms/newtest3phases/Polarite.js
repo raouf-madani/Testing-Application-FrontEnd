@@ -36,9 +36,9 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
         <h3>Polarite</h3>
       </Divider>
       <div>
-        {!mise_en_placeById ? (
-          <>
-            <Row style={{justifyContent: 'center'}}>
+        <>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_a_appliquer_Polarite"
                 label="Tension à appliquer"
@@ -59,8 +59,15 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">
+                Tension à appliquer :{' '}
+              </Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Position_du_sélecteur_Tx_Polarite"
                 label="Position du sélecteur Tx"
@@ -80,8 +87,14 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">
+                Position du sélecteur Tx :{' '}
+              </Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Sélecteur_phase_ligne_Polarite"
                 label="Sélecteur phase ligne"
@@ -103,8 +116,14 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">
+                Sélecteur phase ligne :{' '}
+              </Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Charge_Polarite"
                 label="TR Charge "
@@ -122,8 +141,12 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Charge :</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Courant_Polarite"
                 label="TR Courant"
@@ -141,8 +164,12 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Courant :</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Voltage_Polarite"
                 label="TR Voltage  "
@@ -160,128 +187,133 @@ export default function Polarite({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            {!commande.type_command == '1phase' ? (
-              <>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item className="show_item">Résultats</Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="Lecteur_1PH_Polarite"
-                    label="Lecteur 1PH"
-                    name="Lecteur_1PH_Polarite "
-                    rules={[{required: true, message: 'Champ Requis'}]}
-                    className="show_item_input">
-                    <Input
-                      type="number"
-                      tabIndex={7}
-                      placeholder="Lecteur 1PH "
-                      onChange={e => {
-                        UpdateData(
-                          'Lecteur_1PH_Polarite',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-              </>
             ) : (
-              <>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item className="show_item">Lecture #1</Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="H2_X2_Polarite"
-                    style={{width: '15%', marginRight: '5px'}}
-                    label="H2-X2"
-                    name="H2_X2_Polarite"
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      tabIndex={8}
-                      placeholder="H2-X2"
-                      onChange={e => {
-                        UpdateData(
-                          'H2_X2_Polarite',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    key="H3_X3_Polarite"
-                    style={{width: '15%', marginRight: '5px'}}
-                    label="H3-X3"
-                    name="H3_X3_Polarite"
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      tabIndex={9}
-                      placeholder="H3-X3"
-                      onChange={e => {
-                        UpdateData(
-                          'H3_X3_Polarite',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item className="show_item">Lecture #2</Form.Item>
-                </Row>
-                <Row style={{justifyContent: 'center'}}>
-                  <Form.Item
-                    key="H3_X2_Polarite"
-                    style={{width: '15%', marginRight: '5px'}}
-                    label="H3-X2"
-                    name="H3_X2_Polarite"
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      tabIndex={10}
-                      placeholder="H3-X2"
-                      onChange={e => {
-                        UpdateData(
-                          'H3_X2_Polarite',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    key="H2_X3_Polarite"
-                    style={{width: '15%', marginRight: '5px'}}
-                    label="H2-X3"
-                    name="H2_X3_Polarite"
-                    rules={[{required: true, message: 'Champ Requis'}]}>
-                    <Input
-                      type="number"
-                      tabIndex={11}
-                      placeholder="H2-X3"
-                      onChange={e => {
-                        UpdateData(
-                          'H2_X3_Polarite',
-                          e.target.value,
-                          setFinaldata
-                        );
-                      }}
-                    />
-                  </Form.Item>
-                </Row>
-              </>
+              <Form.Item className="show_item">TR Voltage :</Form.Item>
             )}
-          </>
-        ) : (
-          <>test regulier pour Polarite</>
-        )}
+          </Row>
+          {commande.type_command == '1phase' ? (
+            <>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item className="show_item">Résultats</Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="Lecteur_1PH_Polarite"
+                  label="Lecteur 1PH"
+                  name="Lecteur_1PH_Polarite "
+                  rules={[{required: true, message: 'Champ Requis'}]}
+                  className="show_item_input">
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={7}
+                    placeholder="Lecteur 1PH "
+                    onChange={e => {
+                      UpdateData(
+                        'Lecteur_1PH_Polarite',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+            </>
+          ) : (
+            <>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item className="show_item">Lecture #1</Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="H2_X2_Polarite"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H2-X2"
+                  name="H2_X2_Polarite"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={8}
+                    placeholder="H2-X2"
+                    onChange={e => {
+                      UpdateData(
+                        'H2_X2_Polarite',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="H3_X3_Polarite"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H3-X3"
+                  name="H3_X3_Polarite"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={9}
+                    placeholder="H3-X3"
+                    onChange={e => {
+                      UpdateData(
+                        'H3_X3_Polarite',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item className="show_item">Lecture #2</Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="H3_X2_Polarite"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H3-X2"
+                  name="H3_X2_Polarite"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={10}
+                    placeholder="H3-X2"
+                    onChange={e => {
+                      UpdateData(
+                        'H3_X2_Polarite',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="H2_X3_Polarite"
+                  style={{width: '15%', marginRight: '5px'}}
+                  label="H2-X3"
+                  name="H2_X3_Polarite"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={11}
+                    placeholder="H2-X3"
+                    onChange={e => {
+                      UpdateData(
+                        'H2_X3_Polarite',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+            </>
+          )}
+        </>
       </div>
     </div>
   );

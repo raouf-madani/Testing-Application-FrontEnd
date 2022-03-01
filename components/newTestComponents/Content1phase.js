@@ -164,6 +164,7 @@ function ContentAndSteps1phase(props) {
           <div className="steps-content">
             <EtapeContent
               UpdateData={UpdateData}
+              commande={commande}
               etapeName={steps[current].content}
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}

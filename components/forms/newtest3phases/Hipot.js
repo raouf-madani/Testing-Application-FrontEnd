@@ -31,9 +31,9 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
         <h3>Hi-Pot</h3>
       </Divider>
       <div>
-        {!mise_en_placeById ? (
-          <>
-            <Row style={{justifyContent: 'center'}}>
+        <>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_a_appliquer_Hipot"
                 label="Tension à appliquer "
@@ -43,6 +43,7 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                 <Input
                   ref={inputEl}
                   type="number"
+                  step="0.000001"
                   tabIndex={1}
                   placeholder="Tension à appliquer "
                   onChange={e => {
@@ -54,8 +55,13 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">Tension à appliquer</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Charge_Hipot"
                 label="TR Charge "
@@ -73,8 +79,13 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   }
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Charge</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Courant_Hipot"
                 label="TR Courant  "
@@ -92,8 +103,12 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   }
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Courant</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Voltage_Hipot"
                 label="TR Voltage  "
@@ -111,9 +126,13 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   }
                 />
               </Form.Item>
-            </Row>
+            ) : (
+              <Form.Item className="show_item">TR Voltage</Form.Item>
+            )}
+          </Row>
 
-            <Row style={{justifyContent: 'center'}}>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="test_50_Hipot"
                 label="Sélecteur Hi-Pot"
@@ -145,9 +164,13 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   </Radio.Button>
                 </Radio.Group>
               </Form.Item>
-            </Row>
+            ) : (
+              <Form.Item className="show_item">40</Form.Item>
+            )}
+          </Row>
 
-            <Row style={{justifyContent: 'center'}}>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_au_transformateur_BT_Hipot"
                 label="Tension au transformateur BT  "
@@ -156,6 +179,7 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.000001"
                   tabIndex={6}
                   placeholder="Tension au transformateur BT  "
                   onChange={e => {
@@ -167,9 +191,15 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
+            ) : (
+              <Form.Item className="show_item">
+                Tension au transformateur BT
+              </Form.Item>
+            )}
+          </Row>
 
-            <Row style={{justifyContent: 'center'}}>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_au_transformateur_HT_Hipot"
                 label="Tension au transformateur HT  "
@@ -178,6 +208,7 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                 className="show_item_input">
                 <Input
                   type="number"
+                  step="0.000001"
                   tabIndex={7}
                   placeholder="Tension au transformateur HT  "
                   onChange={e => {
@@ -189,44 +220,47 @@ export default function Hipot({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                key="Hipot_3Phases_Hipot"
-                name="Hipot_3Phases_Hipot"
-                rules={[{required: true, message: 'Champ Requis'}]}
-                style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                <Radio.Group buttonStyle="solid" key="Hipot_3Phases">
-                  <Radio.Button
-                    tabIndex={8}
-                    style={{margin: '5px'}}
-                    value={true}
-                    onKeyPress={() => {
-                      UpdateData('Hipot_3Phases_Hipot', true, setFinaldata);
-                    }}
-                    onClick={() => {
-                      UpdateData('Hipot_3Phases_Hipot', true, setFinaldata);
-                    }}>
-                    Test Réussi
-                  </Radio.Button>
-                  <Radio.Button
-                    style={{margin: '5px'}}
-                    value={false}
-                    onKeyPress={() => {
-                      UpdateData('Hipot_3Phases_Hipot', false, setFinaldata);
-                    }}
-                    onClick={() => {
-                      UpdateData('Hipot_3Phases_Hipot', false, setFinaldata);
-                    }}>
-                    Test Échoué
-                  </Radio.Button>
-                </Radio.Group>
+            ) : (
+              <Form.Item className="show_item">
+                Tension au transformateur HT
               </Form.Item>
-            </Row>
-          </>
-        ) : (
-          <> test regulier pour 3 phases</>
-        )}
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="Hipot_3Phases_Hipot"
+              name="Hipot_3Phases_Hipot"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Radio.Group buttonStyle="solid" key="Hipot_3Phases">
+                <Radio.Button
+                  tabIndex={8}
+                  style={{margin: '5px'}}
+                  value={true}
+                  onKeyPress={() => {
+                    UpdateData('Hipot_3Phases_Hipot', true, setFinaldata);
+                  }}
+                  onClick={() => {
+                    UpdateData('Hipot_3Phases_Hipot', true, setFinaldata);
+                  }}>
+                  Test Réussi
+                </Radio.Button>
+                <Radio.Button
+                  style={{margin: '5px'}}
+                  value={false}
+                  onKeyPress={() => {
+                    UpdateData('Hipot_3Phases_Hipot', false, setFinaldata);
+                  }}
+                  onClick={() => {
+                    UpdateData('Hipot_3Phases_Hipot', false, setFinaldata);
+                  }}>
+                  Test Échoué
+                </Radio.Button>
+              </Radio.Group>
+            </Form.Item>
+          </Row>
+        </>
       </div>
     </div>
   );

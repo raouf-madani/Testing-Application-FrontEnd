@@ -36,9 +36,8 @@ export default function Induit_P2({commande, mise_en_placeById, setFinaldata}) {
         <h3>Induit P2</h3>
       </Divider>
       <div>
-        {' '}
-        {!mise_en_placeById ? (
-          <>
+        <>
+          {!mise_en_placeById && (
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 key="Valeur_induit_P2 "
@@ -60,7 +59,9 @@ export default function Induit_P2({commande, mise_en_placeById, setFinaldata}) {
                 />
               </Form.Item>
             </Row>
-            <Row style={{justifyContent: 'center'}}>
+          )}
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Réactance_induit_P2"
                 label="Réactance"
@@ -77,8 +78,13 @@ export default function Induit_P2({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">Réactance :</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Charge_Induit_P2"
                 label="TR Charge "
@@ -95,8 +101,12 @@ export default function Induit_P2({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Charge :</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Courant_Induit_P2"
                 label="TR Courant"
@@ -113,8 +123,12 @@ export default function Induit_P2({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Courant :</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Voltage_Induit_P2"
                 label="TR Voltage  "
@@ -131,62 +145,64 @@ export default function Induit_P2({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                key="Tension_a_appliquer_Induit_P2"
-                label="Tension à appliquer"
-                name="Tension_a_appliquer_Induit_P2 "
-                className="show_item_input">
-                <Input
-                  type="number"
-                  tabIndex={6}
-                  placeholder="Tension à appliquer "
-                  onChange={e => {
-                    UpdateData(
-                      'Tension_a_appliquer_Induit_P2',
-                      e.target.value,
-                      setFinaldata
-                    );
+            ) : (
+              <Form.Item className="show_item">TR Voltage :</Form.Item>
+            )}
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="Tension_a_appliquer_Induit_P2"
+              label="Tension à appliquer"
+              name="Tension_a_appliquer_Induit_P2 "
+              className="show_item_input">
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={6}
+                placeholder="Tension à appliquer "
+                onChange={e => {
+                  UpdateData(
+                    'Tension_a_appliquer_Induit_P2',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              name="Induit_P2_test"
+              style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+              <Radio.Group buttonStyle="solid" key="Induit_P2_test">
+                <Radio.Button
+                  tabIndex={7}
+                  style={{margin: '5px'}}
+                  value={true}
+                  onKeyPress={() => {
+                    UpdateData('Induit_P2_test', true, setFinaldata);
                   }}
-                />
-              </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                name="Induit_P2_test"
-                style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
-                <Radio.Group buttonStyle="solid" key="Induit_P2_test">
-                  <Radio.Button
-                    tabIndex={7}
-                    style={{margin: '5px'}}
-                    value={true}
-                    onKeyPress={() => {
-                      UpdateData('Induit_P2_test', true, setFinaldata);
-                    }}
-                    onClick={() => {
-                      UpdateData('Induit_P2_test', true, setFinaldata);
-                    }}>
-                    Test Réussi
-                  </Radio.Button>
-                  <Radio.Button
-                    style={{margin: '5px'}}
-                    value={false}
-                    onKeyPress={() => {
-                      UpdateData('Induit_P2_test', false, setFinaldata);
-                    }}
-                    onClick={() => {
-                      UpdateData('Induit_P2_test', false, setFinaldata);
-                    }}>
-                    Test Échoué
-                  </Radio.Button>
-                </Radio.Group>
-              </Form.Item>
-            </Row>
-          </>
-        ) : (
-          <></>
-        )}
+                  onClick={() => {
+                    UpdateData('Induit_P2_test', true, setFinaldata);
+                  }}>
+                  Test Réussi
+                </Radio.Button>
+                <Radio.Button
+                  style={{margin: '5px'}}
+                  value={false}
+                  onKeyPress={() => {
+                    UpdateData('Induit_P2_test', false, setFinaldata);
+                  }}
+                  onClick={() => {
+                    UpdateData('Induit_P2_test', false, setFinaldata);
+                  }}>
+                  Test Échoué
+                </Radio.Button>
+              </Radio.Group>
+            </Form.Item>
+          </Row>
+        </>
       </div>
     </div>
   );

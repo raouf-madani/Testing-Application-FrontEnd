@@ -32,9 +32,9 @@ export default function Ratio_p1({commande, mise_en_placeById, setFinaldata}) {
         <h3>Ratio P1</h3>
       </Divider>
       <div>
-        {!mise_en_placeById ? (
-          <>
-            <Row style={{justifyContent: 'center'}}>
+        <>
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_a_appliquer_Ratio_P1"
                 label="Tension à appliquer"
@@ -55,8 +55,13 @@ export default function Ratio_p1({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">Tension à appliquer</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="Tension_côté_primaire_P1"
                 label="Tension côté primaire "
@@ -76,8 +81,13 @@ export default function Ratio_p1({commande, mise_en_placeById, setFinaldata}) {
                   }}
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">Tension côté primaire</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Charge_Ratio_P1"
                 label="TR Charge "
@@ -95,8 +105,13 @@ export default function Ratio_p1({commande, mise_en_placeById, setFinaldata}) {
                   }
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Charge</Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Courant_Ratio_P1"
                 label="TR Courant  "
@@ -114,8 +129,13 @@ export default function Ratio_p1({commande, mise_en_placeById, setFinaldata}) {
                   }
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
+            ) : (
+              <Form.Item className="show_item">TR Courant </Form.Item>
+            )}
+          </Row>
+
+          <Row style={{justifyContent: 'center'}}>
+            {!mise_en_placeById ? (
               <Form.Item
                 key="TR_Voltage_Ratio_P1"
                 label="TR Voltage  "
@@ -133,212 +153,208 @@ export default function Ratio_p1({commande, mise_en_placeById, setFinaldata}) {
                   }
                 />
               </Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item className="show_item">Résultats théoriques</Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                key="Prise1_théoriques_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise1"
-                name="Prise1_théoriques_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={5}
-                  placeholder="Prise1 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise1_théoriques_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise2_théoriques_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise2"
-                name="Prise2_théoriques_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={6}
-                  placeholder="Prise2 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise2_théoriques_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise3_théoriques_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise3"
-                name="Prise3_théoriques_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={7}
-                  placeholder="Prise3 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise3_théoriques_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise4_théoriques_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise4"
-                name="Prise4_théoriques_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={8}
-                  placeholder="Prise4 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise4_théoriques_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise5_théoriques_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise5"
-                name="Prise5_théoriques_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={8}
-                  placeholder="Prise5 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise5_théoriques_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-            </Row>
+            ) : (
+              <Form.Item className="show_item">TR Voltage </Form.Item>
+            )}
+          </Row>
+          {!mise_en_placeById && (
+            <>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item className="show_item">
+                  Résultats théoriques
+                </Form.Item>
+              </Row>
+              <Row style={{justifyContent: 'center'}}>
+                <Form.Item
+                  key="Prise1_théoriques_P1"
+                  style={{width: '10%', marginRight: '5px'}}
+                  label="Prise1"
+                  name="Prise1_théoriques_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={5}
+                    placeholder="Prise1 P1"
+                    onChange={e => {
+                      UpdateData(
+                        'Prise1_théoriques_P1',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Prise2_théoriques_P1"
+                  style={{width: '10%', marginRight: '5px'}}
+                  label="Prise2"
+                  name="Prise2_théoriques_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={6}
+                    placeholder="Prise2 P1"
+                    onChange={e => {
+                      UpdateData(
+                        'Prise2_théoriques_P1',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Prise3_théoriques_P1"
+                  style={{width: '10%', marginRight: '5px'}}
+                  label="Prise3"
+                  name="Prise3_théoriques_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={7}
+                    placeholder="Prise3 P1"
+                    onChange={e => {
+                      UpdateData(
+                        'Prise3_théoriques_P1',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Prise4_théoriques_P1"
+                  style={{width: '10%', marginRight: '5px'}}
+                  label="Prise4"
+                  name="Prise4_théoriques_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={8}
+                    placeholder="Prise4 P1"
+                    onChange={e => {
+                      UpdateData(
+                        'Prise4_théoriques_P1',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item
+                  key="Prise5_théoriques_P1"
+                  style={{width: '10%', marginRight: '5px'}}
+                  label="Prise5"
+                  name="Prise5_théoriques_P1"
+                  rules={[{required: true, message: 'Champ Requis'}]}>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    tabIndex={8}
+                    placeholder="Prise5 P1"
+                    onChange={e => {
+                      UpdateData(
+                        'Prise5_théoriques_P1',
+                        e.target.value,
+                        setFinaldata
+                      );
+                    }}
+                  />
+                </Form.Item>
+              </Row>
+            </>
+          )}
 
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item className="show_item">Résultats mesurés</Form.Item>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Form.Item
-                key="Prise1_mesurés_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise1"
-                name="Prise1_mesurés_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={9}
-                  placeholder="Prise1 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise1_mesurés_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise2_mesurés_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise2"
-                name="Prise2_mesurés_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={10}
-                  placeholder="Prise2 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise2_mesurés_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise3_mesurés_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise3"
-                name="Prise3_mesurés_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={11}
-                  placeholder="Prise3 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise3_mesurés_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise4_mesurés_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise4"
-                name="Prise4_mesurés_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={12}
-                  placeholder="Prise4 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise4_mesurés_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                key="Prise5_mesurés_P1"
-                style={{width: '10%', marginRight: '5px'}}
-                label="Prise5"
-                name="Prise5_mesurés_P1"
-                rules={[{required: true, message: 'Champ Requis'}]}>
-                <Input
-                  type="number"
-                  tabIndex={13}
-                  placeholder="Prise5 P1"
-                  onChange={e => {
-                    UpdateData(
-                      'Prise5_mesurés_P1',
-                      e.target.value,
-                      setFinaldata
-                    );
-                  }}
-                />
-              </Form.Item>
-            </Row>
-          </>
-        ) : (
-          <> test regulier pour 3 phases Ratio</>
-        )}
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item className="show_item">Résultats mesurés</Form.Item>
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            <Form.Item
+              key="Prise1_mesurés_P1"
+              style={{width: '10%', marginRight: '5px'}}
+              label="Prise1"
+              name="Prise1_mesurés_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={9}
+                placeholder="Prise1 P1"
+                onChange={e => {
+                  UpdateData('Prise1_mesurés_P1', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              key="Prise2_mesurés_P1"
+              style={{width: '10%', marginRight: '5px'}}
+              label="Prise2"
+              name="Prise2_mesurés_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={10}
+                placeholder="Prise2 P1"
+                onChange={e => {
+                  UpdateData('Prise2_mesurés_P1', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              key="Prise3_mesurés_P1"
+              style={{width: '10%', marginRight: '5px'}}
+              label="Prise3"
+              name="Prise3_mesurés_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={11}
+                placeholder="Prise3 P1"
+                onChange={e => {
+                  UpdateData('Prise3_mesurés_P1', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              key="Prise4_mesurés_P1"
+              style={{width: '10%', marginRight: '5px'}}
+              label="Prise4"
+              name="Prise4_mesurés_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={12}
+                placeholder="Prise4 P1"
+                onChange={e => {
+                  UpdateData('Prise4_mesurés_P1', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              key="Prise5_mesurés_P1"
+              style={{width: '10%', marginRight: '5px'}}
+              label="Prise5"
+              name="Prise5_mesurés_P1"
+              rules={[{required: true, message: 'Champ Requis'}]}>
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={13}
+                placeholder="Prise5 P1"
+                onChange={e => {
+                  UpdateData('Prise5_mesurés_P1', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          </Row>
+        </>
       </div>
     </div>
   );

@@ -31,83 +31,100 @@ export default function RIV({commande, mise_en_placeById, setFinaldata}) {
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Charge_RIV"
-            label="TR Charge "
-            name="TR_Charge_RIV"
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              ref={inputEl}
-              placeholder="TR Charge"
-              showSearch
-              initialvalues=""
-              tabIndex={1}
-              options={TR_Charge}
-              onChange={value => {
-                UpdateData('TR_Charge_RIV', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Charge_RIV"
+              label="TR Charge "
+              name="TR_Charge_RIV"
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                ref={inputEl}
+                placeholder="TR Charge"
+                showSearch
+                initialvalues=""
+                tabIndex={1}
+                options={TR_Charge}
+                onChange={value => {
+                  UpdateData('TR_Charge_RIV', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Charge :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Courant_RIV"
-            label="TR Courant"
-            name="TR_Courant_RIV "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              placeholder="TR Courant  "
-              showSearch
-              initialvalues=""
-              tabIndex={2}
-              options={TR_Courant}
-              onChange={value => {
-                UpdateData('TR_Courant_RIV', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Courant_RIV"
+              label="TR Courant"
+              name="TR_Courant_RIV "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                placeholder="TR Courant  "
+                showSearch
+                initialvalues=""
+                tabIndex={2}
+                options={TR_Courant}
+                onChange={value => {
+                  UpdateData('TR_Courant_RIV', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Courant :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="TR_Tension_RIV"
-            label="TR Tension"
-            name="TR_Tension_RIV "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Select
-              placeholder="TR Tension  "
-              showSearch
-              initialvalues=""
-              tabIndex={3}
-              options={TR_Tension}
-              onChange={value => {
-                UpdateData('TR_Tension_RIV', value, setFinaldata);
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="TR_Tension_RIV"
+              label="TR Tension"
+              name="TR_Tension_RIV "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Select
+                placeholder="TR Tension  "
+                showSearch
+                initialvalues=""
+                tabIndex={3}
+                options={TR_Tension}
+                onChange={value => {
+                  UpdateData('TR_Tension_RIV', value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">TR Tension :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
-          <Form.Item
-            key="Tension_a_appliquer_RIV"
-            label="Tension à appliquer"
-            name="Tension_a_appliquer_RIV "
-            rules={[{required: true, message: 'Champ Requis'}]}
-            className="show_item_input">
-            <Input
-              type="number"
-              tabIndex={4}
-              placeholder="Tension à appliquer "
-              onChange={e => {
-                UpdateData(
-                  'Tension_a_appliquer_RIV',
-                  e.target.value,
-                  setFinaldata
-                );
-              }}
-            />
-          </Form.Item>
+          {!mise_en_placeById ? (
+            <Form.Item
+              key="Tension_a_appliquer_RIV"
+              label="Tension à appliquer"
+              name="Tension_a_appliquer_RIV "
+              rules={[{required: true, message: 'Champ Requis'}]}
+              className="show_item_input">
+              <Input
+                type="number"
+                step="0.01"
+                tabIndex={4}
+                placeholder="Tension à appliquer "
+                onChange={e => {
+                  UpdateData(
+                    'Tension_a_appliquer_RIV',
+                    e.target.value,
+                    setFinaldata
+                  );
+                }}
+              />
+            </Form.Item>
+          ) : (
+            <Form.Item className="show_item">Tension à appliquer :</Form.Item>
+          )}
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
@@ -118,6 +135,7 @@ export default function RIV({commande, mise_en_placeById, setFinaldata}) {
             className="show_item_input">
             <Input
               type="number"
+              step="0.001"
               tabIndex={5}
               placeholder="Valeur mesurée"
               onChange={e => {
