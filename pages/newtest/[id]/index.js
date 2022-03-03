@@ -386,43 +386,39 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                   />
                 </div>
               ) : (
-                <Basepage>
-                  <Row justify="center">
-                    <Space size="middle">
-                      <h1> produit deja tested voulez vous le retester?</h1>
-                      <Button
-                        onClick={() => {
-                          router.push({
-                            pathname: '/newtest/[id]/edit',
-                            query: {
-                              id: router.query.id,
-                              firstchecked: router.query.firstchecked,
-                            },
-                          });
-                        }}>
-                        retester
-                      </Button>
-                    </Space>
-                  </Row>
-                </Basepage>
-              )
-            ) : (
-              <Basepage>
                 <Row justify="center">
                   <Space size="middle">
-                    <h1> serie Not Found</h1>
+                    <h1>
+                      Le Prouit Scanné est déja testé voulez vous le retester ?
+                    </h1>
+                    <Button
+                      onClick={() => {
+                        router.push({
+                          pathname: '/newtest/[id]/edit',
+                          query: {
+                            id: router.query.id,
+                            firstchecked: router.query.firstchecked,
+                          },
+                        });
+                      }}>
+                      Retester
+                    </Button>
                   </Space>
                 </Row>
-              </Basepage>
-            )
-          ) : (
-            <Basepage>
+              )
+            ) : (
               <Row justify="center">
                 <Space size="middle">
-                  <h1> La commande Existe Pas</h1>
+                  <h1> Le Code Scanné a un numéro de série invalide</h1>
                 </Space>
               </Row>
-            </Basepage>
+            )
+          ) : (
+            <Row justify="center">
+              <Space size="middle">
+                <h1> Le code Scanné n'appartient a aucune Commande </h1>
+              </Space>
+            </Row>
           )}
         </Basepage>
       </Baselayout>

@@ -144,7 +144,7 @@ function ContentAndSteps1phase(props) {
           style={{
             padding: '10px',
             borderRadius: '10px',
-            boxShadow: '3px 4px 5px 1px rgb(163 234 237 / 77%)',
+            boxShadow: '3px 4px 5px 1px #503662',
           }}>
           <Steps size="small" current={current} direction="vertical">
             {steps.map(item => (

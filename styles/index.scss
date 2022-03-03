@@ -3,6 +3,7 @@ page-header-title {
   display: inline-block;
 }
 .Homemain {
+  margin-top: 10px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -21,10 +22,10 @@ page-header-title {
   text-align: center;
   color: inherit;
   text-decoration: none;
-  background-image: linear-gradient(90deg, #446960 0%, #348181 100%);
-  box-shadow: 6px -3px 14px 2px #00806e;
+  background-image: linear-gradient(90deg, #3d3a7a 0%, #432150 100%);
+  box-shadow: 6px -3px 14px 2px #4d1562;
   justify-content: center;
-  width: 38%;
+  width: 22%;
   height: 200px;
 }
 .description {

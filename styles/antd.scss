@@ -65,7 +65,15 @@ h6 {
   top: -3.5px;
 }
 .ant-card {
-  box-shadow: 0 10px 10px #4ac7c7;
-  background: #097e91;
+  color: white;
+  box-shadow: 0 10px 10px #3d3a7a;
+  background-image: linear-gradient(90deg, #3d3a7a 0%, #432150 100%);
   border-radius: 10px;
+  cursor: pointer;
+}
+.ant-card-head {
+  color: white;
+}
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  color: white;
 }

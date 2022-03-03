@@ -13,7 +13,7 @@ export default function Facteur_dissipation({UpdateData, setFinaldata}) {
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Facteur Dissipation</h3>
       </Divider>{' '}
       <div>

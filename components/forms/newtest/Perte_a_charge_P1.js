@@ -64,7 +64,7 @@ export default function Perte_a_charge({
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Perte A Charge Position 1</h3>{' '}
       </Divider>
       <div>
@@ -232,6 +232,7 @@ export default function Perte_a_charge({
                     rules={[{required: true, message: 'Champ Requis'}]}
                     className="show_item_input">
                     <Input
+                      ref={resistance_P1 ? inputEl : null}
                       type="number"
                       tabIndex={7}
                       step="0.0001"
@@ -316,7 +317,7 @@ export default function Perte_a_charge({
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
             <Input
-              ref={!miseenplaceok ? null : inputEl}
+              ref={miseenplaceok && !resistance_P1 ? inputEl : null}
               tabIndex={9}
               type="number"
               step="0.0001"
