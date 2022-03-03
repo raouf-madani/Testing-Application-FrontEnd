@@ -45,7 +45,7 @@ export default function Bornes({UpdateData, setNewMisePlace}) {
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Placement des Bornes</h3>
       </Divider>
       <div>

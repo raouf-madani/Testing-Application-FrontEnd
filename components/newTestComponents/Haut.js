@@ -168,7 +168,7 @@ const Haut = ({
         mise_data !== null
           ? {
               background:
-                'linear-gradient(90deg, rgb(61 124 155) 0%, rgb(99 221 221) 100%)',
+                'linear-gradient(90deg, rgb(26 10 54) 0%, rgb(92 20 147) 100%)',
               boxShadow: '0 5px 10px rgb(163 234 237 / 77%)',
             }
           : {}
@@ -210,11 +210,10 @@ const Haut = ({
         </Row>
         <Modal
           title="Modifier la Mise en place"
-          centered
           onCancel={handleCancel}
           maskClosable={false}
           visible={miseenplacemodal}
-          width={520}
+          width={700}
           footer={[
             <Button
               key="1"

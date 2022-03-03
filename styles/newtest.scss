@@ -3,12 +3,12 @@
   padding: 10px 40px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 3px 4px 5px 1px rgb(163 234 237 / 77%);
+  box-shadow: 3px 4px 5px 1px #503662;
   .Containertest {
     min-height: 550px;
     background: #24717400;
     padding: 10px;
-    box-shadow: 0 0 15px #00806e;
+    box-shadow: 0 0 15px #503662;
     display: inline-flexbox;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -34,7 +34,7 @@
   display: inline-block;
   width: 40%;
   border-radius: 3px;
-  box-shadow: 0 5px 5px rgb(21 94 102);
+  box-shadow: 0 5px 5px rgb(77, 8, 83);
   color: rgb(227 234 235);
 }
 .show_item_input {

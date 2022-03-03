@@ -2,14 +2,13 @@ import Head from 'next/head';
 import Loginpage from '@/components/loginpage';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
-import Modalnewtest from '@/components/modals/newtest/scanmodal';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 import {useGetUser} from '@/actions/user';
 import {isAuthorized} from '@/utils/auth0';
 import Link from 'next/link';
 import React, {useState} from 'react';
 import Modal from '@/components/modals/historique/historiquemodal';
-import {Spin, Space, Row} from 'antd';
+import {Spin, Space, Row, Card, Divider} from 'antd';
 import TestingApi from '@/lib/api/testing';
 
 export default function Home({commandes}) {
@@ -30,56 +29,74 @@ export default function Home({commandes}) {
             <Baselayout user={data} loading={loading}>
               <Basepage className="base-page">
                 <main className="Homemain">
-                  <div>
-                    <h1>Bienvenue dans l&apos;Application d&apos;essai</h1>
-                    <p className="description">
-                      Le menu vous permets d&apos;acceder a plusieurs
-                      fonctionnalites. Vous pouvez lancer un nouvel essai en
-                      appuyant sur &apos;Nouveau Test&apos;. Afin de consulter
-                      d&apos;anciens essais effectues. Vous pouvez lancer un
-                      nouvel essai en appuyant sur &apos;Nouveau Test&apos;.
-                      Afin de consulter d&apos;anciens essais effectues Afin de
-                      consulter d&apos;anciens essais effectues. Vous pouvez
-                      lancer un nouvel essai en appuyant sur &apos;Nouveau
-                      Test&apos;. Afin de consulter d&apos;anciens essais
-                      effectues Afin de consulter
-                    </p>
-                  </div>
+                  <Divider
+                    dashed
+                    orientation="center"
+                    style={{color: '#503662', marginBottom: '40px'}}>
+                    <h1>Bienvenue à l&apos;application d&apos;essai.</h1>
+                  </Divider>
+
                   <div className="grid">
-                    <Link href="/#">
-                      <a
-                        className={`nav-link port-navbar-link card`}
-                        onClick={toggle}>
-                        <h2>Nouveau Test</h2>
-                      </a>
-                    </Link>
-                    {data && isAuthorized(data, 'admin') && (
-                      <>
-                        <Link href="/editeur">
-                          <a className={`nav-link port-navbar-link card`}>
-                            <h2>Editeur d&apos;etape</h2>
-                          </a>
+                    <div className="site-card-border-less-wrapper">
+                      <Card
+                        onClick={toggle}
+                        title="Nouveau Test"
+                        bordered={false}
+                        style={{width: 250, height: 350, margin: 10}}>
+                        <Link href="/#">
+                          <p className="description">
+                            Nouveau test vous permet de scanner le code-barres
+                            correspondant au transformateur à tester.
+                          </p>
                         </Link>
-                      </>
+                      </Card>
+                    </div>
+                    {data && isAuthorized(data, 'admin') && (
+                      <div className="site-card-border-less-wrapper">
+                        <Card
+                          title="Editeur d'etape"
+                          bordered={false}
+                          style={{width: 250, height: 350, margin: 10}}>
+                          <Link href="/editeur">
+                            <p className="description">
+                              L&apos;éditeur d&apos;étapes permet aux
+                              administrateurs d&apos;application de modifier les
+                              étapes de test.
+                            </p>
+                          </Link>
+                        </Card>
+                      </div>
                     )}
-                    <Link href="">
-                      <a
-                        className={`nav-link port-navbar-link card`}
-                        onClick={toggle1}>
-                        <h2>Historique</h2>
-                      </a>
-                    </Link>
-                    <Link href="/rapports">
-                      <a className={`nav-link port-navbar-link card`}>
-                        <h2>Rapports</h2>
-                      </a>
-                    </Link>
+                    <div className="site-card-border-less-wrapper">
+                      <Card
+                        onClick={toggle1}
+                        title="Historique"
+                        bordered={false}
+                        style={{width: 250, height: 350, margin: 10}}>
+                        <Link href="">
+                          <p className="description">
+                            Historique vous permet d'afficher l'ensemble des
+                            tests correspondant à votre prévilege.{' '}
+                          </p>
+                        </Link>
+                      </Card>
+                    </div>
+                    <div className="site-card-border-less-wrapper">
+                      <Card
+                        title="Rapports"
+                        bordered={false}
+                        style={{width: 250, height: 350, margin: 10}}>
+                        <Link href="/rapports">
+                          <p className="description">
+                            Rapports, vous permet de consulter et
+                            d&apos;imprimer un rapport à partir d&apos;un test
+                            réalisé.
+                          </p>
+                        </Link>
+                      </Card>
+                    </div>
+
                     <div>
-                      {/* <Modalnewtest
-                        modal={modal}
-                        toggle={toggle}
-                        direction="#"
-                      /> */}
                       <Modalnewtestscanner
                         modal={modal}
                         toggle={toggle}

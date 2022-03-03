@@ -38,7 +38,7 @@ const Bslink = props => {
   return (
     <Link style={{PointerEvent: 'default'}} href={url}>
       <a
-        disabled={status !== 0 && true}
+        disabled={status > 0 && true}
         className={`nav-link port-navbar-link ${className}`}
         onClick={ontoggle}>
         {title}
@@ -112,16 +112,23 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
         expand="md">
         {status == 0 ? (
           <NavbarBrand href="/">
-            {' '}
-            <span className="siemens">Siemens</span>{' '}
-            <span className="energy">Energy</span>
+            <img
+              style={{marginBottom: '5px'}}
+              src="https://brandville.siemens-energy.com/sites/default/files/c2cms_instance_settings/logo/SE_Logo_White_RGB_green.svg"
+              height="45px"
+              alt="se-logo"
+            />
           </NavbarBrand>
         ) : (
           <>
             <NavbarBrand onClick={AnnulerConfirm}>
               {' '}
-              <span className="siemens">Siemens</span>{' '}
-              <span className="energy">Energy</span>
+              <img
+                style={{marginBottom: '5px'}}
+                src="https://brandville.siemens-energy.com/sites/default/files/c2cms_instance_settings/logo/SE_Logo_White_RGB_green.svg"
+                height="45px"
+                alt="se-logo"
+              />
             </NavbarBrand>
           </>
         )}
@@ -132,7 +139,7 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
             <NavItem className="port-navbar-item">
               <Bslink
                 title="Accueil"
-                url={status == 0 ? '/' : '#'}
+                url={status > 0 ? '#' : '/'}
                 status={status}
               />
             </NavItem>
@@ -140,7 +147,7 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
               <Bslink
                 title="New Test"
                 url="#"
-                ontoggle={status == 0 ? () => setModal(!modal) : AnnulerConfirm}
+                ontoggle={status < 1 ? () => setModal(!modal) : AnnulerConfirm}
                 status={status}
               />
             </NavItem>
@@ -154,7 +161,7 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
                 <NavItem className="port-navbar-item">
                   <Bslink
                     title="Editeur"
-                    url={status == 0 ? '/editeur' : '#'}
+                    url={status > 0 ? '#' : '/editeur'}
                     status={status}
                   />
                 </NavItem>
@@ -163,7 +170,7 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
             <NavItem className="port-navbar-item">
               <Bslink
                 title="Rapports"
-                url={status == 0 ? '/rapports' : '#'}
+                url={status > 0 ? '#' : '/rapports'}
                 status={status}
               />
             </NavItem>

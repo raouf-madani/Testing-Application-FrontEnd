@@ -28,7 +28,7 @@ export default function Ratio_Polarite({
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Ratio et Polarité Position 1</h3>
       </Divider>
       <div>
@@ -43,7 +43,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={1}
                   ref={inputEl}
                   placeholder="Position 1"
                   onChange={e => {
@@ -65,7 +64,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={2}
                   placeholder="Position 1"
                   onChange={e => {
                     UpdateData('Volts_ht_P1', e.target.value, setNewMisePlace);
@@ -82,7 +80,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={3}
                   placeholder="Position 1"
                   onChange={e => {
                     UpdateData(
@@ -115,7 +112,6 @@ export default function Ratio_Polarite({
               className="show_item_input">
               <Input
                 ref={!miseenplaceok ? null : inputEl}
-                tabIndex={4}
                 type="number"
                 step="0.0001"
                 placeholder="Position 1"
@@ -136,7 +132,6 @@ export default function Ratio_Polarite({
                   ref={!miseenplaceok ? null : inputEl}
                   type="number"
                   step="0.0001"
-                  tabIndex={4}
                   placeholder="Prise1"
                   onChange={e =>
                     UpdateData(
@@ -156,7 +151,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={5}
                   placeholder="Prise2"
                   onChange={e =>
                     UpdateData(
@@ -176,7 +170,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={6}
                   placeholder="Prise1"
                   onChange={e =>
                     UpdateData(
@@ -196,7 +189,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={7}
                   placeholder="Prise4"
                   onChange={e =>
                     UpdateData(
@@ -216,7 +208,6 @@ export default function Ratio_Polarite({
                 <Input
                   type="number"
                   step="0.0001"
-                  tabIndex={8}
                   placeholder="Prise5"
                   onChange={e =>
                     UpdateData(
@@ -240,7 +231,6 @@ export default function Ratio_Polarite({
             <Input
               type="number"
               step="0.0001"
-              tabIndex={Prise == 'AP' ? 5 : 9}
               placeholder="Position 1"
               onChange={e =>
                 UpdateData('Polarité_mesurée_P1', e.target.value, setFinaldata)

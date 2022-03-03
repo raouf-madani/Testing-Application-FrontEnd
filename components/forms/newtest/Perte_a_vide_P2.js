@@ -36,7 +36,7 @@ export default function Perte_a_vide({
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Perte A Vide Position 2</h3>
       </Divider>
       <div>

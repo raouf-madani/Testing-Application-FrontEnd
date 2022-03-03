@@ -21,7 +21,8 @@ body {
 
 .base-page {
   color: white;
-  background: linear-gradient(180deg, #000028 0%, #009999 100%);
+  // background: linear-gradient(125deg, #1b1532 63%, #4e0685 150%);
+  background: radial-gradient(circle closest-side, #4e066a, #020024);
 }
 
 .container {

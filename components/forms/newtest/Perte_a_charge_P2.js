@@ -64,7 +64,7 @@ export default function Perte_a_charge({
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Perte A Charge Position 2</h3>{' '}
       </Divider>
       <div>
@@ -205,6 +205,7 @@ export default function Perte_a_charge({
                     className="show_item_input">
                     <Input
                       type="number"
+                      ref={resistance_P2 ? inputEl : null}
                       tabIndex={7}
                       step="0.0001"
                       placeholder="Position 2"
@@ -284,7 +285,7 @@ export default function Perte_a_charge({
             name="Perte_Charge_Mesuré_P2"
             className="show_item_input">
             <Input
-              ref={!miseenplaceok ? null : inputEl}
+              ref={miseenplaceok && !resistance_P2 ? inputEl : null}
               tabIndex={9}
               type="number"
               step="0.0001"

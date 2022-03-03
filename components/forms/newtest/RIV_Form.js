@@ -13,7 +13,7 @@ export default function RIV({UpdateData, setNewMisePlace}) {
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Riv</h3>
       </Divider>
       <div>

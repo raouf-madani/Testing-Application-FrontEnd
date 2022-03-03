@@ -112,7 +112,7 @@ export default function Decharges_Partielles({
       <Divider
         dashed
         orientation="left"
-        style={{color: '#34b1ab', marginBottom: '40px'}}>
+        style={{color: '#503662', marginBottom: '40px'}}>
         <h3>Decharges Partielles</h3>
       </Divider>
       <div>
