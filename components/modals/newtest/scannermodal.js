@@ -43,11 +43,12 @@ const App = ({modal, toggle, direction, teststatus}) => {
       <Modal
         title="Scanner"
         visible={modal}
+        onCancel={handleCancel}
+        cancelText="Annuler"
         onOk={handleOk}
         okText="Rechercher"
         okButtonProps={{form: 'scanner_form', htmlType: 'submit'}}
         confirmLoading={confirmLoading}
-        onCancel={handleCancel}
         width={400}>
         <Form
           id="scanner_form"
@@ -62,12 +63,12 @@ const App = ({modal, toggle, direction, teststatus}) => {
             </Checkbox>
           </Form.Item>
           <Form.Item
-            label="Numero de Commande"
+            label="Numéro de Commande"
             name="Commande"
             rules={[
               {
                 required: true,
-                message: 'Veuillez Scanner le Numero de Commande!',
+                message: 'Veuillez Scanner le Numéro de Commande!',
               },
             ]}>
             <Input

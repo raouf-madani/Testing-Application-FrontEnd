@@ -126,7 +126,7 @@ function newTestContent({setmise_data}) {
         </Row>
       </TabPane>
       <TabPane tab="Ratio/Polarite" key="2">
-        <Form.Item label="Volts Apluiqés" style={{marginBottom: 0}}>
+        <Form.Item label="Tension à appliquer" style={{marginBottom: 0}}>
           <Form.Item
             name="Volts_Apluiqés_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -153,7 +153,7 @@ function newTestContent({setmise_data}) {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item label="Volts HT" style={{marginBottom: 0}}>
+        <Form.Item label="Tension HT théorique" style={{marginBottom: 0}}>
           <Form.Item
             name="Volts_HT_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -180,7 +180,7 @@ function newTestContent({setmise_data}) {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item label="Polarité Volts" style={{marginBottom: 0}}>
+        <Form.Item label="Polarité théorique" style={{marginBottom: 0}}>
           <Form.Item
             name="Polarité_Volts_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -209,7 +209,7 @@ function newTestContent({setmise_data}) {
         </Form.Item>
       </TabPane>
       <TabPane tab="Induit" key="3">
-        <Form.Item label="Fréquence Genératrice" style={{marginBottom: 0}}>
+        <Form.Item label="Fréquence" style={{marginBottom: 0}}>
           <Form.Item
             name="Fréquence_Genératrice_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -388,26 +388,7 @@ function newTestContent({setmise_data}) {
               display: 'inline-block',
               width: 'calc(50% - 8px)',
               margin: '0 8px',
-            }}>
-            <Input
-              placeholder="Position 2"
-              onChange={e =>
-                UpdateData('Perte_table_P2', e.target.value, setmise_data)
-              }
-            />
-          </Form.Item>
-        </Form.Item>
-      </TabPane>
-      <TabPane tab="RIV" key="6">
-        <Form.Item label="RIV" style={{marginBottom: 0}}>
-          <Form.Item
-            name="Riv"
-            rules={[{required: true, message: 'Champ Requis'}]}>
-            <Input
-              placeholder="Position 1"
-              onChange={e => UpdateData('riv', e.target.value, setmise_data)}
-            />
-          </Form.Item>
+            }}></Form.Item>
         </Form.Item>
       </TabPane>
       <TabPane tab="Perte a Charge" key="7">
@@ -551,7 +532,7 @@ function newTestContent({setmise_data}) {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item label="Perte Table Total" style={{marginBottom: 0}}>
+        {/* <Form.Item label="Perte Table Total" style={{marginBottom: 0}}>
           <Form.Item
             name="Perte_Table_Totale_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -585,8 +566,8 @@ function newTestContent({setmise_data}) {
               }
             />
           </Form.Item>
-        </Form.Item>
-        <Form.Item
+        </Form.Item> */}
+        {/* <Form.Item
           label="Courant Appliquiué Au Transfo"
           style={{marginBottom: 0}}>
           <Form.Item
@@ -622,8 +603,8 @@ function newTestContent({setmise_data}) {
               }
             />
           </Form.Item>
-        </Form.Item>
-        <Form.Item
+        </Form.Item> */}
+        {/* <Form.Item
           label="Courant Appliqué (Appareil)"
           style={{marginBottom: 0}}>
           <Form.Item
@@ -659,7 +640,7 @@ function newTestContent({setmise_data}) {
               }
             />
           </Form.Item>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item label="NO Cavalier" style={{marginBottom: 0}}>
           <Form.Item
             name="No_Cavalier"
@@ -673,7 +654,7 @@ function newTestContent({setmise_data}) {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item label="Perte Cavalier" style={{marginBottom: 0}}>
+        {/* <Form.Item label="Perte Cavalier" style={{marginBottom: 0}}>
           <Form.Item
             name="Perte_Cavalier_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
@@ -699,7 +680,7 @@ function newTestContent({setmise_data}) {
               }
             />
           </Form.Item>
-        </Form.Item>
+        </Form.Item> */}
       </TabPane>
 
       <TabPane tab="Decharges Partielles" key="8">

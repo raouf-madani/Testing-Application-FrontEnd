@@ -47,18 +47,18 @@ const Haut = ({
     await updateMise_place(id, data);
   };
 
-  // useEffect(() => {
-  //   const affecter = () => {
-  //     if (temperature_noaffected) {
-  //       UpdateData(
-  //         'temperature_affected',
-  //         temperature_noaffected,
-  //         setFinaldata
-  //       );
-  //     }
-  //   };
-  //   affecter();
-  // }, []);
+  useEffect(() => {
+    const affecter = () => {
+      if (temperature_noaffected) {
+        UpdateData(
+          'temperature_affected',
+          temperature_noaffected,
+          setFinaldata
+        );
+      }
+    };
+    affecter();
+  }, [setFinaldata, UpdateData]);
 
   let initial_mise_placefrom_values = null;
   if (mise_data !== null) {
@@ -175,7 +175,7 @@ const Haut = ({
       }>
       <Panel
         key="1"
-        header="Detaille de la Commande"
+        header="Detailles de Commande"
         extra={
           mise_data !== null ? (
             <Button
@@ -241,7 +241,7 @@ const Haut = ({
         </Modal>
         <Row justify="space-between">
           <Col key="1" lg={{span: 6}}>
-            <Divider plain>Informations du Model</Divider>
+            <Divider plain>Informations de Model</Divider>
             <div
               style={{
                 padding: '10px',
@@ -250,24 +250,6 @@ const Haut = ({
               }}>
               <Row>Model : {commande.id_product}</Row>
               <Row>
-                {/* {mise_data == null ? (
-                  Finaldata.test_type == null ? (
-                    <>
-                      Type :
-                      <Select
-                        defaultValue=""
-                        options={Type_Test}
-                        onChange={value => {
-                          settest_type_selected(value);
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <>Type : {Finaldata.test_type}</>
-                  )
-                ) : (
-                  <>Type : {mise_data.Type_test}</>
-                )}{' '} */}
                 <>Type : {commande.type_command}</>
               </Row>
               <Row>Temps de Test: {mise_data == null ? 12 + 15 : 12} MIN</Row>
@@ -275,7 +257,7 @@ const Haut = ({
           </Col>
           <Divider type="vertical" />
           <Col key="2" lg={{span: 9}}>
-            <Divider plain>Information de Commande</Divider>
+            <Divider plain>Informations de Commande</Divider>
             <div
               className="flex-div"
               style={{
@@ -286,9 +268,9 @@ const Haut = ({
               }}>
               <div>
                 <Row>#Mo : {commande && commande.id_commande}</Row>
-                <Row>Numero de serie :{commande && commande.num_serie}</Row>
+                <Row>Numéro de série :{commande && commande.num_serie}</Row>
                 <Row>
-                  Quantity : {Tests_length + 1}/{allCommandesById_length}
+                  Quantité : {Tests_length + 1}/{allCommandesById_length}
                 </Row>
               </div>
               <Divider type="vertical" plain />
@@ -328,7 +310,7 @@ const Haut = ({
           <Col lg={{span: 12}}>
             <Row justify="end">
               <Space style={{marginRight: '10px'}}>
-                Temperature Affectée :
+                Température Affectée :
                 {Finaldata.temperature_affected == null ? (
                   <Button
                     size="small"
@@ -356,7 +338,7 @@ const Haut = ({
               </Space>
 
               <Space>
-                Temperature Non Affectée :
+                Température Non Affectée :
                 <InputNumber
                   size="small"
                   min={0}

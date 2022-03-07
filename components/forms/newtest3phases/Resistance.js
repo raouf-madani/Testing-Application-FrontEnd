@@ -60,7 +60,7 @@ export default function Resistance_BT({
         UpdateData('H1_H3_P2', '', setFinaldata),
         UpdateData('H2_H3_P2', '', setFinaldata);
     }
-  }, [Optinal]);
+  }, [form, setFinaldata, Optinal]);
   return (
     <div className="Containertest">
       <Divider
@@ -79,7 +79,6 @@ export default function Resistance_BT({
                 checked={Optinal}
                 checkedChildren="Résistance"
                 unCheckedChildren="Résistance"
-                onChange={() => setOptinal(!Optinal)}
                 onChange={() =>
                   Optinal != true ? setOptinal(true) : setOptinal(false)
                 }

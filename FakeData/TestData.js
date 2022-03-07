@@ -3,7 +3,7 @@ export const Fakedata = {
   temperature_affected: null,
   Date_Heure: {},
   id_employe: '',
-  test_type: null,
+  test_type: '',
   Ratio: {
     //Position1
 
@@ -78,6 +78,7 @@ export const Fakedata = {
     H: '',
     L: '',
   },
+  riv: '',
 };
 
 //////// mise en place data 1 phase

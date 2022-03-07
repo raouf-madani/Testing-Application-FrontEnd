@@ -3,7 +3,7 @@ import Loginpage from '@/components/loginpage';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
-import {useGetUser} from '@/actions/user';
+import {UseGetUser} from '@/actions/user';
 import {isAuthorized} from '@/utils/auth0';
 import Link from 'next/link';
 import React, {useState} from 'react';
@@ -12,7 +12,7 @@ import {Spin, Space, Row, Card, Divider} from 'antd';
 import TestingApi from '@/lib/api/testing';
 
 export default function Home({commandes}) {
-  const {data, loading} = useGetUser();
+  const {data, loading} = UseGetUser();
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const toggle1 = () => setModal1(!modal1);
@@ -29,12 +29,16 @@ export default function Home({commandes}) {
             <Baselayout user={data} loading={loading}>
               <Basepage className="base-page">
                 <main className="Homemain">
-                  <Divider
+                  {/* <Divider
                     dashed
                     orientation="center"
-                    style={{color: '#503662', marginBottom: '40px'}}>
+                    style={{
+                      color: '#503662',
+                      marginBottom: '40px',
+                    }}>
                     <h1>Bienvenue à l&apos;application d&apos;essai.</h1>
-                  </Divider>
+                  </Divider> */}
+                  <h1>Bienvenue à l&apos;application d&apos;essai</h1>
 
                   <div className="grid">
                     <div className="site-card-border-less-wrapper">
@@ -43,7 +47,7 @@ export default function Home({commandes}) {
                         title="Nouveau Test"
                         bordered={false}
                         style={{width: 250, height: 350, margin: 10}}>
-                        <Link href="/#">
+                        <Link href="/#" passHref>
                           <p className="description">
                             Nouveau test vous permet de scanner le code-barres
                             correspondant au transformateur à tester.
@@ -57,7 +61,7 @@ export default function Home({commandes}) {
                           title="Editeur d'etape"
                           bordered={false}
                           style={{width: 250, height: 350, margin: 10}}>
-                          <Link href="/editeur">
+                          <Link href="/editeur" passHref>
                             <p className="description">
                               L&apos;éditeur d&apos;étapes permet aux
                               administrateurs d&apos;application de modifier les
@@ -73,10 +77,11 @@ export default function Home({commandes}) {
                         title="Historique"
                         bordered={false}
                         style={{width: 250, height: 350, margin: 10}}>
-                        <Link href="">
+                        <Link href="" passHref>
                           <p className="description">
-                            Historique vous permet d'afficher l'ensemble des
-                            tests correspondant à votre prévilege.{' '}
+                            Historique vous permet d&apos;afficher
+                            l&apos;ensemble des tests correspondant à votre
+                            prévilege.{' '}
                           </p>
                         </Link>
                       </Card>
@@ -86,7 +91,7 @@ export default function Home({commandes}) {
                         title="Rapports"
                         bordered={false}
                         style={{width: 250, height: 350, margin: 10}}>
-                        <Link href="/rapports">
+                        <Link href="/rapports" passHref>
                           <p className="description">
                             Rapports, vous permet de consulter et
                             d&apos;imprimer un rapport à partir d&apos;un test

@@ -190,7 +190,7 @@ const ModalLink = props => {
       );
     };
     handle();
-  }, [searchcommand]);
+  }, [Commandes, noCommande, searchcommand]);
   useEffect(() => {
     const handle = () => {
       setFilteredEssais(
@@ -200,7 +200,7 @@ const ModalLink = props => {
       );
     };
     handle();
-  }, [selectedmodel]);
+  }, [Essais, noCommande, selectedmodel]);
   {
     /*
             useEffect(() => {

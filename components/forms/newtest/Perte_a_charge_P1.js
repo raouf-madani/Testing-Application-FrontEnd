@@ -58,7 +58,7 @@ export default function Perte_a_charge({
         UpdateData('Resistance_ht_P1', '', setFinaldata),
         UpdateData('Resistance_bt_P1', '', setFinaldata);
     }
-  }, [resistance_P1]);
+  }, [form, setFinaldata, resistance_P1]);
   return (
     <div className="Containertest">
       <Divider

@@ -105,7 +105,7 @@ export default function Ratio_Polarite({
           {Prise !== 'AP' ? (
             <Form.Item
               label=" Tension mesurée "
-              name="Tension_mesurée_Pos2"
+              name="Tension_mesurée_P2"
               className="show_item_input">
               <Input
                 ref={!miseenplaceok ? null : inputEl}

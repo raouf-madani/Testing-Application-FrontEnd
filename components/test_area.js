@@ -31,7 +31,6 @@ function Test_area({
   settest_type_selected,
   settablelength,
   form,
-  temperature_noaffected,
   // props for buttons
   status,
   resume,
@@ -42,11 +41,6 @@ function Test_area({
   // props button reussi
   next,
 }) {
-  const Type_Test = [
-    {label: '1 Phase', value: '1phase'},
-    {label: '3 Phase', value: '3phase'},
-  ];
-
   return (
     <>
       {mise_en_placeById !== null ? (
@@ -156,7 +150,7 @@ function Test_area({
                   <div className="steps-content">
                     <Alert
                       message="Mise en place du produit"
-                      description="Veuillez Choisir le Type d'envirenement de test a utiliser."
+                      description="Veuillez sélectionner le type d'environnement de test à utiliser."
                       type="info"
                       showIcon
                     />
@@ -169,11 +163,6 @@ function Test_area({
                           value="1phase"
                           onClick={() => {
                             settest_type_selected('1phase');
-                            UpdateData(
-                              'temperature_affected',
-                              temperature_noaffected,
-                              setFinaldata
-                            );
                           }}>
                           1 Phase
                         </Radio.Button>
@@ -203,7 +192,7 @@ function Test_area({
                 type="primary"
                 tabIndex={mise_en_placeById !== null ? 3 : 15}
                 htmlType="submit">
-                'Commencer'
+                Commencer
               </Button>
             )}
           </Form.Item>

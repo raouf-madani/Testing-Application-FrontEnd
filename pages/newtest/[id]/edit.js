@@ -18,7 +18,7 @@ import {useGetCommande} from '@/actions/commandes';
 import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
 
 import withAuth from '@/hoc/withAuth';
-import {useGetUser} from '@/actions/user';
+import {UseGetUser} from '@/actions/user';
 import {useCreateTest, useGetTest} from '@/actions/tests';
 import {UpdateData} from '@/actions/newtestupdate';
 import TestingApi from '@/lib/api/testing';
@@ -57,7 +57,7 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
     useState(Mise_NewData3phases);
 
   const [modal, setmodal] = useState(false);
-  const {data: dataU, loading: loadingU} = useGetUser();
+  const {data: dataU, loading: loadingU} = UseGetUser();
   const [test_type_selected, settest_type_selected] = useState();
   const [teststatus, setteststatus] = useState();
   const [temperature_noaffected, settemperature_noaffected] = useState(16);
@@ -68,6 +68,7 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
+
   const TypeOfTest = mise_en_placeById
     ? mise_en_placeById.Type_test
     : test_type_selected;
@@ -228,29 +229,49 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
     );
   }
   let initial_from_values1phase = {
+    // RIV
+    Riv: Test.riv,
     // Ratio et Polarite
+    //Position 1
     Tension_mesurée_P1: Test.Ratio.Tension_mesurée_P1,
-    Tension_mesurée_P2: Test.Ratio.Tension_mesurée_P2,
     Polarité_Mesuré_P1: Test.Ratio.Polarité_mesurée_P1,
+    //Position 2
+    Tension_mesurée_P2: Test.Ratio.Tension_mesurée_P2,
     Polarité_Mesuré_P2: Test.Ratio.Polarité_mesurée_P2,
+    // Pertes a Vide
+    //Position 1
+    Pertes_Mesurés_P1: Test.Perte_a_Vide.Pertes_mesurés_P1,
+    Courant_Excitation_Mesurés_P1:
+      Test.Perte_a_Vide.Courant_excitation_mesurés_P1,
+    //Position 2
+    Pertes_Mesurés_P2: Test.Perte_a_Vide.Pertes_mesurés_P2,
+    Courant_Excitation_Mesurés_P2:
+      Test.Perte_a_Vide.Courant_excitation_mesurés_P2,
+    // Pertes a Charge
+    //Position 1
+    Resistance_HT_P1: Test.Perte_a_Charge.Resistance_ht_P1,
+    Resistance_BT_P1: Test.Perte_a_Charge.Resistance_bt_P1,
+    Perte_Charge_Mesuré_P1: Test.Perte_a_Charge.Perte_charge_mesuré_P1,
+    Impédance_Mesuré_P1: Test.Perte_a_Charge.Impédance_mesuré_P1,
+    //Position 2
+    Resistance_HT_P2: Test.Perte_a_Charge.Resistance_ht_P2,
+    Resistance_BT_P2: Test.Perte_a_Charge.Resistance_bt_P2,
+    Perte_Charge_Mesuré_P2: Test.Perte_a_Charge.Perte_charge_mesuré_P2,
+    Impédance_Mesuré_P2: Test.Perte_a_Charge.Impédance_mesuré_P2,
+
     // Decharges Partielle
-    S_15: Finaldata.Decharges_Partielles.S_15,
-    S_30: Finaldata.Decharges_Partielles.S_30,
-    S_45: Finaldata.Decharges_Partielles.S_45,
-    S_60: Finaldata.Decharges_Partielles.S_60,
-    S_75: Finaldata.Decharges_Partielles.S_75,
-    S_90: Finaldata.Decharges_Partielles.S_90,
-    S_105: Finaldata.Decharges_Partielles.S_105,
-    S_120: Finaldata.Decharges_Partielles.S_120,
-    S_135: Finaldata.Decharges_Partielles.S_135,
-    S_150: Finaldata.Decharges_Partielles.S_150,
-    S_165: Finaldata.Decharges_Partielles.S_165,
-    S_180: Finaldata.Decharges_Partielles.S_180,
-    //Pertes a Charge
-    Resistance_HT_P1: Finaldata.Perte_a_charge.Resistance_ht_P1,
-    Resistance_BT_P1: Finaldata.Perte_a_charge.Resistance_bt_P1,
-    Resistance_HT_P2: Finaldata.Perte_a_charge.Resistance_ht_P2,
-    Resistance_BT_P2: Finaldata.Perte_a_charge.Resistance_bt_P2,
+    S_15: Test.Decharges_Partielles.s_15,
+    S_30: Test.Decharges_Partielles.s_30,
+    S_45: Test.Decharges_Partielles.s_45,
+    S_60: Test.Decharges_Partielles.s_60,
+    S_75: Test.Decharges_Partielles.s_75,
+    S_90: Test.Decharges_Partielles.s_90,
+    S_105: Test.Decharges_Partielles.s_105,
+    S_120: Test.Decharges_Partielles.s_120,
+    S_135: Test.Decharges_Partielles.s_135,
+    S_150: Test.Decharges_Partielles.s_150,
+    S_165: Test.Decharges_Partielles.s_165,
+    S_180: Test.Decharges_Partielles.s_180,
   };
   let initial_from_values3phase = {
     // Decharges Partielles
