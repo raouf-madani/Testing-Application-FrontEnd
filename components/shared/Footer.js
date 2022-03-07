@@ -1,12 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
     <div className="Footer-paneltesting">
-      <img
+      <Image
         style={{marginBottom: '5px'}}
-        src="https://brandville.siemens-energy.com/sites/default/files/c2cms_instance_settings/logo/SE_Logo_White_RGB_green.svg"
+        src="/SE_Logo_White_RGB.svg"
         height="45px"
+        width="120px"
         alt="se-logo"
       />
       <div className="copyright">Copyright © Siemens energy 2021</div>

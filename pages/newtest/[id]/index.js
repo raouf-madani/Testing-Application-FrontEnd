@@ -18,7 +18,7 @@ import {useGetCommande} from '@/actions/commandes';
 import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
 
 import withAuth from '@/hoc/withAuth';
-import {useGetUser} from '@/actions/user';
+import {UseGetUser} from '@/actions/user';
 import {useCreateTest, useGetTest} from '@/actions/tests';
 import {UpdateData} from '@/actions/newtestupdate';
 import TestingApi from '@/lib/api/testing';
@@ -56,10 +56,10 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     useState(Mise_NewData3phases);
 
   const [modal, setmodal] = useState(false);
-  const {data: dataU, loading: loadingU} = useGetUser();
+  const {data: dataU, loading: loadingU} = UseGetUser();
   const [test_type_selected, settest_type_selected] = useState();
   const [teststatus, setteststatus] = useState();
-  const [temperature_noaffected, settemperature_noaffected] = useState(16);
+  const [temperature_noaffected, settemperature_noaffected] = useState();
   const [createTest, {data, loading}] = useCreateTest();
   const _CreateTest = data => {
     createTest(data);
@@ -125,7 +125,13 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
           console.log('begin the work mise en place done');
           UpdateData(
             'numcommand',
-            1010,
+            router.query.id,
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
+          // Type test
+          UpdateData(
+            'test_type',
+            TypeOfTest,
             TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
           );
           setCurrent(current + 1);
@@ -133,23 +139,23 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
           console.log('begin the work No mise en place ');
           UpdateData(
             'numcommand',
-            1010,
+            router.query.id,
             TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
           );
           UpdateData(
             'numcommand',
-            1010,
+            router.query.id,
             TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
           );
           // Type test
           UpdateData(
             'test_type',
-            test_type_selected,
+            TypeOfTest,
             TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
           );
           UpdateData(
             'test_type',
-            test_type_selected,
+            TypeOfTest,
             TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
           );
           console.log(' la final data', data);
@@ -188,7 +194,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
 
   function AnnulerConfirm() {
     confirm({
-      title: "etes vous sur d'annuler le test Courant?",
+      title: "Etes-vous certain d'annuler le test Courant?",
+      okText: 'Oui',
+      cancelText: 'Non',
       onOk() {
         reset();
         setCurrent(0);
@@ -416,7 +424,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
           ) : (
             <Row justify="center">
               <Space size="middle">
-                <h1> Le code Scanné n'appartient a aucune Commande </h1>
+                <h1> Le code Scanné n&apos;appartient a aucune Commande </h1>
               </Space>
             </Row>
           )}
@@ -463,7 +471,7 @@ export async function getStaticProps({params}) {
     if (commande !== null) {
       if (
         Tests.some(
-          test => test.num_serie === serie_num && test.id_command === id
+          test => test.num_serie === serie_num && test.numcommand === id
         )
       ) {
         commande = 'tested';

@@ -19,7 +19,7 @@ export default function Induit({
   }, [inputEl]);
   useEffect(() => {
     UpdateData('Test_Induit_P1', true, setFinaldata);
-  }, []);
+  }, [UpdateData, setFinaldata]);
   const Frequence_Gen = [
     {label: 400, value: 400},
     {label: 208, value: 208},

@@ -12,7 +12,7 @@ export default function Perte_a_charge({
   form,
 }) {
   const [resistance_P2, setresistance_P2] = useState(
-    Finaldata.Perte_a_charge.Resistance_ht_P1 ||
+    Finaldata.Perte_a_charge.Resistance_ht_P2 ||
       Finaldata.Perte_a_charge.Resistance_bt_P2
       ? true
       : false
@@ -53,12 +53,12 @@ export default function Perte_a_charge({
 
   useEffect(() => {
     if (!resistance_P2) {
-      form.resetFields(['Resistance_HT_P1']),
+      form.resetFields(['Resistance_HT_P2']),
         form.resetFields(['Resistance_BT_P2']),
-        UpdateData('Resistance_ht_P1', '', setFinaldata),
+        UpdateData('Resistance_ht_P2', '', setFinaldata),
         UpdateData('Resistance_bt_P2', '', setFinaldata);
     }
-  }, [resistance_P2]);
+  }, [form, setFinaldata, resistance_P2]);
   return (
     <div className="Containertest">
       <Divider
@@ -190,7 +190,7 @@ export default function Perte_a_charge({
                     resistance_P2 != true
                       ? setresistance_P2(true)
                       : (setresistance_P2(false),
-                        UpdateData('Resistance_ht_P1', '', setFinaldata),
+                        UpdateData('Resistance_ht_P2', '', setFinaldata),
                         UpdateData('Resistance_bt_P2', '', setFinaldata))
                   }
                 />
@@ -201,7 +201,7 @@ export default function Perte_a_charge({
                 <Row style={{justifyContent: 'center'}}>
                   <Form.Item
                     label="Resistance HT "
-                    name="Resistance_HT_P1"
+                    name="Resistance_HT_P2"
                     className="show_item_input">
                     <Input
                       type="number"
@@ -211,7 +211,7 @@ export default function Perte_a_charge({
                       placeholder="Position 2"
                       onChange={e =>
                         UpdateData(
-                          'Resistance_ht_P1',
+                          'Resistance_ht_P2',
                           e.target.value,
                           setFinaldata
                         )
@@ -247,7 +247,7 @@ export default function Perte_a_charge({
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label="Resistance HT "
-                name="Resistance_HT_P1"
+                name="Resistance_HT_P2"
                 className="show_item_input">
                 <Input
                   type="number"
@@ -255,7 +255,7 @@ export default function Perte_a_charge({
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e =>
-                    UpdateData('Resistance_ht_P1', e.target.value, setFinaldata)
+                    UpdateData('Resistance_ht_P2', e.target.value, setFinaldata)
                   }
                 />
               </Form.Item>

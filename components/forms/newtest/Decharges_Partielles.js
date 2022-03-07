@@ -76,7 +76,7 @@ export default function Decharges_Partielles({
       UpdateData('S_165', '', setFinaldata);
       UpdateData('S_180', '', setFinaldata);
     }
-  }, [Line2]);
+  }, [Line2, setFinaldata]);
   useEffect(() => {
     if (Line3 == false) {
       console.log('supprimer la 2eme et la 3eme ligne');
@@ -85,7 +85,7 @@ export default function Decharges_Partielles({
       UpdateData('S_165', '', setFinaldata);
       UpdateData('S_180', '', setFinaldata);
     }
-  }, [Line3]);
+  }, [Line3, setFinaldata]);
 
   const SKE77 = [
     {label: 'off', value: 'off'},

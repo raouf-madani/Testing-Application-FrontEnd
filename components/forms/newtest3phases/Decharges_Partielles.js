@@ -67,7 +67,7 @@ export default function Decharges_Partielles({
       UpdateData('S_165', '', setFinaldata);
       UpdateData('S_180', '', setFinaldata);
     }
-  }, [Line2]);
+  }, [setFinaldata, Line2]);
   const Reactance = [
     {label: 'A1B1C1', value: 'A1B1C1'},
     {label: 'A3B3C3', value: 'A3B3C3'},

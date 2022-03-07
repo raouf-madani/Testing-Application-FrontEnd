@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Image from 'next/image';
 import Modalnewtest from '@/components/modals/newtest/scanmodal';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 
@@ -55,9 +56,11 @@ const Login = () => {
 };
 const Logout = () => {
   return (
-    <NavLink className="logout" href="/api/V1/logout">
-      Log out
-    </NavLink>
+    <>
+      <NavLink className="logout" href="/api/V1/logout">
+        Log out
+      </NavLink>
+    </>
   );
 };
 const AdminMenu = () => {
@@ -112,10 +115,11 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
         expand="md">
         {status == 0 ? (
           <NavbarBrand href="/">
-            <img
+            <Image
               style={{marginBottom: '5px'}}
-              src="https://brandville.siemens-energy.com/sites/default/files/c2cms_instance_settings/logo/SE_Logo_White_RGB_green.svg"
+              src="/SE_Logo_White_RGB.svg"
               height="45px"
+              width="120px"
               alt="se-logo"
             />
           </NavbarBrand>
@@ -123,10 +127,11 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
           <>
             <NavbarBrand onClick={AnnulerConfirm}>
               {' '}
-              <img
+              <Image
                 style={{marginBottom: '5px'}}
-                src="https://brandville.siemens-energy.com/sites/default/files/c2cms_instance_settings/logo/SE_Logo_White_RGB_green.svg"
+                src="/SE_Logo_White_RGB.svg"
                 height="45px"
+                width="120px"
                 alt="se-logo"
               />
             </NavbarBrand>
@@ -202,13 +207,23 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
                     </DropdownToggle>
                     <DropdownMenu right>
                       {isAuthorized(user, 'admin') && (
-                        <h4 className="admintext">Admin</h4>
+                        <>
+                          <h4 className="admintext">Admin</h4>
+                          <DropdownItem>
+                            <span>
+                              <NavLink className="logout" href="/pilote">
+                                Pilote
+                              </NavLink>
+                            </span>
+                          </DropdownItem>
+                        </>
                       )}
                       {isAuthorized(user, 'guest') && (
                         <h4 className="admintext">Technicien</h4>
                       )}
                       {/* <DropdownItem> Option 2 </DropdownItem> */}
                       <DropdownItem divider />
+
                       <DropdownItem>
                         <span>
                           <Logout
