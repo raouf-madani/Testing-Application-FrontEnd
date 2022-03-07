@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Image from 'next/image';
-import Modalnewtest from '@/components/modals/newtest/scanmodal';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 
 import {

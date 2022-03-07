@@ -26,18 +26,9 @@ export default function Home({commandes}) {
       {!loading ? (
         <>
           {data ? (
-            <Baselayout user={data} loading={loading}>
+            <Baselayout user={data} loading={loading} status={0}>
               <Basepage className="base-page">
                 <main className="Homemain">
-                  {/* <Divider
-                    dashed
-                    orientation="center"
-                    style={{
-                      color: '#503662',
-                      marginBottom: '40px',
-                    }}>
-                    <h1>Bienvenue à l&apos;application d&apos;essai.</h1>
-                  </Divider> */}
                   <h1>Bienvenue à l&apos;application d&apos;essai</h1>
 
                   <div className="grid">

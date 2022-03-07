@@ -4,7 +4,7 @@ import Basepage from '@/components/Basepage';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 import {UseGetUser} from '@/actions/user';
 import {Spin, Space, Row, Card, Divider} from 'antd';
-const Pilote = () => {
+const Rapports = () => {
   const {data, loading} = UseGetUser();
   const [modal, setmodal] = useState(false);
 
@@ -13,7 +13,7 @@ const Pilote = () => {
       <Baselayout user={data} loading={loading} status={0}>
         <Basepage className="base-page">
           <Row justify="center">
-            <h1>Pilote is on the road.</h1>
+            <h1>Reports is on the road.</h1>
           </Row>
         </Basepage>
         <Modalnewtestscanner
@@ -27,4 +27,4 @@ const Pilote = () => {
   );
 };
 
-export default Pilote;
+export default Rapports;
