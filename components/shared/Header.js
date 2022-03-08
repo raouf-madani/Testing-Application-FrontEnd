@@ -201,9 +201,7 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
               {user && (
                 <>
                   <UncontrolledDropdown className="dropdown">
-                    <DropdownToggle>
-                      {user.given_name} {user.family_name}
-                    </DropdownToggle>
+                    <DropdownToggle>{user.nickname}</DropdownToggle>
                     <DropdownMenu right>
                       {isAuthorized(user, 'admin') && (
                         <>
