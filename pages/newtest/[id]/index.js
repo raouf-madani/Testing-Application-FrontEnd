@@ -56,6 +56,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     useState(Mise_NewData3phases);
 
   const [modal, setmodal] = useState(false);
+  const [modaloftemperature, setmodaloftemperature] = useState(false);
   const {data: dataU, loading: loadingU} = UseGetUser();
   const [test_type_selected, settest_type_selected] = useState();
   const [teststatus, setteststatus] = useState();
@@ -64,9 +65,6 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const _CreateTest = data => {
     createTest(data);
   };
-  const {data: commandehook} = useGetCommande(router.query.id);
-  const {data: test} = useGetTest(50070345);
-  const {data: mise} = useGetMise('1AE654');
   const TypeOfTest = mise_en_placeById
     ? mise_en_placeById.Type_test
     : test_type_selected;
@@ -115,11 +113,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const next = data => {
     if (current == 0) {
       if (data.temperature_affected == null) {
-        alert(
-          temperature_noaffected
-            ? 'affecter la temperature'
-            : 'affecter la temperature non affected'
-        );
+        setmodaloftemperature(true);
       } else {
         if (mise_en_placeById !== null) {
           console.log('begin the work mise en place done');
@@ -392,6 +386,41 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     teststatus={teststatus}
                     direction="index"
                   />
+                  <Modal
+                    title="Température"
+                    visible={modaloftemperature}
+                    onCancel={() => setmodaloftemperature(false)}
+                    footer={[
+                      <Button
+                        key="affecter"
+                        type="primary"
+                        onClick={() => {
+                          UpdateData(
+                            'temperature_affected',
+                            temperature_noaffected,
+                            setFinaldata
+                          );
+                          setmodaloftemperature(false);
+                        }}>
+                        Affecter
+                      </Button>,
+                      <Button
+                        key="annuler"
+                        onClick={() => {
+                          setmodaloftemperature(false);
+                          settemperature_noaffected();
+                        }}>
+                        Annuler
+                      </Button>,
+                    ]}
+                    width={250}>
+                    <Input
+                      type="number"
+                      max={50}
+                      min={0}
+                      onChange={e => settemperature_noaffected(e.target.value)}
+                    />
+                  </Modal>
                 </div>
               ) : (
                 <Row justify="center">
