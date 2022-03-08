@@ -16,16 +16,11 @@ export default function Signature({UpdateData, setFinaldata}) {
         style={{color: '#34b1ab', marginBottom: '40px'}}>
         <h3>Signature et Gravure</h3>
       </Divider>
-      {signature && (
-        <h2 className="Signature">
-          {data.given_name}
-          {data.family_name}
-        </h2>
-      )}
+      {signature && <h2 className="Signature">{user.nickname}</h2>}
       <Button
         onClick={() => {
           setsignature(true);
-          UpdateData('id_employe', data.family_name, setFinaldata);
+          UpdateData('id_employe', data.sub, setFinaldata);
         }}>
         Signer
       </Button>
