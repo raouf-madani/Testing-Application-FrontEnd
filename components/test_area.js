@@ -45,7 +45,7 @@ function Test_area({
     <>
       {mise_en_placeById !== null ? (
         <>
-          {mise_en_placeById.type_test == '1phase' ? (
+          {mise_en_placeById.test_type == '1phase' ? (
             <Phase1Forms
               commande={commande}
               mise_en_placeById={mise_en_placeById}
