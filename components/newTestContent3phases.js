@@ -59,7 +59,7 @@ function NewTestContent({
       <div className="Containertest">
         <Alert
           message="Prét a Tester!"
-          description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.Type_test}`}
+          description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.test_type}`}
           type="success"
           showIcon
         />
