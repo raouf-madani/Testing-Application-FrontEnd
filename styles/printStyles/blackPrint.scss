@@ -1,11 +1,20 @@
 .print-source {
-  width: 70%;
   padding: 10px;
   box-shadow: white 0px 5px 15px;
 }
-
+.Alert {
+  padding: 10px;
+  width: 50%;
+}
+.row-items-title {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 body > .print-source {
   display: block;
+}
+.Logo {
+  display: none;
 }
 
 @media print {
@@ -13,6 +22,30 @@ body > .print-source {
     display: block;
     padding: 10px;
     background-color: black;
-    width: 100%;
+    width: 340.16px;
+    height: 378px;
+  }
+  .Logo {
+    display: flex;
+  }
+  .row-items-title {
+    font-size: 11px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+      'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .row-items {
+    padding: 5px;
+    font-size: 7px;
+    color: white;
+    font-family: sans-serif;
+  }
+  .Alert {
+    width: 42%;
+    font-size: 5px;
   }
 }
+// @font-face {
+//   font-family: 'MemphisRiver';
+//   src: url(fonts/MemphisRiver.ttf) format(truetype);
+// }
