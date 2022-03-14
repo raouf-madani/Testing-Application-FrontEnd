@@ -16,10 +16,9 @@ import {
 } from '@/FakeData/TestData';
 import {useGetCommande} from '@/actions/commandes';
 import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
-
 import withAuth from '@/hoc/withAuth';
 import {UseGetUser} from '@/actions/user';
-import {useCreateTest, useGetTest} from '@/actions/tests';
+import {useCreateTest, useGetTest, useUpdateTest} from '@/actions/tests';
 import {UpdateData} from '@/actions/newtestupdate';
 import TestingApi from '@/lib/api/testing';
 
@@ -40,7 +39,6 @@ const {Step} = Steps;
 const {confirm} = Modal;
 
 const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
-  debugger;
   const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [tablelength, settablelength] = useState(15);
@@ -65,10 +63,13 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
   const _CreateTest = data => {
     createTest(data);
   };
+  const [updateTest] = useUpdateTest();
+  const _updateTest = async (id, data) => {
+    await updateTest(id, data);
+  };
   const {data: commandehook} = useGetCommande(router.query.id);
   const {data: test} = useGetTest(50070345);
   const {data: mise} = useGetMise('1AE654');
-
   const TypeOfTest = mise_en_placeById
     ? mise_en_placeById.Type_test
     : test_type_selected;
@@ -127,7 +128,13 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
           console.log('begin the work mise en place done');
           UpdateData(
             'numcommand',
-            1010,
+            router.query.id,
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
+          // Type test
+          UpdateData(
+            'test_type',
+            TypeOfTest,
             TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
           );
           setCurrent(current + 1);
@@ -168,9 +175,8 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
         reset();
         form.resetFields();
         setmodal(!modal);
-
-        console.log('the final data to create is ', data);
-        // _CreateTest(data);
+        console.log('the final data to update ', data);
+        // _updateTest(Test._id, data);
       } else {
         alert('affecter la temperature');
       }
@@ -233,10 +239,26 @@ const NewTest = ({commande, mise_en_placeById, Test, allCommandesById}) => {
     Riv: Test.riv,
     // Ratio et Polarite
     //Position 1
+    // sans prise
     Tension_mesurée_P1: Test.Ratio.Tension_mesurée_P1,
+    // avec prise
+    Tension_mesurée_P1_P1: Test.Ratio.Tension_mesurée_P1_P1,
+    Tension_mesurée_P2_P1: Test.Ratio.Tension_mesurée_P2_P1,
+    Tension_mesurée_P3_P1: Test.Ratio.Tension_mesurée_P3_P1,
+    Tension_mesurée_P4_P1: Test.Ratio.Tension_mesurée_P4_P1,
+    Tension_mesurée_P5_P1: Test.Ratio.Tension_mesurée_P5_P1,
+
     Polarité_Mesuré_P1: Test.Ratio.Polarité_mesurée_P1,
     //Position 2
+    //sans prise
     Tension_mesurée_P2: Test.Ratio.Tension_mesurée_P2,
+    //avec prise
+    Tension_mesurée_P1_P2: Test.Ratio.Tension_mesurée_P1_P2,
+    Tension_mesurée_P2_P2: Test.Ratio.Tension_mesurée_P2_P2,
+    Tension_mesurée_P3_P2: Test.Ratio.Tension_mesurée_P3_P2,
+    Tension_mesurée_P4_P2: Test.Ratio.Tension_mesurée_P4_P2,
+    Tension_mesurée_P5_P2: Test.Ratio.Tension_mesurée_P5_P2,
+
     Polarité_Mesuré_P2: Test.Ratio.Polarité_mesurée_P2,
     // Pertes a Vide
     //Position 1

@@ -36,18 +36,17 @@ export default function Ratio_Polarite({
           <div>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                name="Volts_Apluiqés_P2"
                 label="Tension à appliquer"
+                name="Tension_à_Appliquer_P2"
                 className="show_item_input">
                 <Input
-                  className="ratio_form"
                   type="number"
-                  ref={inputEl}
                   step="0.0001"
+                  ref={inputEl}
                   placeholder="Position 2"
                   onChange={e => {
                     UpdateData(
-                      'Volts_apluiqés_P2',
+                      'Tension_à_appliquer_P2',
                       e.target.value,
                       setNewMisePlace
                     );
@@ -57,15 +56,19 @@ export default function Ratio_Polarite({
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
+                name="Tension_HT_P2"
                 label="Tension HT théorique"
-                name="Volts_HT_P2"
                 className="show_item_input">
                 <Input
                   type="number"
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
-                    UpdateData('Volts_ht_P2', e.target.value, setNewMisePlace);
+                    UpdateData(
+                      'Tension_ht_P2',
+                      e.target.value,
+                      setNewMisePlace
+                    );
                   }}
                 />
               </Form.Item>
@@ -73,15 +76,15 @@ export default function Ratio_Polarite({
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label=" Polarité théorique"
-                className="show_item_input"
-                name="Polarité_Volts_P2">
+                name="Polarite_Théorique_P2"
+                className="show_item_input">
                 <Input
                   type="number"
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
                     UpdateData(
-                      'Polarite_volts_P2',
+                      'Polarite_théorique_P2',
                       e.target.value,
                       setNewMisePlace
                     );
@@ -97,7 +100,7 @@ export default function Ratio_Polarite({
               justifyContent: 'center',
             }}>
             <Form.Item className="show_item">
-              Volte Apluiqués P2: {miseenplaceok.Ratio.Volts_apluiqés_P2}
+              Tension à appliquer : {miseenplaceok.Ratio.Tension_à_appliquer_P2}
             </Form.Item>
           </Row>
         )}
@@ -111,7 +114,7 @@ export default function Ratio_Polarite({
                 ref={!miseenplaceok ? null : inputEl}
                 type="number"
                 step="0.0001"
-                placeholder="Position 1"
+                placeholder="Position 2"
                 onChange={e =>
                   UpdateData('Tension_mesurée_P2', e.target.value, setFinaldata)
                 }
@@ -120,17 +123,18 @@ export default function Ratio_Polarite({
           ) : (
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="P1"
+                key="P2"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise1"
-                name="Tension_mesurée_P1_P2">
+                name="Tension_mesurée_P2_P2">
                 <Input
                   ref={!miseenplaceok ? null : inputEl}
                   type="number"
+                  step="0.0001"
                   placeholder="Prise1"
                   onChange={e =>
                     UpdateData(
-                      'Tension_mesurée_P1_P2',
+                      'Tension_mesurée_P2_P2',
                       e.target.value,
                       setFinaldata
                     )
@@ -144,6 +148,7 @@ export default function Ratio_Polarite({
                 name="Tension_mesurée_P2_P2">
                 <Input
                   type="number"
+                  step="0.0001"
                   placeholder="Prise2"
                   onChange={e =>
                     UpdateData(
@@ -161,6 +166,7 @@ export default function Ratio_Polarite({
                 name="Tension_mesurée_P3_P2">
                 <Input
                   type="number"
+                  step="0.0001"
                   placeholder="Prise1"
                   onChange={e =>
                     UpdateData(
@@ -178,6 +184,7 @@ export default function Ratio_Polarite({
                 name="Tension_mesurée_P4_P2">
                 <Input
                   type="number"
+                  step="0.0001"
                   placeholder="Prise4"
                   onChange={e =>
                     UpdateData(
@@ -195,6 +202,7 @@ export default function Ratio_Polarite({
                 name="Tension_mesurée_P5_P2">
                 <Input
                   type="number"
+                  step="0.0001"
                   placeholder="Prise5"
                   onChange={e =>
                     UpdateData(
@@ -208,10 +216,11 @@ export default function Ratio_Polarite({
             </Row>
           )}
         </Row>
+
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            name="Polarité_Mesuré_P2"
             label="Polarité mesurée "
+            name="Polarité_Mesuré_P2"
             className="show_item_input">
             <Input
               type="number"

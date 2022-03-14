@@ -179,7 +179,11 @@ function NewTestContent({
       );
     case 'RIV':
       return (
-        <RivForm UpdateData={UpdateData} setNewMisePlace={setNewMisePlace} />
+        <RivForm
+          UpdateData={UpdateData}
+          setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
+        />
       );
     case 'Pertes a Charge P1':
       return (

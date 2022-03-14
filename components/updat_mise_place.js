@@ -128,18 +128,22 @@ function newTestContent({setmise_data}) {
       <TabPane tab="Ratio/Polarite" key="2">
         <Form.Item label="Tension à appliquer" style={{marginBottom: 0}}>
           <Form.Item
-            name="Volts_Apluiqés_P1"
+            name="Tension_à_Appliquer_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdateData('Volts_apluiqés_P1', e.target.value, setmise_data)
+                UpdateData(
+                  'Tension_à_appliquer_P1',
+                  e.target.value,
+                  setmise_data
+                )
               }
             />
           </Form.Item>
           <Form.Item
-            name="Volts_Apluiqés_P2"
+            name="Tension_à_Appliquer_P2"
             style={{
               display: 'inline-block',
               width: 'calc(50% - 8px)',
@@ -148,25 +152,29 @@ function newTestContent({setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdateData('Volts_apluiqés_P2', e.target.value, setmise_data)
+                UpdateData(
+                  'Tension_à_appliquer_P2',
+                  e.target.value,
+                  setmise_data
+                )
               }
             />
           </Form.Item>
         </Form.Item>
         <Form.Item label="Tension HT théorique" style={{marginBottom: 0}}>
           <Form.Item
-            name="Volts_HT_P1"
+            name="Tension_HT_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdateData('Volts_ht_P1', e.target.value, setmise_data)
+                UpdateData('Tension_ht_P1', e.target.value, setmise_data)
               }
             />
           </Form.Item>
           <Form.Item
-            name="Volts_HT_P2"
+            name="Tension_HT_P2"
             style={{
               display: 'inline-block',
               width: 'calc(50% - 8px)',
@@ -175,25 +183,29 @@ function newTestContent({setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdateData('Volts_ht_P2', e.target.value, setmise_data)
+                UpdateData('Tension_ht_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>
         </Form.Item>
         <Form.Item label="Polarité théorique" style={{marginBottom: 0}}>
           <Form.Item
-            name="Polarité_Volts_P1"
+            name="Polarite_Théorique_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Input
               placeholder="Position 1"
               onChange={e =>
-                UpdateData('Polarite_volts_P1', e.target.value, setmise_data)
+                UpdateData(
+                  'Polarite_théorique_P1',
+                  e.target.value,
+                  setmise_data
+                )
               }
             />
           </Form.Item>
           <Form.Item
-            name="Polarité_Volts_P2"
+            name="Polarite_Théorique_P2"
             style={{
               display: 'inline-block',
               width: 'calc(50% - 8px)',
@@ -202,7 +214,11 @@ function newTestContent({setmise_data}) {
             <Input
               placeholder="Position 2"
               onChange={e =>
-                UpdateData('Polarite_volts_P2', e.target.value, setmise_data)
+                UpdateData(
+                  'Polarite_théorique_P2',
+                  e.target.value,
+                  setmise_data
+                )
               }
             />
           </Form.Item>

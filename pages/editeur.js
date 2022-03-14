@@ -3,6 +3,7 @@ import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
 import Modalnewtestscanner from '@/components/modals/newtest/scannermodal';
 import {UseGetUser} from '@/actions/user';
+import withAuth from '@/hoc/withAuth';
 import {Spin, Space, Row, Card, Divider} from 'antd';
 const Editeur = () => {
   const {data, loading} = UseGetUser();
@@ -27,4 +28,4 @@ const Editeur = () => {
   );
 };
 
-export default Editeur;
+export default withAuth(Editeur)('admin');

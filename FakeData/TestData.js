@@ -1,9 +1,10 @@
 export const Fakedata = {
   numcommand: '',
   temperature_affected: null,
-  Date_Heure: {},
+  Date_Heure: '',
   id_employe: '',
   test_type: '',
+  riv: '',
   Ratio: {
     //Position1
 
@@ -21,9 +22,9 @@ export const Fakedata = {
     Tension_mesurée_P4_P2: '',
     Tension_mesurée_P5_P2: '',
     //Position 1
-    Polarite_volts_Mesure_P1: '',
+    Polarité_mesurée_P1: '',
     //Position 2
-    Polarite_volts_Mesure_P2: '',
+    Polarité_mesurée_P2: '',
   },
   Induit: {
     //Position 1
@@ -78,27 +79,26 @@ export const Fakedata = {
     H: '',
     L: '',
   },
-  riv: '',
 };
 
 //////// mise en place data 1 phase
 
 export const Mise_NewData = [
   {
+    id_product: '',
     numcommand: '',
     test_type: '',
-    Date_Heure: {},
-    Riv: '',
+    Date_Heure: '',
     Bornes: {Borne_jaune: '', Borne_rouge: '', Borne_verte: ''},
     Ratio: {
       //Position 1
-      Volts_apluiqés_P1: '',
-      Volts_ht_P1: '',
-      Polarite_volts_P1: '',
+      Tension_à_appliquer_P1: '',
+      Tension_ht_P1: '',
+      Polarite_théorique_P1: '',
       //Position 2
-      Volts_apluiqés_P2: '',
-      Volts_ht_P2: '',
-      Polarite_volts_P2: '',
+      Tension_à_appliquer_P2: '',
+      Tension_ht_P2: '',
+      Polarite_théorique_P2: '',
     },
     Induit: {
       //Position 1
@@ -125,9 +125,6 @@ export const Mise_NewData = [
       Multiplicateur_amperes_charge_P1: '',
       Perte_table_charge_P1: '',
       Courant_de_correction_P1: '',
-      Perte_table_totale_P1: '',
-      Courant_appliquié_transfo_P1: '',
-      Perte_cavalier_P1: '',
 
       // no position
       No_cavalier: '',
@@ -136,9 +133,6 @@ export const Mise_NewData = [
       Multiplicateur_amperes_charge_P2: '',
       Perte_table_charge_P2: '',
       Courant_de_correction_P2: '',
-      Perte_table_totale_P2: '',
-      Courant_appliquié_transfo_P2: '',
-      Perte_cavalier_P2: '',
     },
     Decharges_Partielles: {
       Réactance_ske77_DP_P1: '',
@@ -151,7 +145,7 @@ export const Mise_NewData = [
 export const Fakedata3phases = {
   numcommand: 888,
   temperature_affected: null,
-  Date_Heure: {},
+  Date_Heure: '',
   id_employe: '',
   test_type: null,
   Resistance: {
@@ -359,7 +353,7 @@ export const Fakedata3phases = {
 export const Mise_NewData3phases = {
   numcommand: 'test3phases',
   test_type: '',
-  Date_Heure: {},
+  Date_Heure: '',
   Riv: '',
   Ratio: {
     //Position 1
