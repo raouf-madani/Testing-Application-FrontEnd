@@ -4,7 +4,7 @@ import {useApiHandler} from '@/actions';
 import {fetcher} from '@/actions';
 
 function createTest(data) {
-  return axios.post('https://testing-back-end.vercel.app/api/v1/tests', data);
+  return axios.post('/api/V1/tests', data);
 }
 // function updatePortfolio(id, data) {
 //   return axios.patch(`/api/V1/portfolios/${id}`, data);
@@ -24,10 +24,11 @@ export const useCreateTest = () => useApiHandler(createTest);
 // }
 
 function updateTest(id, data) {
-  return axios.patch(`/api/V1/tests/${id}`, data);
+  console.log(id, 'and data is from action of test ', data);
+  return axios.patch(`/api/V1/mise_place/${id}`, data);
 }
-
 export const useUpdateTest = () => useApiHandler(updateTest);
+
 export const useGetTest = id => {
   const {data, error, ...rest} = useSWR(
     id ? `/api/V1/tests/${id}` : null,

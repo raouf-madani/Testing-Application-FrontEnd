@@ -1,3 +1,4 @@
+import auth0 from '@/utils/auth0';
 import TestingApi from '@/lib/api/testing';
 
 export default async function handleCommande(req, res) {
@@ -13,10 +14,11 @@ export default async function handleCommande(req, res) {
   }
   if (req.method === 'POST') {
     try {
-      const json = await new TestingApi.createTest(req.body);
-      return res.json(json.data);
+      const {accessToken} = await auth0.getSession(req);
+      await new TestingApi(accessToken).createTest(req.body);
+      return res.json({message: 'test created'});
     } catch (e) {
-      return res.status(e.status || 422).json(e);
+      return res.status(e.status || 422).json(e.response.data);
     }
   }
   // if (req.method === 'DELETE') {

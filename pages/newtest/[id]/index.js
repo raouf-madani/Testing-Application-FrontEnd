@@ -15,7 +15,11 @@ import {
   Mise_NewData3phases,
 } from '@/FakeData/TestData';
 import {useGetCommande} from '@/actions/commandes';
-import {useGetMise, useUpdateMisePlace} from '@/actions/mise_place';
+import {
+  useGetMise,
+  useUpdateMisePlace,
+  useCreateMise_Place,
+} from '@/actions/mise_place';
 
 import withAuth from '@/hoc/withAuth';
 import {UseGetUser} from '@/actions/user';
@@ -61,9 +65,13 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [test_type_selected, settest_type_selected] = useState();
   const [teststatus, setteststatus] = useState();
   const [temperature_noaffected, settemperature_noaffected] = useState();
-  const [createTest, {data, loading}] = useCreateTest();
+  const [createTest] = useCreateTest();
+  const [createMiseenplace] = useCreateMise_Place();
   const _CreateTest = data => {
     createTest(data);
+  };
+  const _CreateMisePlace = data => {
+    createMiseenplace(data);
   };
   const TypeOfTest = mise_en_placeById
     ? mise_en_placeById.Type_test
@@ -118,6 +126,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
         if (mise_en_placeById !== null) {
           console.log('begin the work mise en place done');
           UpdateData(
+            'Date_Heure',
+            '2022-03-10',
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
+          UpdateData(
             'numcommand',
             router.query.id,
             TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
@@ -128,9 +141,20 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
             TypeOfTest,
             TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
           );
+
           setCurrent(current + 1);
         } else {
           console.log('begin the work No mise en place ');
+          UpdateData(
+            'Date_Heure',
+            '2022-03-10',
+            TypeOfTest == '1phase' ? setFinaldata : setFinaldata3phases
+          );
+          UpdateData(
+            'Date_Heure',
+            '2022-03-10',
+            TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
+          );
           UpdateData(
             'numcommand',
             router.query.id,
@@ -150,6 +174,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
           UpdateData(
             'test_type',
             TypeOfTest,
+            TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
+          );
+          UpdateData(
+            'id_product',
+            commande.id_product,
             TypeOfTest == '1phase' ? setNewMisePlace : setNewMisePlace3phases
           );
           console.log(' la final data', data);
@@ -168,7 +197,10 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
         setmodal(!modal);
 
         console.log('the final data to create is ', data);
-        // _CreateTest(data);
+        _CreateTest(data);
+        _CreateMisePlace(
+          TypeOfTest == '1phase' ? NewMisePlace : NewMisePlace3phases
+        );
       } else {
         alert('affecter la temperature');
       }
@@ -498,11 +530,7 @@ export async function getStaticProps({params}) {
   if (Commandlist.length !== 0) {
     commande = Commandlist[0];
     if (commande !== null) {
-      if (
-        Tests.some(
-          test => test.num_serie === serie_num && test.numcommand === id
-        )
-      ) {
+      if (Tests.some(test => test.numcommand === params.id)) {
         commande = 'tested';
       }
       const json_Mise_en_placeById = await new TestingApi().getmiseById(

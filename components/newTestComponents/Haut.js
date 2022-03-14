@@ -69,13 +69,13 @@ const Haut = ({
       Borne_Jaune: mise_data.Bornes.Borne_jaune,
       //ratio initial data
       //P1
-      Volts_Apluiqés_P1: mise_data.Ratio.Volts_apluiqés_P1,
-      Volts_HT_P1: mise_data.Ratio.Volts_ht_P1,
-      Polarité_Volts_P1: mise_data.Ratio.Polarite_volts_P1,
+      Tension_à_Appliquer_P1: mise_data.Ratio.Tension_à_appliquer_P1,
+      Tension_HT_P1: mise_data.Ratio.Tension_ht_P1,
+      Polarite_Théorique_P1: mise_data.Ratio.Polarite_théorique_P1,
       //P2
-      Volts_Apluiqés_P2: mise_data.Ratio.Volts_apluiqés_P2,
-      Volts_HT_P2: mise_data.Ratio.Volts_ht_P2,
-      Polarité_Volts_P2: mise_data.Ratio.Polarite_volts_P2,
+      Tension_à_Appliquer_P2: mise_data.Ratio.Tension_à_appliquer_P2,
+      Tension_HT_P2: mise_data.Ratio.Tension_ht_P2,
+      Polarite_Théorique_P2: mise_data.Ratio.Polarite_théorique_P2,
 
       // Induit
       //P1

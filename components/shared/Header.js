@@ -115,10 +115,9 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
         {status == 0 ? (
           <NavbarBrand href="/">
             <Image
-              style={{marginBottom: '5px'}}
               src="/SE_Logo_White_RGB.svg"
               height="45px"
-              width="120px"
+              width="130px"
               alt="se-logo"
             />
           </NavbarBrand>
@@ -127,10 +126,9 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
             <NavbarBrand onClick={AnnulerConfirm}>
               {' '}
               <Image
-                style={{marginBottom: '5px'}}
                 src="/SE_Logo_White_RGB.svg"
                 height="45px"
-                width="120px"
+                width="130px"
                 alt="se-logo"
               />
             </NavbarBrand>

@@ -1,7 +1,23 @@
 export const UpdateData = (type, newData, setData) => {
   switch (type) {
+    //Date et Heure
+    case 'Date_Heure':
+      setData(data => {
+        return {
+          ...data,
+          [type]: newData,
+        };
+      });
     //employe id
     case 'id_employe':
+      setData(data => {
+        return {
+          ...data,
+          [type]: newData,
+        };
+      });
+    //id of product
+    case 'id_product':
       setData(data => {
         return {
           ...data,
@@ -33,7 +49,7 @@ export const UpdateData = (type, newData, setData) => {
         };
       });
     //RIV
-    case 'Riv':
+    case 'riv':
       setData(data => {
         return {
           ...data,
@@ -62,21 +78,23 @@ export const UpdateData = (type, newData, setData) => {
     case 'Tension_mesurée_P3_P1':
     case 'Tension_mesurée_P4_P1':
     case 'Tension_mesurée_P5_P1':
+    case 'Polarité_mesurée_P1':
     case 'Tension_mesurée_P2':
     case 'Tension_mesurée_P1_P2':
     case 'Tension_mesurée_P2_P2':
     case 'Tension_mesurée_P3_P2':
     case 'Tension_mesurée_P4_P2':
     case 'Tension_mesurée_P5_P2':
-    //
-    case 'Volts_apluiqés_P1':
-    case 'Volts_ht_P1':
-    case 'Polarite_volts_P1':
-    case 'Polarite_volts_Mesure_P1':
-    case 'Volts_apluiqés_P2':
-    case 'Volts_ht_P2':
-    case 'Polarite_volts_P2':
-    case 'Polarite_volts_Mesure_P2':
+    case 'Polarité_mesurée_P2':
+    //mise en place
+    case 'Tension_à_appliquer_P1':
+    case 'Tension_ht_P1':
+    case 'Polarite_théorique_P1':
+    // case 'Polarite_volts_Mesure_P1':
+    case 'Tension_à_appliquer_P2':
+    case 'Tension_ht_P2':
+    case 'Polarite_théorique_P2':
+      // case 'Polarite_volts_Mesure_P2':
       setData(data => {
         return {
           ...data,

@@ -49,7 +49,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                   console.log('Test reussi'),
                     UpdateData('Test_Hipot_70', true, setFinaldata);
                 }}>
-                Test reussit
+                teste réussi
               </Radio.Button>
               <Radio.Button
                 onClick={() => {
@@ -61,7 +61,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                 }}
                 style={{margin: '5px'}}
                 value="echoue">
-                Test echoue
+                teste échoué
               </Radio.Button>
             </Radio.Group>
           </Form.Item>

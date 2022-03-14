@@ -37,7 +37,7 @@ export default function Ratio_Polarite({
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label="Tension à appliquer"
-                name="Volts_Apluiqés_P1"
+                name="Tension_à_Appliquer_P1"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
@@ -47,7 +47,7 @@ export default function Ratio_Polarite({
                   placeholder="Position 1"
                   onChange={e => {
                     UpdateData(
-                      'Volts_apluiqés_P1',
+                      'Tension_à_appliquer_P1',
                       e.target.value,
                       setNewMisePlace
                     );
@@ -57,7 +57,7 @@ export default function Ratio_Polarite({
             </Row>
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                name="Volts_HT_P1"
+                name="Tension_HT_P1"
                 label="Tension HT théorique"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
@@ -66,7 +66,11 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Position 1"
                   onChange={e => {
-                    UpdateData('Volts_ht_P1', e.target.value, setNewMisePlace);
+                    UpdateData(
+                      'Tension_ht_P1',
+                      e.target.value,
+                      setNewMisePlace
+                    );
                   }}
                 />
               </Form.Item>
@@ -74,7 +78,7 @@ export default function Ratio_Polarite({
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
                 label=" Polarité théorique"
-                name="Polarité_Volts_P1"
+                name="Polarite_Théorique_P1"
                 rules={[{required: true, message: 'Champ Requis'}]}
                 className="show_item_input">
                 <Input
@@ -83,7 +87,7 @@ export default function Ratio_Polarite({
                   placeholder="Position 1"
                   onChange={e => {
                     UpdateData(
-                      'Polarite_volts_P1',
+                      'Polarite_théorique_P1',
                       e.target.value,
                       setNewMisePlace
                     );
@@ -99,7 +103,7 @@ export default function Ratio_Polarite({
               justifyContent: 'center',
             }}>
             <Form.Item className="show_item">
-              Tension à appliquer : {miseenplaceok.Ratio.Volts_apluiqés_P1}
+              Tension à appliquer : {miseenplaceok.Ratio.Tension_à_appliquer_P1}
             </Form.Item>
           </Row>
         )}
