@@ -22,33 +22,39 @@ const Rapports = () => {
         <Basepage className="base-page">
           <Row justify="center">
             <div className="print-source" ref={PrintRef} id="report">
-              <Row justify="center" style={{borderBottom: '1px white solid'}}>
-                <h2>TRANSFORMATEUR AERIEN INOXYDABLE, ONAN, 60Hz, 65 C</h2>
+              <Row
+                justify="center"
+                className="row-items-title"
+                style={{borderBottom: '1px white solid'}}>
+                TRANSFORMATEUR AERIEN INOXYDABLE, ONAN, 60Hz, 65 C
               </Row>
 
-              <Row justify="end" style={{borderBottom: '1px white solid'}}>
-                <h2 style={{borderBottom: '2px white solid'}}>Code 1145113</h2>
+              <Row
+                justify="end"
+                className="row-items-title"
+                style={{borderBottom: '1px white solid'}}>
+                <span style={{borderBottom: '2px white solid'}}>
+                  Code 1145113{' '}
+                </span>
               </Row>
-              <div style={{borderBottom: '1px white solid', padding: '5px'}}>
-                <Row gutter={8}>
+              <div
+                className="row-items"
+                style={{
+                  borderBottom: '1px white solid',
+                }}>
+                <Row gutter={8} align="middle">
                   <Col className="gutter-row" span={12}>
                     <Row>
-                      <Col span={12} style={{color: 'white'}}>
-                        1 PH :
-                      </Col>
-                      <Col span={12} style={{color: 'white'}}>
-                        100 KVA
-                      </Col>
+                      <Col span={12}>1 PH :</Col>
+                      <Col span={12}>100 KVA</Col>
                     </Row>
                   </Col>
                   <Col className="gutter-row" span={12}>
                     <Row>
-                      <Col span={12} style={{color: 'white'}}>
+                      <Col span={12} style={{fontFamily: 'Lucida Sans'}}>
                         No Serie :
                       </Col>
-                      <Col span={12} style={{color: 'white'}}>
-                        20136-272
-                      </Col>
+                      <Col span={12}>20136-272</Col>
                     </Row>
                   </Col>
                 </Row>
@@ -139,27 +145,41 @@ const Rapports = () => {
               <Row
                 justify="center"
                 align="middle"
-                style={{borderBottom: '1px white solid'}}>
-                <h2>Dessin 1</h2>
+                style={{borderBottom: '1px white solid', height: '35px'}}
+                className="row-items">
+                Dessin 1
               </Row>
-              <Row justify="center" align="middle" style={{padding: '10px'}}>
+              <Row
+                justify="center"
+                align="middle"
+                style={{padding: '2px 0 0'}}
+                className="row-items">
                 <Alert
-                  style={{width: '42%'}}
-                  description="ATTENTION: AVANT DACTIONNER LE SELECTEUR DE TENSION METTRE LE
+                  className="Alert"
+                  message="ATTENTION: AVANT DACTIONNER LE SELECTEUR DE TENSION METTRE LE
                    TRANSFORMATEUR HORS TENSION."
                 />
               </Row>
-              <Row justify="center" align="middle">
+              <Row
+                justify="center"
+                align="middle"
+                style={{padding: '2px', height: '45px'}}
+                className="row-items">
                 {' '}
-                <h2>Dessin 2</h2>
+                Dessin 2
               </Row>
-              <Row justify="center" style={{borderBottom: '1px white solid'}}>
-                {' '}
-                <h4>EFFICACITE ENERGITIQUE SELON CAN/CSA-C802.1-00</h4>
+              <Row
+                justify="center"
+                style={{borderBottom: '1px white solid'}}
+                className="row-items">
+                EFFICACITE ENERGITIQUE SELON CAN/CSA-C802.1-00
               </Row>
               <Row
                 gutter={8}
-                style={{padding: '5px', borderBottom: '1px white solid'}}>
+                className="row-items"
+                style={{
+                  borderBottom: '1px white solid',
+                }}>
                 <Col className="gutter-row" span={12}>
                   <Row>
                     <Col span={12} style={{color: 'white'}}>
@@ -184,7 +204,10 @@ const Rapports = () => {
 
               <Row
                 gutter={8}
-                style={{padding: '5px', borderBottom: '1px white solid'}}>
+                className="row-items"
+                style={{
+                  borderBottom: '1px white solid',
+                }}>
                 <Col className="gutter-row" span={12}>
                   <Row>
                     <Col span={12} style={{color: 'white'}}>
@@ -207,34 +230,28 @@ const Rapports = () => {
                 </Col>
               </Row>
 
-              <Row gutter={10} align="bottom">
-                <Col className="gutter-row" span={6}>
-                  <Row align="bottom">
+              <Row gutter={10} align="bottom" className="row-items">
+                <Col className="gutter-row" span={8}>
+                  <Row align="bottom" className="Logo">
                     <Col>
                       {' '}
                       <Image
                         src="/SE_Logo_White_RGB.svg"
-                        height="45px"
-                        width="130px"
+                        height="25px"
+                        width="50px"
                         alt="se-logo"
                       />
                     </Col>
-                    <Col style={{color: 'white'}}>FITFormer</Col>
+                    <Col className="row-items">FITFormer</Col>
                   </Row>
                 </Col>
-                <Col className="gutter-row" span={14}>
+                <Col className="gutter-row" span={16}>
                   <Row justify="space-between">
-                    <Col style={{color: 'white'}}>
-                      FABRIQUE A TROIS RIVIERES CANADA
-                    </Col>
-                    <Col style={{color: 'white', paddingRight: '10px'}}>
-                      661 378 908 R04
-                    </Col>
+                    <Col>FABRIQUE A TROIS RIVIERES CANADA</Col>
+                    <Col>661 378 908 R04</Col>
                   </Row>
-                  <Row style={{color: 'white'}}>
-                    Siemens Energie Transformateurs Canada Inc.
-                  </Row>
-                  <Row style={{color: 'white'}}>
+                  <Row>Siemens Energie Transformateurs Canada Inc.</Row>
+                  <Row>
                     Siemens Energie est une marque de commerce de siemens AG
                     employee sous licence.
                   </Row>
