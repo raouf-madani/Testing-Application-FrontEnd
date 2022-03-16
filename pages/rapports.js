@@ -37,11 +37,7 @@ const Rapports = () => {
                   Code 1145113{' '}
                 </span>
               </Row>
-              <div
-                className="row-items"
-                style={{
-                  borderBottom: '1px white solid',
-                }}>
+              <div className="row-items">
                 <Row gutter={8} align="middle">
                   <Col className="gutter-row" span={12}>
                     <Row>
@@ -145,7 +141,7 @@ const Rapports = () => {
               <Row
                 justify="center"
                 align="middle"
-                style={{borderBottom: '1px white solid', height: '35px'}}
+                style={{height: '45px'}}
                 className="row-items">
                 Dessin 1
               </Row>
@@ -163,7 +159,7 @@ const Rapports = () => {
               <Row
                 justify="center"
                 align="middle"
-                style={{padding: '2px', height: '45px'}}
+                style={{padding: '2px', height: '55px'}}
                 className="row-items">
                 {' '}
                 Dessin 2
