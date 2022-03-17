@@ -141,7 +141,7 @@ const Rapports = () => {
               <Row
                 justify="center"
                 align="middle"
-                style={{height: '45px'}}
+                style={{height: '70px'}}
                 className="row-items">
                 Dessin 1
               </Row>
@@ -159,7 +159,7 @@ const Rapports = () => {
               <Row
                 justify="center"
                 align="middle"
-                style={{padding: '2px', height: '55px'}}
+                style={{padding: '2px', height: '90px'}}
                 className="row-items">
                 {' '}
                 Dessin 2
