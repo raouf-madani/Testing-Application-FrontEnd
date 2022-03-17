@@ -52,6 +52,7 @@ const steps = [
     title: 'Pertes à vide P2',
     content: 'Pertes à vide P2',
   },
+
   {
     title: 'RIV ',
     content: 'RIV',
@@ -63,6 +64,10 @@ const steps = [
   {
     title: 'Pertes à charge P2',
     content: 'Pertes à charge P2',
+  },
+  {
+    title: 'Résistance',
+    content: 'Résistance',
   },
   {
     title: 'Décharges Partielles',

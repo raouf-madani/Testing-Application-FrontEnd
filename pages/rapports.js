@@ -233,8 +233,8 @@ const Rapports = () => {
                       {' '}
                       <Image
                         src="/SE_Logo_White_RGB.svg"
-                        height="25px"
-                        width="50px"
+                        height="65px"
+                        width="80px"
                         alt="se-logo"
                       />
                     </Col>

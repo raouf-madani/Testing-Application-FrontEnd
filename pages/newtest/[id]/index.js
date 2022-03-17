@@ -28,7 +28,6 @@ import {UpdateData} from '@/actions/newtestupdate';
 import TestingApi from '@/lib/api/testing';
 
 import {
-  Steps,
   Button,
   Row,
   Col,
@@ -41,7 +40,6 @@ import {
   InputNumber,
 } from 'antd';
 
-const {Step} = Steps;
 const {confirm} = Modal;
 
 const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
