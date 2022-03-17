@@ -10,6 +10,7 @@ export default function Induit({
   // props button reussi
   next,
 }) {
+  const [mise_data, setmise_data] = useState(miseenplaceok);
   const {TextArea} = Input;
   const inputEl = useRef(null);
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function Induit({
         <h3>Induit Position 1</h3>{' '}
       </Divider>
       <div>
-        {miseenplaceok && (
+        {mise_data && (
           <div>
             <Row
               style={{
@@ -64,7 +65,7 @@ export default function Induit({
                   width: '40%',
                   marginBottom: '15px',
                 }}>
-                Réactance SKE77 : {miseenplaceok.Induit.Réactance_ske77_P1}
+                Réactance SKE77 : {mise_data.Induit.Réactance_ske77_P1}
               </Form.Item>
             </Row>
             <Row
@@ -72,7 +73,7 @@ export default function Induit({
                 justifyContent: 'center',
               }}>
               <Form.Item className="show_item">
-                Réactance SKE17 : {miseenplaceok.Induit.Réactance_ske17_P1}
+                Réactance SKE17 : {mise_data.Induit.Réactance_ske17_P1}
               </Form.Item>
             </Row>
             <Row
@@ -80,7 +81,7 @@ export default function Induit({
                 justifyContent: 'center',
               }}>
               <Form.Item className="show_item">
-                Fréquence : {miseenplaceok.Induit.Fréquence_genératrice_P1}
+                Fréquence : {mise_data.Induit.Fréquence_genératrice_P1}
               </Form.Item>
             </Row>
           </div>
@@ -156,7 +157,7 @@ export default function Induit({
             justifyContent: 'center',
           }}>
           <Form.Item className="show_item">
-            Tension applique position1 : 20V
+            Tension à appliquer position 1 : 20V
           </Form.Item>
         </Row>
         {!miseenplaceok ? (
@@ -188,7 +189,7 @@ export default function Induit({
                 justifyContent: 'center',
               }}>
               <Form.Item className="show_item">
-                {miseenplaceok.Induit.Comment}
+                {miseenplaceok.Induit.Comment_P1}
               </Form.Item>
             </Row>
           </>
@@ -200,14 +201,14 @@ export default function Induit({
                 tabIndex={!miseenplaceok ? 5 : 2}
                 ref={!miseenplaceok ? null : inputEl}
                 style={{margin: '5px'}}
-                value="reussit"
+                value="Réussi"
                 onKeyPress={() =>
                   UpdateData('Test_Induit_P1', true, setFinaldata)
                 }
                 onClick={() =>
                   UpdateData('Test_Induit_P1', true, setFinaldata)
                 }>
-                reussit
+                Réussi
               </Radio.Button>
               <Radio.Button
                 style={{margin: '5px'}}
@@ -215,8 +216,8 @@ export default function Induit({
                   UpdateData('Test_Induit_P1', false, setFinaldata);
                   error('Le Test de Induit Position 1 est echoué...');
                 }}
-                value="echoue">
-                echoue
+                value="Échoué">
+                Échoué
               </Radio.Button>
             </Radio.Group>
           </Form.Item>

@@ -144,7 +144,7 @@ export default function Ratio_Polarite({
           ) : (
             <Row style={{justifyContent: 'center'}}>
               <Form.Item
-                key="P2"
+                key="P1"
                 style={{width: '16%', marginRight: '5px'}}
                 label="Prise1"
                 name="Tension_mesurée_P1_P2"

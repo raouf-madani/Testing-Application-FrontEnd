@@ -113,49 +113,27 @@ export default function Decharges_Partielles({
         dashed
         orientation="left"
         style={{color: '#503662', marginBottom: '40px'}}>
-        <h3>Decharges Partielles</h3>
+        <h3>Décharges Partielles</h3>
       </Divider>
       <div>
-        <Row key="row1" style={{justifyContent: 'center'}}>
-          <Form.Item>
-            <Form.Item
-              key="1.7pu"
-              className="show_item"
-              style={{width: '100%'}}>
-              TENSION APPLIQUÉ HAUTE TENSION 1.7pu (V)
-            </Form.Item>
-          </Form.Item>
-        </Row>
-        <Row key="row2" style={{justifyContent: 'center'}}>
-          <Form.Item>
-            <Form.Item
-              key="1.5pu"
-              className="show_item"
-              style={{width: '100%'}}>
-              TENSION APPLIQUÉ HAUTE TENSION 1.5pu (V)
-            </Form.Item>
-          </Form.Item>
-        </Row>
         {miseenplaceok ? (
-          <Row key="row3" style={{justifyContent: 'center'}}>
-            <Form.Item
-              key="Réactance_SKE77"
-              className="show_item"
-              style={{width: '40%'}}>
-              Réactance SKE77:
-              {miseenplaceok.Decharges_Partielles.Réactance_ske77_DP_P1}
-            </Form.Item>
-            <Form.Item
-              key="Réactance_SKE17"
-              className="show_item"
-              style={{width: '40%'}}>
-              Réactance SKE17 :
-              {miseenplaceok.Decharges_Partielles.Réactance_ske17_DP_P1}
-            </Form.Item>
-          </Row>
+          <>
+            <Row key="Réactance SKE77" style={{justifyContent: 'center'}}>
+              <Form.Item key="Réactance_SKE77" className="show_item">
+                Réactance SKE77:
+                {miseenplaceok.Decharges_Partielles.Réactance_ske77_DP_P1}
+              </Form.Item>
+            </Row>
+            <Row key="Réactance SKE17" style={{justifyContent: 'center'}}>
+              <Form.Item key="Réactance_SKE17" className="show_item">
+                Réactance SKE17 :
+                {miseenplaceok.Decharges_Partielles.Réactance_ske17_DP_P1}
+              </Form.Item>
+            </Row>
+          </>
         ) : (
           <>
-            <Row key="row3" style={{justifyContent: 'center'}}>
+            <Row key="Réactance SKE77_Drop" style={{justifyContent: 'center'}}>
               <Form.Item
                 key="Réactance_SKE77"
                 label="Réactance SKE77"
@@ -180,6 +158,8 @@ export default function Decharges_Partielles({
                   />
                 </Form.Item>
               </Form.Item>
+            </Row>
+            <Row key="Réactance SKE17_Drop" style={{justifyContent: 'center'}}>
               <Form.Item
                 key="Réactance_SKE17"
                 label="Réactance SKE17"
@@ -210,6 +190,20 @@ export default function Decharges_Partielles({
             </Row>
           </>
         )}
+        <Row
+          key="Tension à appliquer 1.7 pu"
+          style={{justifyContent: 'center'}}>
+          <Form.Item key="1.7pu" className="show_item">
+            Tension à appliquer 1.7 pu
+          </Form.Item>
+        </Row>
+        <Row
+          key="Tension à appliquer 1.5 pu"
+          style={{justifyContent: 'center'}}>
+          <Form.Item key="1.5pu" className="show_item">
+            Tension à appliquer 1.5 pu
+          </Form.Item>
+        </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
             key="15_Sec"

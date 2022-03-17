@@ -16,7 +16,11 @@ const App = ({modal, toggle, direction, teststatus}) => {
       inputEl.current.focus();
     }
   });
-
+  // useEffect(() => {
+  //   if (modal) {
+  //     toggle();
+  //   }
+  // }, [router.query.id]);
   const handleOk = () => {
     if (numcommande !== null) {
       setConfirmLoading(true);

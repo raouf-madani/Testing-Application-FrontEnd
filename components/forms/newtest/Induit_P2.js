@@ -148,9 +148,43 @@ export default function Induit({
             justifyContent: 'center',
           }}>
           <Form.Item className="show_item">
-            Tension applique position2 : 20V
+            Tension à appliquer position 2 : 20V
           </Form.Item>
         </Row>
+        {!miseenplaceok ? (
+          <Row
+            style={{
+              justifyContent: 'center',
+              marginBottom: '10px',
+            }}>
+            <Form.Item
+              name="Commentaire"
+              label="Commentaire"
+              style={{
+                width: '60%',
+                marginBottom: '5px',
+              }}>
+              <TextArea
+                tabIndex={!miseenplaceok ? 4 : 1}
+                rows={4}
+                onChange={e => {
+                  UpdateData('Comment', e.target.value, setFinaldata);
+                }}
+              />
+            </Form.Item>
+          </Row>
+        ) : (
+          <>
+            <Row
+              style={{
+                justifyContent: 'center',
+              }}>
+              <Form.Item className="show_item">
+                {miseenplaceok.Induit.Comment_P2}
+              </Form.Item>
+            </Row>
+          </>
+        )}
 
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
@@ -167,7 +201,7 @@ export default function Induit({
                 ref={!miseenplaceok ? null : inputEl}
                 tabIndex={!miseenplaceok ? 4 : 1}
                 style={{margin: '5px'}}
-                value="reussit"
+                value="Réussi"
                 onKeyPress={() => {
                   UpdateData('Test_Induit_P2', true, setFinaldata);
                   console.log('enter pressed');
@@ -176,7 +210,7 @@ export default function Induit({
                   UpdateData('Test_Induit_P2', true, setFinaldata);
                   console.log('mouse pressed');
                 }}>
-                reussit{' '}
+                Réussi
               </Radio.Button>
               <Radio.Button
                 onClick={() => {
@@ -184,8 +218,8 @@ export default function Induit({
                   error('Le Test de Induit Position 2 est echoué...');
                 }}
                 style={{margin: '5px'}}
-                value="echoue">
-                echoue
+                value="Échoué">
+                Échoué
               </Radio.Button>
             </Radio.Group>
           </Form.Item>

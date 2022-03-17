@@ -1,20 +1,28 @@
 .print-source {
   padding: 10px;
   box-shadow: white 0px 5px 15px;
+  width: 135mm;
+  height: 150mm;
 }
 .Alert {
-  padding: 10px;
-  width: 50%;
+  width: 42%;
+  font-size: 5px;
 }
+
 .row-items-title {
+  font-size: 11px;
+  color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.row-items {
+  padding: 5px;
+  font-size: 7px;
+  color: white;
+  font-family: sans-serif;
+}
 body > .print-source {
   display: block;
-}
-.Logo {
-  display: none;
 }
 
 @media print {

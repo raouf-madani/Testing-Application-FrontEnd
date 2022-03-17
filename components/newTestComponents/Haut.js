@@ -40,25 +40,26 @@ const Haut = ({
   temperature_noaffected,
   settemperature_noaffected,
 }) => {
-  const [miseenplacemodal, setmiseenplacemodal] = useState(false);
   const [mise_data, setmise_data] = useState(mise_en_placeById);
+
+  const [miseenplacemodal, setmiseenplacemodal] = useState(false);
   const [updateMise_place, {data, error, loading}] = useUpdateMisePlace();
   const _updateMisePlace = async (id, data) => {
     await updateMise_place(id, data);
   };
 
-  useEffect(() => {
-    const affecter = () => {
-      if (temperature_noaffected) {
-        UpdateData(
-          'temperature_affected',
-          temperature_noaffected,
-          setFinaldata
-        );
-      }
-    };
-    affecter();
-  }, [setFinaldata, UpdateData]);
+  // useEffect(() => {
+  //   const affecter = () => {
+  //     if (temperature_noaffected) {
+  //       UpdateData(
+  //         'temperature_affected',
+  //         temperature_noaffected,
+  //         setFinaldata
+  //       );
+  //     }
+  //   };
+  //   affecter();
+  // }, [temperature_noaffected]);
 
   let initial_mise_placefrom_values = null;
   if (mise_data !== null) {
@@ -82,10 +83,12 @@ const Haut = ({
       Fréquence_Genératrice_P1: mise_data.Induit.Fréquence_genératrice_P1,
       Réactance_SKE77_P1: mise_data.Induit.Réactance_ske77_P1,
       Réactance_SKE17_P1: mise_data.Induit.Réactance_ske17_P1,
+      Comment_P1: mise_data.Induit.Comment_P1,
       //P2
       Fréquence_Genératrice_P2: mise_data.Induit.Fréquence_genératrice_P2,
       Réactance_SKE77_P2: mise_data.Induit.Réactance_ske77_P2,
       Réactance_SKE17_P2: mise_data.Induit.Réactance_ske17_P2,
+      Comment_P2: mise_data.Induit.Comment_P2,
       // Perte a vide
       //P1
       Multiplicateur_Volts_P1: mise_data.Perte_a_Vide.Multiplicateur_volts_P1,
@@ -175,7 +178,7 @@ const Haut = ({
       }>
       <Panel
         key="1"
-        header="Detailles de Commande"
+        header="Détails de Commande"
         extra={
           mise_data !== null ? (
             <Button
@@ -241,7 +244,7 @@ const Haut = ({
         </Modal>
         <Row justify="space-between">
           <Col key="1" lg={{span: 6}}>
-            <Divider plain>Informations de Model</Divider>
+            <Divider plain>Informations du modèle</Divider>
             <div
               style={{
                 padding: '10px',
@@ -293,11 +296,10 @@ const Haut = ({
             {mise_data !== null && (
               <>
                 <Space>
-                  Bornes :
+                  Bornes :<Tag color="#f50">{mise_data.Bornes.Borne_rouge}</Tag>
                   <Tag color="rgb(207 231 12)">
                     {mise_data.Bornes.Borne_jaune}
                   </Tag>
-                  <Tag color="#f50">{mise_data.Bornes.Borne_rouge}</Tag>
                   <Tag color="#87d068">{mise_data.Bornes.Borne_verte}</Tag>
                 </Space>
                 <Space>

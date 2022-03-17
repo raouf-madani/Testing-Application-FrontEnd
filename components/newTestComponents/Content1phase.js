@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {useRouter} from 'next/router';
 
 import EtapeContent from '@/components/newTestContent';
@@ -45,24 +45,24 @@ const steps = [
     content: 'Hipot HT',
   },
   {
-    title: 'Pertes a Vide P1',
-    content: 'Pertes a Vide P1',
+    title: 'Pertes à vide P1',
+    content: 'Pertes à vide P1',
   },
   {
-    title: 'Pertes a Vide P2',
-    content: 'Pertes a Vide P2',
+    title: 'Pertes à vide P2',
+    content: 'Pertes à vide P2',
   },
   {
     title: 'RIV ',
     content: 'RIV',
   },
   {
-    title: 'Pertes a Charge P1',
-    content: 'Pertes a Charge P1',
+    title: 'Pertes à charge P1',
+    content: 'Pertes à charge P1',
   },
   {
-    title: 'Pertes a Charge P2',
-    content: 'Pertes a Charge P2',
+    title: 'Pertes à charge P2',
+    content: 'Pertes à charge P2',
   },
   {
     title: 'Décharges Partielles',
@@ -138,6 +138,12 @@ function ContentAndSteps1phase(props) {
     settablelength(steps.length);
     console.log('la commandes est', commande);
   }, []);
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  }, [inputEl]);
   return (
     <div>
       <Row justify="space-between">
@@ -251,6 +257,7 @@ function ContentAndSteps1phase(props) {
                       <Button
                         type="primary"
                         tabIndex={mise_en_placeById !== null ? 3 : 15}
+                        ref={inputEl}
                         htmlType="submit"
                         disabled={status == 2 ? true : false}>
                         {current == 0 ? 'Commencer' : 'Suivant'}

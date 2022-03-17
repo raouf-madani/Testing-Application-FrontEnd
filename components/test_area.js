@@ -1,5 +1,4 @@
-import React from 'react';
-import {UpdateData} from '@/actions/newtestupdate';
+import React, {useEffect} from 'react';
 
 import {
   Steps,
@@ -20,6 +19,8 @@ import Phase1Forms from '@/components/newTestComponents/Content1phase';
 import Phase3Forms from '@/components/newTestComponents/Content3phase';
 
 function Test_area({
+  setmise_data,
+  mise_data,
   mise_en_placeById,
   test_type_selected,
   current,
@@ -41,32 +42,42 @@ function Test_area({
   // props button reussi
   next,
 }) {
+  useEffect(() => {
+    const setmisedata = () => {
+      if (mise_en_placeById) {
+        setmise_data(mise_en_placeById);
+      }
+    };
+    setmisedata();
+  }, []);
   return (
     <>
       {mise_en_placeById !== null ? (
         <>
           {mise_en_placeById.test_type == '1phase' ? (
-            <Phase1Forms
-              commande={commande}
-              mise_en_placeById={mise_en_placeById}
-              test_type_selected={test_type_selected}
-              Finaldata={Finaldata}
-              setFinaldata={setFinaldata}
-              setNewMisePlace={setNewMisePlace}
-              error={error}
-              current={current}
-              settablelength={settablelength}
-              form={form}
-              //props for buttons
-              status={status}
-              resume={resume}
-              stop={stop}
-              AnnulerConfirm={AnnulerConfirm}
-              prev={prev}
-              tablelength={tablelength}
-              // props button reussi
-              next={next}
-            />
+            <>
+              <Phase1Forms
+                commande={commande}
+                mise_en_placeById={mise_en_placeById}
+                test_type_selected={test_type_selected}
+                Finaldata={Finaldata}
+                setFinaldata={setFinaldata}
+                setNewMisePlace={setNewMisePlace}
+                error={error}
+                current={current}
+                settablelength={settablelength}
+                form={form}
+                //props for buttons
+                status={status}
+                resume={resume}
+                stop={stop}
+                AnnulerConfirm={AnnulerConfirm}
+                prev={prev}
+                tablelength={tablelength}
+                // props button reussi
+                next={next}
+              />
+            </>
           ) : (
             <Phase3Forms
               commande={commande}
