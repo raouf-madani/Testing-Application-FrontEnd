@@ -40,34 +40,6 @@ function newTestContent({setmise_data}) {
       <TabPane tab="Bornes" key="1">
         <Row justify="space-between">
           <Form.Item
-            label="Borne Jaune"
-            tooltip={{
-              title: 'Tooltip with customize icon',
-              icon: <InfoCircleOutlined style={{color: '#edf109'}} />,
-            }}
-            style={{marginBottom: 0, width: '30%'}}>
-            <Form.Item
-              name="Borne_Jaune"
-              rules={[
-                {
-                  required: true,
-                  message: 'Champ Requis',
-                },
-              ]}>
-              {/* <Input
-                onChange={e =>
-                  UpdatemiseData('Borne_jaune', e.target.value, setmise_data)
-                }
-              /> */}
-              <Select
-                options={Borne_Jaune}
-                onChange={value => {
-                  UpdateData('Borne_jaune', value, setmise_data);
-                }}
-              />
-            </Form.Item>
-          </Form.Item>
-          <Form.Item
             label="Borne Rouge"
             tooltip={{
               title: 'Tooltip with customize icon',
@@ -95,6 +67,35 @@ function newTestContent({setmise_data}) {
               /> */}
             </Form.Item>
           </Form.Item>
+          <Form.Item
+            label="Borne Jaune"
+            tooltip={{
+              title: 'Tooltip with customize icon',
+              icon: <InfoCircleOutlined style={{color: '#edf109'}} />,
+            }}
+            style={{marginBottom: 0, width: '30%'}}>
+            <Form.Item
+              name="Borne_Jaune"
+              rules={[
+                {
+                  required: true,
+                  message: 'Champ Requis',
+                },
+              ]}>
+              {/* <Input
+                onChange={e =>
+                  UpdatemiseData('Borne_jaune', e.target.value, setmise_data)
+                }
+              /> */}
+              <Select
+                options={Borne_Jaune}
+                onChange={value => {
+                  UpdateData('Borne_jaune', value, setmise_data);
+                }}
+              />
+            </Form.Item>
+          </Form.Item>
+
           <Form.Item
             label="Borne Verte"
             tooltip={{
@@ -310,6 +311,33 @@ function newTestContent({setmise_data}) {
               placeholder="Position 2"
               onChange={e =>
                 UpdateData('Réactance_ske17_P2', e.target.value, setmise_data)
+              }
+            />
+          </Form.Item>
+        </Form.Item>
+        <Form.Item label="Comments" style={{marginBottom: 0}}>
+          <Form.Item
+            name="Comment_P1"
+            rules={[{required: true, message: 'Champ Requis'}]}
+            style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
+            <Input
+              placeholder="Position 1"
+              onChange={e =>
+                UpdateData('Comment_P1', e.target.value, setmise_data)
+              }
+            />
+          </Form.Item>
+          <Form.Item
+            name="Comment_P2"
+            style={{
+              display: 'inline-block',
+              width: 'calc(50% - 8px)',
+              margin: '0 8px',
+            }}>
+            <Input
+              placeholder="Position 2"
+              onChange={e =>
+                UpdateData('Comment_P2', e.target.value, setmise_data)
               }
             />
           </Form.Item>

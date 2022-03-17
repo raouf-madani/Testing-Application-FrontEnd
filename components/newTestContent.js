@@ -62,8 +62,8 @@ function NewTestContent({
     return mise_en_placeById !== null ? (
       <div className="Containertest">
         <Alert
-          message="Prét a Tester!"
-          description={`Veuillez cliquer sur le Boutton Commencer en bas pour Tester le transfo en utilisant le type de test ${mise_en_placeById.test_type}`}
+          message="Prêt à tester !"
+          description={`Veuillez cliquer sur le Bouton Commencer en bas pour Tester le transfo en utilisant l’aire d’essai ${mise_en_placeById.test_type}`}
           type="success"
           showIcon
         />
@@ -72,7 +72,7 @@ function NewTestContent({
       <div className="Containertest">
         <Alert
           message="Mise en place du produit"
-          description="Veuillez cliquer sur le boutton commencer pour tester le premier produit de catalogue."
+          description="Veuillez cliquer sur le Bouton Commencer pour tester le premier produit de catalogue."
           type="info"
           showIcon
         />
@@ -159,7 +159,7 @@ function NewTestContent({
           next={next}
         />
       );
-    case 'Pertes a Vide P1':
+    case 'Pertes à vide P1':
       return (
         <Perte_a_VideForm_P1
           UpdateData={UpdateData}
@@ -168,7 +168,7 @@ function NewTestContent({
           setNewMisePlace={setNewMisePlace}
         />
       );
-    case 'Pertes a Vide P2':
+    case 'Pertes à vide P2':
       return (
         <Perte_a_VideForm_P2
           UpdateData={UpdateData}
@@ -185,7 +185,7 @@ function NewTestContent({
           setNewMisePlace={setNewMisePlace}
         />
       );
-    case 'Pertes a Charge P1':
+    case 'Pertes à charge P1':
       return (
         <Perte_a_ChargeForm_P1
           commande={commande}
@@ -197,7 +197,7 @@ function NewTestContent({
           form={form}
         />
       );
-    case 'Pertes a Charge P2':
+    case 'Pertes à charge P2':
       return (
         <Perte_a_ChargeForm_P2
           commande={commande}

@@ -37,12 +37,12 @@ export default function Perte_a_vide({
         dashed
         orientation="left"
         style={{color: '#503662', marginBottom: '40px'}}>
-        <h3>Perte A Vide Position 2</h3>
+        <h3>Pertes à vide Position 2</h3>
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item className="show_item">
-            Tension applique position2 : 20V
+            Tension à appliquer position 2 : 20V
           </Form.Item>
         </Row>
         {miseenplaceok && (
@@ -110,7 +110,7 @@ export default function Perte_a_vide({
         )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Pertes Mesurés"
+            label="Pertes à vide mesurées (W)"
             name="Pertes_Mesurés_P2"
             className="show_item_input">
             <Input
@@ -127,7 +127,7 @@ export default function Perte_a_vide({
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Courant Excitation Mesurés"
+            label="Courant d’excitation mesuré (A)"
             name="Courant_Excitation_Mesurés_P2"
             className="show_item_input">
             <Input

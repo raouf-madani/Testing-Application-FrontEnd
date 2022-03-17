@@ -147,7 +147,7 @@ const Header = ({user, loading, classNameheader, status, AnnulerConfirm}) => {
             </NavItem>
             <NavItem className="port-navbar-item">
               <Bslink
-                title="New Test"
+                title="Nouveau test"
                 url="#"
                 ontoggle={status < 1 ? () => setModal(!modal) : AnnulerConfirm}
                 status={status}

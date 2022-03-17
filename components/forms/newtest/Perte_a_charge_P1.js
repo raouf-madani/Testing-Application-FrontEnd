@@ -65,12 +65,13 @@ export default function Perte_a_charge({
         dashed
         orientation="left"
         style={{color: '#503662', marginBottom: '40px'}}>
-        <h3>Perte A Charge Position 1</h3>{' '}
+        <h3>Pertes à charge Position 1</h3>{' '}
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item className="show_item">
-            Courant Nominale P1 : {(commande.kva * 1000) / commande.voltage_ht}
+            Courant à appliquer P1 :{' '}
+            {(commande.kva * 1000) / commande.voltage_ht}
           </Form.Item>
         </Row>
         {!miseenplaceok && (
@@ -312,7 +313,7 @@ export default function Perte_a_charge({
 
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Perte A Charge Mesuré (W)"
+            label="Pertes à charge mesurées (W)"
             name="Perte_Charge_Mesuré_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
@@ -334,7 +335,7 @@ export default function Perte_a_charge({
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Impédance Mesuré"
+            label="Impédance mesurée (V)"
             name="Impédance_Mesuré_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">

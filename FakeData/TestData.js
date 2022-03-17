@@ -31,8 +31,6 @@ export const Fakedata = {
     Test_Induit_P1: '',
     //Position 2
     Test_Induit_P2: '',
-    // comment
-    Comment: '',
   },
   Hipot: {
     //Position 1
@@ -43,6 +41,17 @@ export const Fakedata = {
   Perte_a_vide: {
     Pertes_mesurés_P1: '',
     Courant_excitation_mesurés_P1: '',
+    // Calculation Values
+    PV_Volt_mesuré: '',
+    PV_Courant_mesuré: '',
+    Perte_A_Vide_mesuré: '',
+    PV: '',
+    Perte_A_Vide_85: '',
+    Perte_A_Vide_Efficacité: '',
+    PV_Erreur_Gar: '',
+    Courant_BT: '',
+    //Test Button Perte a vide
+    Test_Perte_Vide_P1: '',
     //Position 2
     Pertes_mesurés_P2: '',
     Courant_excitation_mesurés_P2: '',
@@ -105,10 +114,14 @@ export const Mise_NewData = [
       Fréquence_genératrice_P1: '',
       Réactance_ske77_P1: '',
       Réactance_ske17_P1: '',
+      // comment
+      Comment_P1: '',
       //Position 2
       Fréquence_genératrice_P2: '',
       Réactance_ske77_P2: '',
       Réactance_ske17_P2: '',
+      // comment
+      Comment_P2: '',
     },
     Perte_a_vide: {
       Multiplicateur_volts_P1: '',
@@ -451,24 +464,24 @@ export const steps1phase = [
   },
 
   {
-    title: 'Pertes a Vide P1',
-    content: 'Pertes a Vide P1',
+    title: 'Pertes à vide P1',
+    content: 'Pertes à vide P1',
   },
   {
-    title: 'Pertes a Vide P2',
-    content: 'Pertes a Vide P2',
+    title: 'Pertes à vide P2',
+    content: 'Pertes à vide P2',
   },
   {
     title: 'RIV ',
     content: 'RIV',
   },
   {
-    title: 'Pertes a Charge P1',
-    content: 'Pertes a Charge P1',
+    title: 'Pertes à charge P1',
+    content: 'Pertes à charge P1',
   },
   {
-    title: 'Pertes a Charge P2',
-    content: 'Pertes a Charge P2',
+    title: 'Pertes à charge P2',
+    content: 'Pertes à charge P2',
   },
   {
     title: 'Décharges Partielles',

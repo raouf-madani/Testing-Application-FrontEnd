@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Head from 'next/head';
 import Baselayout from '@/components/layouts/baselayout';
 import Basepage from '@/components/Basepage';
@@ -38,6 +38,7 @@ import {
   Space,
   Spin,
   Input,
+  InputNumber,
 } from 'antd';
 
 const {Step} = Steps;
@@ -50,10 +51,17 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
   const [time, setTime] = useState({ms: 0, s: 0, m: 0, h: 0});
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
-
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  });
   // const [historiquemodal, sethistoriqueModal] = useState(false);
+  const [mise_data, setmise_data] = useState([]);
 
   const [Finaldata, setFinaldata] = useState(Fakedata);
+
   const [Finaldata3phases, setFinaldata3phases] = useState(Fakedata3phases);
   const [NewMisePlace, setNewMisePlace] = useState(Mise_NewData);
   const [NewMisePlace3phases, setNewMisePlace3phases] =
@@ -74,7 +82,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     createMiseenplace(data);
   };
   const TypeOfTest = mise_en_placeById
-    ? mise_en_placeById.Type_test
+    ? mise_en_placeById.test_type
     : test_type_selected;
   const [form] = Form.useForm();
   const start = () => {
@@ -194,13 +202,16 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
       if (data.temperature_affected !== null) {
         reset();
         form.resetFields();
-        setmodal(!modal);
+        // setmodal(!modal);
 
         console.log('the final data to create is ', data);
         _CreateTest(data);
         _CreateMisePlace(
           TypeOfTest == '1phase' ? NewMisePlace : NewMisePlace3phases
         );
+        router.push({
+          pathname: '/',
+        });
       } else {
         alert('affecter la temperature');
       }
@@ -248,7 +259,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     console.log('stop fromnewtest');
     stop();
   }
+  function settemperaturmodal(value) {
+    UpdateData('temperature_affected', value, setFinaldata);
 
+    setmodaloftemperature(false);
+  }
   if (router.isFallback) {
     return (
       <Basepage>
@@ -261,6 +276,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     );
   }
   let initial_from_values1phase = {
+    //Induit
     // Decharges Partielle
     S_15: Finaldata.Decharges_Partielles.S_15,
     S_30: Finaldata.Decharges_Partielles.S_30,
@@ -308,6 +324,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
     X1_X3: Finaldata3phases.Resistance.H1_H3_P1,
     X2_X3: Finaldata3phases.Resistance.H2_H3_P1,
   };
+
   return (
     <div>
       <Head>
@@ -375,6 +392,8 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     }
                     autoComplete="off">
                     <TestArea
+                      mise_data={mise_data}
+                      setmise_data={setmise_data}
                       mise_en_placeById={mise_en_placeById}
                       settest_type_selected={settest_type_selected}
                       commande={commande}
@@ -414,7 +433,9 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                   </Form>
                   <Modalnewtestscanner
                     modal={modal}
-                    toggle={() => setmodal(!modal)}
+                    toggle={() => {
+                      modal ? setmodal(false) : setmodal(true);
+                    }}
                     teststatus={teststatus}
                     direction="index"
                   />
@@ -430,8 +451,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                           UpdateData(
                             'temperature_affected',
                             temperature_noaffected,
-                            setFinaldata
+                            TypeOfTest == '1phase'
+                              ? setFinaldata
+                              : setFinaldata3phases
                           );
+                          settemperature_noaffected(null);
                           setmodaloftemperature(false);
                         }}>
                         Affecter
@@ -446,11 +470,23 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                       </Button>,
                     ]}
                     width={250}>
-                    <Input
-                      type="number"
-                      max={50}
+                    <InputNumber
+                      ref={inputEl}
                       min={0}
-                      onChange={e => settemperature_noaffected(e.target.value)}
+                      max={50}
+                      defaultValue=""
+                      onPressEnter={() => {
+                        UpdateData(
+                          'temperature_affected',
+                          temperature_noaffected,
+                          TypeOfTest == '1phase'
+                            ? setFinaldata
+                            : setFinaldata3phases
+                        );
+                        settemperature_noaffected(null);
+                        setmodaloftemperature(false);
+                      }}
+                      onChange={settemperature_noaffected}
                     />
                   </Modal>
                 </div>

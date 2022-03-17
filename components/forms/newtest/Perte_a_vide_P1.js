@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Form, Input, Row, Divider, Select} from 'antd';
+import {Form, Input, Row, Divider, Select, Radio, Button, Checkbox} from 'antd';
 
 export default function Perte_a_vide({
   UpdateData,
@@ -31,18 +31,45 @@ export default function Perte_a_vide({
     {label: 10, value: 10},
     {label: 20, value: 20},
   ];
+
+  // useEffect(() => {
+  //   let PV_Volt_mesuré = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   let PV_Courant_mesuré =
+  //     miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P1 * 3;
+  //   let Perte_A_Vide_mesuré =
+  //     miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   let PV = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   let Perte_A_Vide_85 =
+  //     miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   let Perte_A_Vide_Efficacité =
+  //     miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   let PV_Erreur_Gar = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   let Courant_BT = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
+  //   UpdateData('PV_Volt_mesuré', PV_Volt_mesuré, setFinaldata);
+  //   UpdateData('PV_Courant_mesuré', PV_Courant_mesuré, setFinaldata);
+  //   UpdateData('Perte_A_Vide_mesuré', Perte_A_Vide_mesuré, setFinaldata);
+  //   UpdateData('PV', PV, setFinaldata);
+  //   UpdateData('Perte_A_Vide_85', Perte_A_Vide_85, setFinaldata);
+  //   UpdateData(
+  //     'Perte_A_Vide_Efficacité',
+  //     Perte_A_Vide_Efficacité,
+  //     setFinaldata
+  //   );
+  //   UpdateData('PV_Erreur_Gar', PV_Erreur_Gar, setFinaldata);
+  //   UpdateData('Courant_BT', Courant_BT, setFinaldata);
+  // }, []);
   return (
     <div className="Containertest">
       <Divider
         dashed
         orientation="left"
         style={{color: '#503662', marginBottom: '40px'}}>
-        <h3>Perte A Vide Position 1</h3>
+        <h3>Pertes à vide Position 1</h3>
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item className="show_item">
-            Tension applique position1 : 20V
+            Tension à appliquer position 1 : 20V
           </Form.Item>
         </Row>
         {miseenplaceok && (
@@ -133,7 +160,7 @@ export default function Perte_a_vide({
         )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Pertes Mesurés"
+            label="Pertes à vide mesurées (W)"
             name="Pertes_Mesurés_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
@@ -151,7 +178,7 @@ export default function Perte_a_vide({
         </Row>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item
-            label="Courant Excitation Mesurés"
+            label="Courant d’excitation mesuré (A)"
             name="Courant_Excitation_Mesurés_P1"
             rules={[{required: true, message: 'Champ Requis'}]}
             className="show_item_input">
@@ -170,6 +197,19 @@ export default function Perte_a_vide({
             />
           </Form.Item>
         </Row>
+        {/* <Row style={{justifyContent: 'center'}} align="middle">
+          <Form.Item
+            name="Perte_Vide_P1"
+            style={{display: 'inline-block', width: 'calc(50% - 8px)'}}
+            rules={[{required: true, message: 'Champ Requis'}]}>
+            <Button
+              onClick={() =>
+                UpdateData('Test_Perte_Vide_P1', 'tester', setFinaldata)
+              }>
+              Verifier le test
+            </Button>
+          </Form.Item>
+        </Row> */}
       </div>
     </div>
   );

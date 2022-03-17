@@ -23,12 +23,12 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
         dashed
         orientation="left"
         style={{color: '#503662', marginBottom: '40px'}}>
-        <h3>Hipot</h3>{' '}
+        <h3>Hipot HT</h3>{' '}
       </Divider>
       <div>
         <Row style={{justifyContent: 'center'}} align="middle">
           <Form.Item className="show_item">
-            TENSION APPLIQUÉ HAUTE TENSION A la durée de 60 sec : 70 V
+            Tension à appliquer : 70 V
           </Form.Item>
           <Form.Item
             name="test_70"
@@ -41,7 +41,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                 tabIndex={1}
                 ref={inputEl}
                 style={{margin: '5px'}}
-                value="reussit"
+                value="Réussi"
                 onKeyPress={() => {
                   UpdateData('Test_Hipot_70', true, setFinaldata);
                 }}
@@ -49,19 +49,18 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
                   console.log('Test reussi'),
                     UpdateData('Test_Hipot_70', true, setFinaldata);
                 }}>
-                teste réussi
+                Réussi
               </Radio.Button>
               <Radio.Button
                 onClick={() => {
-                  console.log('Test echoue'),
-                    UpdateData('Test_Hipot_70', false, setFinaldata);
+                  UpdateData('Test_Hipot_70', false, setFinaldata);
                   error(
                     'Le Test de Hipot a une tension appluiqué de 70 V est echoué...'
                   );
                 }}
                 style={{margin: '5px'}}
-                value="echoue">
-                teste échoué
+                value="Échoué">
+                Échoué
               </Radio.Button>
             </Radio.Group>
           </Form.Item>
