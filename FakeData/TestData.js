@@ -61,12 +61,13 @@ export const Fakedata = {
     Perte_charge_mesuré_P1: '',
     Impédance_mesuré_P1: '',
     Resistance_ht_P1: '',
-    Resistance_bt_P1: '',
+    //no position
+    Resistance_bt: '',
+    testValidation: false,
     //Position 2
     Perte_charge_mesuré_P2: '',
     Impédance_mesuré_P2: '',
     Resistance_ht_P2: '',
-    Resistance_bt_P2: '',
   },
   Decharges_Partielles: {
     //Position 1
@@ -482,6 +483,10 @@ export const steps1phase = [
   {
     title: 'Pertes à charge P2',
     content: 'Pertes à charge P2',
+  },
+  {
+    title: 'Résistance ',
+    content: 'Résistance ',
   },
   {
     title: 'Décharges Partielles',

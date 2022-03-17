@@ -15,6 +15,8 @@ import RivForm from '@/components/forms/newtest/RIV_Form';
 import Perte_a_ChargeForm_P1 from '@/components/forms/newtest/Perte_a_charge_P1';
 import Perte_a_ChargeForm_P2 from '@/components/forms/newtest/Perte_a_charge_P2';
 
+import Resistance from '@/components/forms/newtest/Resistance';
+
 import Facteur_DissipationForm from '@/components/forms/newtest/Facteur_dissipation';
 import Decharges_PartiellesForm from '@/components/forms/newtest/Decharges_Partielles';
 import SignatureForm from '@/components/forms/newtest/Signature';
@@ -207,6 +209,19 @@ function NewTestContent({
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
           form={form}
+        />
+      );
+    case 'Résistance':
+      return (
+        <Resistance
+          commande={commande}
+          Finaldata={Finaldata}
+          UpdateData={UpdateData}
+          miseenplaceok={mise_en_placeById}
+          setFinaldata={setFinaldata}
+          setNewMisePlace={setNewMisePlace}
+          form={form}
+          error={error}
         />
       );
     case 'Facteur de dissipation':

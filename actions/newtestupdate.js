@@ -185,11 +185,12 @@ export const UpdateData = (type, newData, setData) => {
     case 'Courant_appliqué_appareil_P1':
     case 'Perte_cavalier_P1':
     case 'Resistance_ht_P1':
-    case 'Resistance_bt_P1':
+    case 'Resistance_bt':
     case 'Perte_charge_mesuré_P1':
     case 'Impédance_mesuré_P1':
     //no position
     case 'No_cavalier':
+    case 'testValidation':
     //Position 2
     case 'Multiplicateur_volts_charge_P2':
     case 'Multiplicateur_amperes_charge_P2':
@@ -200,7 +201,6 @@ export const UpdateData = (type, newData, setData) => {
     case 'Courant_appliqué_appareil_P2':
     case 'Perte_cavalier_P2':
     case 'Resistance_ht_P2':
-    case 'Resistance_bt_P2':
     case 'Perte_charge_mesuré_P2':
     case 'Impédance_mesuré_P2':
       setData(data => {
