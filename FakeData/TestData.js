@@ -42,14 +42,14 @@ export const Fakedata = {
     Pertes_mesurés_P1: '',
     Courant_excitation_mesurés_P1: '',
     // Calculation Values
-    PV_Volt_mesuré: '',
-    PV_Courant_mesuré: '',
-    Perte_A_Vide_mesuré: '',
-    PV: '',
-    Perte_A_Vide_85: '',
-    Perte_A_Vide_Efficacité: '',
-    PV_Erreur_Gar: '',
-    Courant_BT: '',
+    // PV_Volt_mesuré: '',
+    // PV_Courant_mesuré: '',
+    // Perte_A_Vide_mesuré: '',
+    // PV: '',
+    // Perte_A_Vide_85: '',
+    // Perte_A_Vide_Efficacité: '',
+    // PV_Erreur_Gar: '',
+    // Courant_BT: '',
     //Test Button Perte a vide
     Test_Perte_Vide_P1: '',
     //Position 2
