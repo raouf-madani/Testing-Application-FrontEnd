@@ -234,7 +234,7 @@ const Rapports = () => {
                       <Image
                         src="/SE_Logo_White_RGB.svg"
                         height="65px"
-                        width="80px"
+                        width="85px"
                         alt="se-logo"
                       />
                     </Col>
