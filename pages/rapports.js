@@ -29,17 +29,30 @@ const Rapports = () => {
               <div style={{height: '27%'}}>
                 <Row
                   justify="center"
-                  style={{borderBottom: '1px white solid', fontSize: '11px'}}>
+                  style={{
+                    borderBottom: '1px white solid',
+                    fontSize: '11px',
+
+                    fontFamily: 'Lucida Sans',
+                  }}>
                   TRANSFORMATEUR AERIEN INOXYDABLE, ONAN, 60Hz, 65 C
                 </Row>
                 <Row
                   style={{borderBottom: '1px white solid', fontSize: '11px'}}
                   justify="end">
-                  <span style={{borderBottom: '2px white solid'}}>
+                  <span
+                    style={{
+                      borderBottom: '2px white solid',
+                      fontFamily: 'Lucida Sans',
+                    }}>
                     Code 1145113{' '}
                   </span>
                 </Row>
-                <div style={{fontSize: '7px'}}>
+                <div
+                  style={{
+                    fontSize: '7px',
+                    fontFamily: 'Microsoft Sans Serif ',
+                  }}>
                   <Row justify="center">
                     <Col span={10}>
                       <Row>
@@ -115,6 +128,8 @@ const Rapports = () => {
                   <span
                     style={{
                       fontSize: '7px',
+                      fontFamily: 'Microsoft Sans Serif',
+
                       width: '60%',
                       padding: '1px',
                       border: '0.5px solid',
@@ -129,6 +144,7 @@ const Rapports = () => {
                 <div
                   style={{
                     fontSize: '7px',
+                    fontFamily: 'Microsoft Sans Serif',
                   }}>
                   <Row
                     justify="center"
@@ -175,15 +191,30 @@ const Rapports = () => {
                           alt="se-logo"
                         />
                       </Col>
-                      <Col style={{fontSize: '7px'}}>FITFormer</Col>
+                      <Col
+                        style={{
+                          fontSize: '7px',
+                          fontFamily: 'Siemens Sans Cond Global',
+                        }}>
+                        FITFormer
+                      </Col>
                     </Row>
                   </Col>
                   <Col span={17}>
-                    <Row justify="space-between" style={{fontSize: '7px'}}>
+                    <Row
+                      justify="space-between"
+                      style={{
+                        fontSize: '7px',
+                        fontFamily: 'Siemens Sans Cond Global',
+                      }}>
                       <Col>FABRIQUE A TROIS RIVIERES CANADA</Col>
                       <Col>661 378 908 R04</Col>
                     </Row>
-                    <div style={{fontSize: '6px'}}>
+                    <div
+                      style={{
+                        fontSize: '6px',
+                        fontFamily: 'Siemens Sans Cond Global',
+                      }}>
                       <Row>Siemens Energie Transformateurs Canada Inc.</Row>
                       <Row>
                         Siemens Energie est une marque de commerce de siemens AG
