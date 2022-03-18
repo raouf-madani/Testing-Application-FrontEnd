@@ -1,27 +1,31 @@
 .print-source {
-  margin-top: 5px;
-  padding: 10px;
+  margin-top: 0.4mm;
   box-shadow: white 0px 5px 15px;
-  width: 135.07mm;
-  height: 155.07mm;
+  width: 90mm;
+  height: 100mm;
 }
-.Alert {
-  width: 45%;
-  font-size: 10px;
-}
-
-.row-items-title {
-  font-size: 15px;
-  color: white;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.row-items {
-  padding: 5px;
-  font-size: 12px;
-  color: white;
-  font-family: sans-serif;
-}
+// .Alert {
+//   width: 45%;
+//   font-size: 10px;
+// }
+// .item_ms_7size {
+//   padding: 4px;
+//   font-size: 7px;
+//   color: white;
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+// .row-items-title {
+//   font-size: 11px;
+//   color: white;
+//   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+//     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+// }
+// .row-items {
+//   padding: 4px;
+//   font-size: 7px;
+//   color: white;
+//   font-family: sans-serif;
+// }
 body > .print-source {
   display: block;
 }
@@ -29,10 +33,10 @@ body > .print-source {
 @media print {
   .print-source {
     background-color: black;
-    margin-top: 0.62mm;
-    padding: 10px;
-    width: 135.07mm;
-    height: 155.07mm;
+    margin-top: 0.4mm;
+    padding: 5px;
+    width: 90mm;
+    height: 100mm;
   }
   .Logo {
     display: flex;
@@ -44,7 +48,7 @@ body > .print-source {
       'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   .row-items {
-    padding: 5px;
+    padding: 4px;
     font-size: 12px;
     color: white;
     font-family: sans-serif;
