@@ -1,6 +1,6 @@
 .print-source {
-  margin-top: 0.4mm;
-  padding: 5px;
+  margin: 0;
+  padding: 0;
   box-shadow: white 0px 5px 15px;
   width: 90mm;
   height: 100mm;
@@ -34,8 +34,8 @@ body > .print-source {
 @media print {
   .print-source {
     background-color: black;
-    margin-top: 0.4mm;
-    padding: 5px;
+    margin: 0;
+    padding: 0;
     width: 90mm;
     height: 100mm;
   }

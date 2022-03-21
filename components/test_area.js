@@ -19,14 +19,13 @@ import Phase1Forms from '@/components/newTestComponents/Content1phase';
 import Phase3Forms from '@/components/newTestComponents/Content3phase';
 
 function Test_area({
-  setmise_data,
-  mise_data,
   mise_en_placeById,
   test_type_selected,
   current,
   Finaldata,
   commande,
   setFinaldata,
+  NewMisePlace,
   setNewMisePlace,
   error,
   settest_type_selected,
@@ -42,14 +41,6 @@ function Test_area({
   // props button reussi
   next,
 }) {
-  useEffect(() => {
-    const setmisedata = () => {
-      if (mise_en_placeById) {
-        setmise_data(mise_en_placeById);
-      }
-    };
-    setmisedata();
-  }, []);
   return (
     <>
       {mise_en_placeById !== null ? (
@@ -62,6 +53,7 @@ function Test_area({
                 test_type_selected={test_type_selected}
                 Finaldata={Finaldata}
                 setFinaldata={setFinaldata}
+                NewMisePlace={NewMisePlace}
                 setNewMisePlace={setNewMisePlace}
                 error={error}
                 current={current}
@@ -85,6 +77,7 @@ function Test_area({
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
               setFinaldata={setFinaldata}
+              NewMisePlace={NewMisePlace}
               setNewMisePlace={setNewMisePlace}
               error={error}
               current={current}
@@ -111,6 +104,7 @@ function Test_area({
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
               setFinaldata={setFinaldata}
+              NewMisePlace={NewMisePlace}
               setNewMisePlace={setNewMisePlace}
               error={error}
               current={current}
@@ -133,6 +127,7 @@ function Test_area({
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
               setFinaldata={setFinaldata}
+              NewMisePlace={NewMisePlace}
               setNewMisePlace={setNewMisePlace}
               error={error}
               current={current}

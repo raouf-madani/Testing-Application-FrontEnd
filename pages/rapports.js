@@ -35,7 +35,7 @@ const Rapports = () => {
 
                     fontFamily: 'Lucida Sans',
                   }}>
-                  TRANSFORMATEUR AERIEN INOXYDABLE, ONAN, 60Hz, 65 C
+                  TRANSFORMATEUR AÉRIEN INOXYDABLE, ONAN, 60Hz, 65°C
                 </Row>
                 <Row
                   style={{borderBottom: '1px white solid', fontSize: '11px'}}
@@ -62,7 +62,7 @@ const Rapports = () => {
                     </Col>
                     <Col span={14}>
                       <Row>
-                        <Col span={12}>No Serie :</Col>
+                        <Col span={12}>No SÉRIE :</Col>
                         <Col span={12} style={{fontSize: '11px'}}>
                           20136-272
                         </Col>
@@ -72,7 +72,7 @@ const Rapports = () => {
                   <Row justify="center">
                     <Col span={10}>
                       <Row>
-                        <Col span={12}>Impédance A 85 C:</Col>
+                        <Col span={12}>Impédance À 85°C:</Col>
                         <Col span={12}>2.15%</Col>
                       </Row>
                     </Col>
@@ -127,14 +127,14 @@ const Rapports = () => {
                 <Row justify="center" align="middle" style={{height: '20%'}}>
                   <span
                     style={{
-                      fontSize: '7px',
+                      fontSize: '6.5px',
                       fontFamily: 'Microsoft Sans Serif',
 
-                      width: '60%',
+                      width: '57.5%',
                       padding: '1px',
                       border: '0.5px solid',
                     }}>
-                    ATTENTION: AVANT DACTIONNER LE SELECTEUR DE TENSION METTRE
+                    ATTENTION: AVANT DACTIONNER LE SÉLECTEUR DE TENSION METTRE
                     LE TRANSFORMATEUR HORS TENSION.
                   </span>
                 </Row>
@@ -149,7 +149,7 @@ const Rapports = () => {
                   <Row
                     justify="center"
                     style={{borderBottom: '1px white solid'}}>
-                    EFFICACITE ENERGITIQUE SELON CAN/CSA-C802.1-00
+                    EFFICACITÉ ÉNERGÉTIQUE SELON CAN/CSA-C802.1-00
                   </Row>
                   <Row style={{borderBottom: '1px white solid'}}>
                     <Col span={13}>
@@ -207,7 +207,7 @@ const Rapports = () => {
                         fontSize: '7px',
                         fontFamily: 'Siemens Sans Cond Global',
                       }}>
-                      <Col>FABRIQUE A TROIS RIVIERES CANADA</Col>
+                      <Col>FABRIQUÉ À TROIS RIVIÈRES CANADA</Col>
                       <Col>661 378 908 R04</Col>
                     </Row>
                     <div
@@ -217,8 +217,8 @@ const Rapports = () => {
                       }}>
                       <Row>Siemens Energie Transformateurs Canada Inc.</Row>
                       <Row>
-                        Siemens Energie est une marque de commerce de siemens AG
-                        employee sous licence.
+                        Siemens Energie est une marque de commerce de Siemens AG
+                        employée sous licence.
                       </Row>
                     </div>
                   </Col>

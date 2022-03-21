@@ -51,10 +51,11 @@ export const Fakedata = {
     // PV_Erreur_Gar: '',
     // Courant_BT: '',
     //Test Button Perte a vide
-    Test_Perte_Vide_P1: '',
+    testValidation_P1: '',
     //Position 2
     Pertes_mesurés_P2: '',
     Courant_excitation_mesurés_P2: '',
+    testValidation_P1: '',
   },
   Perte_a_charge: {
     //Position 1

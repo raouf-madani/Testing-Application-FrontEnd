@@ -48,9 +48,9 @@ function NewTestContent({
   etapeName,
   UpdateData,
   mise_en_placeById,
-  test_type_selected,
   setFinaldata,
   Prise,
+  NewMisePlace,
   setNewMisePlace,
   error,
   Finaldata,
@@ -164,19 +164,27 @@ function NewTestContent({
     case 'Pertes à vide P1':
       return (
         <Perte_a_VideForm_P1
+          Finaldata={Finaldata}
+          NewMisePlace={NewMisePlace}
+          commande={commande}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
+          error={error}
         />
       );
     case 'Pertes à vide P2':
       return (
         <Perte_a_VideForm_P2
+          Finaldata={Finaldata}
+          NewMisePlace={NewMisePlace}
+          commande={commande}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           setNewMisePlace={setNewMisePlace}
+          error={error}
         />
       );
     case 'RIV':
