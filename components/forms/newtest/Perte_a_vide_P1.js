@@ -1,11 +1,25 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Form, Input, Row, Divider, Select, Radio, Button, Checkbox} from 'antd';
+import {
+  Form,
+  Input,
+  Row,
+  Divider,
+  Select,
+  Radio,
+  Button,
+  Checkbox,
+  Alert,
+} from 'antd';
 
 export default function Perte_a_vide({
+  commande,
+  Finaldata,
+  NewMisePlace,
   UpdateData,
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
+  error,
 }) {
   const inputEl = useRef(null);
   useEffect(() => {
@@ -13,6 +27,7 @@ export default function Perte_a_vide({
       inputEl.current.focus();
     }
   }, [inputEl]);
+
   const Multiplicateur_Volts = [
     {label: 0.4, value: 0.4},
     {label: 1, value: 1},
@@ -31,33 +46,84 @@ export default function Perte_a_vide({
     {label: 10, value: 10},
     {label: 20, value: 20},
   ];
+  const tblDataEntry = {
+    Volt_BT: 10,
+    PVPERCENT: 20,
+    PV_Gar: 15,
+    Temp_PV_Gar: 30,
+    Courent_Exc_Gar: 6,
+  };
+  const table_tolerance = {PV: 3, INTPV: 5, IEXC: 10, INTIEXC: 20};
+  const Formules = {
+    Tension_Nominale: tblDataEntry.Volt_BT * tblDataEntry.PVPERCENT,
+    PV_Courant_mesuré: miseenplaceok
+      ? miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P1 *
+        Finaldata.Perte_a_Vide.Courant_excitation_mesurés_P1
+      : NewMisePlace.Perte_a_Vide.Multiplicateur_amperes_P1 *
+        Finaldata.Perte_a_Vide.Courant_excitation_mesurés_P1,
+    Perte_A_Vide_mesuré: miseenplaceok
+      ? miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P1 *
+        miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 *
+        Finaldata.Perte_a_Vide.Pertes_mesurés_P1
+      : NewMisePlace.Perte_a_Vide.Multiplicateur_amperes_P1 *
+        NewMisePlace.Perte_a_Vide.Multiplicateur_volts_P1 *
+        Finaldata.Perte_a_Vide.Pertes_mesurés_P1,
+    RatioPV: miseenplaceok
+      ? miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P1 *
+          miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 *
+          Finaldata.Perte_a_Vide.Pertes_mesurés_P1 -
+        miseenplaceok.Perte_a_Vide.Perte_table_P1
+      : NewMisePlace.Perte_a_Vide.Multiplicateur_amperes_P1 *
+          NewMisePlace.Perte_a_Vide.Multiplicateur_volts_P1 *
+          Finaldata.Perte_a_Vide.Pertes_mesurés_P1 -
+        NewMisePlace.Perte_a_Vide.Perte_table_P1,
+    Perte_A_Vide_85:
+      table_tolerance.PV *
+      (1 +
+        (Finaldata.temperature_affected - tblDataEntry.Temp_PV_Gar) * 0.00065),
+    Perte_A_Vide_Eff:
+      table_tolerance.PV *
+      (1 + (Finaldata.temperature_affected - 20.0) * 0.00065),
+    PV_Err_Gar:
+      ((table_tolerance.PV *
+        (1 +
+          (Finaldata.temperature_affected - tblDataEntry.Temp_PV_Gar) *
+            0.00065 -
+          tblDataEntry.PV_Gar)) /
+        tblDataEntry.PV_Gar) *
+      100,
+    Courant_BT: (commande.kva * 1000) / tblDataEntry.Volt_BT,
+  };
+  const validationTest = () => {
+    let Courant_Exc =
+      Finaldata.Perte_a_Vide.Courant_excitation_mesurés_P1 == ''
+        ? alert('affecter le courrant dexcitation mesure')
+        : (Finaldata.Perte_a_Vide.Courant_excitation_mesurés_P1 * 100) /
+          Formules.Courant_BT;
+    let Courant_Exc_Err_Gar =
+      ((Courant_Exc - tblDataEntry.Courent_Exc_Gar) /
+        tblDataEntry.Courent_Exc_Gar) *
+      100;
 
-  // useEffect(() => {
-  //   let PV_Volt_mesuré = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   let PV_Courant_mesuré =
-  //     miseenplaceok.Perte_a_Vide.Multiplicateur_amperes_P1 * 3;
-  //   let Perte_A_Vide_mesuré =
-  //     miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   let PV = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   let Perte_A_Vide_85 =
-  //     miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   let Perte_A_Vide_Efficacité =
-  //     miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   let PV_Erreur_Gar = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   let Courant_BT = miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1 * 2;
-  //   UpdateData('PV_Volt_mesuré', PV_Volt_mesuré, setFinaldata);
-  //   UpdateData('PV_Courant_mesuré', PV_Courant_mesuré, setFinaldata);
-  //   UpdateData('Perte_A_Vide_mesuré', Perte_A_Vide_mesuré, setFinaldata);
-  //   UpdateData('PV', PV, setFinaldata);
-  //   UpdateData('Perte_A_Vide_85', Perte_A_Vide_85, setFinaldata);
-  //   UpdateData(
-  //     'Perte_A_Vide_Efficacité',
-  //     Perte_A_Vide_Efficacité,
-  //     setFinaldata
-  //   );
-  //   UpdateData('PV_Erreur_Gar', PV_Erreur_Gar, setFinaldata);
-  //   UpdateData('Courant_BT', Courant_BT, setFinaldata);
-  // }, []);
+    // beginning the test
+    if (Formules.PV_Err_Gar > table_tolerance.PV) {
+      error('Perte à vide dépasse tolérance de la norme....');
+    } else {
+      Formules.PV_Err_Gar > table_tolerance.INTPV &&
+        alert('AVERTISSEMENT : Perte à vide dépasse tolérance interne');
+
+      if (Courant_Exc_Err_Gar > table_tolerance.IEXC) {
+        error('Courant dexcitation dépasse tolérance de la norme.....');
+      } else {
+        Courant_Exc_Err_Gar > table_tolerance.INTIEXC &&
+          alert(
+            "AVERTISSEMENT: Courant d'excitation dépasse tolérance interne."
+          );
+        UpdateData('testValidation_P1', true, setFinaldata);
+      }
+    }
+  };
+
   return (
     <div className="Containertest">
       <Divider
@@ -69,9 +135,57 @@ export default function Perte_a_vide({
       <div>
         <Row style={{justifyContent: 'center'}}>
           <Form.Item className="show_item">
-            Tension à appliquer position 1 : 20V
+            Tension_Nominale :{Formules.Tension_Nominale}
           </Form.Item>
         </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            Tension à appliquer position 1 :
+            {miseenplaceok
+              ? Formules.Tension_Nominale /
+                miseenplaceok.Perte_a_Vide.Multiplicateur_volts_P1
+              : Formules.Tension_Nominale /
+                NewMisePlace.Perte_a_Vide.Multiplicateur_volts_P1}
+          </Form.Item>
+        </Row>
+
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            PV_Courant_mesuré :{Formules.PV_Courant_mesuré}
+          </Form.Item>
+        </Row>
+
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            Perte_A_Vide_mesuré :{Formules.Perte_A_Vide_mesuré}
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            RatioPV :{Formules.RatioPV}
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            Perte_A_Vide_85 :{Formules.Perte_A_Vide_85}
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            Perte_A_Vide_Eff :{Formules.Perte_A_Vide_Eff}
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            PV_Err_Gar :{Formules.PV_Err_Gar}
+          </Form.Item>
+        </Row>
+        <Row style={{justifyContent: 'center'}}>
+          <Form.Item className="show_item">
+            Courant_BT :{Formules.Courant_BT}
+          </Form.Item>
+        </Row>
+
         {miseenplaceok && (
           <div>
             <Row style={{justifyContent: 'center'}}>
@@ -197,6 +311,25 @@ export default function Perte_a_vide({
             />
           </Form.Item>
         </Row>
+
+        <Row style={{justifyContent: 'center'}}>
+          {Finaldata.Perte_a_Vide.testValidation_P1 ? (
+            <Alert
+              message="teste de Perte a vide Réussit"
+              type="success"
+              showIcon
+            />
+          ) : (
+            <Form.Item
+              label="Validation"
+              name="testValidation"
+              rules={[{required: true, message: 'Action Requise'}]}>
+              {' '}
+              <Button onClick={() => validationTest()}>Valider</Button>
+            </Form.Item>
+          )}
+        </Row>
+
         {/* <Row style={{justifyContent: 'center'}} align="middle">
           <Form.Item
             name="Perte_Vide_P1"

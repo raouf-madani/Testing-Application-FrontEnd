@@ -167,7 +167,7 @@ export default function Induit({
               marginBottom: '10px',
             }}>
             <Form.Item
-              name="Commentaire"
+              name="Commentaire_P1"
               label="Commentaire"
               style={{
                 width: '60%',
@@ -177,7 +177,7 @@ export default function Induit({
                 tabIndex={!miseenplaceok ? 4 : 1}
                 rows={4}
                 onChange={e => {
-                  UpdateData('Comment', e.target.value, setFinaldata);
+                  UpdateData('Comment_P1', e.target.value, setFinaldata);
                 }}
               />
             </Form.Item>
@@ -196,7 +196,7 @@ export default function Induit({
         )}
         <Row style={{justifyContent: 'center'}}>
           <Form.Item name="Resultat_P1">
-            <Radio.Group defaultValue="reussit" buttonStyle="solid">
+            <Radio.Group defaultValue="Réussi" buttonStyle="solid">
               <Radio.Button
                 tabIndex={!miseenplaceok ? 5 : 2}
                 ref={!miseenplaceok ? null : inputEl}

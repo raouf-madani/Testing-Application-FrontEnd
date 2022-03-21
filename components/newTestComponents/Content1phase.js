@@ -92,6 +92,7 @@ function ContentAndSteps1phase(props) {
     current,
     Finaldata,
     setFinaldata,
+    NewMisePlace,
     setNewMisePlace,
     error,
     settablelength,
@@ -180,6 +181,7 @@ function ContentAndSteps1phase(props) {
               mise_en_placeById={mise_en_placeById}
               test_type_selected={test_type_selected}
               Finaldata={Finaldata}
+              NewMisePlace={NewMisePlace}
               Prise={commande.prise}
               setFinaldata={setFinaldata}
               setNewMisePlace={setNewMisePlace}

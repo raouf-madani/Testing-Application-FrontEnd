@@ -34,7 +34,7 @@ export default function Hipot({error, UpdateData, setFinaldata}) {
             name="test_50"
             style={{display: 'inline-block', width: 'calc(50% - 8px)'}}>
             <Radio.Group
-              defaultValue="reussit"
+              defaultValue="Réussi"
               buttonStyle="solid"
               key="Hipot_50">
               <Radio.Button

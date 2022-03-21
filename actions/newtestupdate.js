@@ -146,6 +146,8 @@ export const UpdateData = (type, newData, setData) => {
     case 'Perte_table_P1':
     case 'Pertes_mesurés_P1':
     case 'Courant_excitation_mesurés_P1':
+    case 'testValidation_P1':
+
     // Calculations Values
     case 'PV_Volt_mesuré':
     case 'PV_Courant_mesuré':
@@ -156,7 +158,7 @@ export const UpdateData = (type, newData, setData) => {
     case 'PV_Erreur_Gar':
     case 'Courant_BT':
     // perte a vide test
-    case 'Test_Perte_Vide_P1':
+    case 'testValidation_P1':
 
     //Position 2
     case 'Multiplicateur_volts_P2':
@@ -164,6 +166,8 @@ export const UpdateData = (type, newData, setData) => {
     case 'Perte_table_P2':
     case 'Pertes_mesurés_P2':
     case 'Courant_excitation_mesurés_P2':
+    // perte a vide test
+    case 'testValidation_P2':
       setData(data => {
         return {
           ...data,

@@ -38,11 +38,19 @@ import {
   Spin,
   Input,
   InputNumber,
+  message,
 } from 'antd';
 
 const {confirm} = Modal;
 
-const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
+const NewTest = ({
+  commande,
+  mise_en_placeById,
+  Tests,
+  allCommandesById,
+  Quantitétested,
+}) => {
+  debugger;
   const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [tablelength, settablelength] = useState(15);
@@ -124,6 +132,17 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
 
   const resume = () => start();
 
+  const key = 'updatable';
+  const openMessage = () => {
+    message.loading({content: 'Enregistrement...', key});
+    setTimeout(() => {
+      message.success({
+        content: 'Teste enregistré avec succés!',
+        key,
+        duration: 2,
+      });
+    }, 1000);
+  };
   const next = data => {
     if (current == 0) {
       if (data.temperature_affected == null) {
@@ -203,13 +222,15 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
         // setmodal(!modal);
 
         console.log('the final data to create is ', data);
+        openMessage();
         _CreateTest(data);
         _CreateMisePlace(
           TypeOfTest == '1phase' ? NewMisePlace : NewMisePlace3phases
         );
-        router.push({
-          pathname: '/',
-        });
+
+        // router.push({
+        //   pathname: '/',
+        // });
       } else {
         alert('affecter la temperature');
       }
@@ -353,7 +374,7 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     UpdateData={UpdateData}
                     useGetMise={useGetMise}
                     useUpdateMisePlace={useUpdateMisePlace}
-                    Tests_length={Tests.length}
+                    Tests_length={Quantitétested}
                     allCommandesById_length={allCommandesById.length}
                     status={status}
                     test_type_selected={test_type_selected}
@@ -390,8 +411,6 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                     }
                     autoComplete="off">
                     <TestArea
-                      mise_data={mise_data}
-                      setmise_data={setmise_data}
                       mise_en_placeById={mise_en_placeById}
                       settest_type_selected={settest_type_selected}
                       commande={commande}
@@ -405,6 +424,11 @@ const NewTest = ({commande, mise_en_placeById, Tests, allCommandesById}) => {
                         TypeOfTest == '1phase'
                           ? setFinaldata
                           : setFinaldata3phases
+                      }
+                      NewMisePlace={
+                        TypeOfTest == '1phase'
+                          ? NewMisePlace
+                          : NewMisePlace3phases
                       }
                       setNewMisePlace={
                         TypeOfTest == '1phase'
@@ -549,11 +573,17 @@ export async function getStaticProps({params}) {
   let json_Test;
   let Tests;
   let allCommandesById;
+  let Quantitétested = 0;
   try {
     json_Test = await new TestingApi().getallTestResults();
     Tests = json_Test.data;
     const json = await new TestingApi().getById_commande(id);
     allCommandesById = json.data;
+    for (let i = 0; i < Tests.length; i++) {
+      if (Tests[i].numcommand.slice(0, params.id.length - 2) == id) {
+        Quantitétested++;
+      }
+    }
   } catch (error) {
     console.log(error);
   }
@@ -580,7 +610,13 @@ export async function getStaticProps({params}) {
     }
   }
   return {
-    props: {commande, mise_en_placeById, Tests, allCommandesById},
+    props: {
+      commande,
+      mise_en_placeById,
+      Tests,
+      allCommandesById,
+      Quantitétested,
+    },
     revalidate: 60,
   };
 }

@@ -86,6 +86,7 @@ function ContentAndSteps1phase(props) {
     current,
     Finaldata,
     setFinaldata,
+    NewMisePlace,
     setNewMisePlace,
     error,
     settablelength,
