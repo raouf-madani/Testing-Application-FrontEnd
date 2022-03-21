@@ -47,13 +47,13 @@ export default function Perte_a_vide({
     {label: 20, value: 20},
   ];
   const tblDataEntry = {
-    Volt_BT: 10,
-    PVPERCENT: 20,
-    PV_Gar: 15,
-    Temp_PV_Gar: 30,
-    Courent_Exc_Gar: 6,
+    Volt_BT: 240,
+    PVPERCENT: 105,
+    PV_Gar: 233,
+    Temp_PV_Gar: 85,
+    Courent_Exc_Gar: 1,
   };
-  const table_tolerance = {PV: 3, INTPV: 5, IEXC: 10, INTIEXC: 20};
+  const table_tolerance = {PV: 15, INTPV: 10, IEXC: 85, INTIEXC: 80};
   const Formules = {
     Tension_Nominale: tblDataEntry.Volt_BT * tblDataEntry.PVPERCENT,
     PV_Courant_mesuré: miseenplaceok
