@@ -261,7 +261,6 @@ export default function Ratio_Polarite({
             />
           </Form.Item>
         </Row>
-        <h1> tension HT{Finaldata.Ratio.Tension_ht_P2}</h1>
       </div>
     </div>
   );
