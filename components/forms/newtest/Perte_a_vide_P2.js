@@ -88,8 +88,8 @@ export default function Perte_a_vide({
       ((table_tolerance.PV *
         (1 +
           (Finaldata.temperature_affected - tblDataEntry.Temp_PV_Gar) *
-            0.00065 -
-          tblDataEntry.PV_Gar)) /
+            0.00065) -
+        tblDataEntry.PV_Gar) /
         tblDataEntry.PV_Gar) *
       100,
     Courant_BT: (commande.kva * 1000) / tblDataEntry.Volt_BT,

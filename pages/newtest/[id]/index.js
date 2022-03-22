@@ -388,6 +388,7 @@ const NewTest = ({
                   <Form
                     form={form}
                     layout="vertical"
+                    id="results_form"
                     name="results_form"
                     onFinish={
                       test_type_selected == '1phase'
@@ -493,22 +494,11 @@ const NewTest = ({
                     ]}
                     width={250}>
                     <InputNumber
-                      ref={inputEl}
+                      size="small"
                       min={0}
                       max={50}
-                      defaultValue=""
-                      onPressEnter={() => {
-                        UpdateData(
-                          'temperature_affected',
-                          temperature_noaffected,
-                          TypeOfTest == '1phase'
-                            ? setFinaldata
-                            : setFinaldata3phases
-                        );
-                        settemperature_noaffected(null);
-                        setmodaloftemperature(false);
-                      }}
                       onChange={settemperature_noaffected}
+                      value={temperature_noaffected}
                     />
                   </Modal>
                 </div>
