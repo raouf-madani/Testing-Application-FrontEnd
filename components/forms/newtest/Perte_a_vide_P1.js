@@ -49,7 +49,7 @@ export default function Perte_a_vide({
   const tblDataEntry = {
     Volt_BT: 240,
     PVPERCENT: 105,
-    PV_Gar: 233,
+    PV_Gar: 28.5,
     Temp_PV_Gar: 85,
     Courent_Exc_Gar: 1,
   };
@@ -88,8 +88,8 @@ export default function Perte_a_vide({
       ((table_tolerance.PV *
         (1 +
           (Finaldata.temperature_affected - tblDataEntry.Temp_PV_Gar) *
-            0.00065 -
-          tblDataEntry.PV_Gar)) /
+            0.00065) -
+        tblDataEntry.PV_Gar) /
         tblDataEntry.PV_Gar) *
       100,
     Courant_BT: (commande.kva * 1000) / tblDataEntry.Volt_BT,

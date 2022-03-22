@@ -11,15 +11,28 @@ import {
 } from 'antd';
 
 export default function Ratio_Polarite({
+  Finaldata,
   UpdateData,
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
   Prise,
 }) {
-  const [required, setrequired] = useState(false);
-  const [inputnumberin, setinputnumberin] = useState(0);
-
+  const [required, setrequired] = useState(
+    // Finaldata.Ratio.Tension_à_appliquer_P2 != '' ||
+    // Finaldata.Ratio.Tension_ht_P2 != '' ||
+    //   Finaldata.Ratio.Polarite_théorique_P2 != '' ||
+    //   Finaldata.Ratio.Tension_mesurée_P2 != '' ||
+    //   Finaldata.Ratio.Tension_mesurée_P1_P2 != '' ||
+    //   Finaldata.Ratio.Tension_mesurée_P2_P2 != '' ||
+    //   Finaldata.Ratio.Tension_mesurée_P3_P2 != '' ||
+    //   Finaldata.Ratio.Tension_mesurée_P4_P2 != '' ||
+    //   Finaldata.Ratio.Tension_mesurée_P5_P2 != '' ||
+    //   Finaldata.Ratio.Polarité_mesurée_P2 != ''
+    //   ? true
+    //   : false
+    false
+  );
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -49,9 +62,6 @@ export default function Ratio_Polarite({
                   ref={inputEl}
                   placeholder="Position 2"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_à_appliquer_P2',
                       e.target.value,
@@ -72,9 +82,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_ht_P2',
                       e.target.value,
@@ -95,9 +102,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Position 2"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Polarite_théorique_P2',
                       e.target.value,
@@ -132,7 +136,6 @@ export default function Ratio_Polarite({
                 step="0.0001"
                 placeholder="Position 2"
                 onChange={e => {
-                  e.target.value == '' ? setrequired(false) : setrequired(true);
                   UpdateData(
                     'Tension_mesurée_P2',
                     e.target.value,
@@ -155,9 +158,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Prise1"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_mesurée_P1_P2',
                       e.target.value,
@@ -177,9 +177,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Prise2"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_mesurée_P2_P2',
                       e.target.value,
@@ -199,9 +196,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Prise1"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_mesurée_P3_P2',
                       e.target.value,
@@ -221,9 +215,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Prise4"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_mesurée_P4_P2',
                       e.target.value,
@@ -243,9 +234,6 @@ export default function Ratio_Polarite({
                   step="0.0001"
                   placeholder="Prise5"
                   onChange={e => {
-                    e.target.value == ''
-                      ? setrequired(false)
-                      : setrequired(true);
                     UpdateData(
                       'Tension_mesurée_P5_P2',
                       e.target.value,
@@ -268,12 +256,12 @@ export default function Ratio_Polarite({
               step="0.0001"
               placeholder="Position 2"
               onChange={e => {
-                e.target.value == '' ? setrequired(false) : setrequired(true);
                 UpdateData('Polarité_mesurée_P2', e.target.value, setFinaldata);
               }}
             />
           </Form.Item>
         </Row>
+        <h1> tension HT{Finaldata.Ratio.Tension_ht_P2}</h1>
       </div>
     </div>
   );

@@ -97,6 +97,7 @@ function NewTestContent({
     case 'Ratio/Polarite P1':
       return (
         <Ratio_PolariteForm_P1
+          Finaldata={Finaldata}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
@@ -107,6 +108,7 @@ function NewTestContent({
     case 'Ratio/Polarite P2':
       return (
         <Ratio_PolariteForm_P2
+          Finaldata={Finaldata}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
