@@ -5,14 +5,11 @@ export default function Induit({
   UpdateData,
   miseenplaceok,
   Finaldata,
+  NewMisePlace,
   setFinaldata,
   setNewMisePlace,
   error,
 }) {
-  const [selectedRadio, setselectedRadio] = useState(
-    Finaldata.Induit.Test_Induit_P2
-  );
-
   const {TextArea} = Input;
   const inputEl = useRef(null);
   useEffect(() => {
@@ -43,6 +40,13 @@ export default function Induit({
     {label: '10:14', value: '10:14'},
     {label: '11:15', value: '11:15'},
   ];
+  const required =
+    (!miseenplaceok && NewMisePlace.Induit.Fréquence_genératrice_P2 != '') ||
+    (!miseenplaceok && NewMisePlace.Induit.Réactance_ske77_P2 != '') ||
+    (!miseenplaceok && NewMisePlace.Induit.Réactance_ske17_P2 != '') ||
+    Finaldata.Induit.Test_Induit_P2 != ''
+      ? true
+      : false;
   return (
     <div className="Containertest">
       <Divider
@@ -86,7 +90,8 @@ export default function Induit({
               <Form.Item
                 label="Réactance SKE77"
                 name="Réactance_SKE77_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Réactance SKE77"
                   showSearch
@@ -104,7 +109,8 @@ export default function Induit({
               <Form.Item
                 label="Réactance SKE17"
                 name="Réactance_SKE17_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Réactance SKE17"
                   showSearch
@@ -124,7 +130,8 @@ export default function Induit({
               <Form.Item
                 label="Fréquence"
                 name="Fréquence_Genératrice_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Fréquence"
                   showSearch
@@ -193,7 +200,8 @@ export default function Induit({
               display: 'inline-block',
               width: 'calc(50% - 8px)',
               margin: '0 8px',
-            }}>
+            }}
+            rules={[{required: required, message: 'Champ Requis'}]}>
             <Radio.Group
               defaultValue={Finaldata.Induit.Test_Induit_P2 && 'Réussi'}
               buttonStyle="solid">
@@ -224,7 +232,6 @@ export default function Induit({
             </Radio.Group>
           </Form.Item>
         </Row>
-        {selectedRadio}
       </div>
     </div>
   );

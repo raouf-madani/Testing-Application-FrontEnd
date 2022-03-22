@@ -12,27 +12,26 @@ import {
 
 export default function Ratio_Polarite({
   Finaldata,
+  NewMisePlace,
   UpdateData,
   miseenplaceok,
   setFinaldata,
   setNewMisePlace,
   Prise,
 }) {
-  const [required, setrequired] = useState(
-    // Finaldata.Ratio.Tension_à_appliquer_P2 != '' ||
-    // Finaldata.Ratio.Tension_ht_P2 != '' ||
-    //   Finaldata.Ratio.Polarite_théorique_P2 != '' ||
-    //   Finaldata.Ratio.Tension_mesurée_P2 != '' ||
-    //   Finaldata.Ratio.Tension_mesurée_P1_P2 != '' ||
-    //   Finaldata.Ratio.Tension_mesurée_P2_P2 != '' ||
-    //   Finaldata.Ratio.Tension_mesurée_P3_P2 != '' ||
-    //   Finaldata.Ratio.Tension_mesurée_P4_P2 != '' ||
-    //   Finaldata.Ratio.Tension_mesurée_P5_P2 != '' ||
-    //   Finaldata.Ratio.Polarité_mesurée_P2 != ''
-    //   ? true
-    //   : false
-    false
-  );
+  const required =
+    (!miseenplaceok && NewMisePlace.Ratio.Tension_à_appliquer_P2 != '') ||
+    (!miseenplaceok && NewMisePlace.Ratio.Tension_ht_P2 != '') ||
+    (!miseenplaceok && NewMisePlace.Ratio.Polarite_théorique_P2 != '') ||
+    Finaldata.Ratio.Tension_mesurée_P2 != '' ||
+    Finaldata.Ratio.Tension_mesurée_P1_P2 != '' ||
+    Finaldata.Ratio.Tension_mesurée_P2_P2 != '' ||
+    Finaldata.Ratio.Tension_mesurée_P3_P2 != '' ||
+    Finaldata.Ratio.Tension_mesurée_P4_P2 != '' ||
+    Finaldata.Ratio.Tension_mesurée_P5_P2 != '' ||
+    Finaldata.Ratio.Polarité_mesurée_P2 != ''
+      ? true
+      : false;
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {

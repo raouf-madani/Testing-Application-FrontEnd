@@ -9,8 +9,22 @@ export default function Perte_a_charge({
   setFinaldata,
   setNewMisePlace,
   Finaldata,
+  NewMisePlace,
   form,
 }) {
+  const required =
+    (!miseenplaceok &&
+      NewMisePlace.Perte_a_charge.Multiplicateur_volts_charge_P2 != '') ||
+    (!miseenplaceok &&
+      NewMisePlace.Perte_a_charge.Multiplicateur_amperes_charge_P2 != '') ||
+    (!miseenplaceok &&
+      NewMisePlace.Perte_a_charge.Perte_table_charge_P2 != '') ||
+    (!miseenplaceok &&
+      NewMisePlace.Perte_a_charge.Courant_de_correction_P2 != '') ||
+    Finaldata.Perte_a_charge.Perte_charge_mesuré_P2 != '' ||
+    Finaldata.Perte_a_charge.Impédance_mesuré_P2 != ''
+      ? true
+      : false;
   const [resistance_P2, setresistance_P2] = useState(
     Finaldata.Perte_a_charge.Resistance_ht_P2 ||
       Finaldata.Perte_a_charge.Resistance_bt_P2
@@ -80,7 +94,8 @@ export default function Perte_a_charge({
               <Form.Item
                 label="Muliplicateur Volts"
                 name="Multiplicateur_Volts_Charge_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Muliplicateur Volts"
                   showSearch
@@ -102,7 +117,8 @@ export default function Perte_a_charge({
               <Form.Item
                 label="Mulitiplicateur Amperes"
                 name="Muliplicateur_Amperes_Charge_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Muliplicateur Amperes"
                   showSearch
@@ -123,7 +139,8 @@ export default function Perte_a_charge({
               <Form.Item
                 label="Perte Table"
                 name="Perte_Table_Charge_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Input
                   type="number"
                   tabIndex={3}
@@ -143,7 +160,8 @@ export default function Perte_a_charge({
               <Form.Item
                 label="Courant de Correction"
                 name="Courant_de_Correction_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Input
                   type="number"
                   tabIndex={4}
@@ -182,7 +200,8 @@ export default function Perte_a_charge({
           <Form.Item
             label="Pertes à charge mesurées (W)"
             name="Perte_Charge_Mesuré_P2"
-            className="show_item_input">
+            className="show_item_input"
+            rules={[{required: required, message: 'Champ Requis'}]}>
             <Input
               ref={miseenplaceok && !resistance_P2 ? inputEl : null}
               tabIndex={9}
@@ -203,7 +222,8 @@ export default function Perte_a_charge({
           <Form.Item
             label="Impédance mesurée (V)"
             name="Impédance_Mesuré_P2"
-            className="show_item_input">
+            className="show_item_input"
+            rules={[{required: required, message: 'Champ Requis'}]}>
             <Input
               type="number"
               tabIndex={10}

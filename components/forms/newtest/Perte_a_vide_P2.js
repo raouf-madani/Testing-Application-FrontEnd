@@ -21,6 +21,15 @@ export default function Perte_a_vide({
   setNewMisePlace,
   error,
 }) {
+  const required =
+    (!miseenplaceok &&
+      NewMisePlace.Perte_a_vide.Multiplicateur_volts_P2 != '') ||
+    (!miseenplaceok &&
+      NewMisePlace.Perte_a_vide.Multiplicateur_amperes_P2 != '') ||
+    Finaldata.Perte_a_vide.Pertes_mesurés_P2 != '' ||
+    Finaldata.Perte_a_vide.Courant_excitation_mesurés_P2 != ''
+      ? true
+      : false;
   const inputEl = useRef(null);
   useEffect(() => {
     if (inputEl.current) {
@@ -208,7 +217,8 @@ export default function Perte_a_vide({
               <Form.Item
                 label="Multiplicateur Volts"
                 name="multiplicateur_Volts_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Multiplicateur Volts"
                   showSearch
@@ -230,7 +240,8 @@ export default function Perte_a_vide({
               <Form.Item
                 label="Multiplicateur Ampéres"
                 name="Multiplicateur_Amprers_P2"
-                className="show_item_input">
+                className="show_item_input"
+                rules={[{required: required, message: 'Champ Requis'}]}>
                 <Select
                   placeholder="Multiplicateur Ampéres"
                   showSearch
@@ -253,7 +264,8 @@ export default function Perte_a_vide({
           <Form.Item
             label="Pertes à vide mesurées (W)"
             name="Pertes_Mesurés_P2"
-            className="show_item_input">
+            className="show_item_input"
+            rules={[{required: required, message: 'Champ Requis'}]}>
             <Input
               ref={!miseenplaceok ? null : inputEl}
               type="number"
@@ -270,7 +282,8 @@ export default function Perte_a_vide({
           <Form.Item
             label="Courant d’excitation mesuré (A)"
             name="Courant_Excitation_Mesurés_P2"
-            className="show_item_input">
+            className="show_item_input"
+            rules={[{required: required, message: 'Champ Requis'}]}>
             <Input
               type="number"
               tabIndex={5}
