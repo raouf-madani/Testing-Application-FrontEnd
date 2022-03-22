@@ -494,7 +494,6 @@ const NewTest = ({
                     ]}
                     width={250}>
                     <InputNumber
-                      size="small"
                       ref={inputEl}
                       min={0}
                       max={50}

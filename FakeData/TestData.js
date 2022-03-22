@@ -41,21 +41,11 @@ export const Fakedata = {
   Perte_a_vide: {
     Pertes_mesurés_P1: '',
     Courant_excitation_mesurés_P1: '',
-    // Calculation Values
-    // PV_Volt_mesuré: '',
-    // PV_Courant_mesuré: '',
-    // Perte_A_Vide_mesuré: '',
-    // PV: '',
-    // Perte_A_Vide_85: '',
-    // Perte_A_Vide_Efficacité: '',
-    // PV_Erreur_Gar: '',
-    // Courant_BT: '',
-    //Test Button Perte a vide
     testValidation_P1: '',
     //Position 2
     Pertes_mesurés_P2: '',
     Courant_excitation_mesurés_P2: '',
-    testValidation_P1: '',
+    testValidation_P2: '',
   },
   Perte_a_charge: {
     //Position 1
@@ -94,67 +84,65 @@ export const Fakedata = {
 
 //////// mise en place data 1 phase
 
-export const Mise_NewData = [
-  {
-    id_product: '',
-    numcommand: '',
-    test_type: '',
-    Date_Heure: '',
-    Bornes: {Borne_jaune: '', Borne_rouge: '', Borne_verte: ''},
-    Ratio: {
-      //Position 1
-      Tension_à_appliquer_P1: '',
-      Tension_ht_P1: '',
-      Polarite_théorique_P1: '',
-      //Position 2
-      Tension_à_appliquer_P2: '',
-      Tension_ht_P2: '',
-      Polarite_théorique_P2: '',
-    },
-    Induit: {
-      //Position 1
-      Fréquence_genératrice_P1: '',
-      Réactance_ske77_P1: '',
-      Réactance_ske17_P1: '',
-      // comment
-      Comment_P1: '',
-      //Position 2
-      Fréquence_genératrice_P2: '',
-      Réactance_ske77_P2: '',
-      Réactance_ske17_P2: '',
-      // comment
-      Comment_P2: '',
-    },
-    Perte_a_vide: {
-      Multiplicateur_volts_P1: '',
-      Multiplicateur_amperes_P1: '',
-      Perte_table_P1: '',
-      //Position 2
-      Multiplicateur_volts_P2: '',
-      Multiplicateur_amperes_P2: '',
-      Perte_table_P2: '',
-    },
-    Perte_a_charge: {
-      //Position 1
-      Multiplicateur_volts_charge_P1: '',
-      Multiplicateur_amperes_charge_P1: '',
-      Perte_table_charge_P1: '',
-      Courant_de_correction_P1: '',
-
-      // no position
-      No_cavalier: '',
-      //Position 2
-      Multiplicateur_volts_charge_P2: '',
-      Multiplicateur_amperes_charge_P2: '',
-      Perte_table_charge_P2: '',
-      Courant_de_correction_P2: '',
-    },
-    Decharges_Partielles: {
-      Réactance_ske77_DP_P1: '',
-      Réactance_ske17_DP_P1: '',
-    },
+export const Mise_NewData = {
+  id_product: '',
+  numcommand: '',
+  test_type: '',
+  Date_Heure: '',
+  Bornes: {Borne_jaune: '', Borne_rouge: '', Borne_verte: ''},
+  Ratio: {
+    //Position 1
+    Tension_à_appliquer_P1: '',
+    Tension_ht_P1: '',
+    Polarite_théorique_P1: '',
+    //Position 2
+    Tension_à_appliquer_P2: '',
+    Tension_ht_P2: '',
+    Polarite_théorique_P2: '',
   },
-];
+  Induit: {
+    //Position 1
+    Fréquence_genératrice_P1: '',
+    Réactance_ske77_P1: '',
+    Réactance_ske17_P1: '',
+    // comment
+    Comment_P1: '',
+    //Position 2
+    Fréquence_genératrice_P2: '',
+    Réactance_ske77_P2: '',
+    Réactance_ske17_P2: '',
+    // comment
+    Comment_P2: '',
+  },
+  Perte_a_vide: {
+    Multiplicateur_volts_P1: '',
+    Multiplicateur_amperes_P1: '',
+    Perte_table_P1: '',
+    //Position 2
+    Multiplicateur_volts_P2: '',
+    Multiplicateur_amperes_P2: '',
+    Perte_table_P2: '',
+  },
+  Perte_a_charge: {
+    //Position 1
+    Multiplicateur_volts_charge_P1: '',
+    Multiplicateur_amperes_charge_P1: '',
+    Perte_table_charge_P1: '',
+    Courant_de_correction_P1: '',
+
+    // no position
+    No_cavalier: '',
+    //Position 2
+    Multiplicateur_volts_charge_P2: '',
+    Multiplicateur_amperes_charge_P2: '',
+    Perte_table_charge_P2: '',
+    Courant_de_correction_P2: '',
+  },
+  Decharges_Partielles: {
+    Réactance_ske77_DP_P1: '',
+    Réactance_ske17_DP_P1: '',
+  },
+};
 // Final Data 3 phases
 
 export const Fakedata3phases = {

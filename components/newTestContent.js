@@ -109,6 +109,7 @@ function NewTestContent({
       return (
         <Ratio_PolariteForm_P2
           Finaldata={Finaldata}
+          NewMisePlace={NewMisePlace}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
@@ -120,6 +121,7 @@ function NewTestContent({
       return (
         <InduitForm_P1
           UpdateData={UpdateData}
+          NewMisePlace={NewMisePlace}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
           error={error}
@@ -134,6 +136,7 @@ function NewTestContent({
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           Finaldata={Finaldata}
+          NewMisePlace={NewMisePlace}
           setFinaldata={setFinaldata}
           error={error}
           setNewMisePlace={setNewMisePlace}
@@ -202,6 +205,7 @@ function NewTestContent({
         <Perte_a_ChargeForm_P1
           commande={commande}
           Finaldata={Finaldata}
+          NewMisePlace={NewMisePlace}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
@@ -214,6 +218,7 @@ function NewTestContent({
         <Perte_a_ChargeForm_P2
           commande={commande}
           Finaldata={Finaldata}
+          NewMisePlace={NewMisePlace}
           UpdateData={UpdateData}
           miseenplaceok={mise_en_placeById}
           setFinaldata={setFinaldata}
