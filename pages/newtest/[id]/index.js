@@ -495,8 +495,20 @@ const NewTest = ({
                     width={250}>
                     <InputNumber
                       size="small"
+                      ref={inputEl}
                       min={0}
                       max={50}
+                      onPressEnter={() => {
+                        UpdateData(
+                          'temperature_affected',
+                          temperature_noaffected,
+                          TypeOfTest == '1phase'
+                            ? setFinaldata
+                            : setFinaldata3phases
+                        );
+                        settemperature_noaffected(null);
+                        setmodaloftemperature(false);
+                      }}
                       onChange={settemperature_noaffected}
                       value={temperature_noaffected}
                     />
